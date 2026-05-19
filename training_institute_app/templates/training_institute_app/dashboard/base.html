@@ -1,0 +1,713 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+  data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Favicon icon-->
+  <link rel="shortcut icon" type="image/png" href="{% static 'images/logoSample.png' %}" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+  <!-- Core Css -->
+  <link rel="stylesheet" href="{% static 'css/theme.css' %}" />
+  <title>INSTITUTE OF INFORMATION TECHNOLOGY AND MANAGEMENT</title>
+  <link rel="stylesheet" href="{% static 'libs/owl.carousel/dist/assets/owl.carousel.min.css' %}">
+  
+  <style>
+    /* Enhanced modern text styling */
+    .modern-logo-text {
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    .logo-main-text {
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1.3;
+      letter-spacing: -0.2px;
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #06b6d4 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: shimmer 3s linear infinite;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+      display: block;
+      white-space: normal;
+      word-wrap: break-word;
+    }
+    
+    .dark .logo-main-text {
+      background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #f472b6 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: shimmer 3s linear infinite;
+    }
+    
+    @keyframes shimmer {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    
+    .logo-subtitle {
+      display: block;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-top: 6px;
+      padding-top: 4px;
+      background: linear-gradient(90deg, #475569, #64748b, #475569);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      position: relative;
+      text-transform: uppercase;
+    }
+    
+    .dark .logo-subtitle {
+      background: linear-gradient(90deg, #94a3b8, #cbd5e1, #94a3b8);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    
+    .logo-subtitle::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 25%;
+      width: 50%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #3b82f6, #06b6d4, #3b82f6, transparent);
+    }
+    
+    .dark .logo-subtitle::before {
+      background: linear-gradient(90deg, transparent, #60a5fa, #a78bfa, #60a5fa, transparent);
+    }
+    
+    .brand-logo a:hover .logo-main-text {
+      transform: scale(1.02);
+      transition: transform 0.3s ease;
+    }
+    
+    .brand-logo a {
+      transition: all 0.3s ease;
+      display: block;
+    }
+    
+    /* UNIFORM Active menu styling - Same for ALL menu items */
+    .sidebar-item .active {
+      background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+      color: white !important;
+      border-radius: 8px;
+    }
+    
+    .dark .sidebar-item .active {
+      background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+    }
+    
+    .sidebar-item .active iconify-icon {
+      color: white !important;
+    }
+    
+    /* UNIFORM Accordion active styling */
+    .hs-accordion.active-accordion > .hs-accordion-toggle {
+      background: rgba(59, 130, 246, 0.1);
+      border-radius: 8px;
+    }
+    
+    /* UNIFORM Submenu styling */
+    .dropdown-submenu-link {
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin: 2px 0;
+    }
+    
+    .dropdown-submenu-link:hover {
+      background: rgba(59, 130, 246, 0.1);
+      color: #3b82f6 !important;
+    }
+    
+    .dropdown-submenu-link.active-submenu {
+      background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+      color: white !important;
+      font-weight: 600;
+    }
+    
+    .dropdown-submenu-link.active-submenu iconify-icon {
+      color: white !important;
+    }
+    
+    .dark .dropdown-submenu-link.active-submenu {
+      background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+    }
+    
+    /* UNIFORM Caption styling */
+    .caption {
+      margin-bottom: 12px;
+      margin-top: 20px;
+      padding: 0 12px;
+    }
+    
+    .caption span {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #64748b;
+      text-transform: uppercase;
+    }
+    
+    .dark .caption span {
+      color: #94a3b8;
+    }
+    
+    /* UNIFORM Sidebar link styling */
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      margin: 2px 0;
+    }
+    
+    .sidebar-link:hover {
+      background: rgba(59, 130, 246, 0.1);
+      color: #3b82f6 !important;
+    }
+    
+    .dark .sidebar-link:hover {
+      background: rgba(96, 165, 250, 0.1);
+    }
+    
+    /* Ensure ALL menu items have consistent spacing */
+    .hs-accordion-content ul li {
+      margin-bottom: 4px;
+    }
+    
+    .hs-accordion-content ul li:last-child {
+      margin-bottom: 0;
+    }
+    /* Professional Profile Circle Styles */
+    .profile-image-circle {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .dark .profile-image-circle {
+        border-color: #1e293b;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .profile-image-circle:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        border-color: #3b82f6;
+    }
+
+    .profile-initials-circle {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .dark .profile-initials-circle {
+        border-color: #1e293b;
+        background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .profile-initials-circle:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        border-color: #3b82f6;
+    }
+
+    .profile-initials-text {
+        font-size: 14px;
+        font-weight: 700;
+        color: white;
+        letter-spacing: 0.5px;
+    }
+
+    .profile-status-dot {
+        position: absolute;
+        bottom: 2px;
+        right: 2px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 2px solid white;
+        background-color: #22c55e;
+    }
+
+    .dark .profile-status-dot {
+        border-color: #1e293b;
+    }
+
+    .profile-status-dot.online {
+        background-color: #22c55e;
+        animation: statusPulse 2s infinite;
+    }
+
+    .profile-status-dot.away {
+        background-color: #f59e0b;
+    }
+
+    .profile-status-dot.busy {
+        background-color: #ef4444;
+    }
+
+    @keyframes statusPulse {
+        0% {
+            transform: scale(1);
+            opacity: 1;
+        }
+        50% {
+            transform: scale(1.2);
+            opacity: 0.8;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    /* Hover effect for the profile wrapper */
+    .hs-dropdown-toggle:hover .profile-image-circle,
+    .hs-dropdown-toggle:hover .profile-initials-circle {
+        transform: scale(1.05);
+        box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
+    }
+
+    .hs-dropdown-toggle:hover .profile-status-dot {
+        animation: statusPulse 1s infinite;
+    }
+  </style>
+</head>
+
+<body class="DEFAULT_THEME bg-white dark:bg-dark">
+
+  <main>
+    <!--start the project-->
+    <div id="main-wrapper" class="flex">
+
+      <aside id="application-sidebar-brand"
+        class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-20 flex-shrink-0 border-r rtl:border-l rtl:border-r-0 w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark">
+        <!-- ---------------------------------- -->
+        <!-- Start Vertical Layout Sidebar -->
+        <!-- ---------------------------------- -->
+        <div class="py-5 px-5 flex justify-between">
+          <div class="brand-logo d-flex align-items-center justify-center">
+            <a href="/" class="text-nowrap logo-img block">
+              <div class="modern-logo-text">
+                <center>
+                    <span class="logo-main-text">
+                    INSTITUTE OF INFORMATION<br>TECHNOLOGY AND MANAGEMENT
+                    </span>
+                    <span class="logo-subtitle">
+                    — EST. 2026 —
+                    </span>
+                </center>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="scroll-sidebar" data-simplebar="">
+          <div class="px-6 mt-8 mini-layout" data-te-sidenav-menu-ref>
+            <nav class="hs-accordion-group w-full flex flex-col">
+              <ul data-te-sidenav-menu-ref id="sidebarnav">
+                <!-- MAIN Section -->
+                <div class="caption">
+                  <iconify-icon icon="solar:menu-dots-bold"
+                    class="nav-small-cap-icon text-lg hidden text-center leading-[16px]"></iconify-icon>
+                  <span class="hide-menu">MAIN</span>
+                </div>
+
+                <!-- Dashboard Menu -->
+                <li class="sidebar-item">
+                  <a class="sidebar-link dark-sidebar-link dark:text-white nav-link" href="/dashboard/">
+                    <iconify-icon icon="solar:chart-2-linear" class="shrink-0 text-xl"></iconify-icon>
+                    <span class="hide-menu shrink-0">Dashboard</span>
+                  </a>
+                </li>
+
+                <!-- Master Table Accordion -->
+                <li class="hs-accordion sidebar-item" id="master-accordion">
+                  <a class="hs-accordion-toggle sidebar-link dropdown-menu-link nav-link">
+                    <iconify-icon icon="solar:database-linear" class="text-xl shrink-0"></iconify-icon>
+                    <span class="hide-menu">Master Tables</span>
+                    <span class="hide-menu ms-auto flex items-center">
+                      <iconify-icon icon="solar:alt-arrow-down-linear"
+                        class="text-lg ms-auto hs-accordion-active:hidden"></iconify-icon>
+                      <iconify-icon icon="solar:alt-arrow-up-linear"
+                        class="text-lg ms-auto hs-accordion-active:block ml-auto hidden z-10 relative"></iconify-icon>
+                    </span>
+                  </a>
+                  <div id="master-accordion" class="hs-accordion-content">
+                    <ul>
+                      <li class="pl-4 pr-3">
+                        <a class="dropdown-submenu-link nav-link" href="/user-management/">
+                          <iconify-icon icon="solar:users-group-rounded-linear" class="shrink-0 text-xs me-3"></iconify-icon>
+                          <span class="hide-menu">User Management</span>
+                        </a>
+                      </li>
+                      <li class="pl-4 pr-3">
+                        <a class="dropdown-submenu-link nav-link" href="/course-management/">
+                          <iconify-icon icon="solar:book-bookmark-linear" class="shrink-0 text-xs me-3"></iconify-icon>
+                          <span class="hide-menu">Course Management</span>
+                        </a>
+                      </li>
+                      <li class="pl-4 pr-3">
+                        <a class="dropdown-submenu-link nav-link" href="/department-management/">
+                          <iconify-icon icon="solar:buildings-linear" class="shrink-0 text-xs me-3"></iconify-icon>
+                          <span class="hide-menu">Department Management</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+
+                <!-- ACADEMICS Section -->
+                <div class="caption mt-8">
+                  <iconify-icon icon="solar:menu-dots-bold" class="nav-small-cap-icon"></iconify-icon>
+                  <span class="hide-menu">ACADEMICS</span>
+                </div>
+
+                <!-- Courses Management Accordion -->
+                <li class="hs-accordion sidebar-item" id="courses-accordion">
+                  <a class="hs-accordion-toggle sidebar-link dropdown-menu-link nav-link">
+                    <iconify-icon icon="solar:notebook-linear" class="text-xl shrink-0"></iconify-icon>
+                    <span class="hide-menu">Courses</span>
+                    <span class="hide-menu ms-auto flex items-center">
+                      <iconify-icon icon="solar:alt-arrow-down-linear"
+                        class="text-lg ms-auto hs-accordion-active:hidden"></iconify-icon>
+                      <iconify-icon icon="solar:alt-arrow-up-linear"
+                        class="text-lg ms-auto hs-accordion-active:block ml-auto hidden z-10 relative"></iconify-icon>
+                    </span>
+                  </a>
+                  <div id="courses-accordion" class="hs-accordion-content">
+                    <ul>
+                      <li class="pl-4 pr-3">
+                        <a class="dropdown-submenu-link nav-link" href="/courses/list/">
+                          <iconify-icon icon="solar:list-linear" class="shrink-0 text-xs me-3"></iconify-icon>
+                          <span class="hide-menu">Courses List</span>
+                        </a>
+                      </li>
+                      <li class="pl-4 pr-3">
+                        <a class="dropdown-submenu-link nav-link" href="/courses/create/">
+                          <iconify-icon icon="solar:file-add-linear" class="shrink-0 text-xs me-3"></iconify-icon>
+                          <span class="hide-menu">Create Course</span>
+                        </a>
+                      </li>
+                      <li class="pl-4 pr-3">
+                        <a class="dropdown-submenu-link nav-link" href="/courses/categories/">
+                          <iconify-icon icon="solar:tag-linear" class="shrink-0 text-xs me-3"></iconify-icon>
+                          <span class="hide-menu">Course Categories</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+
+                <!-- Enrollments Accordion -->
+                <li class="hs-accordion sidebar-item" id="enrollments-accordion">
+                  <a class="hs-accordion-toggle sidebar-link dropdown-menu-link nav-link">
+                    <iconify-icon icon="solar:user-plus-linear" class="text-xl shrink-0"></iconify-icon>
+                    <span class="hide-menu">Enrollments</span>
+                    <span class="hide-menu ms-auto flex items-center">
+                      <iconify-icon icon="solar:alt-arrow-down-linear"
+                        class="text-lg ms-auto hs-accordion-active:hidden"></iconify-icon>
+                      <iconify-icon icon="solar:alt-arrow-up-linear"
+                        class="text-lg ms-auto hs-accordion-active:block ml-auto hidden z-10 relative"></iconify-icon>
+                    </span>
+                  </a>
+                  <div id="enrollments-accordion" class="hs-accordion-content">
+                    <ul>
+                      <li class="pl-4 pr-3">
+                        <a class="dropdown-submenu-link nav-link" href="/enrollments/list/">
+                          <iconify-icon icon="solar:list-check-linear" class="shrink-0 text-xs me-3"></iconify-icon>
+                          <span class="hide-menu">Enrollment List</span>
+                        </a>
+                      </li>
+                      <li class="pl-4 pr-3">
+                        <a class="dropdown-submenu-link nav-link" href="/enrollments/lecturers/">
+                          <iconify-icon icon="solar:users-group-two-rounded-linear" class="shrink-0 text-xs me-3"></iconify-icon>
+                          <span class="hide-menu">Course Lecturers</span>
+                        </a>
+                      </li>
+                      <li class="pl-4 pr-3">
+                        <a class="dropdown-submenu-link nav-link" href="/enrollments/approvals/">
+                          <iconify-icon icon="solar:checklist-minimalistic-linear" class="shrink-0 text-xs me-3"></iconify-icon>
+                          <span class="hide-menu">Pending Approvals</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </aside>
+
+      <div class="page-wrapper w-full" role="main">
+        <!-- Header Start -->
+        <header
+          class="sticky top-header top-0 inset-x-0 z-10 flex flex-wrap md:justify-start md:flex-nowrap text-sm bg-white dark:bg-dark">
+          <div class="with-vertical w-full">
+            <div class="w-full mx-auto px-4 lg:py-4 py-3 lg:px-4" aria-label="Global">
+              <div class="relative md:flex md:items-center md:justify-between">
+                <div class="hs-collapse grow md:block">
+                  <div class="flex justify-between items-center">
+                    <div class="flex items-center gap-2">
+                      <div class="relative xl:hidden">
+                        <!-- Navigation Toggle -->
+                        <a class="text-2xl icon-hover cursor-pointer text-link dark:text-darklink sidebartoggler h-10 w-10 hover:text-primary light-dark-hoverbg flex justify-center items-center rounded-full"
+                          data-hs-overlay="#application-sidebar-brand" aria-controls="application-sidebar-brand"
+                          aria-label="Toggle navigation">
+                          <iconify-icon icon="solar:hamburger-menu-linear" class="relative z-1"></iconify-icon>
+                        </a>
+                        <!-- End Navigation Toggle -->
+                      </div>
+                    </div>
+
+                    <div class="icon-nav items-center gap-2 flex">
+                      <!-- Theme Toggle -->
+                      <button type="button"
+                        class="hs-dark-mode-active:hidden icon-hover flex cursor-pointer hs-dark-mode group items-center font-medium hover:text-primary text-link dark:text-darklink h-10 w-10 light-dark-hoverbg justify-center rounded-full"
+                        data-hs-theme-click-value="dark" id="dark-layout">
+                        <iconify-icon icon="solar:moon-linear"
+                          class="text-xl text-link dark:text-darklink relative hover:text-primary"></iconify-icon>
+                      </button>
+                      <button type="button"
+                        class="hs-dark-mode-active:flex cursor-pointer icon-hover hidden hs-dark-mode group items-center font-medium hover:text-primary text-link dark:text-darklink h-10 w-10 light-dark-hoverbg justify-center rounded-full"
+                        data-hs-theme-click-value="light" id="light-layout">
+                        <iconify-icon icon="solar:sun-2-linear"
+                          class="text-xl text-link dark:text-darklink relative hover:text-primary"></iconify-icon>
+                      </button>
+
+                      <!-- Notifications DD -->
+                      <div
+                        class="hs-dropdown [--strategy:absolute] [--adaptive:none] sm:[--trigger:hover] sm:relative group/menu">
+                        <a id="hs-dropdown-hover-event-notification"
+                          class="relative hs-dropdown-toggle h-10 w-10 text-link dark:text-darklink cursor-pointer hover:bg-lightprimary hover:text-primary dark:hover:bg-darkprimary flex justify-center items-center rounded-full group-hover/menu:bg-lightprimary group-hover/menu:text-primary">
+                          <iconify-icon icon="solar:bell-linear" class="text-xl relative z-1"></iconify-icon>
+                          <div
+                            class="absolute inline-flex items-center justify-center text-white text-[11px] font-medium bg-primary p-[5px] rounded-full -top-[-5px] right-1">
+                          </div>
+                        </a>
+                        <div
+                          class="card hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 right-0 rtl:right-auto rtl:left-0 mt-2 min-w-max top-auto w-full sm:w-[360px] hidden z-2"
+                          aria-labelledby="hs-dropdown-hover-event-notification">
+                          <div class="flex items-center py-3 px-6 justify-between">
+                            <h3 class="mb-0 card-title">Notifications</h3>
+                          </div>
+                          <div class="message-body max-h-[300px]" data-simplebar="">
+                            <a href="javascript:void(0)" class="group flex items-center px-6 py-2 hover:bg-lightprimary">
+                              <div>
+                                <h5 class="text-sm group-hover:text-primary">Roman Joined the Team!</h5>
+                                <span class="text-xs">Congratulate him</span>
+                              </div>
+                            </a>
+                            <a href="javascript:void(0)" class="group flex items-center px-6 py-2 hover:bg-lightprimary">
+                              <div>
+                                <h5 class="text-sm group-hover:text-primary">New message</h5>
+                                <span class="text-xs">Salma sent you new message</span>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Profile DD -->
+                      <div class="hs-dropdown [--strategy:absolute] [--adaptive:none] [--placement:top-left] sm:[--trigger:hover] sm:relative group/menu">
+                          <a id="hs-dropdown-hover-event-profile"
+                              class="relative hs-dropdown-toggle cursor-pointer align-middle rounded-full group-hover/menu:bg-lightprimary group-hover/menu:text-primary">
+                              
+                              <!-- Professional Profile Circle - All cases -->
+                              {% if google_picture %}
+                                  <div class="profile-circle-wrapper">
+                                      <img class="profile-image-circle" src="{{ google_picture }}" alt="Profile Picture">
+                                      <span class="profile-status-dot online"></span>
+                                  </div>
+                              {% elif profile_picture %}
+                                  <div class="profile-circle-wrapper">
+                                      <img class="profile-image-circle" src="{{ profile_picture }}" alt="Profile Picture">
+                                      <span class="profile-status-dot online"></span>
+                                  </div>
+                              {% else %}
+                                  <div class="profile-circle-wrapper">
+                                      <div class="profile-initials-circle">
+                                          <img class="profile-image-circle" src="{% static 'images/profile/profile.jpg' %}" alt="Profile Picture">
+                                      </div>
+                                      <span class="profile-status-dot online"></span>
+                                  </div>
+                              {% endif %}
+                          </a>
+                          <div class="card hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 mt-2 min-w-50 top-auto right-0 rtl:right-auto rtl:left-0 w-full hidden z-2"
+                              aria-labelledby="hs-dropdown-hover-event-profile">
+                              <div class="p-3 border-b border-border dark:border-darkborder">
+                                  <p class="text-sm font-semibold text-dark dark:text-white">{{ user_full_name }}</p>
+                                  <p class="text-xs text-gray-500 dark:text-gray-400">{{ user_email }}</p>
+                              </div>
+                              <div class="p-1 space-y-0.5">
+                                  <a class="flex items-center gap-x-2 py-2 px-3 rounded-lg text-sm font-medium hover:bg-lightprimary hover:text-primary focus:outline-hidden"
+                                      href="#">
+                                      <iconify-icon icon="solar:user-circle-linear" class="relative text-lg"></iconify-icon>
+                                      My Profile
+                                  </a>
+                                  <a class="flex items-center gap-x-2 py-2 px-3 rounded-lg text-sm font-medium hover:bg-lightprimary hover:text-primary focus:outline-hidden"
+                                      href="#">
+                                      <iconify-icon icon="solar:user-id-linear" class="relative text-lg"></iconify-icon>
+                                      My Account
+                                  </a>
+                                  <a class="flex items-center gap-x-2 py-2 px-3 rounded-lg text-sm font-medium hover:bg-lightprimary hover:text-primary focus:outline-hidden"
+                                      href="#">
+                                      <iconify-icon icon="solar:checklist-minimalistic-linear" class="relative text-lg"></iconify-icon>
+                                      My Tasks
+                                  </a>
+                              </div>
+                              <div class="p-4 border-t border-border dark:border-darkborder">
+                                  <a href="/logout/" class="btn btn-outline-primary block w-full">
+                                      Logout
+                                  </a>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+        <!-- Header End -->
+        <!-- Main Content -->
+        <main class="max-w-full pt-6">
+          {% block content %}{% endblock %}
+        </main>
+        <!-- Main Content End -->
+      </div>
+    </div>
+    <!--end of project-->
+  </main>
+
+  <!-- Active Tab JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get current URL path
+      const currentPath = window.location.pathname;
+      
+      // Get all navigation links
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      // Remove active class from all links and accordions
+      function removeAllActiveClasses() {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          link.classList.remove('active-submenu');
+        });
+        
+        // Remove active from parent accordion items
+        document.querySelectorAll('.hs-accordion').forEach(accordion => {
+          accordion.classList.remove('active-accordion');
+        });
+      }
+      
+      // Add active class to matching link
+      navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && href !== '#' && href !== 'javascript:void(0)') {
+          // Check if current path matches or starts with href
+          if (currentPath === href || (href !== '/' && currentPath.startsWith(href))) {
+            link.classList.add('active');
+            
+            // If it's a submenu item, add class to it
+            if (link.classList.contains('dropdown-submenu-link')) {
+              link.classList.add('active-submenu');
+            }
+            
+            // Find and open parent accordion
+            let parentLi = link.closest('.hs-accordion');
+            if (parentLi) {
+              parentLi.classList.add('active-accordion');
+              // Force open the accordion
+              const accordionContent = parentLi.querySelector('.hs-accordion-content');
+              if (accordionContent) {
+                accordionContent.classList.add('hs-accordion-active');
+                accordionContent.style.display = 'block';
+              }
+            }
+          }
+        }
+      });
+      
+      // Handle accordion toggle to keep active state
+      const accordionToggles = document.querySelectorAll('.hs-accordion-toggle');
+      accordionToggles.forEach(toggle => {
+        toggle.addEventListener('click', function() {
+          const parentAccordion = this.closest('.hs-accordion');
+          if (parentAccordion) {
+            setTimeout(() => {
+              if (parentAccordion.classList.contains('active-accordion')) {
+                // Keep the active submenu item highlighted
+                const activeSubmenu = parentAccordion.querySelector('.dropdown-submenu-link.active-submenu');
+                if (activeSubmenu) {
+                  activeSubmenu.classList.add('active');
+                }
+              }
+            }, 100);
+          }
+        });
+      });
+    });
+  </script>
+  
+  <script src="{% static 'js/vendor.min.js' %}"></script>
+  <script src="{% static 'js/theme/app.init.js' %}"></script>
+  <script src="{% static 'js/theme/app.min.js' %}"></script>
+  <script src="{% static 'js/theme.js' %}"></script>
+  <script src="{% static 'libs/simplebar/dist/simplebar.min.js' %}"></script>
+  <script src="{% static 'libs/preline/dist/preline.js' %}"></script>
+  <script src="{% static 'js/libs/@preline/input-number/index.js' %}"></script>
+  <script src="{% static 'js/libs/@preline/tooltip/index.js' %}"></script>
+  <script src="{% static 'js/libs/@preline/stepper/index.js' %}"></script>
+
+  <!-- solar icons -->
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+  <script src="{% static 'js/libs/owl.carousel/dist/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js/libs/apexcharts/dist/apexcharts.min.js' %}"></script>
+  <script src="{% static 'js/dashboards/dashboard.js' %}"></script>
+</body>
+
+</html>

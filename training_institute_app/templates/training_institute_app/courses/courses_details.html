@@ -1,0 +1,547 @@
+{% extends 'training_institute_app/base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'training_institute_app/components/nav.html' %}
+{% include 'training_institute_app/components/mobile_menu.html' %}
+{% include 'training_institute_app/components/side_panels.html' %}
+
+<link rel="stylesheet" href="{% static 'training_institute_app/css/courses_details.css' %}">
+
+<main class="main">
+    <!-- Hero Section -->
+    <section class="hero" id="courseHero">
+        <div class="hero-grid"></div>
+        <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            <span>ICT & SOFTWARE DEVELOPMENT</span>
+        </div>
+        <h1>
+            ICT & Software<br>
+            <em>Development Training</em>
+        </h1>
+        <div class="hero-sub">
+            Building the Next Generation of Digital Professionals
+        </div>
+        <div class="hero-ctas">
+            <button class="btn-primary enroll-btn-hero"><i class="fa-solid fa-graduation-cap"></i> Enroll Now</button>
+            <a href="#curriculum" class="btn-secondary"><i class="fa-regular fa-file-lines"></i> View Curriculum</a>
+        </div>
+        <div class="hero-metrics">
+            <div class="metric"><div class="metric-value">12<span>Weeks</span></div><div class="metric-label">Duration</div></div>
+            <div class="metric"><div class="metric-value">Flexible</div><div class="metric-label">Schedule</div></div>
+            <div class="metric"><div class="metric-value">Industry</div><div class="metric-label">Certification</div></div>
+            <div class="metric"><div class="metric-value">15-20</div><div class="metric-label">Per Batch</div></div>
+        </div>
+        <div class="course-rating-summary">
+            <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-alt"></i></div>
+            <span class="rating-value">4.8</span>
+            <span class="rating-count">(156 reviews)</span>
+        </div>
+    </section>
+
+    <div class="silk-divider reveal"></div>
+
+    <!-- Description Section -->
+    <section class="section reveal">
+        <div class="section-center">
+            <div class="section-tag"><i class="fa-regular fa-building"></i> ABOUT THE PROGRAM</div>
+            <h2 class="section-title">Building the Next Generation of <strong>Digital Professionals</strong></h2>
+            <div class="section-body">
+                IITM offers comprehensive ICT training programs designed to develop in-demand technical skills for students, professionals, and organizations.
+                Our programs emphasize practical development, real-world applications, and industry readiness.
+            </div>
+        </div>
+    </section>
+
+    <div class="silk-divider reveal"></div>
+
+    <!-- Core Training Areas -->
+    <section class="section reveal">
+        <div class="section-center">
+            <div class="section-tag"><i class="fa-regular fa-compass"></i> CORE TRAINING AREAS</div>
+            <h2 class="section-title">What You'll <strong>Master</strong></h2>
+            <div class="section-body">By the end of this comprehensive program, you'll have built real-world projects and gained industry-ready skills</div>
+        </div>
+
+        <div class="training-areas-grid">
+            <div class="area-card">
+                <div class="area-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                <h3>Software & Application Development</h3>
+                <ul>
+                    <li><i class="fa-regular fa-circle-check"></i> Web Development (Frontend & Backend)</li>
+                    <li><i class="fa-regular fa-circle-check"></i> Full-Stack Development</li>
+                    <li><i class="fa-regular fa-circle-check"></i> Database Design & Management</li>
+                </ul>
+            </div>
+
+            <div class="area-card">
+                <div class="area-icon"><i class="fa-solid fa-mobile-alt"></i></div>
+                <h3>Mobile & Modern Development</h3>
+                <ul>
+                    <li><i class="fa-regular fa-circle-check"></i> Android & iOS Development</li>
+                    <li><i class="fa-regular fa-circle-check"></i> Cross-platform Applications</li>
+                </ul>
+            </div>
+
+            <div class="area-card">
+                <div class="area-icon"><i class="fa-solid fa-cloud"></i></div>
+                <h3>Systems & Integration</h3>
+                <ul>
+                    <li><i class="fa-regular fa-circle-check"></i> API Development & Integration</li>
+                    <li><i class="fa-regular fa-circle-check"></i> Cloud-Based Applications</li>
+                </ul>
+            </div>
+
+            <div class="area-card">
+                <div class="area-icon"><i class="fa-solid fa-shield-haltered"></i></div>
+                <h3>Secure Development</h3>
+                <ul>
+                    <li><i class="fa-regular fa-circle-check"></i> Secure Coding Practices</li>
+                    <li><i class="fa-regular fa-circle-check"></i> Application Security Testing</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div class="silk-divider reveal"></div>
+
+    <!-- Who Should Attend -->
+    <section class="section reveal">
+        <div class="section-center">
+            <div class="section-tag"><i class="fa-regular fa-user"></i> TARGET AUDIENCE</div>
+            <h2 class="section-title">Who <strong>Should Attend</strong></h2>
+        </div>
+
+        <div class="audience-grid">
+            <div class="audience-card"><i class="fa-solid fa-graduation-cap"></i><span>IT graduates and students</span></div>
+            <div class="audience-card"><i class="fa-solid fa-code"></i><span>Software developers</span></div>
+            <div class="audience-card"><i class="fa-solid fa-microchip"></i><span>System engineers</span></div>
+            <div class="audience-card"><i class="fa-solid fa-building"></i><span>Organizations building digital solutions</span></div>
+        </div>
+    </section>
+
+    <div class="silk-divider reveal"></div>
+
+    <!-- Learning Outcomes -->
+    <section class="section reveal">
+        <div class="section-center">
+            <div class="section-tag"><i class="fa-regular fa-star"></i> LEARNING OUTCOMES</div>
+            <h2 class="section-title">What <strong>Participants Will Achieve</strong></h2>
+        </div>
+
+        <div class="outcomes-grid">
+            <div class="outcome-card">
+                <div class="outcome-icon"><i class="fa-solid fa-rocket"></i></div>
+                <h4>Build real-world applications</h4>
+                <p>Hands-on projects that mirror industry requirements</p>
+            </div>
+            <div class="outcome-card">
+                <div class="outcome-icon"><i class="fa-solid fa-diagram-project"></i></div>
+                <h4>Understand full development lifecycle</h4>
+                <p>From ideation to deployment and maintenance</p>
+            </div>
+            <div class="outcome-card">
+                <div class="outcome-icon"><i class="fa-solid fa-plug"></i></div>
+                <h4>Gain practical coding and system integration skills</h4>
+                <p>Real experience with modern tools and frameworks</p>
+            </div>
+            <div class="outcome-card">
+                <div class="outcome-icon"><i class="fa-solid fa-briefcase"></i></div>
+                <h4>Become job-ready in the digital economy</h4>
+                <p>Portfolio, resume, and interview preparation</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="silk-divider reveal"></div>
+
+    <!-- Curriculum Preview -->
+    <section class="section reveal" id="curriculum">
+        <div class="section-center">
+            <div class="section-tag"><i class="fa-regular fa-folder-open"></i> CURRICULUM</div>
+            <h2 class="section-title">Program <strong>Structure</strong></h2>
+        </div>
+
+        <div class="curriculum-preview">
+            <div class="curriculum-column">
+                <h4><i class="fa-brands fa-html5"></i> Frontend Development</h4>
+                <ul>
+                    <li>HTML5/CSS3 (Flexbox, Grid, Animations)</li>
+                    <li>JavaScript/ES6+ (Modern JS, Async/Await)</li>
+                    <li>React.js (Hooks, State Management, Routing)</li>
+                    <li>Responsive & Mobile-First Design</li>
+                </ul>
+            </div>
+            <div class="curriculum-column">
+                <h4><i class="fa-solid fa-server"></i> Backend Development</h4>
+                <ul>
+                    <li>Python & Django Framework</li>
+                    <li>RESTful API Development</li>
+                    <li>Database Design (PostgreSQL, MongoDB)</li>
+                    <li>Authentication & Authorization</li>
+                </ul>
+            </div>
+            <div class="curriculum-column">
+                <h4><i class="fa-solid fa-mobile"></i> Mobile & Cloud</h4>
+                <ul>
+                    <li>React Native (iOS & Android)</li>
+                    <li>Cloud Deployment (AWS, Vercel, Heroku)</li>
+                    <li>Docker Containerization</li>
+                    <li>CI/CD Pipelines</li>
+                </ul>
+            </div>
+            <div class="curriculum-column">
+                <h4><i class="fa-solid fa-shield"></i> Security & Best Practices</h4>
+                <ul>
+                    <li>Secure Coding Practices</li>
+                    <li>OWASP Top 10</li>
+                    <li>Application Security Testing</li>
+                    <li>Code Reviews & Version Control (Git/GitHub)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div class="silk-divider reveal"></div>
+
+    <!-- Instructor Section -->
+    <section class="section reveal">
+        <div class="section-center">
+            <div class="section-tag"><i class="fa-solid fa-chalkboard-user"></i> LEAD INSTRUCTOR</div>
+            <h2 class="section-title">Meet Your <strong>Mentor</strong></h2>
+        </div>
+
+        <div class="instructor-professional">
+            <div class="instructor-header">
+                <div class="instructor-avatar-large">
+                    <i class="fa-solid fa-user-graduate"></i>
+                </div>
+                <div class="instructor-title-section">
+                    <h3>Pema Dorji</h3>
+                    <div class="instructor-role">Senior Software Architect & Lead Trainer</div>
+                </div>
+            </div>
+            
+            <div class="instructor-bio">
+                <p>10+ years of experience in full-stack development and cloud architecture. Previously worked with leading tech companies and has trained over 1,000+ students across Bhutan. Specializes in turning beginners into industry-ready professionals.</p>
+            </div>
+            
+            <div class="instructor-stats-professional">
+                <div class="stat-item">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <div class="stat-info">
+                        <span class="stat-number">1,200+</span>
+                        <span class="stat-label">Students Trained</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <i class="fa-solid fa-star"></i>
+                    <div class="stat-info">
+                        <span class="stat-number">4.9</span>
+                        <span class="stat-label">Instructor Rating</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <i class="fa-solid fa-globe"></i>
+                    <div class="stat-info">
+                        <span class="stat-number">8+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="silk-divider reveal"></div>
+
+    <!-- Reviews Section -->
+    <section class="section reveal">
+        <div class="section-center">
+            <div class="section-tag"><i class="fa-regular fa-comment"></i> STUDENT FEEDBACK</div>
+            <h2 class="section-title">What Our <strong>Students Say</strong></h2>
+        </div>
+
+        <div class="rating-summary-professional">
+            <div class="rating-score">
+                <div class="score-number">4.8</div>
+                <div class="score-stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-alt"></i>
+                </div>
+                <div class="score-total">Based on 156 reviews</div>
+            </div>
+            
+            <div class="rating-bars-professional">
+                <div class="bar-item">
+                    <span class="bar-label">5 Star</span>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width: 75%"></div>
+                    </div>
+                    <span class="bar-percent">75%</span>
+                </div>
+                <div class="bar-item">
+                    <span class="bar-label">4 Star</span>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width: 18%"></div>
+                    </div>
+                    <span class="bar-percent">18%</span>
+                </div>
+                <div class="bar-item">
+                    <span class="bar-label">3 Star</span>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width: 5%"></div>
+                    </div>
+                    <span class="bar-percent">5%</span>
+                </div>
+                <div class="bar-item">
+                    <span class="bar-label">2 Star</span>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width: 2%"></div>
+                    </div>
+                    <span class="bar-percent">2%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="reviews-grid-professional">
+            <div class="review-card-professional">
+                <div class="review-header-professional">
+                    <div class="reviewer-avatar-professional">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div class="reviewer-info-professional">
+                        <h4>Tashi Wangmo</h4>
+                        <div class="review-stars-professional">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="review-text-professional">"The ICT program transformed my career. Within 3 months of completing the course, I landed a job as a junior developer. The hands-on projects and mentorship were invaluable!"</p>
+                <div class="review-date-professional">
+                    <i class="fa-regular fa-calendar"></i> Completed: March 2024
+                </div>
+            </div>
+
+            <div class="review-card-professional">
+                <div class="review-header-professional">
+                    <div class="reviewer-avatar-professional">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div class="reviewer-info-professional">
+                        <h4>Karma Dorji</h4>
+                        <div class="review-stars-professional">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="review-text-professional">"Excellent curriculum and teaching methodology. The instructors are very knowledgeable and always available to help. Highly recommended for anyone serious about tech."</p>
+                <div class="review-date-professional">
+                    <i class="fa-regular fa-calendar"></i> Completed: January 2024
+                </div>
+            </div>
+
+            <div class="review-card-professional">
+                <div class="review-header-professional">
+                    <div class="reviewer-avatar-professional">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div class="reviewer-info-professional">
+                        <h4>Sonam Yangchen</h4>
+                        <div class="review-stars-professional">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="review-text-professional">"Great program! The capstone project was challenging but rewarding. Would love to see more advanced modules added for alumni."</p>
+                <div class="review-date-professional">
+                    <i class="fa-regular fa-calendar"></i> Completed: December 2023
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="silk-divider reveal"></div>
+
+    <!-- Call to Action -->
+    <section class="enroll-cta reveal" id="enroll">
+        <div class="enroll-content">
+            <h3>Start your journey in digital development.</h3>
+            <p><i class="fa-regular fa-envelope"></i> Enroll in an ICT training program today!</p>
+            <div class="enroll-buttons">
+                <button class="btn-primary enroll-btn-cta"><i class="fa-solid fa-graduation-cap"></i> Enroll Now - Nu. 25,000</button>
+                <a href="#" class="btn-secondary"><i class="fa-regular fa-message"></i> Request a Callback</a>
+            </div>
+            <p class="small-note"><i class="fa-regular fa-credit-card"></i> EMI options available. Scholarships for deserving candidates.</p>
+        </div>
+    </section>
+
+    {% include 'training_institute_app/components/footer_cta.html' %}
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Get authentication status from body data attribute
+    var isAuthenticated = document.body.getAttribute('data-user-authenticated') === 'true';
+    var userName = document.body.getAttribute('data-user-name') || '';
+    
+    console.log('User authenticated:', isAuthenticated);
+    console.log('User name:', userName);
+    
+    // Function to show login alert
+    function showLoginAlert() {
+        Swal.fire({
+            title: 'Login Required',
+            text: 'Please log in to enroll for this course. Don\'t have an account? Register now!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#B0B8C4',
+            cancelButtonColor: '#6B7280',
+            confirmButtonText: '<i class="fa-solid fa-right-to-bracket"></i> Login',
+            cancelButtonText: '<i class="fa-regular fa-times"></i> Cancel',
+            background: '#161A20',
+            color: '#E5E7EB',
+            backdrop: 'rgba(15, 17, 21, 0.8)'
+        }).then(function(result) {
+            if (result.isConfirmed) {
+                window.location.href = '/login/?next=' + encodeURIComponent(window.location.pathname);
+            }
+        });
+    }
+    
+    // Function to show loading alert
+    function showLoadingAlert() {
+        Swal.fire({
+            title: 'Processing...',
+            text: 'Please wait while we process your enrollment.',
+            allowOutsideClick: false,
+            didOpen: function() {
+                Swal.showLoading();
+            },
+            background: '#161A20',
+            color: '#E5E7EB'
+        });
+    }
+    
+    // Function to show success alert
+    function showSuccessAlert(message) {
+        Swal.fire({
+            title: 'Enrollment Successful! 🎉',
+            text: message || 'You have successfully enrolled in the ICT & Software Development Program. Check your email for details.',
+            icon: 'success',
+            confirmButtonColor: '#10b981',
+            confirmButtonText: '<i class="fa-regular fa-circle-check"></i> Great!',
+            background: '#161A20',
+            color: '#E5E7EB',
+            backdrop: 'rgba(15, 17, 21, 0.8)',
+            timer: 4000,
+            timerProgressBar: true
+        });
+    }
+    
+    // Function to show error alert
+    function showErrorAlert(message) {
+        Swal.fire({
+            title: 'Enrollment Failed',
+            text: message || 'Something went wrong. Please try again later.',
+            icon: 'error',
+            confirmButtonColor: '#ef4444',
+            confirmButtonText: '<i class="fa-regular fa-times"></i> Try Again',
+            background: '#161A20',
+            color: '#E5E7EB',
+            backdrop: 'rgba(15, 17, 21, 0.8)'
+        });
+    }
+    
+    // Function to handle enrollment
+    async function processEnrollment() {
+        try {
+            // Get CSRF token from cookie
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+            
+            const csrftoken = getCookie('csrftoken');
+            
+            const response = await fetch('/courses/enroll/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
+                },
+                body: JSON.stringify({
+                    course_id: 1,
+                    course_name: 'ICT & Software Development Program'
+                })
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                showSuccessAlert(data.message);
+            } else {
+                showErrorAlert(data.message);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            showErrorAlert('Network error. Please check your connection and try again.');
+        }
+    }
+    
+    // Main enroll click handler
+    function onEnrollClick(event) {
+        event.preventDefault();
+        
+        if (!isAuthenticated) {
+            showLoginAlert();
+        } else {
+            // Show loading then process enrollment
+            showLoadingAlert();
+            setTimeout(function() {
+                Swal.close();
+                processEnrollment();
+            }, 500);
+        }
+    }
+    
+    // Attach event listeners to enroll buttons
+    var heroEnrollBtn = document.querySelector('.enroll-btn-hero');
+    var ctaEnrollBtn = document.querySelector('.enroll-btn-cta');
+    
+    if (heroEnrollBtn) {
+        heroEnrollBtn.addEventListener('click', onEnrollClick);
+    }
+    
+    if (ctaEnrollBtn) {
+        ctaEnrollBtn.addEventListener('click', onEnrollClick);
+    }
+});
+</script>
+
+{% endblock %}

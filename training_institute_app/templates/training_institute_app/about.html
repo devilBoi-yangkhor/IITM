@@ -1,0 +1,630 @@
+{% extends 'training_institute_app/base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% include 'training_institute_app/components/nav.html' %}
+{% include 'training_institute_app/components/mobile_menu.html' %}
+{% include 'training_institute_app/components/side_panels.html' %}
+
+<main class="main">
+
+  <!-- About Hero Section - Different from home hero -->
+  <section class="about-hero" id="aboutHero">
+    <div class="hero-grid"></div>
+    <div class="about-hero-badge">
+      <span class="hero-badge-dot"></span>
+      <span><i class="fa-regular fa-clock"></i> OUR STORY</span>
+    </div>
+    <h1 class="about-title">
+      Shaping Bhutan's<br>Digital Tomorrow
+    </h1>
+    <p class="about-sub">
+      We're on a mission to empower the next generation of tech leaders, innovators, and entrepreneurs across the Kingdom of Bhutan.
+    </p>
+  </section>
+
+  <!-- Mission & Vision -->
+  <div class="silk-divider reveal"></div>
+
+  <section class="mission-vision section">
+    <div class="mission-grid">
+      <div class="mission-card reveal">
+        <div class="mission-icon"><i class="fa-solid fa-bullseye"></i></div>
+        <h3>Our Mission</h3>
+        <p>To provide world-class IT education and professional training that bridges the gap between academic knowledge and industry demands, fostering innovation and entrepreneurship in Bhutan.</p>
+      </div>
+      <div class="mission-card reveal reveal-d2">
+        <div class="mission-icon"><i class="fa-regular fa-eye"></i></div>
+        <h3>Our Vision</h3>
+        <p>To become Bhutan's premier institution for technology education, recognized globally for producing skilled professionals who drive digital transformation.</p>
+      </div>
+      <div class="mission-card reveal reveal-d3">
+        <div class="mission-icon"><i class="fa-regular fa-gem"></i></div>
+        <h3>Our Values</h3>
+        <p>Excellence, Integrity, Innovation, Collaboration, and a deep commitment to Bhutan's unique cultural heritage and sustainable development.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="silk-divider reveal"></div>
+
+  <!-- Our Journey Timeline -->
+  <section class="journey section">
+    <div class="section-center">
+      <div class="section-tag"><i class="fa-solid fa-timeline"></i> MILESTONES</div>
+      <h2 class="section-title">Our <strong>Journey</strong></h2>
+      <p class="section-body">From our founding to today, we've been dedicated to transforming IT education in Bhutan.</p>
+    </div>
+
+    <div class="timeline reveal">
+      <div class="timeline-item">
+        <div class="timeline-year">2018</div>
+        <div class="timeline-content">
+          <h4><i class="fa-regular fa-seedling"></i> Humble Beginnings</h4>
+          <p>IITM was founded with just 15 students and a vision to revolutionize IT education in Bhutan.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2020</div>
+        <div class="timeline-content">
+          <h4><i class="fa-solid fa-chart-line"></i> Digital Expansion</h4>
+          <p>Launched our online learning platform, reaching students across all 20 dzongkhags of Bhutan.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2022</div>
+        <div class="timeline-content">
+          <h4><i class="fa-solid fa-handshake"></i> Industry Partnerships</h4>
+          <p>Forged partnerships with leading tech companies, creating internship and job placement opportunities.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2024</div>
+        <div class="timeline-content">
+          <h4><i class="fa-solid fa-trophy"></i> Center of Excellence</h4>
+          <p>Recognized as Bhutan's premier IT training institute with over 2,500+ successful graduates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="silk-divider reveal"></div>
+
+  <!-- Leadership Team -->
+  <section class="leadership section">
+    <div class="section-center">
+      <div class="section-tag"><i class="fa-solid fa-users"></i> LEADERSHIP</div>
+      <h2 class="section-title">Meet Our <strong>Team</strong></h2>
+      <p class="section-body">Passionate educators and industry experts committed to your success.</p>
+    </div>
+
+    <div class="leadership-grid">
+      <div class="leader-card reveal">
+        <div class="leader-avatar"><i class="fa-solid fa-chalkboard-user"></i></div>
+        <h4>Karma Dorji</h4>
+        <div class="leader-title">Founder & Director</div>
+        <p>15+ years in IT education with a passion for nurturing Bhutan's tech talent.</p>
+      </div>
+      <div class="leader-card reveal reveal-d2">
+        <div class="leader-avatar"><i class="fa-solid fa-laptop-code"></i></div>
+        <h4>Tashi Wangmo</h4>
+        <div class="leader-title">Head of Academics</div>
+        <p>Former software architect dedicated to bridging industry and academia.</p>
+      </div>
+      <div class="leader-card reveal reveal-d3">
+        <div class="leader-avatar"><i class="fa-solid fa-microchip"></i></div>
+        <h4>Sonam Phuntsho</h4>
+        <div class="leader-title">Lead Instructor</div>
+        <p>AI/ML specialist with international training experience.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="silk-divider reveal"></div>
+
+  <!-- Stats Section - Different metrics from home -->
+  <section class="about-stats section">
+    <div class="stats-grid">
+      <div class="stat-card reveal">
+        <div class="stat-number"><span class="counter" data-target="100" data-decimals="0">0</span><span>%</span></div>
+        <div class="stat-label"><i class="fa-regular fa-circle-check"></i> Job Placement Rate</div>
+      </div>
+      <div class="stat-card reveal reveal-d2">
+        <div class="stat-number"><span class="counter" data-target="15" data-decimals="0">0</span><span>+</span></div>
+        <div class="stat-label"><i class="fa-solid fa-building"></i> Industry Partners</div>
+      </div>
+      <div class="stat-card reveal reveal-d3">
+        <div class="stat-number"><span class="counter" data-target="8" data-decimals="0">0</span></div>
+        <div class="stat-label"><i class="fa-solid fa-globe"></i> Countries Reached</div>
+      </div>
+      <div class="stat-card reveal reveal-d4">
+        <div class="stat-number"><span class="counter" data-target="10000" data-decimals="0">0</span><span>+</span></div>
+        <div class="stat-label"><i class="fa-regular fa-heart"></i> Lives Impacted</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="silk-divider reveal"></div>
+
+  <!-- Why Choose Us -->
+  <section class="why-us section">
+    <div class="section-center">
+      <div class="section-tag"><i class="fa-regular fa-circle-question"></i> WHY IITM</div>
+      <h2 class="section-title">Why <strong>Choose Us</strong></h2>
+      <p class="section-body">We don't just teach — we transform careers.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon"><i class="fa-solid fa-book-open"></i></div>
+        <h4>Industry-Aligned Curriculum</h4>
+        <p>Courses designed with input from top employers to ensure you learn what matters.</p>
+      </div>
+      <div class="feature-card reveal reveal-d2">
+        <div class="feature-icon"><i class="fa-solid fa-person-chalkboard"></i></div>
+        <h4>Expert Instructors</h4>
+        <p>Learn from practitioners with real-world experience and a passion for teaching.</p>
+      </div>
+      <div class="feature-card reveal reveal-d3">
+        <div class="feature-icon"><i class="fa-solid fa-briefcase"></i></div>
+        <h4>Career Support</h4>
+        <p>Resume workshops, interview prep, and direct connections to hiring partners.</p>
+      </div>
+      <div class="feature-card reveal reveal-d4">
+        <div class="feature-icon"><i class="fa-solid fa-globe"></i></div>
+        <h4>Global Recognition</h4>
+        <p>Certifications that are valued by employers worldwide.</p>
+      </div>
+    </div>
+  </section>
+
+  {% include 'training_institute_app/components/footer_cta.html' %}
+
+</main>
+
+<style>
+/* About Page Specific Styles */
+
+/* About Hero */
+.about-hero {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 140px 0 80px;
+  position: relative;
+}
+
+.about-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 24px;
+  border-radius: 100px;
+  background: rgba(22, 26, 32, 0.6);
+  border: 1px solid rgba(156, 163, 175, 0.1);
+  backdrop-filter: blur(20px);
+  margin-bottom: 32px;
+  opacity: 0;
+  transform: translateY(16px);
+  animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+}
+
+.about-hero-badge span {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #9CA3AF;
+}
+
+.about-hero-badge span i {
+  margin-right: 8px;
+}
+
+.about-title {
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+  color: #E5E7EB;
+  opacity: 0;
+  transform: translateY(24px);
+  animation: fadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+  margin-bottom: 24px;
+}
+
+.about-sub {
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  font-weight: 300;
+  line-height: 1.7;
+  color: #9CA3AF;
+  max-width: 600px;
+  opacity: 0;
+  transform: translateY(16px);
+  animation: fadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+}
+
+/* Mission & Vision Grid */
+.mission-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  padding: 40px 0;
+}
+
+.mission-card {
+  background: rgba(22, 26, 32, 0.4);
+  border: 1px solid rgba(156, 163, 175, 0.08);
+  border-radius: 28px;
+  padding: 40px 32px;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+}
+
+.mission-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(176, 184, 196, 0.2);
+}
+
+.mission-icon {
+  font-size: 48px;
+  margin-bottom: 24px;
+  opacity: 0.8;
+  color: #B0B8C4;
+}
+
+.mission-card h3 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #E5E7EB;
+  margin-bottom: 16px;
+}
+
+.mission-card p {
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: #9CA3AF;
+}
+
+/* Timeline */
+.timeline {
+  max-width: 720px;
+  margin: 56px auto 0;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 120px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(156, 163, 175, 0.15);
+}
+
+.timeline-item {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 48px;
+  position: relative;
+}
+
+.timeline-year {
+  width: 100px;
+  flex-shrink: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #B0B8C4;
+  letter-spacing: -0.02em;
+  padding-top: 4px;
+}
+
+.timeline-content {
+  flex: 1;
+  background: rgba(22, 26, 32, 0.3);
+  border: 1px solid rgba(156, 163, 175, 0.08);
+  border-radius: 20px;
+  padding: 20px 28px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.timeline-content:hover {
+  border-color: rgba(176, 184, 196, 0.2);
+  transform: translateX(8px);
+}
+
+.timeline-content h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #E5E7EB;
+  margin-bottom: 8px;
+}
+
+.timeline-content h4 i {
+  margin-right: 8px;
+  color: #B0B8C4;
+  font-size: 14px;
+}
+
+.timeline-content p {
+  font-size: 0.85rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #9CA3AF;
+}
+
+/* Leadership Grid */
+.leadership-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  padding: 40px 0;
+}
+
+.leader-card {
+  background: rgba(22, 26, 32, 0.4);
+  border: 1px solid rgba(156, 163, 175, 0.08);
+  border-radius: 28px;
+  padding: 40px 28px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.leader-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(176, 184, 196, 0.2);
+  background: rgba(22, 26, 32, 0.6);
+}
+
+.leader-avatar {
+  font-size: 56px;
+  margin-bottom: 20px;
+  color: #B0B8C4;
+}
+
+.leader-card h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #E5E7EB;
+  margin-bottom: 6px;
+}
+
+.leader-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #B0B8C4;
+  margin-bottom: 16px;
+}
+
+.leader-card p {
+  font-size: 0.85rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #9CA3AF;
+}
+
+/* Stats Section */
+.about-stats {
+  padding: 40px 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.stat-card {
+  text-align: center;
+  padding: 32px 20px;
+  background: rgba(22, 26, 32, 0.3);
+  border: 1px solid rgba(156, 163, 175, 0.06);
+  border-radius: 24px;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  border-color: rgba(176, 184, 196, 0.15);
+  background: rgba(22, 26, 32, 0.5);
+}
+
+.stat-number {
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: #E5E7EB;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.stat-number span {
+  font-size: 1.8rem;
+  font-weight: 300;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9CA3AF;
+}
+
+.stat-label i {
+  margin-right: 6px;
+  font-size: 11px;
+}
+
+/* Features Grid for Why Us */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  padding: 40px 0;
+}
+
+.feature-card {
+  background: rgba(22, 26, 32, 0.3);
+  border: 1px solid rgba(156, 163, 175, 0.06);
+  border-radius: 24px;
+  padding: 32px 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(176, 184, 196, 0.15);
+}
+
+.feature-icon {
+  font-size: 40px;
+  margin-bottom: 20px;
+  color: #B0B8C4;
+}
+
+.feature-card h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #E5E7EB;
+  margin-bottom: 12px;
+}
+
+.feature-card p {
+  font-size: 0.8rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #9CA3AF;
+}
+
+/* Section Tag with icons */
+.section-tag i {
+  margin-right: 8px;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .mission-grid,
+  .leadership-grid,
+  .stats-grid,
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  
+  .timeline::before {
+    left: 80px;
+  }
+  
+  .timeline-year {
+    width: 70px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .mission-grid,
+  .leadership-grid,
+  .stats-grid,
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .timeline::before {
+    display: none;
+  }
+  
+  .timeline-item {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .timeline-year {
+    width: auto;
+    font-size: 0.9rem;
+    padding-left: 8px;
+  }
+  
+  .timeline-content:hover {
+    transform: translateX(4px);
+  }
+  
+  .mission-card,
+  .leader-card,
+  .stat-card,
+  .feature-card {
+    padding: 28px 20px;
+  }
+  
+  .about-hero {
+    min-height: 60vh;
+    padding: 100px 0 60px;
+  }
+  
+  .stat-label {
+    font-size: 0.7rem;
+  }
+}
+</style>
+
+<script>
+// Counter animation for stats
+$(document).ready(function() {
+  function animateCounter($el) {
+    var target = parseFloat($el.data('target'));
+    var decimals = $el.data('decimals') || 0;
+    var current = 0;
+    var duration = 2000;
+    var step = target / (duration / 16);
+    
+    var timer = setInterval(function() {
+      current += step;
+      if (current >= target) {
+        $el.text(target.toFixed(decimals));
+        clearInterval(timer);
+      } else {
+        $el.text(current.toFixed(decimals));
+      }
+    }, 16);
+  }
+  
+  // Trigger counters when stats section comes into view
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        $(entry.target).find('.counter').each(function() {
+          animateCounter($(this));
+        });
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  
+  $('.about-stats').each(function() {
+    observer.observe(this);
+  });
+  
+  // Also trigger for mission cards
+  $('.mission-grid, .leadership-grid, .features-grid').each(function() {
+    observer.observe(this);
+  });
+});
+</script>
+
+{% endblock %}

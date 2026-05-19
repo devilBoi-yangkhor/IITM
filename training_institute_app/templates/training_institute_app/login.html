@@ -1,0 +1,487 @@
+{% extends 'training_institute_app/base.html' %}
+
+{% block title %}Login - Training Institute{% endblock %}
+
+{% block content %}
+{% load static %}
+{% include 'training_institute_app/components/nav.html' %}
+{% include 'training_institute_app/components/mobile_menu.html' %}
+{% include 'training_institute_app/components/side_panels.html' %}
+
+<div class="login-page-wrapper">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <!-- Bubble Animation Particles -->
+    <div class="login-particles">
+        <!-- Small bubbles -->
+        <div class="login-particle bubble-small" style="width: 30px; height: 30px; left: 5%; animation-delay: 0s;"></div>
+        <div class="login-particle bubble-small" style="width: 25px; height: 25px; left: 15%; animation-delay: 2s;"></div>
+        <div class="login-particle bubble-small" style="width: 35px; height: 35px; left: 25%; animation-delay: 4s;"></div>
+        <div class="login-particle bubble-small" style="width: 20px; height: 20px; left: 35%; animation-delay: 1s;"></div>
+        <div class="login-particle bubble-small" style="width: 28px; height: 28px; left: 45%; animation-delay: 5s;"></div>
+        <div class="login-particle bubble-small" style="width: 32px; height: 32px; left: 55%; animation-delay: 3s;"></div>
+        <div class="login-particle bubble-small" style="width: 22px; height: 22px; left: 65%; animation-delay: 6s;"></div>
+        <div class="login-particle bubble-small" style="width: 38px; height: 38px; left: 75%; animation-delay: 1.5s;"></div>
+        <div class="login-particle bubble-small" style="width: 26px; height: 26px; left: 85%; animation-delay: 4.5s;"></div>
+        <div class="login-particle bubble-small" style="width: 30px; height: 30px; left: 95%; animation-delay: 2.5s;"></div>
+        
+        <!-- Medium bubbles -->
+        <div class="login-particle bubble-medium" style="width: 60px; height: 60px; left: 8%; animation-delay: 1s;"></div>
+        <div class="login-particle bubble-medium" style="width: 50px; height: 50px; left: 22%; animation-delay: 4s;"></div>
+        <div class="login-particle bubble-medium" style="width: 65px; height: 65px; left: 38%; animation-delay: 2s;"></div>
+        <div class="login-particle bubble-medium" style="width: 55px; height: 55px; left: 52%; animation-delay: 5s;"></div>
+        <div class="login-particle bubble-medium" style="width: 70px; height: 70px; left: 68%; animation-delay: 3s;"></div>
+        <div class="login-particle bubble-medium" style="width: 48px; height: 48px; left: 82%; animation-delay: 6s;"></div>
+        <div class="login-particle bubble-medium" style="width: 62px; height: 62px; left: 92%; animation-delay: 1.5s;"></div>
+        
+        <!-- Large bubbles -->
+        <div class="login-particle bubble-large" style="width: 100px; height: 100px; left: 12%; animation-delay: 2s;"></div>
+        <div class="login-particle bubble-large" style="width: 120px; height: 120px; left: 30%; animation-delay: 5s;"></div>
+        <div class="login-particle bubble-large" style="width: 90px; height: 90px; left: 48%; animation-delay: 1s;"></div>
+        <div class="login-particle bubble-large" style="width: 110px; height: 110px; left: 66%; animation-delay: 4s;"></div>
+        <div class="login-particle bubble-large" style="width: 130px; height: 130px; left: 84%; animation-delay: 3s;"></div>
+        
+        <!-- Extra large dream bubbles -->
+        <div class="login-particle bubble-large" style="width: 180px; height: 180px; left: -5%; top: 20%; animation-delay: 0s; opacity: 0.3;"></div>
+        <div class="login-particle bubble-large" style="width: 200px; height: 200px; left: 85%; top: 50%; animation-delay: 3s; opacity: 0.25;"></div>
+        <div class="login-particle bubble-large" style="width: 160px; height: 160px; left: 40%; top: 70%; animation-delay: 6s; opacity: 0.2;"></div>
+    </div>
+    
+    <!-- Background Overlay -->
+    <div class="login-bg-overlay"></div>
+    
+    <div class="login-container">
+        <div class="login-form-box">
+            <!-- Tabs -->
+            <div class="login-tabs">
+                <button class="login-tab-btn active" data-tab="signin">SIGN IN</button>
+                <button class="login-tab-btn" data-tab="signup">SIGN UP</button>
+            </div>
+            
+            <!-- Sign In Form -->
+            <div class="login-form-panel active" id="signin-panel">
+                <form id="signin-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ next|default:'/' }}">
+                    <div class="login-form-group">
+                        <label for="signin-username">USERNAME</label>
+                        <input type="text" id="signin-username" name="username" placeholder="Enter your username" required>
+                        <span class="login-error-message" id="signin-username-error">Please fill out this field.</span>
+                    </div>
+                    
+                    <div class="login-form-group">
+                        <label for="signin-password">PASSWORD</label>
+                        <input type="password" id="signin-password" name="password" placeholder="Enter your password" required>
+                        <span class="login-error-message" id="signin-password-error">Please fill out this field.</span>
+                    </div>
+                    <button type="submit" class="login-submit-btn">
+                        <span class="btn-text">SIGN IN</span>
+                        <div class="btn-loader">
+                            <div class="loader-dot"></div>
+                            <div class="loader-dot"></div>
+                            <div class="loader-dot"></div>
+                        </div>
+                    </button>
+                </form>
+                
+                <div class="login-divider">
+                    <span>or</span>
+                </div>
+                <a href="/accounts/google/login/?process=login" class="google-login-link" style="text-decoration: none;">
+                    <button type="button" class="google-login-btn">
+                        <svg width="22" height="22" viewBox="0 0 24 24">
+                            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                        </svg>
+                        Sign in with Google
+                    </button>
+                </a>
+                
+                <div class="login-footer-links">
+                    <a href="#">Forgot Password?</a>
+                </div>
+            </div>
+            
+            <!-- Sign Up Form -->
+            <div class="login-form-panel" id="signup-panel">
+                <form id="signup-form">
+                    {% csrf_token %}
+                    <div class="login-form-group">
+                        <label for="signup-username">USERNAME</label>
+                        <input type="text" id="signup-username" name="username" placeholder="Choose a username" required>
+                        <span class="login-error-message" id="signup-username-error">Username must be at least 3 characters.</span>
+                    </div>
+                    
+                    <div class="login-form-group">
+                        <label for="signup-password">PASSWORD</label>
+                        <input type="password" id="signup-password" name="password" placeholder="Create a password" required>
+                        <span class="login-error-message" id="signup-password-error">Password must be at least 6 characters.</span>
+                    </div>
+                    
+                    <div class="login-form-group">
+                        <label for="signup-password2">REPEAT PASSWORD</label>
+                        <input type="password" id="signup-password2" name="password2" placeholder="Confirm your password" required>
+                        <span class="login-error-message" id="signup-password2-error">Passwords do not match.</span>
+                    </div>
+                    
+                    <div class="login-form-group">
+                        <label for="signup-email">EMAIL ADDRESS</label>
+                        <input type="email" id="signup-email" name="email" placeholder="Enter your email" required>
+                        <span class="login-error-message" id="signup-email-error">Please enter a valid email address.</span>
+                    </div>
+                    
+                    <button type="submit" class="login-submit-btn">
+                        <span class="btn-text">SIGN UP</span>
+                        <div class="btn-loader">
+                            <div class="loader-dot"></div>
+                            <div class="loader-dot"></div>
+                            <div class="loader-dot"></div>
+                        </div>
+                    </button>
+                </form>
+                
+                <div class="login-divider">
+                    <span>or</span>
+                </div>
+                
+                <div class="login-footer-links">
+                    <label class="switch-to-signin">Already a member? Sign In</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching
+            const tabBtns = document.querySelectorAll('.login-tab-btn');
+            const panels = document.querySelectorAll('.login-form-panel');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tab = this.dataset.tab;
+                    
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    panels.forEach(panel => {
+                        panel.classList.remove('active');
+                    });
+                    
+                    document.getElementById(`${tab}-panel`).classList.add('active');
+                });
+            });
+            
+            // Switch to sign in from sign up
+            const switchToSignin = document.querySelector('.switch-to-signin');
+            if (switchToSignin) {
+                switchToSignin.addEventListener('click', function() {
+                    document.querySelector('.login-tab-btn[data-tab="signin"]').click();
+                });
+            }
+            
+            // Form validation helper
+            function validateField(input, errorId, validationFn) {
+                const value = input.value.trim();
+                const errorSpan = document.getElementById(errorId);
+                const formGroup = input.closest('.login-form-group');
+                
+                if (!validationFn(value)) {
+                    formGroup.classList.add('error');
+                    errorSpan.classList.add('show');
+                    return false;
+                } else {
+                    formGroup.classList.remove('error');
+                    errorSpan.classList.remove('show');
+                    return true;
+                }
+            }
+            
+            // Loading state handler
+            function setLoading(btn, isLoading) {
+                if (isLoading) {
+                    btn.classList.add('loading');
+                    btn.disabled = true;
+                } else {
+                    btn.classList.remove('loading');
+                    btn.disabled = false;
+                }
+            }
+            
+            // Show SweetAlert function
+            function showSweetAlert(icon, title, message, redirectUrl = null, callback = null) {
+                Swal.fire({
+                    icon: icon,
+                    title: title,
+                    text: message,
+                    confirmButtonColor: icon === 'success' ? '#10b981' : '#ef4444',
+                    confirmButtonText: icon === 'success' ? 'Continue' : 'Try Again',
+                    background: '#fff',
+                    backdrop: 'rgba(0,0,0,0.4)',
+                    timer: icon === 'success' ? 2000 : null,
+                    timerProgressBar: icon === 'success'
+                }).then((result) => {
+                    if (redirectUrl && (result.isConfirmed || icon === 'success')) {
+                        window.location.href = redirectUrl;
+                    }
+                    if (callback) {
+                        callback(result);
+                    }
+                });
+            }
+            
+            // SIGN IN FORM - AJAX Submission
+            const signinForm = document.getElementById('signin-form');
+            if (signinForm) {
+                const signinUsername = document.getElementById('signin-username');
+                const signinPassword = document.getElementById('signin-password');
+                const signinBtn = signinForm.querySelector('.login-submit-btn');
+                
+                signinUsername.addEventListener('blur', function() {
+                    validateField(this, 'signin-username-error', v => v.length > 0);
+                });
+                
+                signinPassword.addEventListener('blur', function() {
+                    validateField(this, 'signin-password-error', v => v.length > 0);
+                });
+                
+                signinForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const isUsernameValid = validateField(signinUsername, 'signin-username-error', v => v.length > 0);
+                    const isPasswordValid = validateField(signinPassword, 'signin-password-error', v => v.length > 0);
+                    
+                    if (!isUsernameValid || !isPasswordValid) {
+                        return;
+                    }
+                    
+                    setLoading(signinBtn, true);
+                    
+                    const formData = new FormData(signinForm);
+                    
+                    try {
+                        const response = await fetch('/signin/', {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest'
+                            }
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (data.success) {
+                            showSweetAlert('success', 'Welcome back!', data.message, data.redirect_url);
+                        } else {
+                            showSweetAlert('error', 'Login Failed', data.message, null, function() {
+                                setLoading(signinBtn, false);
+                            });
+                        }
+                    } catch (error) {
+                        showSweetAlert('error', 'Error', 'Something went wrong. Please try again.', null, function() {
+                            setLoading(signinBtn, false);
+                        });
+                    }
+                });
+            }
+            
+            // SIGN UP FORM - AJAX Submission with SweetAlert
+            const signupForm = document.getElementById('signup-form');
+            if (signupForm) {
+                const signupUsername = document.getElementById('signup-username');
+                const signupPassword = document.getElementById('signup-password');
+                const signupPassword2 = document.getElementById('signup-password2');
+                const signupEmail = document.getElementById('signup-email');
+                const signupBtn = signupForm.querySelector('.login-submit-btn');
+                
+                signupUsername.addEventListener('blur', function() {
+                    validateField(this, 'signup-username-error', v => v.length >= 3);
+                });
+                
+                signupPassword.addEventListener('blur', function() {
+                    validateField(this, 'signup-password-error', v => v.length >= 6);
+                });
+                
+                signupPassword2.addEventListener('blur', function() {
+                    const password = signupPassword.value;
+                    const password2 = this.value;
+                    validateField(this, 'signup-password2-error', v => v === password && v.length > 0);
+                });
+                
+                signupEmail.addEventListener('blur', function() {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    validateField(this, 'signup-email-error', v => emailRegex.test(v));
+                });
+                
+                signupForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const isUsernameValid = validateField(signupUsername, 'signup-username-error', v => v.length >= 3);
+                    const isPasswordValid = validateField(signupPassword, 'signup-password-error', v => v.length >= 6);
+                    const isPasswordMatch = validateField(signupPassword2, 'signup-password2-error', v => v === signupPassword.value && v.length > 0);
+                    const isEmailValid = validateField(signupEmail, 'signup-email-error', v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v));
+                    
+                    if (!isUsernameValid || !isPasswordValid || !isPasswordMatch || !isEmailValid) {
+                        return;
+                    }
+                    
+                    setLoading(signupBtn, true);
+                    
+                    const formData = new FormData(signupForm);
+                    
+                    try {
+                        const response = await fetch('/signup/', {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest'
+                            }
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (data.success) {
+                            showSweetAlert('success', 'Account Created!', data.message, data.redirect_url);
+                        } else {
+                            showSweetAlert('error', 'Registration Failed', data.message, null, function() {
+                                setLoading(signupBtn, false);
+                            });
+                        }
+                    } catch (error) {
+                        showSweetAlert('error', 'Error', 'Something went wrong. Please try again.', null, function() {
+                            setLoading(signupBtn, false);
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+</div>
+
+<style>
+    /* Ensure login page doesn't inherit conflicting styles */
+    .login-page-wrapper {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 100px 20px 40px;
+        position: relative;
+        z-index: 10;
+        background: transparent;
+    }
+    
+    /* Override any conflicting main site styles */
+    .login-page-wrapper .login-container {
+        width: 100%;
+        max-width: 460px;
+        margin: 0 auto;
+    }
+    
+    /* Ensure buttons and inputs look correct */
+    .login-page-wrapper button,
+    .login-page-wrapper input {
+        font-family: 'Inter', sans-serif;
+    }
+    
+    /* Fix for any main site interference */
+    .main .login-page-wrapper {
+        max-width: none;
+        padding: 0;
+    }
+    
+    /* Google button hover effect */
+    .google-login-btn:hover {
+        background: #f8fafc !important;
+        border-color: #cbd5e1 !important;
+        transform: translateY(-1px);
+    }
+    
+    /* Dark mode support for Google button */
+    .dark .google-login-btn {
+        background: #1e293b !important;
+        border-color: #334155 !important;
+        color: #e2e8f0 !important;
+    }
+    
+    .dark .google-login-btn:hover {
+        background: #334155 !important;
+    }
+    /* Modern styling for Google OAuth page */
+    .google-login-btn {
+        width: 100%;
+        padding: 14px;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        color: #1e293b;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 20px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        font-family: 'Inter', sans-serif;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .google-login-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.5s;
+    }
+    
+    .google-login-btn:hover::before {
+        left: 100%;
+    }
+    
+    .google-login-btn:hover {
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        border-color: #cbd5e1;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .google-login-btn:active {
+        transform: translateY(0);
+    }
+    
+    /* Dark mode */
+    .dark .google-login-btn {
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        border-color: #334155;
+        color: #e2e8f0;
+    }
+    
+    .dark .google-login-btn:hover {
+        background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+        border-color: #475569;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    
+    /* SVG icon animation */
+    .google-login-btn svg {
+        transition: transform 0.3s ease;
+    }
+    
+    .google-login-btn:hover svg {
+        transform: scale(1.05);
+    }
+</style>
+
+{% endblock %}

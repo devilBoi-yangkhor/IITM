@@ -1,0 +1,27 @@
+{% extends 'training_institute_app/base.html' %}
+
+{% block content %}
+
+{% include 'training_institute_app/components/nav.html' %}
+{% include 'training_institute_app/components/mobile_menu.html' %}
+{% include 'training_institute_app/components/side_panels.html' %}
+
+<main class="main">
+  
+  {% include 'training_institute_app/components/hero.html' %}
+  {% include 'training_institute_app/components/logo_ticker.html' %}
+  {% include 'training_institute_app/components/features.html' %}
+
+  <div class="silk-divider reveal"></div>
+
+  {% include 'training_institute_app/components/programs.html' %}
+
+  <div class="silk-divider reveal"></div>
+
+  {% include 'training_institute_app/components/faq.html' %}
+
+  {% include 'training_institute_app/components/footer_cta.html' %}
+
+</main>
+
+{% endblock %}

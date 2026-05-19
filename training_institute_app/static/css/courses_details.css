@@ -1,0 +1,555 @@
+.course-rating-summary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 32px;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeUp 1.4s var(--silk-ease) 1s forwards;
+}
+
+.course-rating-summary .stars i {
+    color: #fbbf24;
+    font-size: 14px;
+}
+
+.course-rating-summary .rating-value {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ivory);
+}
+
+.course-rating-summary .rating-count {
+    font-size: 13px;
+    color: var(--slate-warm);
+}
+
+/* Training Areas Grid */
+.training-areas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+}
+
+.area-card {
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 24px;
+    padding: 28px 24px;
+    transition: all 0.3s ease;
+}
+
+.area-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(176, 184, 196, 0.15);
+    background: rgba(22, 26, 32, 0.6);
+}
+
+.area-icon {
+    font-size: 40px;
+    color: var(--silver);
+    margin-bottom: 20px;
+}
+
+.area-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ivory);
+    margin-bottom: 16px;
+}
+
+.area-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.area-card ul li {
+    font-size: 13px;
+    color: var(--slate-light);
+    padding: 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.area-card ul li i {
+    color: #10b981;
+    font-size: 12px;
+}
+
+/* Audience Grid */
+.audience-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 48px;
+}
+
+.audience-card {
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 100px;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+}
+
+.audience-card i {
+    font-size: 18px;
+    color: var(--silver);
+}
+
+.audience-card span {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--slate-light);
+}
+
+.audience-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(176, 184, 196, 0.2);
+    background: rgba(22, 26, 32, 0.6);
+}
+
+/* Outcomes Grid */
+.outcomes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+}
+
+.outcome-card {
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 20px;
+    padding: 28px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.outcome-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(176, 184, 196, 0.15);
+}
+
+.outcome-icon {
+    font-size: 36px;
+    color: var(--silver);
+    margin-bottom: 16px;
+}
+
+.outcome-card h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ivory);
+    margin-bottom: 10px;
+}
+
+.outcome-card p {
+    font-size: 12px;
+    color: var(--slate-light);
+    line-height: 1.5;
+}
+
+/* Curriculum Preview */
+.curriculum-preview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+}
+
+.curriculum-column {
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 20px;
+    padding: 24px;
+}
+
+.curriculum-column h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ivory);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--panel-border);
+}
+
+.curriculum-column h4 i {
+    margin-right: 8px;
+    color: var(--silver);
+}
+
+.curriculum-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.curriculum-column ul li {
+    font-size: 12px;
+    color: var(--slate-light);
+    padding: 6px 0;
+    padding-left: 16px;
+    position: relative;
+}
+
+.curriculum-column ul li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: var(--silver);
+    font-size: 10px;
+}
+
+/* Instructor Professional Section */
+.instructor-professional {
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 32px;
+    padding: 48px;
+    margin-top: 48px;
+    backdrop-filter: blur(20px);
+}
+
+.instructor-header {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+.instructor-avatar-large {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--silver), var(--slate-light));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.instructor-avatar-large i {
+    font-size: 48px;
+    color: var(--base-deep);
+}
+
+.instructor-title-section h3 {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--ivory);
+    margin-bottom: 8px;
+}
+
+.instructor-role {
+    font-size: 14px;
+    color: var(--silver);
+    letter-spacing: 0.05em;
+}
+
+.instructor-bio {
+    margin-bottom: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--panel-border);
+}
+
+.instructor-bio p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--slate-light);
+}
+
+.instructor-stats-professional {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.stat-item i {
+    font-size: 28px;
+    color: var(--silver);
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-number {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--ivory);
+}
+
+.stat-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--slate-warm);
+}
+
+/* Rating Summary Professional */
+.rating-summary-professional {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 48px;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 28px;
+    padding: 40px;
+    margin: 48px 0 32px;
+}
+
+.rating-score {
+    text-align: center;
+    padding: 20px;
+}
+
+.score-number {
+    font-size: 72px;
+    font-weight: 700;
+    color: var(--ivory);
+    line-height: 1;
+    margin-bottom: 12px;
+}
+
+.score-stars i {
+    color: #fbbf24;
+    font-size: 18px;
+    margin: 0 2px;
+}
+
+.score-total {
+    font-size: 13px;
+    color: var(--slate-warm);
+    margin-top: 12px;
+}
+
+.rating-bars-professional {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+}
+
+.bar-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.bar-label {
+    width: 60px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--slate-light);
+}
+
+.bar-track {
+    flex: 1;
+    height: 8px;
+    background: rgba(156, 163, 175, 0.15);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--silver), var(--slate-light));
+    border-radius: 4px;
+}
+
+.bar-percent {
+    width: 45px;
+    font-size: 12px;
+    color: var(--slate-warm);
+    text-align: right;
+}
+
+/* Review Cards Professional */
+.reviews-grid-professional {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.review-card-professional {
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 24px;
+    padding: 28px;
+    transition: all 0.3s ease;
+}
+
+.review-card-professional:hover {
+    transform: translateY(-4px);
+    border-color: rgba(176, 184, 196, 0.15);
+    background: rgba(22, 26, 32, 0.6);
+}
+
+.review-header-professional {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.reviewer-avatar-professional {
+    width: 52px;
+    height: 52px;
+    background: rgba(176, 184, 196, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reviewer-avatar-professional i {
+    font-size: 24px;
+    color: var(--silver);
+}
+
+.reviewer-info-professional h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ivory);
+    margin-bottom: 6px;
+}
+
+.review-stars-professional i {
+    font-size: 12px;
+    color: #fbbf24;
+    margin-right: 2px;
+}
+
+.review-text-professional {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--slate-light);
+    margin-bottom: 20px;
+}
+
+.review-date-professional {
+    font-size: 11px;
+    color: var(--slate-warm);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 16px;
+    border-top: 1px solid var(--panel-border);
+}
+
+/* Enroll CTA */
+.enroll-cta {
+    padding: 60px 0 40px;
+}
+
+.enroll-content {
+    background: linear-gradient(135deg, rgba(22, 26, 32, 0.8), rgba(15, 17, 21, 0.9));
+    border: 1px solid rgba(176, 184, 196, 0.15);
+    border-radius: 40px;
+    padding: 64px 48px;
+    text-align: center;
+}
+
+.enroll-content h3 {
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--ivory);
+    margin-bottom: 16px;
+}
+
+.enroll-content p {
+    font-size: 1rem;
+    color: var(--slate-light);
+    margin-bottom: 32px;
+}
+
+.enroll-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.small-note {
+    font-size: 12px !important;
+    margin-bottom: 0 !important;
+}
+
+/* Course Details Responsive */
+@media (max-width: 1024px) {
+    .training-areas-grid,
+    .audience-grid,
+    .outcomes-grid,
+    .curriculum-preview,
+    .reviews-grid-professional {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .rating-summary-professional {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .training-areas-grid,
+    .audience-grid,
+    .outcomes-grid,
+    .curriculum-preview,
+    .reviews-grid-professional {
+        grid-template-columns: 1fr;
+    }
+    
+    .instructor-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .instructor-stats-professional {
+        justify-content: center;
+    }
+    
+    .stat-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .instructor-professional {
+        padding: 32px 24px;
+    }
+    
+    .enroll-content {
+        padding: 40px 24px;
+    }
+    
+    .enroll-content h3 {
+        font-size: 1.5rem;
+    }
+    
+    .enroll-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .audience-card {
+        justify-content: center;
+    }
+}
