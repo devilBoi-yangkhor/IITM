@@ -9716,3 +9716,7 @@ INFO 2026-05-19 12:35:06,025 log 3668 17844 "GET /static/images/logo.png HTTP/1.
 WARNING 2026-05-19 12:35:06,355 log 3668 17844 "GET /static/images/logo.jpeg HTTP/1.1" 404 1975
 INFO 2026-05-19 12:35:37,389 autoreload 3668 24632 D:\Web Applications\training_institute\training_institute\settings.py changed, reloading.
 INFO 2026-05-19 12:35:38,355 autoreload 7620 3200 Watching for file changes with StatReloader
+INFO 2026-05-19 12:48:26,239 autoreload 7620 3200 D:\Web Applications\training_institute\training_institute\settings.py changed, reloading.
+INFO 2026-05-19 12:48:27,116 autoreload 8632 23576 Watching for file changes with StatReloader
+INFO 2026-05-19 12:48:29,470 autoreload 8632 23576 D:\Web Applications\training_institute\training_institute\settings.py changed, reloading.
+INFO 2026-05-19 12:48:30,473 autoreload 14864 1464 Watching for file changes with StatReloader
