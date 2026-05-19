@@ -9527,3 +9527,192 @@ INFO 2026-05-19 11:42:42,679 log 27400 28988 "GET /static/css/login.css HTTP/1.1
 INFO 2026-05-19 11:42:42,691 log 27400 28988 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
 INFO 2026-05-19 11:42:42,950 log 27400 28988 "GET /static/images/logo.png HTTP/1.1" 200 853147
 WARNING 2026-05-19 11:42:42,972 log 27400 28988 "GET /static/images/logo.jpeg HTTP/1.1" 404 1975
+INFO 2026-05-19 12:32:22,452 autoreload 22496 23904 Watching for file changes with StatReloader
+INFO 2026-05-19 12:32:32,158 autoreload 22496 23904 D:\Web Applications\training_institute\training_institute\settings.py changed, reloading.
+INFO 2026-05-19 12:32:33,200 autoreload 9544 12172 Watching for file changes with StatReloader
+INFO 2026-05-19 12:32:34,045 log 9544 23576 "GET / HTTP/1.1" 200 26354
+WARNING 2026-05-19 12:32:34,113 log 9544 23640 Not Found: /static/css/courses_details.css
+WARNING 2026-05-19 12:32:34,113 log 9544 23576 Not Found: /static/css/basestyles.css
+WARNING 2026-05-19 12:32:34,114 log 9544 23640 "GET /static/css/courses_details.css HTTP/1.1" 404 179
+WARNING 2026-05-19 12:32:34,114 log 9544 23576 "GET /static/css/basestyles.css HTTP/1.1" 404 179
+WARNING 2026-05-19 12:32:34,116 log 9544 23576 Not Found: /static/images/logoSample.png
+WARNING 2026-05-19 12:32:34,117 log 9544 23640 Not Found: /static/images/image.jpeg
+WARNING 2026-05-19 12:32:34,117 log 9544 23640 "GET /static/images/image.jpeg HTTP/1.1" 404 179
+WARNING 2026-05-19 12:32:34,117 log 9544 23576 "GET /static/images/logoSample.png HTTP/1.1" 404 179
+WARNING 2026-05-19 12:32:34,259 log 9544 23576 Not Found: /static/images/image1.jpeg
+WARNING 2026-05-19 12:32:34,260 log 9544 23640 Not Found: /static/images/image2.jpeg
+WARNING 2026-05-19 12:32:34,261 log 9544 23576 "GET /static/images/image1.jpeg HTTP/1.1" 404 179
+WARNING 2026-05-19 12:32:34,261 log 9544 23640 "GET /static/images/image2.jpeg HTTP/1.1" 404 179
+WARNING 2026-05-19 12:32:34,276 log 9544 23640 Not Found: /static/images/image4.png
+WARNING 2026-05-19 12:32:34,277 log 9544 23576 Not Found: /static/js/basestyles.js
+WARNING 2026-05-19 12:32:34,278 log 9544 23640 "GET /static/images/image4.png HTTP/1.1" 404 179
+WARNING 2026-05-19 12:32:34,278 log 9544 23576 "GET /static/js/basestyles.js HTTP/1.1" 404 179
+WARNING 2026-05-19 12:32:34,282 log 9544 23576 Not Found: /static/images/image5.jpeg
+WARNING 2026-05-19 12:32:34,282 log 9544 23576 "GET /static/images/image5.jpeg HTTP/1.1" 404 179
+WARNING 2026-05-19 12:32:34,291 log 9544 23576 Not Found: /static/css/basestyles.css
+WARNING 2026-05-19 12:32:34,292 log 9544 23640 Not Found: /static/css/courses_details.css
+WARNING 2026-05-19 12:32:34,293 log 9544 23576 "GET /static/css/basestyles.css HTTP/1.1" 404 179
+WARNING 2026-05-19 12:32:34,293 log 9544 23640 "GET /static/css/courses_details.css HTTP/1.1" 404 179
+WARNING 2026-05-19 12:32:34,709 log 9544 23640 Not Found: /static/images/logo.png
+WARNING 2026-05-19 12:32:34,709 log 9544 23640 "GET /static/images/logo.png HTTP/1.1" 404 179
+WARNING 2026-05-19 12:32:34,712 log 9544 23640 Not Found: /static/images/logo.jpeg
+WARNING 2026-05-19 12:32:34,713 log 9544 23640 "GET /static/images/logo.jpeg HTTP/1.1" 404 179
+INFO 2026-05-19 12:32:49,907 log 9544 23640 "GET / HTTP/1.1" 200 26354
+WARNING 2026-05-19 12:32:49,947 log 9544 23640 Not Found: /static/css/basestyles.css
+WARNING 2026-05-19 12:32:49,948 log 9544 18316 Not Found: /static/images/logoSample.png
+WARNING 2026-05-19 12:32:49,950 log 9544 23576 Not Found: /static/css/courses_details.css
+WARNING 2026-05-19 12:32:49,949 log 9544 27772 Not Found: /static/images/image.jpeg
+WARNING 2026-05-19 12:32:49,951 log 9544 23576 "GET /static/css/courses_details.css HTTP/1.1" 404 179
+WARNING 2026-05-19 12:32:49,951 log 9544 18316 "GET /static/images/logoSample.png HTTP/1.1" 404 179
+WARNING 2026-05-19 12:32:49,951 log 9544 23640 "GET /static/css/basestyles.css HTTP/1.1" 404 179
+WARNING 2026-05-19 12:32:49,952 log 9544 27772 "GET /static/images/image.jpeg HTTP/1.1" 404 179
+WARNING 2026-05-19 12:32:49,958 log 9544 23576 Not Found: /static/images/image1.jpeg
+WARNING 2026-05-19 12:32:49,960 log 9544 27772 Not Found: /static/images/image2.jpeg
+WARNING 2026-05-19 12:32:49,961 log 9544 23576 "GET /static/images/image1.jpeg HTTP/1.1" 404 179
+WARNING 2026-05-19 12:32:49,961 log 9544 27772 "GET /static/images/image2.jpeg HTTP/1.1" 404 179
+WARNING 2026-05-19 12:32:49,976 log 9544 27772 Not Found: /static/images/image4.png
+WARNING 2026-05-19 12:32:49,977 log 9544 23576 Not Found: /static/js/basestyles.js
+WARNING 2026-05-19 12:32:49,977 log 9544 23576 "GET /static/js/basestyles.js HTTP/1.1" 404 179
+WARNING 2026-05-19 12:32:49,978 log 9544 27772 "GET /static/images/image4.png HTTP/1.1" 404 179
+WARNING 2026-05-19 12:32:50,067 log 9544 23576 Not Found: /static/images/image5.jpeg
+WARNING 2026-05-19 12:32:50,067 log 9544 23576 "GET /static/images/image5.jpeg HTTP/1.1" 404 179
+WARNING 2026-05-19 12:32:50,124 log 9544 23576 Not Found: /static/css/basestyles.css
+WARNING 2026-05-19 12:32:50,125 log 9544 27772 Not Found: /static/css/courses_details.css
+WARNING 2026-05-19 12:32:50,126 log 9544 23576 "GET /static/css/basestyles.css HTTP/1.1" 404 179
+WARNING 2026-05-19 12:32:50,126 log 9544 27772 "GET /static/css/courses_details.css HTTP/1.1" 404 179
+WARNING 2026-05-19 12:32:50,287 log 9544 27772 Not Found: /static/images/logo.png
+WARNING 2026-05-19 12:32:50,288 log 9544 27772 "GET /static/images/logo.png HTTP/1.1" 404 179
+WARNING 2026-05-19 12:32:50,296 log 9544 27772 Not Found: /static/images/logo.jpeg
+WARNING 2026-05-19 12:32:50,297 log 9544 27772 "GET /static/images/logo.jpeg HTTP/1.1" 404 179
+WARNING 2026-05-19 12:33:10,760 log 9544 27772 Not Found: /static/css/basestyles.css
+WARNING 2026-05-19 12:33:10,760 log 9544 23576 Not Found: /static/css/courses_details.css
+WARNING 2026-05-19 12:33:10,761 log 9544 27772 "GET /static/css/basestyles.css HTTP/1.1" 404 179
+WARNING 2026-05-19 12:33:10,761 log 9544 23576 "GET /static/css/courses_details.css HTTP/1.1" 404 179
+WARNING 2026-05-19 12:33:10,775 log 9544 23576 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-05-19 12:33:10,776 log 9544 23576 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 179
+INFO 2026-05-19 12:33:27,799 log 9544 23576 "GET / HTTP/1.1" 200 26212
+WARNING 2026-05-19 12:33:27,882 log 9544 18316 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-05-19 12:33:27,883 log 9544 23576 Not Found: /static/images/logoSample.png
+WARNING 2026-05-19 12:33:27,883 log 9544 27772 Not Found: /static/images/image.jpeg
+WARNING 2026-05-19 12:33:27,884 log 9544 18316 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 179
+WARNING 2026-05-19 12:33:27,884 log 9544 23576 "GET /static/images/logoSample.png HTTP/1.1" 404 179
+WARNING 2026-05-19 12:33:27,884 log 9544 27772 "GET /static/images/image.jpeg HTTP/1.1" 404 179
+WARNING 2026-05-19 12:33:28,027 log 9544 23576 Not Found: /static/images/image1.jpeg
+WARNING 2026-05-19 12:33:28,029 log 9544 27772 Not Found: /static/images/image2.jpeg
+WARNING 2026-05-19 12:33:28,029 log 9544 27772 "GET /static/images/image2.jpeg HTTP/1.1" 404 179
+WARNING 2026-05-19 12:33:28,029 log 9544 23576 "GET /static/images/image1.jpeg HTTP/1.1" 404 179
+WARNING 2026-05-19 12:33:28,049 log 9544 23576 Not Found: /static/images/image4.png
+WARNING 2026-05-19 12:33:28,050 log 9544 27772 Not Found: /static/js/basestyles.js
+WARNING 2026-05-19 12:33:28,051 log 9544 27772 "GET /static/js/basestyles.js HTTP/1.1" 404 179
+WARNING 2026-05-19 12:33:28,051 log 9544 23576 "GET /static/images/image4.png HTTP/1.1" 404 179
+WARNING 2026-05-19 12:33:28,061 log 9544 23576 Not Found: /static/images/image5.jpeg
+WARNING 2026-05-19 12:33:28,062 log 9544 23576 "GET /static/images/image5.jpeg HTTP/1.1" 404 179
+WARNING 2026-05-19 12:33:28,370 log 9544 23576 Not Found: /static/images/logo.png
+WARNING 2026-05-19 12:33:28,371 log 9544 23576 "GET /static/images/logo.png HTTP/1.1" 404 179
+WARNING 2026-05-19 12:33:28,376 log 9544 23576 Not Found: /static/images/logo.jpeg
+WARNING 2026-05-19 12:33:28,377 log 9544 23576 "GET /static/images/logo.jpeg HTTP/1.1" 404 179
+INFO 2026-05-19 12:33:52,386 log 9544 23576 "GET /courses HTTP/1.1" 301 0
+INFO 2026-05-19 12:33:52,443 log 9544 23576 "GET /courses/ HTTP/1.1" 200 33386
+WARNING 2026-05-19 12:33:52,496 log 9544 23576 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-05-19 12:33:52,499 log 9544 18316 Not Found: /static/css/courses_details.css
+WARNING 2026-05-19 12:33:52,497 log 9544 27772 Not Found: /static/css/basestyles.css
+WARNING 2026-05-19 12:33:52,501 log 9544 23640 Not Found: /static/images/logoSample.png
+WARNING 2026-05-19 12:33:52,502 log 9544 23576 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 179
+WARNING 2026-05-19 12:33:52,503 log 9544 18316 "GET /static/css/courses_details.css HTTP/1.1" 404 179
+WARNING 2026-05-19 12:33:52,503 log 9544 27772 "GET /static/css/basestyles.css HTTP/1.1" 404 179
+WARNING 2026-05-19 12:33:52,505 log 9544 23576 Not Found: /static/js/basestyles.js
+WARNING 2026-05-19 12:33:52,505 log 9544 23640 "GET /static/images/logoSample.png HTTP/1.1" 404 179
+WARNING 2026-05-19 12:33:52,506 log 9544 23576 "GET /static/js/basestyles.js HTTP/1.1" 404 179
+INFO 2026-05-19 12:34:04,239 log 9544 23576 "GET / HTTP/1.1" 200 0
+WARNING 2026-05-19 12:34:04,291 log 9544 23576 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-05-19 12:34:04,291 log 9544 23576 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:04,490 log 9544 23576 Not Found: /favicon.ico
+WARNING 2026-05-19 12:34:04,491 log 9544 23576 "GET /favicon.ico HTTP/1.1" 404 179
+INFO 2026-05-19 12:34:04,632 log 9544 23576 "GET / HTTP/1.1" 200 0
+WARNING 2026-05-19 12:34:04,687 log 9544 23576 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-05-19 12:34:04,687 log 9544 23576 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:04,846 log 9544 23576 Not Found: /favicon.ico
+WARNING 2026-05-19 12:34:04,846 log 9544 23576 "GET /favicon.ico HTTP/1.1" 404 179
+INFO 2026-05-19 12:34:06,040 log 9544 23576 "GET / HTTP/1.1" 200 0
+WARNING 2026-05-19 12:34:06,097 log 9544 23576 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-05-19 12:34:06,098 log 9544 23576 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:06,272 log 9544 23576 Not Found: /favicon.ico
+WARNING 2026-05-19 12:34:06,272 log 9544 23576 "GET /favicon.ico HTTP/1.1" 404 179
+INFO 2026-05-19 12:34:12,601 log 9544 23576 "GET / HTTP/1.1" 200 26354
+WARNING 2026-05-19 12:34:12,688 log 9544 23576 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-05-19 12:34:12,689 log 9544 23576 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:12,699 log 9544 23576 Not Found: /static/css/basestyles.css
+WARNING 2026-05-19 12:34:12,700 log 9544 27772 Not Found: /static/images/logoSample.png
+WARNING 2026-05-19 12:34:12,701 log 9544 18316 Not Found: /static/images/image.jpeg
+WARNING 2026-05-19 12:34:12,702 log 9544 23640 Not Found: /static/css/courses_details.css
+WARNING 2026-05-19 12:34:12,703 log 9544 27772 "GET /static/images/logoSample.png HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:12,704 log 9544 23576 "GET /static/css/basestyles.css HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:12,704 log 9544 18316 "GET /static/images/image.jpeg HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:12,704 log 9544 23640 "GET /static/css/courses_details.css HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:12,833 log 9544 23640 Not Found: /static/images/image1.jpeg
+WARNING 2026-05-19 12:34:12,834 log 9544 18316 Not Found: /static/images/image2.jpeg
+WARNING 2026-05-19 12:34:12,834 log 9544 23640 "GET /static/images/image1.jpeg HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:12,835 log 9544 18316 "GET /static/images/image2.jpeg HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:12,851 log 9544 18316 Not Found: /static/images/image4.png
+WARNING 2026-05-19 12:34:12,852 log 9544 23640 Not Found: /static/js/basestyles.js
+WARNING 2026-05-19 12:34:12,852 log 9544 23640 "GET /static/js/basestyles.js HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:12,852 log 9544 18316 "GET /static/images/image4.png HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:12,865 log 9544 18316 Not Found: /static/css/basestyles.css
+WARNING 2026-05-19 12:34:12,866 log 9544 23576 Not Found: /static/images/image5.jpeg
+WARNING 2026-05-19 12:34:12,867 log 9544 23640 Not Found: /static/css/courses_details.css
+WARNING 2026-05-19 12:34:12,868 log 9544 18316 "GET /static/css/basestyles.css HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:12,868 log 9544 23576 "GET /static/images/image5.jpeg HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:12,868 log 9544 23640 "GET /static/css/courses_details.css HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:13,058 log 9544 23640 Not Found: /static/images/logo.png
+WARNING 2026-05-19 12:34:13,058 log 9544 23640 "GET /static/images/logo.png HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:13,064 log 9544 23640 Not Found: /static/images/logo.jpeg
+WARNING 2026-05-19 12:34:13,065 log 9544 23640 "GET /static/images/logo.jpeg HTTP/1.1" 404 179
+INFO 2026-05-19 12:34:23,080 autoreload 11552 11856 Watching for file changes with StatReloader
+INFO 2026-05-19 12:34:25,147 log 11552 20488 "GET / HTTP/1.1" 200 26354
+INFO 2026-05-19 12:34:25,199 log 11552 5688 "GET / HTTP/1.1" 200 26354
+WARNING 2026-05-19 12:34:25,348 log 11552 5688 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-05-19 12:34:25,349 log 11552 5688 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:25,351 log 11552 5688 Not Found: /static/css/basestyles.css
+WARNING 2026-05-19 12:34:25,351 log 11552 5688 "GET /static/css/basestyles.css HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:25,353 log 11552 5688 Not Found: /static/css/courses_details.css
+WARNING 2026-05-19 12:34:25,353 log 11552 5688 "GET /static/css/courses_details.css HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:25,356 log 11552 5688 Not Found: /static/images/logoSample.png
+WARNING 2026-05-19 12:34:25,359 log 11552 18112 Not Found: /static/images/image.jpeg
+WARNING 2026-05-19 12:34:25,359 log 11552 5688 "GET /static/images/logoSample.png HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:25,360 log 11552 18112 "GET /static/images/image.jpeg HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:25,474 log 11552 18112 Not Found: /static/images/image1.jpeg
+WARNING 2026-05-19 12:34:25,475 log 11552 5688 Not Found: /static/images/image2.jpeg
+WARNING 2026-05-19 12:34:25,476 log 11552 18112 "GET /static/images/image1.jpeg HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:25,476 log 11552 5688 "GET /static/images/image2.jpeg HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:25,481 log 11552 5688 Not Found: /static/images/image4.png
+WARNING 2026-05-19 12:34:25,482 log 11552 18112 Not Found: /static/js/basestyles.js
+WARNING 2026-05-19 12:34:25,483 log 11552 5688 "GET /static/images/image4.png HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:25,483 log 11552 18112 "GET /static/js/basestyles.js HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:25,504 log 11552 5688 Not Found: /static/images/image5.jpeg
+WARNING 2026-05-19 12:34:25,504 log 11552 5688 "GET /static/images/image5.jpeg HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:25,512 log 11552 5688 Not Found: /static/css/basestyles.css
+WARNING 2026-05-19 12:34:25,513 log 11552 18112 Not Found: /static/css/courses_details.css
+WARNING 2026-05-19 12:34:25,514 log 11552 18112 "GET /static/css/courses_details.css HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:25,514 log 11552 5688 "GET /static/css/basestyles.css HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:25,706 log 11552 18112 Not Found: /static/images/logo.png
+WARNING 2026-05-19 12:34:25,707 log 11552 18112 "GET /static/images/logo.png HTTP/1.1" 404 179
+WARNING 2026-05-19 12:34:25,719 log 11552 18112 Not Found: /static/images/logo.jpeg
+WARNING 2026-05-19 12:34:25,719 log 11552 18112 "GET /static/images/logo.jpeg HTTP/1.1" 404 179
+INFO 2026-05-19 12:35:03,934 autoreload 11552 11856 D:\Web Applications\training_institute\training_institute\settings.py changed, reloading.
+INFO 2026-05-19 12:35:04,879 autoreload 3668 24632 Watching for file changes with StatReloader
+INFO 2026-05-19 12:35:05,465 log 3668 12212 "GET / HTTP/1.1" 200 26354
+WARNING 2026-05-19 12:35:05,545 log 3668 12212 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-05-19 12:35:05,547 log 3668 12212 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 6532
+INFO 2026-05-19 12:35:05,595 log 3668 17844 "GET /static/css/basestyles.css HTTP/1.1" 200 30154
+INFO 2026-05-19 12:35:05,595 log 3668 12212 "GET /static/css/courses_details.css HTTP/1.1" 200 10744
+INFO 2026-05-19 12:35:05,597 log 3668 17844 "GET /static/images/logoSample.png HTTP/1.1" 200 38769
+INFO 2026-05-19 12:35:05,602 log 3668 12212 "GET /static/images/image.jpeg HTTP/1.1" 200 259498
+INFO 2026-05-19 12:35:05,681 log 3668 12212 "GET /static/images/image1.jpeg HTTP/1.1" 200 316563
+INFO 2026-05-19 12:35:05,684 log 3668 17844 "GET /static/images/image2.jpeg HTTP/1.1" 200 465238
+INFO 2026-05-19 12:35:05,699 log 3668 12212 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-19 12:35:05,702 log 3668 17844 "GET /static/images/image4.png HTTP/1.1" 200 849487
+INFO 2026-05-19 12:35:05,717 log 3668 17844 "GET /static/images/image5.jpeg HTTP/1.1" 200 412659
+INFO 2026-05-19 12:35:06,025 log 3668 17844 "GET /static/images/logo.png HTTP/1.1" 200 853147
+WARNING 2026-05-19 12:35:06,355 log 3668 17844 "GET /static/images/logo.jpeg HTTP/1.1" 404 1975
+INFO 2026-05-19 12:35:37,389 autoreload 3668 24632 D:\Web Applications\training_institute\training_institute\settings.py changed, reloading.
+INFO 2026-05-19 12:35:38,355 autoreload 7620 3200 Watching for file changes with StatReloader
