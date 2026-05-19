@@ -9720,3 +9720,11 @@ INFO 2026-05-19 12:48:26,239 autoreload 7620 3200 D:\Web Applications\training_i
 INFO 2026-05-19 12:48:27,116 autoreload 8632 23576 Watching for file changes with StatReloader
 INFO 2026-05-19 12:48:29,470 autoreload 8632 23576 D:\Web Applications\training_institute\training_institute\settings.py changed, reloading.
 INFO 2026-05-19 12:48:30,473 autoreload 14864 1464 Watching for file changes with StatReloader
+INFO 2026-05-19 14:44:49,517 autoreload 14864 1464 D:\Web Applications\training_institute\training_institute\settings.py changed, reloading.
+INFO 2026-05-19 14:44:50,559 autoreload 32352 31736 Watching for file changes with StatReloader
+INFO 2026-05-19 15:08:39,395 autoreload 32352 31736 D:\Web Applications\training_institute\training_institute\settings.py changed, reloading.
+INFO 2026-05-19 15:08:40,282 autoreload 30632 27872 Watching for file changes with StatReloader
+INFO 2026-05-19 15:08:44,689 autoreload 30632 27872 D:\Web Applications\training_institute\training_institute\settings.py changed, reloading.
+INFO 2026-05-19 15:08:45,510 autoreload 25324 31300 Watching for file changes with StatReloader
+INFO 2026-05-19 15:09:24,052 autoreload 25324 31300 D:\Web Applications\training_institute\training_institute\settings.py changed, reloading.
+INFO 2026-05-19 15:09:24,846 autoreload 10736 21092 Watching for file changes with StatReloader
