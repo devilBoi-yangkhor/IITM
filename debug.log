@@ -12249,3 +12249,18 @@ INFO 2026-05-22 16:31:39,397 log 7224 2944 "GET /accounts/google/login/?process=
 INFO 2026-05-22 16:31:40,424 log 7224 2944 "GET /accounts/google/login/callback/?state=HiKzqfYpvVHYJeCV&iss=https%3A%2F%2Faccounts.google.com&code=4%2F0AeoWuM8Z0i0v0Z5kBWXl2xQZJaanhw1rhwOFBo93NpKqPvsLfAHV-_5I73S5Cr_PW3zdsA&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&authuser=0&prompt=none HTTP/1.1" 302 0
 INFO 2026-05-22 16:31:40,492 log 7224 2944 "GET /accounts/inactive/ HTTP/1.1" 200 1053
 INFO 2026-05-22 16:34:44,744 autoreload 18780 19696 Watching for file changes with StatReloader
+INFO 2026-05-22 16:34:46,690 log 18780 11612 "GET /accounts/google/login/?process=login HTTP/1.1" 302 0
+INFO 2026-05-22 16:34:48,083 log 18780 11612 "GET /accounts/google/login/callback/?state=MNFZNzOZZFmTPp86&iss=https%3A%2F%2Faccounts.google.com&code=4%2F0AeoWuM-4l_Uo4FsfkFGm1amNWTeVF01-wSKV2aTiXugVJasZUfvoot2C_FdF3IQgJRLQNA&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=none HTTP/1.1" 302 0
+INFO 2026-05-22 16:34:48,152 log 18780 11612 "GET /dashboard/ HTTP/1.1" 200 41794
+INFO 2026-05-22 16:34:55,815 log 18780 11564 "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2026-05-22 16:34:55,825 log 18780 11564 "GET /login/?next=/dashboard/ HTTP/1.1" 200 42936
+INFO 2026-05-22 16:34:55,909 log 18780 11564 "GET /static/css/basestyles.css HTTP/1.1" 200 30131
+INFO 2026-05-22 16:34:55,911 log 18780 11564 "GET /static/css/courses_details.css HTTP/1.1" 200 10744
+INFO 2026-05-22 16:34:55,915 log 18780 11564 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-22 16:34:55,916 log 18780 11564 "GET /static/css/login.css HTTP/1.1" 200 8727
+INFO 2026-05-22 16:34:55,918 log 18780 11564 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-22 16:34:56,528 log 18780 11564 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-22 16:34:56,541 log 18780 11564 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984
+INFO 2026-05-22 16:34:58,955 log 18780 12280 "GET /accounts/google/login/?process=login HTTP/1.1" 302 0
+INFO 2026-05-22 16:56:47,808 autoreload 18780 19696 D:\Web Applications\training_institute\training_institute\settings.py changed, reloading.
+INFO 2026-05-22 16:56:49,031 autoreload 28824 24396 Watching for file changes with StatReloader
