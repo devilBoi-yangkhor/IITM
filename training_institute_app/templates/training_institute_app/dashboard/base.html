@@ -10,14 +10,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Favicon icon-->
-  <link rel="shortcut icon" type="image/png" href="{% static 'images/logoSample.png' %}" />
+  <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}" />
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+  
+  <!-- SweetAlert2 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+  
   <!-- Core Css -->
   <link rel="stylesheet" href="{% static 'css/theme.css' %}" />
-  <title>INSTITUTE OF INFORMATION TECHNOLOGY AND MANAGEMENT</title>
+  <title>Institude of Information Technology & Management</title>
   <link rel="stylesheet" href="{% static 'libs/owl.carousel/dist/assets/owl.carousel.min.css' %}">
   
   <style>
@@ -313,6 +317,185 @@
     .hs-dropdown-toggle:hover .profile-status-dot {
         animation: statusPulse 1s infinite;
     }
+                /* Sidebar footer professional styling */
+    .sidebar-footer {
+        background: transparent;
+        transition: all 0.3s ease;
+    }
+    
+    .sidebar-footer img {
+        filter: brightness(0) invert(1);
+        transition: all 0.4s cubic-bezier(0.34, 1.2, 0.64, 1);
+        width: 30px;
+        height: auto;
+        padding: 1em 0;
+    }
+    
+    .dark .sidebar-footer img {
+        filter: brightness(0) invert(1);
+    }
+    
+    .sidebar-footer .footer-logo-wrapper:hover img {
+        filter: brightness(0) invert(0);
+        transform: scale(1.1);
+    }
+    
+    .dark .sidebar-footer .footer-logo-wrapper:hover img {
+        filter: brightness(0) invert(1);
+    }
+    
+    .footer-logo-wrapper {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .footer-logo-glow {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+        pointer-events: none;
+    }
+    
+    .footer-logo-wrapper:hover .footer-logo-glow {
+        opacity: 1;
+    }
+    
+    /* For mini sidebar mode - hide text, keep icon */
+    [data-sidebartype="mini-sidebar"] .sidebar-footer .text-center span,
+    [data-sidebartype="mini-sidebar"] .sidebar-footer .w-8,
+    [data-sidebartype="mini-sidebar"] .sidebar-footer p:not(.text-9px) {
+        display: none;
+    }
+    
+    [data-sidebartype="mini-sidebar"] .sidebar-footer {
+        padding: 1rem 0.5rem;
+    }
+    
+    [data-sidebartype="mini-sidebar"] .sidebar-footer img {
+        height: 2rem;
+    }
+    
+    [data-sidebartype="mini-sidebar"] .left-sidebar:hover .sidebar-footer .text-center span,
+    [data-sidebartype="mini-sidebar"] .left-sidebar:hover .sidebar-footer .w-8,
+    [data-sidebartype="mini-sidebar"] .left-sidebar:hover .sidebar-footer p:not(.text-9px) {
+        display: block;
+    }
+    
+    [data-sidebartype="mini-sidebar"] .left-sidebar:hover .sidebar-footer img {
+        height: 2.5rem;
+    }
+    
+    .text-9px {
+        font-size: 9px;
+    }
+
+    /* ============================================ */
+    /* SWEETALERT2 LIGHT AND DARK THEME STYLES */
+    /* ============================================ */
+    
+    /* Light theme (default) */
+    .swal2-popup {
+        background: #ffffff !important;
+        border-radius: 16px !important;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+    }
+
+    .swal2-title {
+        color: #1e293b !important;
+        font-size: 1.5rem !important;
+        font-weight: 700 !important;
+    }
+
+    .swal2-html-container {
+        color: #475569 !important;
+        font-size: 1rem !important;
+    }
+
+    .swal2-confirm {
+        background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%) !important;
+        border-radius: 12px !important;
+        padding: 10px 24px !important;
+        font-weight: 600 !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .swal2-confirm:hover {
+        transform: scale(1.05) !important;
+        background: linear-gradient(135deg, #2563eb 0%, #0891b2 100%) !important;
+    }
+
+    .swal2-cancel {
+        border-radius: 12px !important;
+        padding: 10px 24px !important;
+        font-weight: 600 !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .swal2-cancel:hover {
+        transform: scale(1.05) !important;
+    }
+
+    /* Dark theme styles */
+    .dark .swal2-popup {
+        background: #1e293b !important;
+        border: 1px solid #334155 !important;
+    }
+
+    .dark .swal2-title {
+        color: #f1f5f9 !important;
+    }
+
+    .dark .swal2-html-container {
+        color: #cbd5e1 !important;
+    }
+
+    .dark .swal2-input,
+    .dark .swal2-textarea,
+    .dark .swal2-select {
+        background: #334155 !important;
+        color: #f1f5f9 !important;
+        border-color: #475569 !important;
+    }
+
+    .dark .swal2-input:focus,
+    .dark .swal2-textarea:focus,
+    .dark .swal2-select:focus {
+        border-color: #3b82f6 !important;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+    }
+
+    .dark .swal2-validation-message {
+        background: #334155 !important;
+        color: #fca5a5 !important;
+    }
+
+    .dark .swal2-loader {
+        border-color: #3b82f6 !important;
+        border-top-color: #06b6d4 !important;
+    }
+
+    .dark .swal2-icon.swal2-success .swal2-success-ring {
+        border-color: rgba(34, 197, 94, 0.3) !important;
+    }
+
+    .dark .swal2-icon.swal2-error {
+        border-color: #ef4444 !important;
+    }
+
+    .dark .swal2-icon.swal2-warning {
+        border-color: #f59e0b !important;
+    }
+
+    .dark .swal2-icon.swal2-info {
+        border-color: #3b82f6 !important;
+    }
+
+    .dark .swal2-timer-progress-bar {
+        background: rgba(59, 130, 246, 0.4) !important;
+    }
   </style>
 </head>
 
@@ -356,7 +539,7 @@
 
                 <!-- Dashboard Menu -->
                 <li class="sidebar-item">
-                  <a class="sidebar-link dark-sidebar-link dark:text-white nav-link" href="/dashboard/">
+                  <a class="sidebar-link dark-sidebar-link nav-link" href="/dashboard/">
                     <iconify-icon icon="solar:chart-2-linear" class="shrink-0 text-xl"></iconify-icon>
                     <span class="hide-menu shrink-0">Dashboard</span>
                   </a>
@@ -383,16 +566,10 @@
                         </a>
                       </li>
                       <li class="pl-4 pr-3">
-                        <a class="dropdown-submenu-link nav-link" href="/course-management/">
-                          <iconify-icon icon="solar:book-bookmark-linear" class="shrink-0 text-xs me-3"></iconify-icon>
-                          <span class="hide-menu">Course Management</span>
-                        </a>
-                      </li>
-                      <li class="pl-4 pr-3">
-                        <a class="dropdown-submenu-link nav-link" href="/department-management/">
-                          <iconify-icon icon="solar:buildings-linear" class="shrink-0 text-xs me-3"></iconify-icon>
-                          <span class="hide-menu">Department Management</span>
-                        </a>
+                          <a class="dropdown-submenu-link nav-link" href="/role-management/">
+                              <iconify-icon icon="solar:crown-linear" class="shrink-0 text-xs me-3"></iconify-icon>
+                              <span class="hide-menu">Role Management</span>
+                          </a>
                       </li>
                     </ul>
                   </div>
@@ -419,7 +596,7 @@
                   <div id="courses-accordion" class="hs-accordion-content">
                     <ul>
                       <li class="pl-4 pr-3">
-                        <a class="dropdown-submenu-link nav-link" href="/courses/list/">
+                        <a class="dropdown-submenu-link nav-link" href="/course-management/">
                           <iconify-icon icon="solar:list-linear" class="shrink-0 text-xs me-3"></iconify-icon>
                           <span class="hide-menu">Courses List</span>
                         </a>
@@ -479,6 +656,21 @@
             </nav>
           </div>
         </div>
+        <!-- Sidebar Footer - Professional White Logo -->
+        <div class="sidebar-footer px-4 py-4 mt-auto border-t border-border dark:border-darkborder">
+          <div class="flex flex-col items-center justify-center">
+            <div class="footer-logo-wrapper">
+              <a href="/" class="block relative">
+                <img src="{% static 'images/logo.png' %}" alt="IITM" class="h-12 w-auto transition-all duration-500">
+                <div class="footer-logo-glow"></div>
+              </a>
+            </div>
+            <div class="w-8 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent my-2 opacity-30"></div>
+            <p class="text-9 text-gray-400 dark:text-gray-500 tracking-wider">
+              © {% now "Y" %}
+            </p>
+          </div>
+        </div>
       </aside>
 
       <div class="page-wrapper w-full" role="main">
@@ -486,7 +678,7 @@
         <header
           class="sticky top-header top-0 inset-x-0 z-10 flex flex-wrap md:justify-start md:flex-nowrap text-sm bg-white dark:bg-dark">
           <div class="with-vertical w-full">
-            <div class="w-full mx-auto px-4 lg:py-4 py-3 lg:px-4" aria-label="Global">
+            <div class="w-full mxx-auto px-4 lg:py-4 py-3 lg:px-4" aria-label="Global">
               <div class="relative md:flex md:items-center md:justify-between">
                 <div class="hs-collapse grow md:block">
                   <div class="flex justify-between items-center">
@@ -613,7 +805,7 @@
         </header>
         <!-- Header End -->
         <!-- Main Content -->
-        <main class="max-w-full pt-6">
+        <main class="max-w-full">
           {% block content %}{% endblock %}
         </main>
         <!-- Main Content End -->
@@ -693,21 +885,190 @@
     });
   </script>
   
+  <!-- At the bottom of your base.html, replace the script includes with this: -->
+
   <script src="{% static 'js/vendor.min.js' %}"></script>
   <script src="{% static 'js/theme/app.init.js' %}"></script>
   <script src="{% static 'js/theme/app.min.js' %}"></script>
   <script src="{% static 'js/theme.js' %}"></script>
   <script src="{% static 'libs/simplebar/dist/simplebar.min.js' %}"></script>
   <script src="{% static 'libs/preline/dist/preline.js' %}"></script>
-  <script src="{% static 'js/libs/@preline/input-number/index.js' %}"></script>
-  <script src="{% static 'js/libs/@preline/tooltip/index.js' %}"></script>
-  <script src="{% static 'js/libs/@preline/stepper/index.js' %}"></script>
+
+  <!-- SweetAlert2 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- Global SweetAlert2 Theme Configuration -->
+  <script>
+    // Function to detect current theme and get SweetAlert2 config
+    function getSweetAlertThemeConfig() {
+      const isDarkMode = document.documentElement.classList.contains('dark') || 
+                        document.body.classList.contains('dark') ||
+                        document.querySelector('html').classList.contains('dark');
+      
+      if (isDarkMode) {
+        return {
+          background: '#1e293b',
+          color: '#f1f5f9',
+          confirmButtonColor: '#3b82f6',
+          cancelButtonColor: '#64748b',
+          backdrop: 'rgba(0, 0, 0, 0.8)'
+        };
+      } else {
+        return {
+          background: '#ffffff',
+          color: '#1e293b',
+          confirmButtonColor: '#3b82f6',
+          cancelButtonColor: '#94a3b8',
+          backdrop: 'rgba(0, 0, 0, 0.4)'
+        };
+      }
+    }
+
+    // Global SweetAlert2 wrapper functions that respect theme
+    window.showSuccessAlert = function(message, callback) {
+      const themeConfig = getSweetAlertThemeConfig();
+      Swal.fire({
+        icon: 'success',
+        title: 'Success!',
+        text: message,
+        confirmButtonText: 'OK',
+        showCancelButton: false,
+        background: themeConfig.background,
+        color: themeConfig.color,
+        confirmButtonColor: themeConfig.confirmButtonColor,
+        backdrop: themeConfig.backdrop,
+        customClass: {
+          popup: 'swal2-popup',
+          confirmButton: 'swal2-confirm'
+        }
+      }).then((result) => {
+        if (result.isConfirmed) {
+          if (callback) callback();
+          else window.location.reload();
+        }
+      });
+    };
+
+    window.showErrorAlert = function(message) {
+      const themeConfig = getSweetAlertThemeConfig();
+      Swal.fire({
+        icon: 'error',
+        title: 'Error!',
+        text: message,
+        confirmButtonText: 'OK',
+        showCancelButton: false,
+        background: themeConfig.background,
+        color: themeConfig.color,
+        confirmButtonColor: themeConfig.confirmButtonColor,
+        backdrop: themeConfig.backdrop,
+        customClass: {
+          popup: 'swal2-popup',
+          confirmButton: 'swal2-confirm'
+        }
+      });
+    };
+
+    window.showConfirmAlert = function(title, message, confirmText, cancelText, onConfirm) {
+      const themeConfig = getSweetAlertThemeConfig();
+      Swal.fire({
+        icon: 'warning',
+        title: title,
+        text: message,
+        confirmButtonText: confirmText || 'Yes',
+        cancelButtonText: cancelText || 'Cancel',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: themeConfig.cancelButtonColor,
+        reverseButtons: false,
+        background: themeConfig.background,
+        color: themeConfig.color,
+        backdrop: themeConfig.backdrop,
+        customClass: {
+          popup: 'swal2-popup',
+          confirmButton: 'swal2-confirm',
+          cancelButton: 'swal2-cancel'
+        }
+      }).then((result) => {
+        if (result.isConfirmed && onConfirm) {
+          onConfirm();
+        }
+      });
+    };
+
+    window.showLoadingAlert = function(title, message) {
+      const themeConfig = getSweetAlertThemeConfig();
+      Swal.fire({
+        title: title || 'Processing...',
+        text: message || 'Please wait',
+        allowOutsideClick: false,
+        background: themeConfig.background,
+        color: themeConfig.color,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+        customClass: {
+          popup: 'swal2-popup'
+        }
+      });
+    };
+
+    window.closeLoadingAlert = function() {
+      Swal.close();
+    };
+
+    // Listen for theme changes
+    const themeObserver = new MutationObserver(function() {
+      // Theme changed - config will be applied on next SweetAlert call
+    });
+    
+    themeObserver.observe(document.documentElement, { attributes: true });
+    themeObserver.observe(document.body, { attributes: true });
+  </script>
+
+  <!-- Only load owlCarousel if needed (check if owlCarousel function exists) -->
+  <script>
+      // Check if owlCarousel is needed and if the library is available
+      if (typeof $.fn.owlCarousel !== 'undefined') {
+          // owlCarousel is available, use it
+      } else {
+          // Prevent owlCarousel errors
+          if (!$.fn.owlCarousel) {
+              $.fn.owlCarousel = function() { return this; };
+          }
+      }
+  </script>
+
+  <!-- Only load these if they exist, otherwise skip -->
+  <script>
+      // Check if files exist before loading, or use try-catch
+      function loadScriptIfExists(src) {
+          var script = document.createElement('script');
+          script.src = src;
+          script.onerror = function() {
+              console.log('Optional script not loaded:', src);
+          };
+          document.body.appendChild(script);
+      }
+      
+      // Only try to load optional scripts if the files exist
+      // Or just define dummy functions to prevent errors
+      if (typeof $ !== 'undefined') {
+          if (!$.fn.owlCarousel) {
+              $.fn.owlCarousel = function() { return this; };
+          }
+          if (!$.fn.apexcharts) {
+              $.fn.apexcharts = function() { return this; };
+          }
+      }
+  </script>
 
   <!-- solar icons -->
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-  <script src="{% static 'js/libs/owl.carousel/dist/owl.carousel.min.js' %}"></script>
-  <script src="{% static 'js/libs/apexcharts/dist/apexcharts.min.js' %}"></script>
+
+  <!-- Only load dashboard.js if it exists and on dashboard pages -->
+  {% if request.resolver_match.url_name == 'dashboard' %}
   <script src="{% static 'js/dashboards/dashboard.js' %}"></script>
+  {% endif %}
 </body>
 
 </html>

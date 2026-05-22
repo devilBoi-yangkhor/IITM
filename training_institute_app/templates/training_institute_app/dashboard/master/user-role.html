@@ -1,0 +1,381 @@
+{% extends 'training_institute_app/dashboard/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="px-6">
+    <!-- Page Title -->
+    <div class="flex justify-between items-center mb-6">
+        <div>
+            <h1 class="text-2xl font-semibold text-dark dark:text-white">Role Management</h1>
+            <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Manage and configure user roles and permissions</p>
+        </div>
+        <button id="addRoleBtn" 
+                class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-dark dark:text-white text-sm font-medium rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-xl">
+            <iconify-icon icon="solar:add-circle-linear" class="text-lg mr-2"></iconify-icon>
+            Add New Role
+        </button>
+    </div>
+
+    <!-- Alert Container for dynamic messages -->
+    {% include 'training_institute_app/components/alerts.html' %}
+
+    <!-- Roles Table -->
+    <div class="card">
+        <div class="card-body p-0">
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b border-border dark:border-darkborder bg-gray-100 dark:bg-gray-900">
+                            <th class="text-left py-3 px-4 text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Role Name</th>
+                            <th class="text-left py-3 px-4 text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Description</th>
+                            <th class="text-center py-3 px-4 text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for role in roles %}
+                        <tr class="table-row-transition border-b border-border dark:border-darkborder hover:bg-gray-100 dark:hover:bg-slate-700 transition-all duration-300">
+                            <td class="py-3 px-4">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shadow-md">
+                                        <iconify-icon icon="solar:key-linear" class="text-white text-sm"></iconify-icon>
+                                    </div>
+                                    <p class="text-sm font-semibold text-dark dark:text-white">{{ role.name }}</p>
+                                </div>
+                            </td>
+                            <td class="py-3 px-4">
+                                <p class="text-sm text-gray-600 dark:text-gray-300 max-w-md">{{ role.description|default:"No description provided"|truncatechars:80 }}</p>
+                            </td>
+                            <td class="py-3 px-4 text-center">
+                                <div class="flex items-center justify-center gap-2">
+                                    <button data-role-id="{{ role.id }}"
+                                            data-role-name="{{ role.name|escapejs }}"
+                                            data-role-description="{{ role.description|default:''|escapejs }}"
+                                            class="action-btn edit-btn p-1.5 rounded-lg text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300 transition-all duration-300 hover:scale-110 hover:shadow-md" 
+                                            title="Edit Role">
+                                        <iconify-icon icon="solar:pen-2-linear" class="text-lg"></iconify-icon>
+                                    </button>
+                                    <button data-role-id="{{ role.id }}"
+                                            data-role-name="{{ role.name|escapejs }}"
+                                            data-user-count="{{ role.user_count }}"
+                                            class="action-btn delete-btn p-1.5 rounded-lg text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 transition-all duration-300 hover:scale-110 hover:shadow-md" 
+                                            title="Delete Role">
+                                        <iconify-icon icon="solar:trash-bin-trash-linear" class="text-lg"></iconify-icon>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="3" class="py-12 text-center">
+                                <div class="flex flex-col items-center justify-center">
+                                    <iconify-icon icon="solar:key-linear" class="text-5xl text-gray-400 mb-3"></iconify-icon>
+                                    <p class="text-gray-500 dark:text-gray-400">No roles found</p>
+                                    <p class="text-sm text-gray-400 dark:text-gray-500 mt-1">Click the "Add New Role" button to create your first role</p>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Include the generic form modal component -->
+{% include 'training_institute_app/components/formModel.html' %}
+
+<style>
+    #addRoleBtn{
+        cursor: pointer;
+    }
+    #addRoleBtn:hover {
+        animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+            box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+        }
+        70% {
+            transform: scale(1.05);
+            box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+        }
+        100% {
+            transform: scale(1);
+            box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+        }
+    }
+    
+    /* Table Row Hover Effects */
+    .table-row-transition {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Action Buttons Ripple */
+    .action-btn {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .action-btn::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+
+    .action-btn:hover::before {
+        width: 100px;
+        height: 100px;
+    }
+</style>
+
+<script>
+    // SweetAlert wrapper functions (using Swal.fire for SweetAlert2)
+    function showSuccessAlert(message, callback) {
+        Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: message,
+            confirmButtonText: 'OK',
+            showCancelButton: false
+        }).then((result) => {
+            if (result.isConfirmed) {
+                if (callback) callback();
+                else window.location.reload();
+            }
+        });
+    }
+
+    function showErrorAlert(message) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            text: message,
+            confirmButtonText: 'OK',
+            showCancelButton: false
+        });
+    }
+
+    // Handle role form submission with AJAX
+    function submitRoleForm(formData, actionUrl) {
+        fetch(actionUrl, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                showSuccessAlert(data.message);
+            } else {
+                showErrorAlert(data.message);
+            }
+        })
+        .catch(error => {
+            showErrorAlert('An error occurred. Please try again.');
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Intercept form submission for the generic modal
+        const genericForm = document.getElementById('genericForm');
+        if (genericForm) {
+            genericForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+                const actionUrl = this.action;
+                
+                // Validate role name
+                const roleName = formData.get('role_name');
+                if (!roleName || roleName.trim() === '') {
+                    showErrorAlert('Please enter a role name');
+                    return;
+                }
+                
+                submitRoleForm(formData, actionUrl);
+                closeFormModal();
+            });
+        }
+    });
+    
+    // Add Role Button - using rows format for the modal
+    document.getElementById('addRoleBtn')?.addEventListener('click', function() {
+        openFormModal({
+            title: 'Add New Role',
+            mode: 'add',
+            actionUrl: "{% url 'role_management' %}",
+            rows: [
+                {
+                    fields: [
+                        {
+                            name: 'role_name',
+                            label: 'Role Name',
+                            type: 'text',
+                            required: true,
+                            placeholder: 'e.g., Manager, Coordinator, HR',
+                            value: ''
+                        }
+                    ]
+                },
+                {
+                    fields: [
+                        {
+                            name: 'description',
+                            label: 'Description',
+                            type: 'textarea',
+                            required: false,
+                            placeholder: 'Describe the role and its responsibilities...',
+                            value: ''
+                        }
+                    ]
+                }
+            ]
+        });
+    });
+    
+    // Edit Role Button - using rows format with pre-filled data
+    document.querySelectorAll('.edit-btn').forEach(function(button) {
+        button.addEventListener('click', function() {
+            const roleId = this.dataset.roleId;
+            const roleName = this.dataset.roleName;
+            const roleDescription = this.dataset.roleDescription || '';
+            
+            openFormModal({
+                title: 'Edit Role',
+                mode: 'edit',
+                actionUrl: "{% url 'role_management' %}",
+                itemId: roleId,
+                rows: [
+                    {
+                        fields: [
+                            {
+                                name: 'role_name',
+                                label: 'Role Name',
+                                type: 'text',
+                                required: true,
+                                placeholder: 'e.g., Manager, Coordinator, HR',
+                                value: roleName
+                            }
+                        ]
+                    },
+                    {
+                        fields: [
+                            {
+                                name: 'description',
+                                label: 'Description',
+                                type: 'textarea',
+                                required: false,
+                                placeholder: 'Describe the role and its responsibilities...',
+                                value: roleDescription
+                            }
+                        ]
+                    }
+                ]
+            });
+        });
+    });
+    
+    // Delete Role Button - FIXED VERSION with proper cancel handling
+    document.querySelectorAll('.delete-btn').forEach(function(button) {
+        button.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const roleId = this.dataset.roleId;
+            const roleName = this.dataset.roleName;
+            const userCount = parseInt(this.dataset.userCount) || 0;
+            
+            let warningMessage = `Are you sure you want to delete role "${roleName}"? This action cannot be undone.`;
+            if (userCount > 0) {
+                warningMessage = `⚠️ WARNING: This role is currently assigned to ${userCount} user(s).\n\nDeleting it will remove the role assignment from these users.\n\nAre you sure you want to proceed? This action cannot be undone.`;
+            }
+            
+            // Use Swal.fire() instead of swal() - THIS IS THE KEY FIX
+            Swal.fire({
+                icon: 'warning',
+                title: 'Delete Role',
+                text: warningMessage,
+                confirmButtonText: 'Yes, delete',
+                cancelButtonText: 'Cancel',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                reverseButtons: false
+            }).then((result) => {
+                // ONLY proceed if user clicked the CONFIRM button (Yes, delete)
+                // If user clicks Cancel or closes the modal, result.isConfirmed will be false
+                if (result.isConfirmed) {
+                    // Get CSRF token
+                    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]')?.value || 
+                                    document.querySelector('input[name="csrfmiddlewaretoken"]')?.value;
+                    
+                    const formData = new URLSearchParams();
+                    formData.append('delete_role_id', roleId);
+                    formData.append('csrfmiddlewaretoken', csrfToken);
+                    
+                    // Show loading state
+                    Swal.fire({
+                        title: 'Deleting...',
+                        text: 'Please wait',
+                        allowOutsideClick: false,
+                        didOpen: () => {
+                            Swal.showLoading();
+                        }
+                    });
+                    
+                    // Use the DELETE endpoint URL
+                    fetch("{% url 'delete_role' %}", {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Close loading and show success
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Deleted!',
+                                text: data.message,
+                                confirmButtonText: 'OK'
+                            }).then(() => {
+                                window.location.reload();
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error!',
+                                text: data.message,
+                                confirmButtonText: 'OK'
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error!',
+                            text: 'An error occurred. Please try again.',
+                            confirmButtonText: 'OK'
+                        });
+                    });
+                }
+                // If result.isConfirmed is false (Cancel button clicked or modal closed), 
+                // do absolutely nothing - role NOT deleted
+            });
+        });
+    });
+</script>
+{% endblock content %}

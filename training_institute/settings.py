@@ -321,6 +321,8 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
+SOCIALACCOUNT_ADAPTER = 'training_institute_app.adapters.MySocialAccountAdapter'
+SOCIALACCOUNT_LOGIN_ON_GET = True
 
 # Site ID (required for django-allauth)
 SITE_ID = 1

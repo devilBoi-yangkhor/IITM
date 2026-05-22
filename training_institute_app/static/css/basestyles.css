@@ -40,7 +40,7 @@ body {
 /* ── BG ── */
 .atmosphere {
   position: fixed; inset: 0; z-index: 0;
-  background: linear-gradient(180deg, #232d3f 0%, #222f44 35%, #1C2128 70%, #1b1d24 100%);
+  background: linear-gradient(180deg, #192844 0%, #1a263d 35%, #1b2f49 70%, #252b4b 100%);
 }
 
 /* ── Nav ── */
@@ -601,8 +601,8 @@ body.menu-open .top-nav { background: rgba(15,17,21,0.95); backdrop-filter: blur
 /* ══════════════════════════════════
    FOOTER CTA
    ══════════════════════════════════ */
-.footer-cta { padding: 120px 0 80px; text-align: center; }
-.footer-ctas { display: flex; justify-content: center; gap: 14px; margin-top: 40px; }
+.footer-cta { text-align: center; }
+.footer-ctas { display: flex; justify-content: center; gap: 14px; margin-top: 10px; }
 .footer-bar {
   display: flex; justify-content: space-between; align-items: center;
   padding-top: 40px; border-top: 1px solid rgba(156,163,175,0.06);

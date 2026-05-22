@@ -2,12 +2,14 @@
 {% load static %}
 
 {% block content %}
-<div class="p-6">
+<div class="px-6">
     <!-- Page Title -->
     <div class="mb-6">
         <h1 class="text-2xl font-semibold text-dark dark:text-white">User Management</h1>
         <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Manage and view all registered users</p>
     </div>
+
+    {% include 'training_institute_app/components/alerts.html' %}
 
     <!-- Users Table -->
     <div class="card">
@@ -69,13 +71,10 @@
                             <td class="py-3 px-4">
                                 <p class="text-sm text-dark dark:text-white">{{ user.date_joined|date:"M d, Y" }}</p>
                                 <p class="text-xs text-gray-500 dark:text-gray-400">{{ user.date_joined|date:"g:i A" }}</p>
-                            </td>
+                             </td>
                             <td class="py-3 px-4 text-center">
                                 <div class="flex items-center justify-center gap-2">
-                                    <button data-user-id="{{ user.id }}" class="action-btn view-btn p-1.5 rounded-lg text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-all duration-300 hover:scale-110 hover:shadow-md" title="View User">
-                                        <iconify-icon icon="solar:eye-linear" class="text-lg"></iconify-icon>
-                                    </button>
-                                    <button data-user-id="{{ user.id }}" 
+                                    <button data-user-id="{{ user.id }}"
                                             data-username="{{ user.username|escapejs }}"
                                             data-fullname="{{ user.get_full_name|default:user.username|escapejs }}"
                                             data-email="{{ user.email|escapejs }}"
@@ -86,13 +85,13 @@
                                             class="action-btn edit-btn p-1.5 rounded-lg text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300 transition-all duration-300 hover:scale-110 hover:shadow-md" title="Edit User">
                                         <iconify-icon icon="solar:pen-2-linear" class="text-lg"></iconify-icon>
                                     </button>
-                                    <button data-user-id="{{ user.id }}" 
+                                    <button data-user-id="{{ user.id }}"
                                             data-username="{{ user.get_full_name|default:user.username|escapejs }}"
                                             class="action-btn delete-btn p-1.5 rounded-lg text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 transition-all duration-300 hover:scale-110 hover:shadow-md" title="Delete User">
                                         <iconify-icon icon="solar:trash-bin-trash-linear" class="text-lg"></iconify-icon>
                                     </button>
                                 </div>
-                            </td>
+                             </td>
                         </tr>
                         {% empty %}
                         <tr>
@@ -102,7 +101,7 @@
                                     <p class="text-gray-500 dark:text-gray-400">No users found</p>
                                     <p class="text-sm text-gray-400 dark:text-gray-500 mt-1">Users will appear here once registered</p>
                                 </div>
-                            </td>
+                             </td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -112,343 +111,22 @@
     </div>
 </div>
 
-<!-- Custom Edit User Modal -->
-<div id="editModal" class="modal-overlay">
-    <div class="modal-container">
-        <div class="modal-header">
-            <h3 class="modal-title">Edit User</h3>
-            <button class="modal-close">
-                <iconify-icon icon="solar:close-circle-linear" class="text-2xl"></iconify-icon>
-            </button>
-        </div>
-        
-        <form id="editUserForm" method="post" action="{% url 'user_management' %}">
-            {% csrf_token %}
-            <input type="hidden" name="user_id" id="modal_user_id">
-            <div class="modal-body">
-                <div class="form-group">
-                    <label class="form-label">Username</label>
-                    <input type="text" name="username" id="modal_username" class="form-input-readonly" readonly>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Full Name</label>
-                    <input type="text" name="full_name" id="modal_full_name" class="form-input">
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Email</label>
-                    <input type="email" name="email" id="modal_email" class="form-input">
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Phone Number</label>
-                    <input type="text" name="phone_number" id="modal_phone" class="form-input">
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Role</label>
-                    <div class="checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="is_student" id="modal_is_student" class="checkbox"> Student
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="is_teacher" id="modal_is_teacher" class="checkbox"> Teacher
-                        </label>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="is_active" id="modal_is_active" class="checkbox"> Active Account
-                    </label>
-                </div>
-            </div>
-            
-            <div class="modal-footer">
-                <button type="button" class="btn-cancel">Cancel</button>
-                <button type="submit" class="btn-save">Save Changes</button>
-            </div>
-        </form>
-    </div>
-</div>
-
-<!-- Custom Delete Modal -->
-<div id="deleteModal" class="modal-overlay">
-    <div class="modal-container modal-sm">
-        <div class="modal-header">
-            <h3 class="modal-title">Delete User</h3>
-            <button class="modal-close">
-                <iconify-icon icon="solar:close-circle-linear" class="text-2xl"></iconify-icon>
-            </button>
-        </div>
-        
-        <div class="modal-body text-center">
-            <iconify-icon icon="solar:trash-bin-trash-linear" class="text-6xl text-red-500 mb-4"></iconify-icon>
-            <p class="text-gray-700 dark:text-gray-300">Are you sure you want to delete <strong id="deleteUserName"></strong>?</p>
-            <p class="text-sm text-red-600 dark:text-red-400 mt-2">This action cannot be undone!</p>
-        </div>
-        
-        <div class="modal-footer">
-            <button type="button" class="btn-cancel">Cancel</button>
-            <button type="button" class="btn-delete">Delete User</button>
-        </div>
-    </div>
-</div>
+<!-- Include the generic form modal component -->
+{% include 'training_institute_app/components/formModel.html' %}
 
 <style>
-    /* Modal Styles */
-    .modal-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.6);
-        backdrop-filter: blur(4px);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        z-index: 1000;
-    }
-    
-    .modal-container {
-        background: white;
-        border-radius: 16px;
-        width: 90%;
-        max-width: 500px;
-        max-height: 90vh;
-        overflow-y: auto;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        animation: modalSlideIn 0.3s ease-out;
-    }
-    
-    .dark .modal-container {
-        background: #1e293b;
-    }
-    
-    .modal-sm {
-        max-width: 400px;
-    }
-    
-    .modal-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 16px 20px;
-        border-bottom: 1px solid #e2e8f0;
-    }
-    
-    .dark .modal-header {
-        border-bottom-color: #334155;
-    }
-    
-    .modal-title {
-        font-size: 1.125rem;
-        font-weight: 600;
-        color: #0f172a;
-    }
-    
-    .dark .modal-title {
-        color: #f1f5f9;
-    }
-    
-    .modal-close {
-        color: #94a3b8;
-        background: none;
-        border: none;
-        cursor: pointer;
-        transition: all 0.2s;
-    }
-    
-    .modal-close:hover {
-        color: #475569;
-        transform: rotate(90deg);
-    }
-    
-    .dark .modal-close:hover {
-        color: #cbd5e1;
-    }
-    
-    .modal-body {
-        padding: 20px;
-    }
-    
-    .modal-footer {
-        display: flex;
-        justify-content: flex-end;
-        gap: 12px;
-        padding: 16px 20px;
-        border-top: 1px solid #e2e8f0;
-    }
-    
-    .dark .modal-footer {
-        border-top-color: #334155;
-    }
-    
-    .form-group {
-        margin-bottom: 16px;
-    }
-    
-    .form-label {
-        display: block;
-        font-size: 0.875rem;
-        font-weight: 500;
-        margin-bottom: 6px;
-        color: #334155;
-    }
-    
-    .dark .form-label {
-        color: #cbd5e1;
-    }
-    
-    .form-input {
-        width: 100%;
-        padding: 8px 12px;
-        border: 1px solid #e2e8f0;
-        border-radius: 8px;
-        background: white;
-        color: #0f172a;
-        transition: all 0.2s;
-    }
-    
-    .form-input:focus {
-        outline: none;
-        border-color: #3b82f6;
-        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-    }
-    
-    .dark .form-input {
-        background: #0f172a;
-        border-color: #334155;
-        color: #f1f5f9;
-    }
-    
-    .form-input-readonly {
-        width: 100%;
-        padding: 8px 12px;
-        border: 1px solid #e2e8f0;
-        border-radius: 8px;
-        background: #f1f5f9;
-        color: #64748b;
-        cursor: not-allowed;
-    }
-    
-    .dark .form-input-readonly {
-        background: #334155;
-        border-color: #475569;
-        color: #94a3b8;
-    }
-    
-    .checkbox-group {
-        display: flex;
-        gap: 16px;
-    }
-    
-    .checkbox-label {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 0.875rem;
-        color: #334155;
-        cursor: pointer;
-        transition: all 0.2s;
-    }
-    
-    .checkbox-label:hover {
-        transform: translateX(2px);
-    }
-    
-    .dark .checkbox-label {
-        color: #cbd5e1;
-    }
-    
-    .checkbox {
-        width: 16px;
-        height: 16px;
-        cursor: pointer;
-        transition: all 0.2s;
-    }
-    
-    .checkbox:hover {
-        transform: scale(1.1);
-    }
-    
-    .btn-cancel {
-        padding: 8px 16px;
-        font-size: 0.875rem;
-        font-weight: 500;
-        color: #64748b;
-        background: transparent;
-        border: 1px solid #e2e8f0;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: all 0.3s;
-    }
-    
-    .btn-cancel:hover {
-        background: #f1f5f9;
-        transform: translateY(-2px);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-    
-    .dark .btn-cancel {
-        border-color: #475569;
-        color: #94a3b8;
-    }
-    
-    .dark .btn-cancel:hover {
-        background: #334155;
-    }
-    
-    .btn-save {
-        padding: 8px 16px;
-        font-size: 0.875rem;
-        font-weight: 500;
-        color: white;
-        background: #3b82f6;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: all 0.3s;
-    }
-    
-    .btn-save:hover {
-        background: #2563eb;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-    }
-    
-    .btn-delete {
-        padding: 8px 16px;
-        font-size: 0.875rem;
-        font-weight: 500;
-        color: white;
-        background: #ef4444;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: all 0.3s;
-    }
-    
-    .btn-delete:hover {
-        background: #dc2626;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
-    }
-    
     /* Table Row Hover Effects */
     .table-row-transition {
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    
-    /* Action Buttons Container */
+
+    /* Action Buttons Ripple */
     .action-btn {
         position: relative;
         overflow: hidden;
         cursor: pointer;
     }
-    
+
     .action-btn::before {
         content: '';
         position: absolute;
@@ -461,215 +139,362 @@
         transform: translate(-50%, -50%);
         transition: width 0.6s, height 0.6s;
     }
-    
+
     .action-btn:hover::before {
         width: 100px;
         height: 100px;
     }
-    
-    /* Avatar Hover Effect */
+
+    /* Avatar Hover */
     .avatar-shadow {
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    
+
     .avatar-shadow:hover {
         transform: scale(1.05);
         box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
     }
-    
-    /* Role Badge Transitions */
-    .role-badge-transition {
-        transition: all 0.3s ease;
-    }
-    
-    /* Status Badge Transitions */
+
+    /* Role & Status Badge Transitions */
+    .role-badge-transition,
     .status-badge-transition {
         transition: all 0.3s ease;
     }
-    
-    /* Status Pulse Animation for Active Users */
+
+    /* Status Pulse Animation */
     .status-pulse {
         animation: pulse 2s infinite;
     }
-    
+
     @keyframes pulse {
-        0% {
-            opacity: 1;
-            transform: scale(1);
-        }
-        50% {
-            opacity: 0.7;
-            transform: scale(1.2);
-        }
-        100% {
-            opacity: 1;
-            transform: scale(1);
-        }
-    }
-    
-    @keyframes modalSlideIn {
-        from {
-            opacity: 0;
-            transform: translateY(-30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    /* Custom scrollbar for modal */
-    .modal-container::-webkit-scrollbar {
-        width: 6px;
-    }
-    
-    .modal-container::-webkit-scrollbar-track {
-        background: #f1f1f1;
-        border-radius: 10px;
-    }
-    
-    .modal-container::-webkit-scrollbar-thumb {
-        background: #888;
-        border-radius: 10px;
-    }
-    
-    .modal-container::-webkit-scrollbar-thumb:hover {
-        background: #555;
-    }
-    
-    .dark .modal-container::-webkit-scrollbar-track {
-        background: #334155;
-    }
-    
-    .dark .modal-container::-webkit-scrollbar-thumb {
-        background: #64748b;
+        0%   { opacity: 1; transform: scale(1); }
+        50%  { opacity: 0.7; transform: scale(1.2); }
+        100% { opacity: 1; transform: scale(1); }
     }
 </style>
 
 <script>
-    // Set up all event listeners when page loads
+    // Handle user form submission with AJAX
+    function submitUserForm(formData, actionUrl) {
+        fetch(actionUrl, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                showSuccessAlert(data.message);
+            } else {
+                showErrorAlert(data.message);
+            }
+        })
+        .catch(error => {
+            showErrorAlert('An error occurred. Please try again.');
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
-        // View buttons
-        document.querySelectorAll('.view-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const userId = this.getAttribute('data-user-id');
-                viewUser(userId);
-            });
-        });
-        
-        // Edit buttons
-        document.querySelectorAll('.edit-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const userId = this.getAttribute('data-user-id');
-                const username = this.getAttribute('data-username');
-                const fullName = this.getAttribute('data-fullname');
-                const email = this.getAttribute('data-email');
-                const phone = this.getAttribute('data-phone');
-                const isStudent = this.getAttribute('data-is-student') === 'true';
-                const isTeacher = this.getAttribute('data-is-teacher') === 'true';
-                const isActive = this.getAttribute('data-is-active') === 'true';
+        // Intercept form submission for the generic modal
+        const genericForm = document.getElementById('genericForm');
+        if (genericForm) {
+            genericForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+                const actionUrl = this.action;
                 
-                openEditModal(userId, username, fullName, email, phone, isStudent, isTeacher, isActive);
+                // Get the mode from the modal (add or edit)
+                const mode = this.querySelector('input[name="mode"]')?.value || 
+                            document.getElementById('modalMode')?.value ||
+                            'add';
+                
+                // Add form_type based on mode
+                if (mode === 'edit') {
+                    formData.append('form_type', 'edit');
+                } else {
+                    formData.append('form_type', 'add');
+                }
+                
+                // Validate username
+                const username = formData.get('username');
+                if (!username || username.trim() === '') {
+                    showErrorAlert('Please enter a username');
+                    return;
+                }
+                
+                // Validate email
+                const email = formData.get('email');
+                if (!email || email.trim() === '') {
+                    showErrorAlert('Please enter an email address');
+                    return;
+                }
+                
+                submitUserForm(formData, actionUrl);
+                closeFormModal();
+            });
+        }
+    });
+    
+    // Add User Button - using rows format for the modal
+    document.getElementById('addUserBtn')?.addEventListener('click', function() {
+        openFormModal({
+            title: 'Add New User',
+            mode: 'add',
+            actionUrl: "{% url 'user_management' %}",
+            rows: [
+                {
+                    fields: [
+                        {
+                            name: 'username',
+                            label: 'Username',
+                            type: 'text',
+                            required: true,
+                            placeholder: 'Enter username',
+                            value: ''
+                        }
+                    ]
+                },
+                {
+                    fields: [
+                        {
+                            name: 'full_name',
+                            label: 'Full Name',
+                            type: 'text',
+                            required: false,
+                            placeholder: 'Enter full name',
+                            value: ''
+                        }
+                    ]
+                },
+                {
+                    fields: [
+                        {
+                            name: 'email',
+                            label: 'Email',
+                            type: 'email',
+                            required: true,
+                            placeholder: 'Enter email address',
+                            value: ''
+                        },
+                        {
+                            name: 'phone_number',
+                            label: 'Phone Number',
+                            type: 'text',
+                            required: false,
+                            placeholder: 'Enter phone number',
+                            value: ''
+                        }
+                    ]
+                },
+                {
+                    fields: [
+                        {
+                            name: 'password',
+                            label: 'Password',
+                            type: 'password',
+                            required: true,
+                            placeholder: 'Enter password',
+                            value: ''
+                        },
+                        {
+                            name: 'confirm_password',
+                            label: 'Confirm Password',
+                            type: 'password',
+                            required: true,
+                            placeholder: 'Confirm password',
+                            value: ''
+                        }
+                    ]
+                },
+            ]
+        });
+    });
+    
+    // Edit User Button - using rows format with pre-filled data
+    document.querySelectorAll('.edit-btn').forEach(function(button) {
+        button.addEventListener('click', function() {
+            const userId = this.dataset.userId;
+            const username = this.dataset.username;
+            const fullname = this.dataset.fullname;
+            const email = this.dataset.email;
+            const phone = this.dataset.phone;
+            const isStudent = this.dataset.isStudent === 'true';
+            const isTeacher = this.dataset.isTeacher === 'true';
+            const isActive = this.dataset.isActive === 'true';
+            
+            openFormModal({
+                title: 'Edit User',
+                mode: 'edit',
+                actionUrl: "{% url 'user_management' %}",
+                itemId: userId,  // ✅ This is already correct
+                rows: [
+                    {
+                        fields: [
+                            {
+                                name: 'username',
+                                label: 'Username',
+                                type: 'text',
+                                required: true,
+                                placeholder: 'Enter username',
+                                value: username
+                            }
+                        ]
+                    },
+                    {
+                        fields: [
+                            {
+                                name: 'full_name',
+                                label: 'Full Name',
+                                type: 'text',
+                                required: false,
+                                placeholder: 'Enter full name',
+                                value: fullname || ''
+                            }
+                        ]
+                    },
+                    {
+                        fields: [
+                            {
+                                name: 'email',
+                                label: 'Email',
+                                type: 'email',
+                                required: true,
+                                placeholder: 'Enter email address',
+                                value: email
+                            },
+                            {
+                                name: 'phone_number',
+                                label: 'Phone Number',
+                                type: 'text',
+                                required: false,
+                                placeholder: 'Enter phone number',
+                                value: phone || ''
+                            }
+                        ]
+                    },
+                ]
             });
         });
-        
-        // Delete buttons
-        document.querySelectorAll('.delete-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const userId = this.getAttribute('data-user-id');
-                const userName = this.getAttribute('data-username');
-                openDeleteModal(userId, userName);
-            });
-        });
-        
-        // Modal close buttons
-        document.querySelectorAll('.modal-close, .btn-cancel').forEach(button => {
-            button.addEventListener('click', function() {
-                const modal = this.closest('.modal-overlay');
-                if (modal && modal.id === 'editModal') {
-                    closeEditModal();
-                } else if (modal && modal.id === 'deleteModal') {
-                    closeDeleteModal();
+    });
+    
+    // Delete User Button - using SweetAlert with proper cancel handling
+    document.querySelectorAll('.delete-btn').forEach(function(button) {
+        button.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const userId = this.dataset.userId;
+            const userName = this.dataset.username;
+            
+            let warningMessage = `Are you sure you want to delete user "${userName}"? This action cannot be undone.`;
+            
+            // Use global Swal.fire with theme support
+            const themeConfig = getSweetAlertThemeConfig();
+            Swal.fire({
+                icon: 'warning',
+                title: 'Delete User',
+                text: warningMessage,
+                confirmButtonText: 'Yes, delete',
+                cancelButtonText: 'Cancel',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: themeConfig.cancelButtonColor,
+                reverseButtons: false,
+                background: themeConfig.background,
+                color: themeConfig.color,
+                backdrop: themeConfig.backdrop,
+                customClass: {
+                    popup: 'swal2-popup',
+                    confirmButton: 'swal2-confirm',
+                    cancelButton: 'swal2-cancel'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Get CSRF token
+                    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]')?.value || 
+                                    document.querySelector('input[name="csrfmiddlewaretoken"]')?.value;
+                    
+                    const formData = new URLSearchParams();
+                    formData.append('user_id', userId);
+                    formData.append('csrfmiddlewaretoken', csrfToken);
+                    
+                    // Show loading state
+                    Swal.fire({
+                        title: 'Deleting...',
+                        text: 'Please wait',
+                        allowOutsideClick: false,
+                        background: themeConfig.background,
+                        color: themeConfig.color,
+                        didOpen: () => {
+                            Swal.showLoading();
+                        },
+                        customClass: {
+                            popup: 'swal2-popup'
+                        }
+                    });
+                    
+                    // Use the user management endpoint for delete
+                    fetch("{% url 'delete_user' %}", {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Deleted!',
+                                text: data.message,
+                                confirmButtonText: 'OK',
+                                background: themeConfig.background,
+                                color: themeConfig.color,
+                                confirmButtonColor: themeConfig.confirmButtonColor,
+                                customClass: {
+                                    popup: 'swal2-popup',
+                                    confirmButton: 'swal2-confirm'
+                                }
+                            }).then(() => {
+                                window.location.reload();
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error!',
+                                text: data.message,
+                                confirmButtonText: 'OK',
+                                background: themeConfig.background,
+                                color: themeConfig.color,
+                                confirmButtonColor: themeConfig.confirmButtonColor,
+                                customClass: {
+                                    popup: 'swal2-popup',
+                                    confirmButton: 'swal2-confirm'
+                                }
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error!',
+                            text: 'An error occurred. Please try again.',
+                            confirmButtonText: 'OK',
+                            background: themeConfig.background,
+                            color: themeConfig.color,
+                            confirmButtonColor: themeConfig.confirmButtonColor,
+                            customClass: {
+                                popup: 'swal2-popup',
+                                confirmButton: 'swal2-confirm'
+                            }
+                        });
+                    });
                 }
             });
         });
-        
-        // Delete confirmation button
-        document.querySelector('.btn-delete')?.addEventListener('click', function() {
-            confirmDelete();
-        });
-    });
-    
-    // Edit Modal Functions
-    function openEditModal(userId, username, fullName, email, phone, isStudent, isTeacher, isActive) {
-        document.getElementById('modal_user_id').value = userId;
-        document.getElementById('modal_username').value = username;
-        document.getElementById('modal_full_name').value = fullName;
-        document.getElementById('modal_email').value = email;
-        document.getElementById('modal_phone').value = phone;
-        document.getElementById('modal_is_student').checked = isStudent;
-        document.getElementById('modal_is_teacher').checked = isTeacher;
-        document.getElementById('modal_is_active').checked = isActive;
-        
-        document.getElementById('editModal').style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
-    
-    function closeEditModal() {
-        document.getElementById('editModal').style.display = 'none';
-        document.body.style.overflow = '';
-    }
-    
-    // Delete Modal Functions
-    let currentDeleteId = null;
-    
-    function openDeleteModal(userId, userName) {
-        currentDeleteId = userId;
-        document.getElementById('deleteUserName').textContent = userName;
-        document.getElementById('deleteModal').style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
-    
-    function closeDeleteModal() {
-        document.getElementById('deleteModal').style.display = 'none';
-        document.body.style.overflow = '';
-        currentDeleteId = null;
-    }
-    
-    function confirmDelete() {
-        if (currentDeleteId) {
-            const form = document.createElement('form');
-            form.method = 'POST';
-            form.action = "{% url 'user_management' %}";
-            
-            const csrfInput = document.createElement('input');
-            csrfInput.type = 'hidden';
-            csrfInput.name = 'csrfmiddlewaretoken';
-            csrfInput.value = document.querySelector('[name=csrfmiddlewaretoken]').value;
-            
-            const deleteInput = document.createElement('input');
-            deleteInput.type = 'hidden';
-            deleteInput.name = 'delete_user_id';
-            deleteInput.value = currentDeleteId;
-            
-            form.appendChild(csrfInput);
-            form.appendChild(deleteInput);
-            document.body.appendChild(form);
-            form.submit();
-        }
-    }
-    
-    function viewUser(userId) {
-        alert('View user feature coming soon! User ID: ' + userId);
-    }
-    
-    // Close modals when clicking outside
-    document.getElementById('editModal')?.addEventListener('click', function(e) {
-        if (e.target === this) closeEditModal();
-    });
-    
-    document.getElementById('deleteModal')?.addEventListener('click', function(e) {
-        if (e.target === this) closeDeleteModal();
     });
 </script>
 {% endblock content %}

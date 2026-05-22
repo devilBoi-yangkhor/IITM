@@ -1,0 +1,461 @@
+<!-- SweetAlert-style Alert Component -->
+<style>
+    /* SweetAlert-style Modal Overlay */
+    .swal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(4px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+        animation: fadeIn 0.2s ease-out;
+    }
+
+    .swal-modal {
+        background: white;
+        border-radius: 20px;
+        width: 90%;
+        max-width: 420px;
+        padding: 0;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        animation: scaleIn 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
+        overflow: hidden;
+    }
+
+    .dark .swal-modal {
+        background: #1e293b;
+    }
+
+    .swal-header {
+        padding: 32px 24px 16px;
+        text-align: center;
+    }
+
+    .swal-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: popIn 0.4s cubic-bezier(0.34, 1.2, 0.64, 1);
+    }
+
+    .swal-icon-success {
+        background: linear-gradient(135deg, #22c55e, #16a34a);
+        box-shadow: 0 8px 20px -5px rgba(34, 197, 94, 0.4);
+    }
+
+    .swal-icon-error {
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+        box-shadow: 0 8px 20px -5px rgba(239, 68, 68, 0.4);
+    }
+
+    .swal-icon-warning {
+        background: linear-gradient(135deg, #f59e0b, #d97706);
+        box-shadow: 0 8px 20px -5px rgba(245, 158, 11, 0.4);
+    }
+
+    .swal-icon-info {
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+        box-shadow: 0 8px 20px -5px rgba(59, 130, 246, 0.4);
+    }
+
+    .swal-icon iconify-icon {
+        font-size: 48px;
+        color: white;
+    }
+
+    .swal-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #0f172a;
+        margin: 0 0 8px;
+    }
+
+    .dark .swal-title {
+        color: #f1f5f9;
+    }
+
+    .swal-text {
+        font-size: 15px;
+        color: #475569;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    .dark .swal-text {
+        color: #cbd5e1;
+    }
+
+    .swal-content {
+        padding: 0 24px 24px;
+        text-align: center;
+    }
+
+    .swal-footer {
+        padding: 16px 24px 32px;
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        background: #f8fafc;
+    }
+
+    .dark .swal-footer {
+        background: #0f172a;
+    }
+
+    .swal-button {
+        padding: 10px 28px;
+        border-radius: 12px;
+        font-size: 14px;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-family: inherit;
+    }
+
+    .swal-button-confirm {
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+        color: white;
+        box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+    }
+
+    .swal-button-confirm:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+    }
+
+    .swal-button-cancel {
+        background: #e2e8f0;
+        color: #475569;
+    }
+
+    .dark .swal-button-cancel {
+        background: #334155;
+        color: #cbd5e1;
+    }
+
+    .swal-button-cancel:hover {
+        background: #cbd5e1;
+        transform: translateY(-2px);
+    }
+
+    .dark .swal-button-cancel:hover {
+        background: #475569;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes scaleIn {
+        from {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    @keyframes popIn {
+        0% {
+            transform: scale(0);
+            opacity: 0;
+        }
+        50% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    /* Toast notifications for quick alerts */
+    .toast-notification {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 10001;
+        animation: slideInRight 0.3s ease-out;
+    }
+
+    .toast-content {
+        background: white;
+        border-radius: 12px;
+        padding: 12px 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        border-left: 4px solid;
+    }
+
+    .dark .toast-content {
+        background: #1e293b;
+    }
+
+    .toast-success {
+        border-left-color: #22c55e;
+    }
+
+    .toast-error {
+        border-left-color: #ef4444;
+    }
+
+    .toast-warning {
+        border-left-color: #f59e0b;
+    }
+
+    .toast-info {
+        border-left-color: #3b82f6;
+    }
+
+    .toast-icon {
+        font-size: 20px;
+    }
+
+    .toast-message {
+        font-size: 14px;
+        font-weight: 500;
+        color: #0f172a;
+    }
+
+    .dark .toast-message {
+        color: #f1f5f9;
+    }
+
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(100px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .toast-fade-out {
+        animation: slideOutRight 0.3s ease-out forwards;
+    }
+
+    @keyframes slideOutRight {
+        from {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        to {
+            opacity: 0;
+            transform: translateX(100px);
+        }
+    }
+</style>
+
+<!-- SweetAlert Modal Container -->
+<div id="sweetAlertModal" class="swal-overlay">
+    <div class="swal-modal">
+        <div class="swal-header">
+            <div class="swal-icon" id="swalIcon"></div>
+            <h2 class="swal-title" id="swalTitle"></h2>
+        </div>
+        <div class="swal-content">
+            <p class="swal-text" id="swalText"></p>
+        </div>
+        <div class="swal-footer" id="swalFooter"></div>
+    </div>
+</div>
+
+<!-- Legacy messages wrapper (for Django messages) -->
+{% if messages %}
+<div class="alerts-wrapper px-6 pt-4 space-y-3">
+    {% for message in messages %}
+    <div class="alert-item flex items-center justify-between gap-3 px-4 py-3 rounded-xl text-sm font-medium shadow-sm
+        {% if message.tags == 'success' %}
+            bg-green-50 text-green-800 border border-green-200 dark:bg-green-900/20 dark:text-green-300 dark:border-green-800
+        {% elif message.tags == 'error' %}
+            bg-red-50 text-red-800 border border-red-200 dark:bg-red-900/20 dark:text-red-300 dark:border-red-800
+        {% elif message.tags == 'warning' %}
+            bg-yellow-50 text-yellow-800 border border-yellow-200 dark:bg-yellow-900/20 dark:text-yellow-300 dark:border-yellow-800
+        {% else %}
+            bg-blue-50 text-blue-800 border border-blue-200 dark:bg-blue-900/20 dark:text-blue-300 dark:border-blue-800
+        {% endif %}
+    ">
+        <div class="flex items-center gap-2">
+            {% if message.tags == 'success' %}
+                <iconify-icon icon="solar:check-circle-linear" class="text-lg flex-shrink-0"></iconify-icon>
+            {% elif message.tags == 'error' %}
+                <iconify-icon icon="solar:close-circle-linear" class="text-lg flex-shrink-0"></iconify-icon>
+            {% elif message.tags == 'warning' %}
+                <iconify-icon icon="solar:danger-triangle-linear" class="text-lg flex-shrink-0"></iconify-icon>
+            {% else %}
+                <iconify-icon icon="solar:info-circle-linear" class="text-lg flex-shrink-0"></iconify-icon>
+            {% endif %}
+            <span>{{ message }}</span>
+        </div>
+        <button type="button" class="alert-close flex-shrink-0 opacity-60 hover:opacity-100 transition-opacity duration-200">
+            <iconify-icon icon="solar:close-circle-linear" class="text-base"></iconify-icon>
+        </button>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<script>
+    // SweetAlert-style Alert Function
+    function swal(config) {
+        return new Promise((resolve) => {
+            const modal = document.getElementById('sweetAlertModal');
+            const iconContainer = document.getElementById('swalIcon');
+            const titleEl = document.getElementById('swalTitle');
+            const textEl = document.getElementById('swalText');
+            const footer = document.getElementById('swalFooter');
+            
+            // Set icon
+            let iconHtml = '';
+            let iconClass = '';
+            switch(config.icon) {
+                case 'success':
+                    iconHtml = '<iconify-icon icon="solar:check-circle-bold" class="text-5xl text-white"></iconify-icon>';
+                    iconClass = 'swal-icon-success';
+                    break;
+                case 'error':
+                    iconHtml = '<iconify-icon icon="solar:close-circle-bold" class="text-5xl text-white"></iconify-icon>';
+                    iconClass = 'swal-icon-error';
+                    break;
+                case 'warning':
+                    iconHtml = '<iconify-icon icon="solar:danger-triangle-bold" class="text-5xl text-white"></iconify-icon>';
+                    iconClass = 'swal-icon-warning';
+                    break;
+                case 'info':
+                    iconHtml = '<iconify-icon icon="solar:info-circle-bold" class="text-5xl text-white"></iconify-icon>';
+                    iconClass = 'swal-icon-info';
+                    break;
+                default:
+                    iconHtml = '<iconify-icon icon="solar:check-circle-bold" class="text-5xl text-white"></iconify-icon>';
+                    iconClass = 'swal-icon-success';
+            }
+            
+            iconContainer.innerHTML = iconHtml;
+            iconContainer.className = `swal-icon ${iconClass}`;
+            
+            // Set title and text
+            titleEl.textContent = config.title || (config.icon === 'success' ? 'Success!' : config.icon === 'error' ? 'Error!' : config.icon === 'warning' ? 'Warning!' : 'Info');
+            textEl.textContent = config.text || '';
+            
+            // Create buttons
+            let buttonsHtml = '';
+            if (config.showCancelButton) {
+                buttonsHtml += `<button class="swal-button swal-button-cancel" id="swalCancelBtn">${config.cancelButtonText || 'Cancel'}</button>`;
+            }
+            buttonsHtml += `<button class="swal-button swal-button-confirm" id="swalConfirmBtn">${config.confirmButtonText || 'OK'}</button>`;
+            footer.innerHTML = buttonsHtml;
+            
+            // Show modal
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            
+            // Handle confirm button
+            const confirmBtn = document.getElementById('swalConfirmBtn');
+            const cancelBtn = document.getElementById('swalCancelBtn');
+            
+            const closeModal = () => {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+                resolve(true);
+            };
+            
+            confirmBtn.onclick = () => {
+                closeModal();
+                if (config.onConfirm) config.onConfirm();
+            };
+            
+            if (cancelBtn) {
+                cancelBtn.onclick = () => {
+                    closeModal();
+                    if (config.onCancel) config.onCancel();
+                    resolve(false);
+                };
+            }
+            
+            // Close on overlay click
+            modal.onclick = (e) => {
+                if (e.target === modal && config.closeOnClickOutside !== false) {
+                    closeModal();
+                }
+            };
+        });
+    }
+    
+    // Toast Notification Function
+    function toast(message, type = 'success', duration = 3000) {
+        const toastId = 'toast_' + Date.now();
+        const icons = {
+            success: 'solar:check-circle-linear',
+            error: 'solar:close-circle-linear',
+            warning: 'solar:danger-triangle-linear',
+            info: 'solar:info-circle-linear'
+        };
+        
+        const toastHtml = `
+            <div id="${toastId}" class="toast-notification">
+                <div class="toast-content toast-${type}">
+                    <iconify-icon icon="${icons[type]}" class="toast-icon ${type === 'success' ? 'text-green-500' : type === 'error' ? 'text-red-500' : type === 'warning' ? 'text-yellow-500' : 'text-blue-500'}"></iconify-icon>
+                    <span class="toast-message">${message}</span>
+                </div>
+            </div>
+        `;
+        
+        document.body.insertAdjacentHTML('beforeend', toastHtml);
+        
+        setTimeout(() => {
+            const toastElement = document.getElementById(toastId);
+            if (toastElement) {
+                toastElement.classList.add('toast-fade-out');
+                toastElement.addEventListener('animationend', () => {
+                    toastElement.remove();
+                });
+            }
+        }, duration);
+    }
+    
+    // Legacy alert functions for compatibility
+    function showAlert(message, type) {
+        toast(message, type);
+    }
+    
+    // Auto-dismiss legacy alerts
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.alert-close').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                const alertItem = this.closest('.alert-item');
+                alertItem.classList.add('fade-out');
+                alertItem.addEventListener('animationend', function() {
+                    alertItem.remove();
+                });
+            });
+        });
+        
+        document.querySelectorAll('.alert-item').forEach(function(alertItem) {
+            setTimeout(function() {
+                if (document.body.contains(alertItem)) {
+                    alertItem.classList.add('fade-out');
+                    alertItem.addEventListener('animationend', function() {
+                        alertItem.remove();
+                    });
+                }
+            }, 5000);
+        });
+    });
+</script>

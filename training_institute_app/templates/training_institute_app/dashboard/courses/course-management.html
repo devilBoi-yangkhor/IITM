@@ -1,0 +1,577 @@
+{% extends 'training_institute_app/dashboard/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="px-6">
+    <!-- Page Title -->
+    <div class="flex justify-between items-center mb-6">
+        <div>
+            <h1 class="text-2xl font-semibold text-dark dark:text-white">Course Management</h1>
+            <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Manage and configure all courses</p>
+        </div>
+        <button id="addCourseBtn" 
+                class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-dark dark:text-white text-sm font-medium rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-xl">
+            <iconify-icon icon="solar:add-circle-linear" class="text-lg mr-2"></iconify-icon>
+            Add New Course
+        </button>
+    </div>
+
+    <!-- Alert Container for dynamic messages -->
+    {% include 'training_institute_app/components/alerts.html' %}
+
+    <!-- Courses Table -->
+    <div class="card">
+        <div class="card-body p-0">
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b border-border dark:border-darkborder bg-gray-100 dark:bg-gray-900">
+                            <th class="text-left py-3 px-4 text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Course Code</th>
+                            <th class="text-left py-3 px-4 text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Course Name</th>
+                            <th class="text-left py-3 px-4 text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Category</th>
+                            <th class="text-left py-3 px-4 text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Department</th>
+                            <th class="text-left py-3 px-4 text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Instructor</th>
+                            <th class="text-left py-3 px-4 text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Duration</th>
+                            <th class="text-left py-3 px-4 text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Schedule</th>
+                            <th class="text-left py-3 px-4 text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Fee</th>
+                            <th class="text-left py-3 px-4 text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Enrolled</th>
+                            <th class="text-left py-3 px-4 text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Rating</th>
+                            <th class="text-center py-3 px-4 text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Status</th>
+                            <th class="text-center py-3 px-4 text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for course in courses %}
+                        <tr class="table-row-transition border-b border-border dark:border-darkborder hover:bg-gray-100 dark:hover:bg-slate-700 transition-all duration-300">
+                            <td class="py-3 px-4">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shadow-md">
+                                        <iconify-icon icon="solar:book-bookmark-linear" class="text-white text-sm"></iconify-icon>
+                                    </div>
+                                    <p class="text-sm font-mono font-semibold text-dark dark:text-white">{{ course.get_short_uuid }}</p>
+                                </div>
+                            </td>
+                            <td class="py-3 px-4">
+                                <p class="text-sm font-medium text-dark dark:text-white">{{ course.course_name }}</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">{{ course.description|truncatechars:50 }}</p>
+                            </td>
+                            <td class="py-3 px-4">
+                                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400">
+                                    <iconify-icon icon="solar:tag-linear" class="mr-1 text-xs"></iconify-icon>
+                                    {{ course.category.name|default:"Uncategorized" }}
+                                </span>
+                            </td>
+                            <td class="py-3 px-4">
+                                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">
+                                    <iconify-icon icon="solar:buildings-linear" class="mr-1 text-xs"></iconify-icon>
+                                    {{ course.department.name|default:"No Dept" }}
+                                </span>
+                            </td>
+                            <td class="py-3 px-4">
+                                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                                    <iconify-icon icon="solar:user-circle-linear" class="mr-1 text-xs"></iconify-icon>
+                                    {{ course.instructor.name|default:"Not Assigned" }}
+                                </span>
+                            </td>
+                            <td class="py-3 px-4">
+                                <p class="text-sm text-dark dark:text-white">{{ course.duration_weeks }} weeks</p>
+                            </td>
+                            <td class="py-3 px-4">
+                                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400">
+                                    <iconify-icon icon="solar:calendar-linear" class="mr-1 text-xs"></iconify-icon>
+                                    {{ course.schedule_type }}
+                                </span>
+                            </td>
+                            <td class="py-3 px-4">
+                                <p class="text-sm font-semibold text-green-600 dark:text-green-400">${{ course.course_fee }}</p>
+                                {% if course.emi_available %}
+                                <p class="text-xs text-gray-500 dark:text-gray-400">EMI Available</p>
+                                {% endif %}
+                            </td>
+                            <td class="py-3 px-4">
+                                <div class="flex flex-col gap-1">
+                                    <div class="flex items-center gap-1">
+                                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-400">
+                                            <iconify-icon icon="solar:users-group-rounded-linear" class="mr-1 text-xs"></iconify-icon>
+                                            {{ course.current_enrolled }}/{{ course.max_students }}
+                                        </span>
+                                    </div>
+                                    <div class="w-20 h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                                        <div class="h-full bg-cyan-500 rounded-full"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-3 px-4">
+                                <div class="flex items-center gap-1">
+                                    <div class="flex text-yellow-400">
+                                        <iconify-icon icon="solar:star-bold" class="text-sm"></iconify-icon>
+                                    </div>
+                                    <span class="text-sm font-semibold text-dark dark:text-white">{{ course.rating }}</span>
+                                    <span class="text-xs text-gray-500 dark:text-gray-400">({{ course.total_reviews }})</span>
+                                </div>
+                            </td>
+                            <td class="py-3 px-4 text-center">
+                                {% if course.is_active %}
+                                    {% if course.enrollment_open %}
+                                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-green-500 mr-1"></span>
+                                            Active
+                                        </span>
+                                    {% else %}
+                                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-yellow-500 mr-1"></span>
+                                            Closed
+                                        </span>
+                                    {% endif %}
+                                {% else %}
+                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-400">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-1"></span>
+                                        Inactive
+                                    </span>
+                                {% endif %}
+                            </td>
+                            <td class="py-3 px-4 text-center">
+                                <div class="flex items-center justify-center gap-2">
+                                    <button data-course-id="{{ course.id }}"
+                                            data-course-name="{{ course.course_name|escapejs }}"
+                                            data-description="{{ course.description|escapejs }}"
+                                            data-credits="{{ course.credits }}"
+                                            data-duration="{{ course.duration_weeks }}"
+                                            data-schedule-type="{{ course.schedule_type }}"
+                                            data-batch-size="{{ course.batch_size }}"
+                                            data-fee="{{ course.course_fee }}"
+                                            data-max-students="{{ course.max_students }}"
+                                            data-start-date="{{ course.start_date|date:'Y-m-d' }}"
+                                            data-end-date="{{ course.end_date|date:'Y-m-d' }}"
+                                            data-category-id="{{ course.category.id|default:'' }}"
+                                            data-department-id="{{ course.department.id|default:'' }}"
+                                            data-instructor-id="{{ course.instructor.id|default:'' }}"
+                                            data-certification-provided="{{ course.certification_provided|yesno:'true,false' }}"
+                                            data-certification-name="{{ course.certification_name|escapejs }}"
+                                            data-emi-available="{{ course.emi_available|yesno:'true,false' }}"
+                                            data-scholarship-available="{{ course.scholarship_available|yesno:'true,false' }}"
+                                            data-enrollment-open="{{ course.enrollment_open|yesno:'true,false' }}"
+                                            data-enrollment-deadline="{{ course.enrollment_deadline|date:'Y-m-d'|default:'' }}"
+                                            data-program-badge="{{ course.program_badge|escapejs }}"
+                                            data-program-badge-icon="{{ course.program_badge_icon }}"
+                                            data-hero-title="{{ course.hero_title|escapejs }}"
+                                            data-hero-subtitle="{{ course.hero_subtitle|escapejs }}"
+                                            class="action-btn edit-btn p-1.5 rounded-lg text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300 transition-all duration-300 hover:scale-110 hover:shadow-md" 
+                                            title="Edit Course">
+                                        <iconify-icon icon="solar:pen-2-linear" class="text-lg"></iconify-icon>
+                                    </button>
+                                    <button data-course-id="{{ course.id }}"
+                                            data-course-name="{{ course.course_name|escapejs }}"
+                                            data-enrolled-count="{{ course.current_enrolled }}"
+                                            class="action-btn delete-btn p-1.5 rounded-lg text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 transition-all duration-300 hover:scale-110 hover:shadow-md" 
+                                            title="Delete Course">
+                                        <iconify-icon icon="solar:trash-bin-trash-linear" class="text-lg"></iconify-icon>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="12" class="py-12 text-center">
+                                <div class="flex flex-col items-center justify-center">
+                                    <iconify-icon icon="solar:book-bookmark-linear" class="text-5xl text-gray-400 mb-3"></iconify-icon>
+                                    <p class="text-gray-500 dark:text-gray-400">No courses found</p>
+                                    <p class="text-sm text-gray-400 dark:text-gray-500 mt-1">Click the "Add New Course" button to create your first course</p>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Include the generic form modal component -->
+{% include 'training_institute_app/components/formModel.html' %}
+
+<!-- Delete Course Modal -->
+<div id="deleteCourseModal" class="fixed inset-0 z-50 hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 dark:bg-gray-900 dark:bg-opacity-90 transition-opacity" aria-hidden="true"></div>
+        
+        <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+        
+        <div class="inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+            <form id="deleteCourseForm" method="POST" action="{% url 'course_management' %}">
+                {% csrf_token %}
+                <input type="hidden" name="delete_course_id" id="deleteCourseId">
+                <input type="hidden" name="form_type" value="delete">
+                
+                <div class="bg-white dark:bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="sm:flex sm:items-start">
+                        <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 dark:bg-red-900/30">
+                            <iconify-icon icon="solar:trash-bin-trash-linear" class="text-red-600 dark:text-red-400 text-xl"></iconify-icon>
+                        </div>
+                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                            <h3 class="text-lg leading-6 font-semibold text-dark dark:text-white">
+                                Delete Course
+                            </h3>
+                            <div class="mt-2">
+                                <p class="text-sm text-gray-500 dark:text-gray-400">
+                                    Are you sure you want to delete course "<span id="deleteCourseName" class="font-semibold text-dark dark:text-white"></span>"?
+                                </p>
+                                <p class="text-sm text-red-600 dark:text-red-400 mt-2" id="enrollmentCountWarning" style="display: none;">
+                                    ⚠️ Warning: This course has <span id="assignedEnrollmentCount"></span> enrollment(s). Deleting it will remove all associated enrollments.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 dark:bg-gray-900/50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse gap-2">
+                    <button type="submit"
+                            class="inline-flex justify-center w-full sm:w-auto px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-lg transition-all duration-300 transform hover:scale-105">
+                        <iconify-icon icon="solar:trash-bin-trash-linear" class="text-lg mr-2"></iconify-icon>
+                        Delete Course
+                    </button>
+                    <button type="button"
+                            onclick="closeDeleteCourseModal()"
+                            class="mt-2 sm:mt-0 inline-flex justify-center w-full sm:w-auto px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 text-sm font-medium rounded-lg transition-all duration-300">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    #addCourseBtn {
+        cursor: pointer;
+    }
+    #addCourseBtn:hover {
+        animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+            box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+        }
+        70% {
+            transform: scale(1.05);
+            box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+        }
+        100% {
+            transform: scale(1);
+            box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+        }
+    }
+    
+    /* Table Row Hover Effects */
+    .table-row-transition {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Action Buttons Ripple */
+    .action-btn {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .action-btn::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+
+    .action-btn:hover::before {
+        width: 100px;
+        height: 100px;
+    }
+</style>
+
+<script>
+    // SweetAlert-style alert functions
+    function showSuccessAlert(message, onConfirm) {
+        swal({
+            icon: 'success',
+            title: 'Success!',
+            text: message,
+            confirmButtonText: 'OK',
+            showCancelButton: false
+        }).then(() => {
+            if (onConfirm) onConfirm();
+            else window.location.reload();
+        });
+    }
+    
+    function showErrorAlert(message) {
+        swal({
+            icon: 'error',
+            title: 'Error!',
+            text: message,
+            confirmButtonText: 'OK',
+            showCancelButton: false
+        });
+    }
+    
+    function showWarningAlert(message, onConfirm) {
+        swal({
+            icon: 'warning',
+            title: 'Warning!',
+            text: message,
+            confirmButtonText: 'Yes, proceed',
+            cancelButtonText: 'Cancel',
+            showCancelButton: true
+        }).then((confirmed) => {
+            if (confirmed && onConfirm) onConfirm();
+        });
+    }
+    
+    // Handle form submission with SweetAlert
+    function submitCourseForm(formData, actionUrl) {
+        fetch(actionUrl, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                showSuccessAlert(data.message);
+            } else {
+                showErrorAlert(data.message);
+            }
+        })
+        .catch(error => {
+            showErrorAlert('An error occurred. Please try again.');
+        });
+    }
+    
+    // Add Course Button - With 2 fields per row and improved layout
+    document.getElementById('addCourseBtn')?.addEventListener('click', function() {
+        openFormModal({
+            title: 'Add New Course',
+            mode: 'add',
+            actionUrl: "{% url 'course_management' %}",
+            rows: [
+                // Row 1: Course Name (full width - single field)
+                { fields: [
+                    { name: 'course_name', label: 'Course Name', type: 'text', required: true, placeholder: 'e.g., Information & Communication Technology', value: '' }
+                ]},
+                // Row 2: Description (full width - single field)
+                { fields: [
+                    { name: 'description', label: 'Description', type: 'textarea', required: true, placeholder: 'Course description...', value: '' }
+                ]},
+                // Row 3: Credits + Duration (2 fields)
+                { fields: [
+                    { name: 'credits', label: 'Credits', type: 'number', required: true, placeholder: 'e.g., 3', value: '' },
+                    { name: 'duration_weeks', label: 'Duration (weeks)', type: 'number', required: true, placeholder: 'e.g., 12', value: '' }
+                ]},
+                // Row 4: Schedule Type + Batch Size (2 fields)
+                { fields: [
+                    { name: 'schedule_type', label: 'Schedule Type', type: 'select', required: true, options: [
+                        { value: 'Flexible', label: 'Flexible' },
+                        { value: 'Evening', label: 'Evening' },
+                        { value: 'Weekend', label: 'Weekend' },
+                        { value: 'Full-time', label: 'Full-time' }
+                    ], value: 'Flexible' },
+                    { name: 'batch_size', label: 'Batch Size', type: 'text', required: true, placeholder: 'e.g., 15-20, 25-30', value: '15-20' }
+                ]},
+                // Row 5: Max Students + Course Fee (2 fields)
+                { fields: [
+                    { name: 'max_students', label: 'Max Students', type: 'number', required: true, placeholder: 'e.g., 30', value: '30' },
+                    { name: 'course_fee', label: 'Course Fee ($)', type: 'number', required: true, placeholder: 'e.g., 25000', value: '' }
+                ]},
+                // Row 6: Start Date + End Date (2 fields)
+                { fields: [
+                    { name: 'start_date', label: 'Start Date', type: 'date', required: true, placeholder: '', value: '' },
+                    { name: 'end_date', label: 'End Date', type: 'date', required: true, placeholder: '', value: '' }
+                ]},
+                // Row 7: EMI Available + Scholarship Available (2 fields - dropdowns instead of checkboxes)
+                { fields: [
+                    { name: 'emi_available', label: 'EMI Available', type: 'yesno', required: false, value: 'true' },
+                    { name: 'scholarship_available', label: 'Scholarship Available', type: 'yesno', required: false, value: 'true' }
+                ]},
+                // Row 8: Certification Provided + Certification Name (2 fields)
+                { fields: [
+                    { name: 'certification_provided', label: 'Certification Provided', type: 'yesno', required: false, value: 'true' },
+                    { name: 'certification_name', label: 'Certification Name', type: 'text', required: false, placeholder: 'e.g., Industry Certification', value: 'Industry Certification' }
+                ]},
+                // Row 9: Enrollment Open + Enrollment Deadline (2 fields)
+                { fields: [
+                    { name: 'enrollment_open', label: 'Enrollment Open', type: 'yesno', required: false, value: 'true' },
+                    { name: 'enrollment_deadline', label: 'Enrollment Deadline', type: 'date', required: false, placeholder: '', value: '' }
+                ]},
+                // Row 10: Program Badge + Badge Icon (2 fields - icon picker for badge icon)
+                { fields: [
+                    { name: 'program_badge', label: 'Program Badge', type: 'text', required: false, placeholder: 'e.g., ICT & SOFTWARE DEVELOPMENT', value: 'ICT & SOFTWARE DEVELOPMENT' },
+                    { name: 'program_badge_icon', label: 'Badge Icon', type: 'iconpicker', required: false, value: 'fa-solid fa-laptop-code' }
+                ]},
+                // Row 11: Hero Title + Hero Subtitle (2 fields)
+                { fields: [
+                    { name: 'hero_title', label: 'Hero Title', type: 'text', required: false, placeholder: 'e.g., ICT & Software Development Training', value: '' },
+                    { name: 'hero_subtitle', label: 'Hero Subtitle', type: 'text', required: false, placeholder: 'e.g., Building the Next Generation of Digital Professionals', value: '' }
+                ]}
+            ]
+        });
+    });
+
+    // Edit Course Button - With same improved layout
+    document.querySelectorAll('.edit-btn').forEach(function(button) {
+        button.addEventListener('click', function() {
+            openFormModal({
+                title: 'Edit Course',
+                mode: 'edit',
+                actionUrl: "{% url 'course_management' %}",
+                itemId: this.dataset.courseId,
+                rows: [
+                    { fields: [{ name: 'course_name', label: 'Course Name', type: 'text', required: true, placeholder: 'e.g., Information & Communication Technology', value: this.dataset.courseName }] },
+                    { fields: [{ name: 'description', label: 'Description', type: 'textarea', required: true, placeholder: 'Course description...', value: this.dataset.description }] },
+                    { fields: [
+                        { name: 'credits', label: 'Credits', type: 'number', required: true, placeholder: 'e.g., 3', value: this.dataset.credits },
+                        { name: 'duration_weeks', label: 'Duration (weeks)', type: 'number', required: true, placeholder: 'e.g., 12', value: this.dataset.duration }
+                    ]},
+                    { fields: [
+                        { name: 'schedule_type', label: 'Schedule Type', type: 'select', required: true, options: [
+                            { value: 'Flexible', label: 'Flexible' },
+                            { value: 'Evening', label: 'Evening' },
+                            { value: 'Weekend', label: 'Weekend' },
+                            { value: 'Full-time', label: 'Full-time' }
+                        ], value: this.dataset.scheduleType || 'Flexible' },
+                        { name: 'batch_size', label: 'Batch Size', type: 'text', required: true, placeholder: 'e.g., 15-20, 25-30', value: this.dataset.batchSize || '15-20' }
+                    ]},
+                    { fields: [
+                        { name: 'max_students', label: 'Max Students', type: 'number', required: true, placeholder: 'e.g., 30', value: this.dataset.maxStudents },
+                        { name: 'course_fee', label: 'Course Fee ($)', type: 'number', required: true, placeholder: 'e.g., 25000', value: this.dataset.fee }
+                    ]},
+                    { fields: [
+                        { name: 'start_date', label: 'Start Date', type: 'date', required: true, placeholder: '', value: this.dataset.startDate || '' },
+                        { name: 'end_date', label: 'End Date', type: 'date', required: true, placeholder: '', value: this.dataset.endDate || '' }
+                    ]},
+                    { fields: [
+                        { name: 'emi_available', label: 'EMI Available', type: 'yesno', required: false, value: this.dataset.emiAvailable === 'true' ? 'true' : 'false' },
+                        { name: 'scholarship_available', label: 'Scholarship Available', type: 'yesno', required: false, value: this.dataset.scholarshipAvailable === 'true' ? 'true' : 'false' }
+                    ]},
+                    { fields: [
+                        { name: 'certification_provided', label: 'Certification Provided', type: 'yesno', required: false, value: this.dataset.certificationProvided === 'true' ? 'true' : 'false' },
+                        { name: 'certification_name', label: 'Certification Name', type: 'text', required: false, placeholder: 'e.g., Industry Certification', value: this.dataset.certificationName || 'Industry Certification' }
+                    ]},
+                    { fields: [
+                        { name: 'enrollment_open', label: 'Enrollment Open', type: 'yesno', required: false, value: this.dataset.enrollmentOpen === 'true' ? 'true' : 'false' },
+                        { name: 'enrollment_deadline', label: 'Enrollment Deadline', type: 'date', required: false, placeholder: '', value: this.dataset.enrollmentDeadline || '' }
+                    ]},
+                    { fields: [
+                        { name: 'program_badge', label: 'Program Badge', type: 'text', required: false, placeholder: 'e.g., ICT & SOFTWARE DEVELOPMENT', value: this.dataset.programBadge || 'ICT & SOFTWARE DEVELOPMENT' },
+                        { name: 'program_badge_icon', label: 'Badge Icon', type: 'iconpicker', required: false, value: this.dataset.programBadgeIcon || 'fa-solid fa-laptop-code' }
+                    ]},
+                    { fields: [
+                        { name: 'hero_title', label: 'Hero Title', type: 'text', required: false, placeholder: 'e.g., ICT & Software Development Training', value: this.dataset.heroTitle || '' },
+                        { name: 'hero_subtitle', label: 'Hero Subtitle', type: 'text', required: false, placeholder: 'e.g., Building the Next Generation of Digital Professionals', value: this.dataset.heroSubtitle || '' }
+                    ]}
+                ]
+            });
+        });
+    });
+    
+    // Delete Course Button
+    document.querySelectorAll('.delete-btn').forEach(function(button) {
+        button.addEventListener('click', function() {
+            const courseId = this.dataset.courseId;
+            const courseName = this.dataset.courseName;
+            const enrolledCount = parseInt(this.dataset.enrolledCount) || 0;
+            
+            document.getElementById('deleteCourseId').value = courseId;
+            document.getElementById('deleteCourseName').textContent = courseName;
+            
+            const warningElement = document.getElementById('enrollmentCountWarning');
+            const countSpan = document.getElementById('assignedEnrollmentCount');
+            
+            if (enrolledCount > 0) {
+                countSpan.textContent = enrolledCount;
+                warningElement.style.display = 'block';
+                swal({
+                    icon: 'warning',
+                    title: 'Warning!',
+                    text: `This course has ${enrolledCount} enrollment(s). Deleting it will remove all associated enrollments. Are you sure?`,
+                    confirmButtonText: 'Yes, delete anyway',
+                    cancelButtonText: 'Cancel',
+                    showCancelButton: true
+                }).then((confirmed) => {
+                    if (confirmed) {
+                        document.getElementById('deleteCourseForm').dispatchEvent(new Event('submit'));
+                    }
+                });
+            } else {
+                warningElement.style.display = 'none';
+                document.getElementById('deleteCourseForm').dispatchEvent(new Event('submit'));
+            }
+        });
+    });
+    
+    // Close Delete Modal Functions
+    function closeDeleteCourseModal() {
+        document.getElementById('deleteCourseModal').classList.add('hidden');
+    }
+    
+    // Close modals when clicking outside
+    document.getElementById('deleteCourseModal')?.addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeDeleteCourseModal();
+        }
+    });
+    
+    // Handle delete form submission
+    document.addEventListener('DOMContentLoaded', function() {
+        const deleteForm = document.getElementById('deleteCourseForm');
+        if (deleteForm) {
+            deleteForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+                const actionUrl = this.action;
+                const courseName = document.getElementById('deleteCourseName').textContent;
+                
+                fetch(actionUrl, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showSuccessAlert(data.message);
+                        closeDeleteCourseModal();
+                    } else {
+                        showErrorAlert(data.message);
+                        closeDeleteCourseModal();
+                    }
+                })
+                .catch(error => {
+                    showErrorAlert('An error occurred. Please try again.');
+                    closeDeleteCourseModal();
+                });
+            });
+        }
+        
+        // Intercept form submission for the generic modal
+        const genericForm = document.getElementById('genericForm');
+        if (genericForm) {
+            genericForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+                const actionUrl = this.action;
+                submitCourseForm(formData, actionUrl);
+                closeFormModal();
+            });
+        }
+    });
+</script>
+{% endblock content %}

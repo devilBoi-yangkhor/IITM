@@ -18,11 +18,16 @@ urlpatterns = [
     path('enroll-course/', views.enroll_course, name='enroll_course'),
     
     #Google Account Login URLs
-     path('google-login/', views.google_login_direct, name='google_login_direct'),
-     path('accounts/', include('allauth.urls')),
+    path('google-login/', views.google_login_direct, name='google_login_direct'),
+    path('accounts/', include('allauth.urls')),
      
-     #Dashboard URLs
+    #Dashboard URLs
     path('dashboard/', views.dashboard, name='dashboard'),
-     #master urls
-     path('user-management/', views.user_management, name='user_management'),
+    
+    #master urls
+    path('user-management/', views.user_management, name='user_management'),
+    path('user-management/delete/', views.delete_user, name='delete_user'),
+    path('role-management/', views.role_management, name='role_management'),
+    path('role-management/delete/', views.delete_role, name='delete_role'),
+    path('course-management/', views.course_management, name='course_management'),
 ]

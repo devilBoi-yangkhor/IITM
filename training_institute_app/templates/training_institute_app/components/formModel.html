@@ -1,0 +1,669 @@
+<!-- Generic Form Modal - Reusable for any data model -->
+<div id="formModal" class="modal-overlay" style="display: none;">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h3 class="modal-title" id="formModalTitle">Add New Item</h3>
+            <button class="modal-close" onclick="closeFormModal()">
+                <iconify-icon icon="solar:close-circle-linear" class="text-2xl"></iconify-icon>
+            </button>
+        </div>
+
+        <form id="genericForm" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="item_id" id="itemId">
+            <input type="hidden" name="form_type" id="formType" value="add">
+            
+            <div class="modal-body" id="formModalBody">
+                <!-- Dynamic form fields will be injected here -->
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn-cancel" onclick="closeFormModal()">Cancel</button>
+                <button type="submit" class="btn-save">
+                    <iconify-icon icon="solar:check-circle-linear" class="text-lg mr-1"></iconify-icon>
+                    Save Changes
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    /* ── Shared Modal Base ── */
+    .modal-overlay {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(4px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    }
+
+    .modal-container {
+        background: white;
+        border-radius: 16px;
+        width: 90%;
+        max-width: 800px;
+        max-height: 90vh;
+        overflow-y: auto;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        animation: modalSlideIn 0.3s ease-out;
+    }
+
+    .dark .modal-container {
+        background: #1e293b;
+    }
+
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 20px;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .dark .modal-header {
+        border-bottom-color: #334155;
+    }
+
+    .modal-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #0f172a;
+    }
+
+    .dark .modal-title {
+        color: #f1f5f9;
+    }
+
+    .modal-close {
+        color: #94a3b8;
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .modal-close:hover {
+        color: #475569;
+        transform: rotate(90deg);
+    }
+
+    .dark .modal-close:hover {
+        color: #cbd5e1;
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .modal-footer {
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+        padding: 16px 20px;
+        border-top: 1px solid #e2e8f0;
+    }
+
+    .dark .modal-footer {
+        border-top-color: #334155;
+    }
+
+    /* ── Form Elements with Grid Layout ── */
+    .form-row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-bottom: 16px;
+    }
+    
+    /* Full width row for single fields */
+    .form-row-full {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-bottom: 16px;
+    }
+
+    .form-group {
+        margin-bottom: 0;
+    }
+
+    .form-label {
+        display: block;
+        font-size: 0.875rem;
+        font-weight: 500;
+        margin-bottom: 6px;
+        color: #334155;
+    }
+
+    .dark .form-label {
+        color: #cbd5e1;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        background: white;
+        color: #0f172a;
+        transition: all 0.2s;
+    }
+
+    .form-input:focus {
+        outline: none;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
+
+    .dark .form-input {
+        background: #0f172a;
+        border-color: #334155;
+        color: #f1f5f9;
+    }
+
+    textarea.form-input {
+        resize: vertical;
+        min-height: 80px;
+    }
+
+    /* Select dropdown styling */
+    select.form-input {
+        cursor: pointer;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+        background-position: right 8px center;
+        background-repeat: no-repeat;
+        background-size: 20px;
+        padding-right: 32px;
+    }
+
+    /* Icon Picker Styling */
+    .icon-picker-container {
+        position: relative;
+    }
+    
+    .icon-preview {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        background: white;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    
+    .dark .icon-preview {
+        background: #0f172a;
+        border-color: #334155;
+    }
+    
+    .icon-preview:hover {
+        border-color: #3b82f6;
+    }
+    
+    .icon-preview-icon {
+        font-size: 20px;
+        color: #3b82f6;
+    }
+    
+    .icon-preview-text {
+        flex: 1;
+        color: #64748b;
+    }
+    
+    .dark .icon-preview-text {
+        color: #94a3b8;
+    }
+    
+    .icon-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        margin-top: 4px;
+        max-height: 280px;
+        overflow-y: auto;
+        z-index: 1001;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        display: none;
+    }
+    
+    .dark .icon-dropdown {
+        background: #1e293b;
+        border-color: #334155;
+    }
+    
+    .icon-dropdown.show {
+        display: block;
+    }
+    
+    .icon-search {
+        padding: 8px;
+        border-bottom: 1px solid #e2e8f0;
+        position: sticky;
+        top: 0;
+        background: white;
+        z-index: 2;
+    }
+    
+    .dark .icon-search {
+        background: #1e293b;
+        border-bottom-color: #334155;
+    }
+    
+    .icon-search input {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        font-size: 13px;
+    }
+    
+    .dark .icon-search input {
+        background: #0f172a;
+        border-color: #334155;
+        color: #f1f5f9;
+    }
+    
+    .icon-list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        padding: 12px;
+    }
+    
+    .icon-option {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 6px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    
+    .icon-option:hover {
+        background: #f1f5f9;
+        transform: scale(1.05);
+    }
+    
+    .dark .icon-option:hover {
+        background: #334155;
+    }
+    
+    .icon-option.selected {
+        background: #3b82f6;
+        color: white;
+    }
+    
+    .icon-option-icon {
+        font-size: 24px;
+    }
+    
+    .icon-option-name {
+        font-size: 9px;
+        text-align: center;
+        word-break: break-word;
+    }
+
+    /* Yes/No Dropdown Styling */
+    .yesno-select {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        background: white;
+        cursor: pointer;
+    }
+    
+    .dark .yesno-select {
+        background: #0f172a;
+        border-color: #334155;
+        color: #f1f5f9;
+    }
+
+    /* Buttons */
+    .btn-cancel {
+        padding: 8px 16px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #64748b;
+        background: transparent;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .btn-cancel:hover {
+        background: #f1f5f9;
+        transform: translateY(-2px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .dark .btn-cancel {
+        border-color: #475569;
+        color: #94a3b8;
+    }
+
+    .dark .btn-cancel:hover {
+        background: #334155;
+    }
+
+    .btn-save {
+        padding: 8px 16px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: white;
+        background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .btn-save:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    }
+
+    @keyframes modalSlideIn {
+        from { opacity: 0; transform: translateY(-30px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Scrollbar */
+    .modal-container::-webkit-scrollbar { width: 6px; }
+    .modal-container::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+    .modal-container::-webkit-scrollbar-thumb { background: #888; border-radius: 10px; }
+    .modal-container::-webkit-scrollbar-thumb:hover { background: #555; }
+    .dark .modal-container::-webkit-scrollbar-track { background: #334155; }
+    .dark .modal-container::-webkit-scrollbar-thumb { background: #64748b; }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+        .form-row {
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+        .icon-list {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+</style>
+
+<script>
+    // Extended Font Awesome icons list with actual icons
+    const iconList = [
+        { value: 'fa-solid fa-laptop-code', label: 'Laptop Code', icon: 'fa-solid fa-laptop-code', category: 'Development' },
+        { value: 'fa-solid fa-code', label: 'Code', icon: 'fa-solid fa-code', category: 'Development' },
+        { value: 'fa-brands fa-html5', label: 'HTML5', icon: 'fa-brands fa-html5', category: 'Development' },
+        { value: 'fa-brands fa-css3-alt', label: 'CSS3', icon: 'fa-brands fa-css3-alt', category: 'Development' },
+        { value: 'fa-brands fa-js', label: 'JavaScript', icon: 'fa-brands fa-js', category: 'Development' },
+        { value: 'fa-brands fa-react', label: 'React', icon: 'fa-brands fa-react', category: 'Development' },
+        { value: 'fa-brands fa-python', label: 'Python', icon: 'fa-brands fa-python', category: 'Development' },
+        { value: 'fa-brands fa-java', label: 'Java', icon: 'fa-brands fa-java', category: 'Development' },
+        { value: 'fa-solid fa-database', label: 'Database', icon: 'fa-solid fa-database', category: 'Data' },
+        { value: 'fa-solid fa-cloud', label: 'Cloud', icon: 'fa-solid fa-cloud', category: 'Infrastructure' },
+        { value: 'fa-solid fa-shield-haltered', label: 'Security', icon: 'fa-solid fa-shield-haltered', category: 'Security' },
+        { value: 'fa-solid fa-user-secret', label: 'Cyber Security', icon: 'fa-solid fa-user-secret', category: 'Security' },
+        { value: 'fa-solid fa-network-wired', label: 'Network', icon: 'fa-solid fa-network-wired', category: 'Infrastructure' },
+        { value: 'fa-solid fa-microchip', label: 'AI/Microchip', icon: 'fa-solid fa-microchip', category: 'Tech' },
+        { value: 'fa-solid fa-robot', label: 'AI Robot', icon: 'fa-solid fa-robot', category: 'Tech' },
+        { value: 'fa-solid fa-chart-line', label: 'Analytics', icon: 'fa-solid fa-chart-line', category: 'Business' },
+        { value: 'fa-solid fa-users', label: 'Users', icon: 'fa-solid fa-users', category: 'Social' },
+        { value: 'fa-solid fa-building', label: 'Building', icon: 'fa-solid fa-building', category: 'Business' },
+        { value: 'fa-solid fa-graduation-cap', label: 'Education', icon: 'fa-solid fa-graduation-cap', category: 'Education' },
+        { value: 'fa-solid fa-chalkboard-user', label: 'Teaching', icon: 'fa-solid fa-chalkboard-user', category: 'Education' },
+        { value: 'fa-solid fa-book', label: 'Book', icon: 'fa-solid fa-book', category: 'Education' },
+        { value: 'fa-solid fa-rocket', label: 'Rocket', icon: 'fa-solid fa-rocket', category: 'Motivation' },
+        { value: 'fa-solid fa-lightbulb', label: 'Idea', icon: 'fa-solid fa-lightbulb', category: 'Motivation' },
+        { value: 'fa-solid fa-crown', label: 'Premium', icon: 'fa-solid fa-crown', category: 'Achievement' },
+        { value: 'fa-solid fa-trophy', label: 'Achievement', icon: 'fa-solid fa-trophy', category: 'Achievement' },
+        { value: 'fa-solid fa-star', label: 'Star', icon: 'fa-solid fa-star', category: 'Rating' },
+        { value: 'fa-solid fa-heart', label: 'Heart', icon: 'fa-solid fa-heart', category: 'Social' },
+        { value: 'fa-solid fa-calendar', label: 'Calendar', icon: 'fa-solid fa-calendar', category: 'Time' },
+        { value: 'fa-solid fa-clock', label: 'Clock', icon: 'fa-solid fa-clock', category: 'Time' },
+        { value: 'fa-solid fa-dollar-sign', label: 'Money', icon: 'fa-solid fa-dollar-sign', category: 'Finance' },
+        { value: 'fa-solid fa-credit-card', label: 'Payment', icon: 'fa-solid fa-credit-card', category: 'Finance' },
+        { value: 'fa-solid fa-mobile-alt', label: 'Mobile', icon: 'fa-solid fa-mobile-alt', category: 'Tech' },
+        { value: 'fa-solid fa-tablet-alt', label: 'Tablet', icon: 'fa-solid fa-tablet-alt', category: 'Tech' },
+        { value: 'fa-solid fa-envelope', label: 'Email', icon: 'fa-solid fa-envelope', category: 'Communication' },
+        { value: 'fa-solid fa-message', label: 'Message', icon: 'fa-solid fa-message', category: 'Communication' },
+        { value: 'fa-solid fa-phone', label: 'Phone', icon: 'fa-solid fa-phone', category: 'Communication' },
+        { value: 'fa-solid fa-video', label: 'Video', icon: 'fa-solid fa-video', category: 'Media' },
+        { value: 'fa-solid fa-camera', label: 'Camera', icon: 'fa-solid fa-camera', category: 'Media' },
+        { value: 'fa-solid fa-image', label: 'Image', icon: 'fa-solid fa-image', category: 'Media' },
+        { value: 'fa-solid fa-folder-open', label: 'Folder', icon: 'fa-solid fa-folder-open', category: 'Files' },
+        { value: 'fa-solid fa-file-alt', label: 'Document', icon: 'fa-solid fa-file-alt', category: 'Files' },
+        { value: 'fa-solid fa-download', label: 'Download', icon: 'fa-solid fa-download', category: 'Actions' },
+        { value: 'fa-solid fa-upload', label: 'Upload', icon: 'fa-solid fa-upload', category: 'Actions' },
+        { value: 'fa-solid fa-arrow-right', label: 'Arrow Right', icon: 'fa-solid fa-arrow-right', category: 'Navigation' },
+        { value: 'fa-solid fa-check-circle', label: 'Success', icon: 'fa-solid fa-check-circle', category: 'Status' },
+        { value: 'fa-solid fa-exclamation-triangle', label: 'Warning', icon: 'fa-solid fa-exclamation-triangle', category: 'Status' },
+        { value: 'fa-solid fa-info-circle', label: 'Info', icon: 'fa-solid fa-info-circle', category: 'Status' },
+        { value: 'fa-solid fa-question-circle', label: 'Help', icon: 'fa-solid fa-question-circle', category: 'Status' },
+        { value: 'fa-solid fa-cog', label: 'Settings', icon: 'fa-solid fa-cog', category: 'Actions' },
+        { value: 'fa-solid fa-search', label: 'Search', icon: 'fa-solid fa-search', category: 'Actions' },
+        { value: 'fa-solid fa-globe', label: 'Global', icon: 'fa-solid fa-globe', category: 'Internet' },
+        { value: 'fa-solid fa-wifi', label: 'WiFi', icon: 'fa-solid fa-wifi', category: 'Internet' }
+    ];
+
+    // Create icon picker HTML
+    function createIconPicker(field) {
+        const pickerId = `icon-picker-${Date.now()}-${Math.random()}`;
+        const currentValue = field.value || 'fa-solid fa-laptop-code';
+        const currentIcon = iconList.find(i => i.value === currentValue);
+        const currentIconHtml = currentIcon ? `<i class="${currentIcon.icon}"></i>` : '<i class="fa-solid fa-laptop-code"></i>';
+        
+        return `
+            <div class="icon-picker-container" id="${pickerId}">
+                <div class="icon-preview" onclick="toggleIconDropdown('${pickerId}')">
+                    ${currentIconHtml}
+                    <span class="icon-preview-text">${currentIcon?.label || 'Select Icon'}</span>
+                    <i class="fa-solid fa-chevron-down" style="margin-left: auto; font-size: 12px;"></i>
+                </div>
+                <div class="icon-dropdown">
+                    <div class="icon-search">
+                        <input type="text" placeholder="🔍 Search icons..." onkeyup="filterIcons('${pickerId}', this.value)">
+                    </div>
+                    <div class="icon-list" id="${pickerId}-list">
+                        ${iconList.map(icon => `
+                            <div class="icon-option ${icon.value === currentValue ? 'selected' : ''}" onclick="selectIcon('${pickerId}', '${icon.value}', '${icon.icon}', '${icon.label}')">
+                                <i class="${icon.icon} icon-option-icon"></i>
+                                <span class="icon-option-name">${icon.label}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                <input type="hidden" name="${field.name}" id="${field.name}" value="${currentValue}">
+            </div>
+        `;
+    }
+
+    // Toggle icon dropdown
+    function toggleIconDropdown(pickerId) {
+        const dropdown = document.querySelector(`#${pickerId} .icon-dropdown`);
+        // Close all other dropdowns
+        document.querySelectorAll('.icon-dropdown').forEach(d => {
+            if (d !== dropdown) d.classList.remove('show');
+        });
+        dropdown.classList.toggle('show');
+    }
+
+    // Select icon
+    function selectIcon(pickerId, iconValue, iconClass, iconLabel) {
+        const container = document.getElementById(pickerId);
+        const previewIcon = container.querySelector('.icon-preview');
+        const hiddenInput = container.querySelector('input[type="hidden"]');
+        
+        // Update preview
+        previewIcon.innerHTML = `
+            <i class="${iconClass} icon-preview-icon"></i>
+            <span class="icon-preview-text">${iconLabel}</span>
+            <i class="fa-solid fa-chevron-down" style="margin-left: auto; font-size: 12px;"></i>
+        `;
+        
+        hiddenInput.value = iconValue;
+        
+        // Close dropdown
+        container.querySelector('.icon-dropdown').classList.remove('show');
+        
+        // Update selected state in dropdown list
+        const list = document.getElementById(`${pickerId}-list`);
+        list.querySelectorAll('.icon-option').forEach(opt => {
+            opt.classList.remove('selected');
+        });
+        
+        // Find and mark the selected option
+        const selectedOption = Array.from(list.querySelectorAll('.icon-option')).find(
+            opt => opt.querySelector('.icon-option-name')?.textContent === iconLabel
+        );
+        if (selectedOption) selectedOption.classList.add('selected');
+    }
+
+    // Filter icons
+    function filterIcons(pickerId, searchTerm) {
+        const list = document.getElementById(`${pickerId}-list`);
+        const filteredIcons = iconList.filter(icon => 
+            icon.label.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            icon.value.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            (icon.category && icon.category.toLowerCase().includes(searchTerm.toLowerCase()))
+        );
+        
+        list.innerHTML = filteredIcons.map(icon => `
+            <div class="icon-option" onclick="selectIcon('${pickerId}', '${icon.value}', '${icon.icon}', '${icon.label}')">
+                <i class="${icon.icon} icon-option-icon"></i>
+                <span class="icon-option-name">${icon.label}</span>
+            </div>
+        `).join('');
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.icon-picker-container')) {
+            document.querySelectorAll('.icon-dropdown').forEach(d => {
+                d.classList.remove('show');
+            });
+        }
+    });
+
+    // Helper function to generate yes/no dropdown HTML
+    function generateYesNoHTML(field) {
+        const value = field.value === 'true' || field.value === true;
+        return `
+            <select name="${field.name}" class="yesno-select">
+                <option value="true" ${value ? 'selected' : ''}>Yes</option>
+                <option value="false" ${!value ? 'selected' : ''}>No</option>
+            </select>
+        `;
+    }
+
+    // Helper function to generate input HTML
+    function generateInputHTML(field) {
+        if (field.type === 'textarea') {
+            return `
+                <textarea name="${field.name}" 
+                          id="${field.name}"
+                          class="form-input"
+                          ${field.required ? 'required' : ''}
+                          placeholder="${field.placeholder || ''}">${field.value || ''}</textarea>
+            `;
+        } else if (field.type === 'yesno') {
+            return generateYesNoHTML(field);
+        } else if (field.type === 'iconpicker') {
+            return createIconPicker(field);
+        } else if (field.type === 'select') {
+            let optionsHtml = '';
+            field.options.forEach(opt => {
+                const isSelected = field.value == opt.value;
+                optionsHtml += `<option value="${opt.value}" ${isSelected ? 'selected' : ''}>${opt.label}</option>`;
+            });
+            return `
+                <select name="${field.name}" 
+                        id="${field.name}"
+                        class="form-input"
+                        ${field.required ? 'required' : ''}>
+                    ${optionsHtml}
+                </select>
+            `;
+        } else {
+            return `
+                <input type="${field.type || 'text'}" 
+                       name="${field.name}"
+                       id="${field.name}"
+                       class="form-input"
+                       value="${field.value || ''}"
+                       ${field.required ? 'required' : ''}
+                       placeholder="${field.placeholder || ''}">
+            `;
+        }
+    }
+
+    // Generic function to open form modal
+    function openFormModal(config) {
+        const modal = document.getElementById('formModal');
+        const title = document.getElementById('formModalTitle');
+        const form = document.getElementById('genericForm');
+        const body = document.getElementById('formModalBody');
+        const itemId = document.getElementById('itemId');
+        const formType = document.getElementById('formType');
+        
+        title.textContent = config.title || (config.mode === 'edit' ? 'Edit Item' : 'Add New Item');
+        form.action = config.actionUrl;
+        formType.value = config.mode || 'add';
+        
+        // ✅ CRITICAL FIX: Set item_id correctly
+        if (config.mode === 'edit' && config.itemId) {
+            itemId.value = config.itemId;
+        } else {
+            itemId.value = '';
+        }
+        
+        let html = '';
+        
+        if (config.rows && config.rows.length > 0) {
+            config.rows.forEach(row => {
+                const rowClass = row.fields.length === 1 ? 'form-row-full' : 'form-row';
+                html += `<div class="${rowClass}">`;
+                row.fields.forEach(field => {
+                    // Always show label for all field types except hidden
+                    const showLabel = field.type !== 'hidden';
+                    html += `
+                        <div class="form-group">
+                            ${showLabel ? `<label class="form-label">${field.label} ${field.required ? '<span class="text-red-500">*</span>' : ''}</label>` : ''}
+                            ${generateInputHTML(field)}
+                        </div>
+                    `;
+                });
+                html += `</div>`;
+            });
+        }
+        
+        body.innerHTML = html;
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeFormModal() {
+        document.getElementById('formModal').style.display = 'none';
+        document.body.style.overflow = '';
+    }
+    
+    document.getElementById('formModal')?.addEventListener('click', function(e) {
+        if (e.target === this) closeFormModal();
+    });
+</script>
