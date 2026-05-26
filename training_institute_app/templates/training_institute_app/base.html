@@ -27,16 +27,16 @@
 <link rel="stylesheet" href="{% static 'css/basestyles.css' %}">
 <link rel="stylesheet" href="{% static 'css/courses_details.css' %}">
 
-<!-- Page Loader CSS -->
+<!-- Page Loader CSS - BRIGHT THEME -->
 <style>
-  /* Loader stays BEHIND navbar */
+  /* Loader stays BEHIND navbar - Bright Theme */
   .yangKhorLoaderOverlay123 {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: -webkit-linear-gradient(#272a41, #678cc4);
-    background: linear-gradient(#272a41, #121d2e);
+    background: -webkit-linear-gradient(#ffffff, #e9ecef);
+    background: linear-gradient(135deg, #ffffff, #f8f9fa, #e9ecef);
     z-index: 100;
   }
 
@@ -50,12 +50,16 @@
   
   .yangKhorLoaderText456 p {
     font-size: 1.5rem;
-    color: #fff;
+    color: #1a1a2e;
     text-align: center;
     font-family: 'Montserrat', monospace;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 2px;
     margin: 0;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   
   @keyframes yangKhorProgressAnim1 {
@@ -85,8 +89,9 @@
     top: 55%;
     width: 100%;  
     height: 3px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(102, 126, 234, 0.1);
     transform: translate(0,-50%);
+    border-radius: 3px;
   }
   
   .yangKhorProgressBar321:before {
@@ -96,7 +101,8 @@
     display: block;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.1) 10%, rgba(255, 255, 255, 0.4) 80%, white);
+    background: linear-gradient(to right, rgba(102, 126, 234, 0.3) 10%, rgba(102, 126, 234, 0.6) 50%, #667eea);
+    border-radius: 3px;
   }
   
   .yangKhorProgressBar321:after {
@@ -109,9 +115,9 @@
     width: 30px;
     height: 21px;
     border-radius: 2px;
-    background: rgba(255, 255, 255, 0.55);
+    background: rgba(102, 126, 234, 0.4);
     filter: blur(8px);
-    box-shadow: 0 0 10px 6px rgba(210, 189, 255, 0.4), -20px 0 15px 4px rgba(210, 189, 255, 0.3);
+    box-shadow: 0 0 10px 6px rgba(102, 126, 234, 0.3), -20px 0 15px 4px rgba(102, 126, 234, 0.2);
   }
   
   /* Main content - hidden until loaded */

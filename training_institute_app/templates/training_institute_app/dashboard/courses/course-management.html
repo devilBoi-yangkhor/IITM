@@ -2,6 +2,8 @@
 {% load static %}
 
 {% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 <div class="px-6">
     <!-- Page Title -->
     <div class="flex justify-between items-center mb-6">
@@ -16,7 +18,7 @@
         </button>
     </div>
 
-    <!-- Alert Container for dynamic messages -->
+    <!-- Alert Container -->
     {% include 'training_institute_app/components/alerts.html' %}
 
     <!-- Courses Table -->
@@ -83,7 +85,7 @@
                                 </span>
                             </td>
                             <td class="py-3 px-4">
-                                <p class="text-sm font-semibold text-green-600 dark:text-green-400">${{ course.course_fee }}</p>
+                                <p class="text-sm font-semibold text-green-600 dark:text-green-400">Nu.{{ course.course_fee }}</p>
                                 {% if course.emi_available %}
                                 <p class="text-xs text-gray-500 dark:text-gray-400">EMI Available</p>
                                 {% endif %}
@@ -133,33 +135,35 @@
                             <td class="py-3 px-4 text-center">
                                 <div class="flex items-center justify-center gap-2">
                                     <button data-course-id="{{ course.id }}"
-                                            data-course-name="{{ course.course_name|escapejs }}"
-                                            data-description="{{ course.description|escapejs }}"
-                                            data-credits="{{ course.credits }}"
-                                            data-duration="{{ course.duration_weeks }}"
-                                            data-schedule-type="{{ course.schedule_type }}"
-                                            data-batch-size="{{ course.batch_size }}"
-                                            data-fee="{{ course.course_fee }}"
-                                            data-max-students="{{ course.max_students }}"
-                                            data-start-date="{{ course.start_date|date:'Y-m-d' }}"
-                                            data-end-date="{{ course.end_date|date:'Y-m-d' }}"
-                                            data-category-id="{{ course.category.id|default:'' }}"
-                                            data-department-id="{{ course.department.id|default:'' }}"
-                                            data-instructor-id="{{ course.instructor.id|default:'' }}"
-                                            data-certification-provided="{{ course.certification_provided|yesno:'true,false' }}"
-                                            data-certification-name="{{ course.certification_name|escapejs }}"
-                                            data-emi-available="{{ course.emi_available|yesno:'true,false' }}"
-                                            data-scholarship-available="{{ course.scholarship_available|yesno:'true,false' }}"
-                                            data-enrollment-open="{{ course.enrollment_open|yesno:'true,false' }}"
-                                            data-enrollment-deadline="{{ course.enrollment_deadline|date:'Y-m-d'|default:'' }}"
-                                            data-program-badge="{{ course.program_badge|escapejs }}"
-                                            data-program-badge-icon="{{ course.program_badge_icon }}"
-                                            data-hero-title="{{ course.hero_title|escapejs }}"
-                                            data-hero-subtitle="{{ course.hero_subtitle|escapejs }}"
-                                            class="action-btn edit-btn p-1.5 rounded-lg text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300 transition-all duration-300 hover:scale-110 hover:shadow-md" 
-                                            title="Edit Course">
-                                        <iconify-icon icon="solar:pen-2-linear" class="text-lg"></iconify-icon>
-                                    </button>
+                                        data-course-name="{{ course.course_name|escapejs }}"
+                                        data-description="{{ course.description|escapejs }}"
+                                        data-duration="{{ course.duration_weeks }}"
+                                        data-schedule-type="{{ course.schedule_type }}"
+                                        data-batch-size="{{ course.batch_size }}"
+                                        data-fee="{{ course.course_fee }}"
+                                        data-max-students="{{ course.max_students }}"
+                                        data-start-date="{{ course.start_date|date:'Y-m-d' }}"
+                                        data-end-date="{{ course.end_date|date:'Y-m-d' }}"
+                                        data-category-id="{{ course.category.id|default:'' }}"
+                                        data-department-id="{{ course.department.id|default:'' }}"
+                                        data-instructor-id="{{ course.instructor.id|default:'' }}"
+                                        data-certification-provided="{{ course.certification_provided|yesno:'true,false' }}"
+                                        data-certification-name="{{ course.certification_name|escapejs }}"
+                                        data-emi-available="{{ course.emi_available|yesno:'true,false' }}"
+                                        data-scholarship-available="{{ course.scholarship_available|yesno:'true,false' }}"
+                                        data-enrollment-open="{{ course.enrollment_open|yesno:'true,false' }}"
+                                        data-enrollment-deadline="{{ course.enrollment_deadline|date:'Y-m-d'|default:'' }}"
+                                        data-program-badge="{{ course.program_badge|escapejs }}"
+                                        data-program-badge-icon="{{ course.program_badge_icon }}"
+                                        data-hero-title="{{ course.hero_title|escapejs }}"
+                                        data-hero-subtitle="{{ course.hero_subtitle|escapejs }}"
+                                        data-what-you-will-master="{{ course.what_you_will_master|default:'[]'|escapejs }}"
+                                        data-who-should-attend="{{ course.who_should_attend|default:'[]'|escapejs }}"
+                                        data-program-structure="{{ course.program_structure|default:'[]'|escapejs }}"
+                                        class="action-btn edit-btn p-1.5 rounded-lg text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300 transition-all duration-300 hover:scale-110 hover:shadow-md" 
+                                        title="Edit Course">
+                                    <iconify-icon icon="solar:pen-2-linear" class="text-lg"></iconify-icon>
+                                </button>
                                     <button data-course-id="{{ course.id }}"
                                             data-course-name="{{ course.course_name|escapejs }}"
                                             data-enrolled-count="{{ course.current_enrolled }}"
@@ -188,31 +192,25 @@
     </div>
 </div>
 
-<!-- Include the generic form modal component -->
 {% include 'training_institute_app/components/formModel.html' %}
 
 <!-- Delete Course Modal -->
 <div id="deleteCourseModal" class="fixed inset-0 z-50 hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
     <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 dark:bg-gray-900 dark:bg-opacity-90 transition-opacity" aria-hidden="true"></div>
-        
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-        
         <div class="inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
             <form id="deleteCourseForm" method="POST" action="{% url 'course_management' %}">
                 {% csrf_token %}
                 <input type="hidden" name="delete_course_id" id="deleteCourseId">
                 <input type="hidden" name="form_type" value="delete">
-                
                 <div class="bg-white dark:bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                     <div class="sm:flex sm:items-start">
                         <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 dark:bg-red-900/30">
                             <iconify-icon icon="solar:trash-bin-trash-linear" class="text-red-600 dark:text-red-400 text-xl"></iconify-icon>
                         </div>
                         <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                            <h3 class="text-lg leading-6 font-semibold text-dark dark:text-white">
-                                Delete Course
-                            </h3>
+                            <h3 class="text-lg leading-6 font-semibold text-dark dark:text-white">Delete Course</h3>
                             <div class="mt-2">
                                 <p class="text-sm text-gray-500 dark:text-gray-400">
                                     Are you sure you want to delete course "<span id="deleteCourseName" class="font-semibold text-dark dark:text-white"></span>"?
@@ -241,337 +239,325 @@
     </div>
 </div>
 
-<style>
-    #addCourseBtn {
-        cursor: pointer;
-    }
-    #addCourseBtn:hover {
-        animation: pulse 1.5s infinite;
-    }
-    @keyframes pulse {
-        0% {
-            transform: scale(1);
-            box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
-        }
-        70% {
-            transform: scale(1.05);
-            box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
-        }
-        100% {
-            transform: scale(1);
-            box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
-        }
-    }
-    
-    /* Table Row Hover Effects */
-    .table-row-transition {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* Action Buttons Ripple */
-    .action-btn {
-        position: relative;
-        overflow: hidden;
-        cursor: pointer;
-    }
-
-    .action-btn::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.3);
-        transform: translate(-50%, -50%);
-        transition: width 0.6s, height 0.6s;
-    }
-
-    .action-btn:hover::before {
-        width: 100px;
-        height: 100px;
-    }
-</style>
-
 <script>
-    // SweetAlert-style alert functions
     function showSuccessAlert(message, onConfirm) {
-        swal({
-            icon: 'success',
-            title: 'Success!',
-            text: message,
-            confirmButtonText: 'OK',
-            showCancelButton: false
-        }).then(() => {
-            if (onConfirm) onConfirm();
-            else window.location.reload();
-        });
+        swal({ icon: 'success', title: 'Success!', text: message, confirmButtonText: 'OK', showCancelButton: false })
+        .then(() => { if (onConfirm) onConfirm(); else window.location.reload(); });
     }
-    
     function showErrorAlert(message) {
-        swal({
-            icon: 'error',
-            title: 'Error!',
-            text: message,
-            confirmButtonText: 'OK',
-            showCancelButton: false
-        });
+        swal({ icon: 'error', title: 'Error!', text: message, confirmButtonText: 'OK', showCancelButton: false });
     }
-    
     function showWarningAlert(message, onConfirm) {
-        swal({
-            icon: 'warning',
-            title: 'Warning!',
-            text: message,
-            confirmButtonText: 'Yes, proceed',
-            cancelButtonText: 'Cancel',
-            showCancelButton: true
-        }).then((confirmed) => {
-            if (confirmed && onConfirm) onConfirm();
-        });
+        swal({ icon: 'warning', title: 'Warning!', text: message, confirmButtonText: 'Yes, proceed', cancelButtonText: 'Cancel', showCancelButton: true })
+        .then((confirmed) => { if (confirmed && onConfirm) onConfirm(); });
     }
-    
-    // Handle form submission with SweetAlert
     function submitCourseForm(formData, actionUrl) {
-        fetch(actionUrl, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest'
-            }
-        })
+        fetch(actionUrl, { method: 'POST', body: formData, headers: { 'X-Requested-With': 'XMLHttpRequest' } })
         .then(response => response.json())
-        .then(data => {
+        .then(data => { 
             if (data.success) {
                 showSuccessAlert(data.message);
             } else {
                 showErrorAlert(data.message);
             }
         })
-        .catch(error => {
-            showErrorAlert('An error occurred. Please try again.');
-        });
+        .catch(error => { showErrorAlert('An error occurred. Please try again.'); });
     }
-    
-    // Add Course Button - With 2 fields per row and improved layout
+
+    // Add Course button handler - updated with 3 repeatable sections
     document.getElementById('addCourseBtn')?.addEventListener('click', function() {
-        openFormModal({
+        if (typeof window.openFormModal !== 'function') {
+            console.error('openFormModal not found! Make sure formModel.html is loaded correctly.');
+            return;
+        }
+        
+        window.openFormModal({
             title: 'Add New Course',
             mode: 'add',
             actionUrl: "{% url 'course_management' %}",
             rows: [
-                // Row 1: Course Name (full width - single field)
-                { fields: [
-                    { name: 'course_name', label: 'Course Name', type: 'text', required: true, placeholder: 'e.g., Information & Communication Technology', value: '' }
-                ]},
-                // Row 2: Description (full width - single field)
-                { fields: [
-                    { name: 'description', label: 'Description', type: 'textarea', required: true, placeholder: 'Course description...', value: '' }
-                ]},
-                // Row 3: Credits + Duration (2 fields)
-                { fields: [
-                    { name: 'credits', label: 'Credits', type: 'number', required: true, placeholder: 'e.g., 3', value: '' },
-                    { name: 'duration_weeks', label: 'Duration (weeks)', type: 'number', required: true, placeholder: 'e.g., 12', value: '' }
-                ]},
-                // Row 4: Schedule Type + Batch Size (2 fields)
+                { fields: [{ name: 'course_name', label: 'Course Name', type: 'text', required: true, placeholder: 'e.g., Information & Communication Technology' }] },
+                { fields: [{ name: 'description', label: 'Description', type: 'textarea', required: true, placeholder: 'Course description...' }] },
                 { fields: [
                     { name: 'schedule_type', label: 'Schedule Type', type: 'select', required: true, options: [
-                        { value: 'Flexible', label: 'Flexible' },
-                        { value: 'Evening', label: 'Evening' },
-                        { value: 'Weekend', label: 'Weekend' },
-                        { value: 'Full-time', label: 'Full-time' }
+                        { value: 'Flexible', label: 'Flexible' }, { value: 'Evening', label: 'Evening' },
+                        { value: 'Weekend', label: 'Weekend' }, { value: 'Full-time', label: 'Full-time' }
                     ], value: 'Flexible' },
-                    { name: 'batch_size', label: 'Batch Size', type: 'text', required: true, placeholder: 'e.g., 15-20, 25-30', value: '15-20' }
+                    { name: 'batch_size', label: 'Batch Size', type: 'text', required: true, placeholder: 'e.g., 15-20' }
                 ]},
-                // Row 5: Max Students + Course Fee (2 fields)
                 { fields: [
-                    { name: 'max_students', label: 'Max Students', type: 'number', required: true, placeholder: 'e.g., 30', value: '30' },
-                    { name: 'course_fee', label: 'Course Fee ($)', type: 'number', required: true, placeholder: 'e.g., 25000', value: '' }
+                    { name: 'max_students', label: 'Max Students', type: 'number', required: true, placeholder: 'e.g., 30' },
+                    { name: 'course_fee', label: 'Course Fee (Nu.)', type: 'number', required: true, placeholder: 'e.g., 25000' }
                 ]},
-                // Row 6: Start Date + End Date (2 fields)
                 { fields: [
-                    { name: 'start_date', label: 'Start Date', type: 'date', required: true, placeholder: '', value: '' },
-                    { name: 'end_date', label: 'End Date', type: 'date', required: true, placeholder: '', value: '' }
+                    { name: 'start_date', label: 'Start Date', type: 'date', required: true },
+                    { name: 'end_date', label: 'End Date', type: 'date', required: true }
                 ]},
-                // Row 7: EMI Available + Scholarship Available (2 fields - dropdowns instead of checkboxes)
                 { fields: [
-                    { name: 'emi_available', label: 'EMI Available', type: 'yesno', required: false, value: 'true' },
-                    { name: 'scholarship_available', label: 'Scholarship Available', type: 'yesno', required: false, value: 'true' }
+                    { name: 'certification_provided', label: 'Certification Provided', type: 'yesno', required: false },
+                    { name: 'certification_name', label: 'Certification Name', type: 'text', required: false, placeholder: 'e.g., Industry Certification' }
                 ]},
-                // Row 8: Certification Provided + Certification Name (2 fields)
                 { fields: [
-                    { name: 'certification_provided', label: 'Certification Provided', type: 'yesno', required: false, value: 'true' },
-                    { name: 'certification_name', label: 'Certification Name', type: 'text', required: false, placeholder: 'e.g., Industry Certification', value: 'Industry Certification' }
+                    { name: 'enrollment_open', label: 'Enrollment Open', type: 'yesno', required: false },
+                    { name: 'enrollment_deadline', label: 'Enrollment Deadline', type: 'date', required: false }
                 ]},
-                // Row 9: Enrollment Open + Enrollment Deadline (2 fields)
                 { fields: [
-                    { name: 'enrollment_open', label: 'Enrollment Open', type: 'yesno', required: false, value: 'true' },
-                    { name: 'enrollment_deadline', label: 'Enrollment Deadline', type: 'date', required: false, placeholder: '', value: '' }
+                    { name: 'program_badge', label: 'Program Badge', type: 'text', required: false, placeholder: 'e.g., ICT & SOFTWARE DEVELOPMENT' },
+                    { name: 'program_badge_icon', label: 'Badge Icon', type: 'iconpicker', required: false }
                 ]},
-                // Row 10: Program Badge + Badge Icon (2 fields - icon picker for badge icon)
+                // ============ SECTION 1: What Will You Master? ============
                 { fields: [
-                    { name: 'program_badge', label: 'Program Badge', type: 'text', required: false, placeholder: 'e.g., ICT & SOFTWARE DEVELOPMENT', value: 'ICT & SOFTWARE DEVELOPMENT' },
-                    { name: 'program_badge_icon', label: 'Badge Icon', type: 'iconpicker', required: false, value: 'fa-solid fa-laptop-code' }
+                    { name: 'what_you_will_master', label: 'What Will You Master?', type: 'repeatable', required: false, value: [] }
                 ]},
-                // Row 11: Hero Title + Hero Subtitle (2 fields)
+                // ============ SECTION 2: Who Should Attend? ============
                 { fields: [
-                    { name: 'hero_title', label: 'Hero Title', type: 'text', required: false, placeholder: 'e.g., ICT & Software Development Training', value: '' },
-                    { name: 'hero_subtitle', label: 'Hero Subtitle', type: 'text', required: false, placeholder: 'e.g., Building the Next Generation of Digital Professionals', value: '' }
+                    { name: 'who_should_attend', label: 'Who Should Attend?', type: 'repeatable', required: false, value: [] }
+                ]},
+                // ============ SECTION 3: Program Structure ============
+                { fields: [
+                    { name: 'program_structure', label: 'Program Structure', type: 'repeatable', required: false, value: [] }
+                ]},
+                { fields: [
+                    { name: 'hero_title', label: 'Hero Title', type: 'text', required: false, placeholder: 'e.g., ICT & Software Development Training' },
+                    { name: 'hero_subtitle', label: 'Hero Subtitle', type: 'text', required: false, placeholder: 'e.g., Building the Next Generation of Digital Professionals' }
                 ]}
             ]
         });
     });
 
-    // Edit Course Button - With same improved layout
+    // Edit Course handler - updated with 3 repeatable sections
     document.querySelectorAll('.edit-btn').forEach(function(button) {
         button.addEventListener('click', function() {
-            openFormModal({
+            if (typeof window.openFormModal !== 'function') {
+                console.error('openFormModal not found! Make sure formModel.html is loaded correctly.');
+                return;
+            }
+            
+            // Parse existing data for all three sections
+            let whatYouWillMaster = [];
+            let whoShouldAttend = [];
+            let programStructure = [];
+            
+            if (this.dataset.whatYouWillMaster && this.dataset.whatYouWillMaster !== '[]') {
+                try {
+                    whatYouWillMaster = JSON.parse(this.dataset.whatYouWillMaster.replace(/&quot;/g, '"'));
+                } catch(e) {
+                    console.error('Failed to parse what_you_will_master data:', e);
+                }
+            }
+            
+            if (this.dataset.whoShouldAttend && this.dataset.whoShouldAttend !== '[]') {
+                try {
+                    whoShouldAttend = JSON.parse(this.dataset.whoShouldAttend.replace(/&quot;/g, '"'));
+                } catch(e) {
+                    console.error('Failed to parse who_should_attend data:', e);
+                }
+            }
+            
+            if (this.dataset.programStructure && this.dataset.programStructure !== '[]') {
+                try {
+                    programStructure = JSON.parse(this.dataset.programStructure.replace(/&quot;/g, '"'));
+                } catch(e) {
+                    console.error('Failed to parse program_structure data:', e);
+                }
+            }
+            
+            window.openFormModal({
                 title: 'Edit Course',
                 mode: 'edit',
                 actionUrl: "{% url 'course_management' %}",
                 itemId: this.dataset.courseId,
                 rows: [
-                    { fields: [{ name: 'course_name', label: 'Course Name', type: 'text', required: true, placeholder: 'e.g., Information & Communication Technology', value: this.dataset.courseName }] },
-                    { fields: [{ name: 'description', label: 'Description', type: 'textarea', required: true, placeholder: 'Course description...', value: this.dataset.description }] },
-                    { fields: [
-                        { name: 'credits', label: 'Credits', type: 'number', required: true, placeholder: 'e.g., 3', value: this.dataset.credits },
-                        { name: 'duration_weeks', label: 'Duration (weeks)', type: 'number', required: true, placeholder: 'e.g., 12', value: this.dataset.duration }
-                    ]},
+                    { fields: [{ name: 'course_name', label: 'Course Name', type: 'text', required: true, value: this.dataset.courseName }] },
+                    { fields: [{ name: 'description', label: 'Description', type: 'textarea', required: true, value: this.dataset.description }] },
+                    { fields: [{ name: 'duration_weeks', label: 'Duration (weeks)', type: 'number', required: true, value: this.dataset.duration }] },
                     { fields: [
                         { name: 'schedule_type', label: 'Schedule Type', type: 'select', required: true, options: [
-                            { value: 'Flexible', label: 'Flexible' },
-                            { value: 'Evening', label: 'Evening' },
-                            { value: 'Weekend', label: 'Weekend' },
-                            { value: 'Full-time', label: 'Full-time' }
+                            { value: 'Flexible', label: 'Flexible' }, { value: 'Evening', label: 'Evening' },
+                            { value: 'Weekend', label: 'Weekend' }, { value: 'Full-time', label: 'Full-time' }
                         ], value: this.dataset.scheduleType || 'Flexible' },
-                        { name: 'batch_size', label: 'Batch Size', type: 'text', required: true, placeholder: 'e.g., 15-20, 25-30', value: this.dataset.batchSize || '15-20' }
+                        { name: 'batch_size', label: 'Batch Size', type: 'text', required: true, value: this.dataset.batchSize }
                     ]},
                     { fields: [
-                        { name: 'max_students', label: 'Max Students', type: 'number', required: true, placeholder: 'e.g., 30', value: this.dataset.maxStudents },
-                        { name: 'course_fee', label: 'Course Fee ($)', type: 'number', required: true, placeholder: 'e.g., 25000', value: this.dataset.fee }
+                        { name: 'max_students', label: 'Max Students', type: 'number', required: true, value: this.dataset.maxStudents },
+                        { name: 'course_fee', label: 'Course Fee (Nu.)', type: 'number', required: true, value: this.dataset.fee }
                     ]},
                     { fields: [
-                        { name: 'start_date', label: 'Start Date', type: 'date', required: true, placeholder: '', value: this.dataset.startDate || '' },
-                        { name: 'end_date', label: 'End Date', type: 'date', required: true, placeholder: '', value: this.dataset.endDate || '' }
+                        { name: 'start_date', label: 'Start Date', type: 'date', required: true, value: this.dataset.startDate },
+                        { name: 'end_date', label: 'End Date', type: 'date', required: true, value: this.dataset.endDate }
                     ]},
                     { fields: [
-                        { name: 'emi_available', label: 'EMI Available', type: 'yesno', required: false, value: this.dataset.emiAvailable === 'true' ? 'true' : 'false' },
-                        { name: 'scholarship_available', label: 'Scholarship Available', type: 'yesno', required: false, value: this.dataset.scholarshipAvailable === 'true' ? 'true' : 'false' }
+                        { name: 'certification_provided', label: 'Certification Provided', type: 'yesno', required: false, value: this.dataset.certificationProvided },
+                        { name: 'certification_name', label: 'Certification Name', type: 'text', required: false, value: this.dataset.certificationName }
                     ]},
                     { fields: [
-                        { name: 'certification_provided', label: 'Certification Provided', type: 'yesno', required: false, value: this.dataset.certificationProvided === 'true' ? 'true' : 'false' },
-                        { name: 'certification_name', label: 'Certification Name', type: 'text', required: false, placeholder: 'e.g., Industry Certification', value: this.dataset.certificationName || 'Industry Certification' }
+                        { name: 'enrollment_open', label: 'Enrollment Open', type: 'yesno', required: false, value: this.dataset.enrollmentOpen },
+                        { name: 'enrollment_deadline', label: 'Enrollment Deadline', type: 'date', required: false, value: this.dataset.enrollmentDeadline }
                     ]},
                     { fields: [
-                        { name: 'enrollment_open', label: 'Enrollment Open', type: 'yesno', required: false, value: this.dataset.enrollmentOpen === 'true' ? 'true' : 'false' },
-                        { name: 'enrollment_deadline', label: 'Enrollment Deadline', type: 'date', required: false, placeholder: '', value: this.dataset.enrollmentDeadline || '' }
+                        { name: 'program_badge', label: 'Program Badge', type: 'text', required: false, value: this.dataset.programBadge },
+                        { name: 'program_badge_icon', label: 'Badge Icon', type: 'iconpicker', required: false, value: this.dataset.programBadgeIcon }
+                    ]},
+                    // ============ SECTION 1: What Will You Master? ============
+                    { fields: [
+                        { name: 'what_you_will_master', label: 'What Will You Master?', type: 'repeatable', required: false, value: whatYouWillMaster }
+                    ]},
+                    // ============ SECTION 2: Who Should Attend? ============
+                    { fields: [
+                        { name: 'who_should_attend', label: 'Who Should Attend?', type: 'repeatable', required: false, value: whoShouldAttend }
+                    ]},
+                    // ============ SECTION 3: Program Structure ============
+                    { fields: [
+                        { name: 'program_structure', label: 'Program Structure', type: 'repeatable', required: false, value: programStructure }
                     ]},
                     { fields: [
-                        { name: 'program_badge', label: 'Program Badge', type: 'text', required: false, placeholder: 'e.g., ICT & SOFTWARE DEVELOPMENT', value: this.dataset.programBadge || 'ICT & SOFTWARE DEVELOPMENT' },
-                        { name: 'program_badge_icon', label: 'Badge Icon', type: 'iconpicker', required: false, value: this.dataset.programBadgeIcon || 'fa-solid fa-laptop-code' }
-                    ]},
-                    { fields: [
-                        { name: 'hero_title', label: 'Hero Title', type: 'text', required: false, placeholder: 'e.g., ICT & Software Development Training', value: this.dataset.heroTitle || '' },
-                        { name: 'hero_subtitle', label: 'Hero Subtitle', type: 'text', required: false, placeholder: 'e.g., Building the Next Generation of Digital Professionals', value: this.dataset.heroSubtitle || '' }
+                        { name: 'hero_title', label: 'Hero Title', type: 'text', required: false, value: this.dataset.heroTitle },
+                        { name: 'hero_subtitle', label: 'Hero Subtitle', type: 'text', required: false, value: this.dataset.heroSubtitle }
                     ]}
                 ]
             });
         });
     });
-    
-    // Delete Course Button
+
+    // Edit Course handler - single version with repeatable field support
+    document.querySelectorAll('.edit-btn').forEach(function(button) {
+        button.addEventListener('click', function() {
+            if (typeof window.openFormModal !== 'function') {
+                console.error('openFormModal not found! Make sure formModel.html is loaded correctly.');
+                return;
+            }
+            
+            // Parse existing what_you_will_master data if it exists
+            let whatYouWillMaster = [];
+            if (this.dataset.whatYouWillMaster && this.dataset.whatYouWillMaster !== '[]') {
+                try {
+                    whatYouWillMaster = JSON.parse(this.dataset.whatYouWillMaster.replace(/&quot;/g, '"'));
+                    console.log('Parsed whatYouWillMaster:', whatYouWillMaster);
+                } catch(e) {
+                    console.error('Failed to parse what_you_will_master data:', e);
+                    whatYouWillMaster = [];
+                }
+            }
+            
+            window.openFormModal({
+                title: 'Edit Course',
+                mode: 'edit',
+                actionUrl: "{% url 'course_management' %}",
+                itemId: this.dataset.courseId,
+                rows: [
+                    { fields: [{ name: 'course_name', label: 'Course Name', type: 'text', required: true, value: this.dataset.courseName }] },
+                    { fields: [{ name: 'description', label: 'Description', type: 'textarea', required: true, value: this.dataset.description }] },
+                    { fields: [{ name: 'duration_weeks', label: 'Duration (weeks)', type: 'number', required: true, value: this.dataset.duration }] },
+                    { fields: [
+                        { name: 'schedule_type', label: 'Schedule Type', type: 'select', required: true, options: [
+                            { value: 'Flexible', label: 'Flexible' }, { value: 'Evening', label: 'Evening' },
+                            { value: 'Weekend', label: 'Weekend' }, { value: 'Full-time', label: 'Full-time' }
+                        ], value: this.dataset.scheduleType || 'Flexible' },
+                        { name: 'batch_size', label: 'Batch Size', type: 'text', required: true, value: this.dataset.batchSize }
+                    ]},
+                    { fields: [
+                        { name: 'max_students', label: 'Max Students', type: 'number', required: true, value: this.dataset.maxStudents },
+                        { name: 'course_fee', label: 'Course Fee (Nu.)', type: 'number', required: true, value: this.dataset.fee }
+                    ]},
+                    { fields: [
+                        { name: 'start_date', label: 'Start Date', type: 'date', required: true, value: this.dataset.startDate },
+                        { name: 'end_date', label: 'End Date', type: 'date', required: true, value: this.dataset.endDate }
+                    ]},
+                    { fields: [
+                        { name: 'certification_provided', label: 'Certification Provided', type: 'yesno', required: false, value: this.dataset.certificationProvided },
+                        { name: 'certification_name', label: 'Certification Name', type: 'text', required: false, value: this.dataset.certificationName }
+                    ]},
+                    { fields: [
+                        { name: 'enrollment_open', label: 'Enrollment Open', type: 'yesno', required: false, value: this.dataset.enrollmentOpen },
+                        { name: 'enrollment_deadline', label: 'Enrollment Deadline', type: 'date', required: false, value: this.dataset.enrollmentDeadline }
+                    ]},
+                    { fields: [
+                        { name: 'program_badge', label: 'Program Badge', type: 'text', required: false, value: this.dataset.programBadge },
+                        { name: 'program_badge_icon', label: 'Badge Icon', type: 'iconpicker', required: false, value: this.dataset.programBadgeIcon }
+                    ]},
+                    // What will you master? section with existing data
+                    { fields: [
+                        { name: 'what_you_will_master', label: 'What Will You Master?', type: 'repeatable', required: false, value: whatYouWillMaster }
+                    ]},
+                    { fields: [
+                        { name: 'hero_title', label: 'Hero Title', type: 'text', required: false, value: this.dataset.heroTitle },
+                        { name: 'hero_subtitle', label: 'Hero Subtitle', type: 'text', required: false, value: this.dataset.heroSubtitle }
+                    ]}
+                ]
+            });
+        });
+    });
+
+    // Delete logic
     document.querySelectorAll('.delete-btn').forEach(function(button) {
         button.addEventListener('click', function() {
-            const courseId = this.dataset.courseId;
-            const courseName = this.dataset.courseName;
+            document.getElementById('deleteCourseId').value = this.dataset.courseId;
+            document.getElementById('deleteCourseName').textContent = this.dataset.courseName;
             const enrolledCount = parseInt(this.dataset.enrolledCount) || 0;
-            
-            document.getElementById('deleteCourseId').value = courseId;
-            document.getElementById('deleteCourseName').textContent = courseName;
-            
-            const warningElement = document.getElementById('enrollmentCountWarning');
-            const countSpan = document.getElementById('assignedEnrollmentCount');
-            
+            const warningEl = document.getElementById('enrollmentCountWarning');
             if (enrolledCount > 0) {
-                countSpan.textContent = enrolledCount;
-                warningElement.style.display = 'block';
-                swal({
-                    icon: 'warning',
-                    title: 'Warning!',
-                    text: `This course has ${enrolledCount} enrollment(s). Deleting it will remove all associated enrollments. Are you sure?`,
-                    confirmButtonText: 'Yes, delete anyway',
-                    cancelButtonText: 'Cancel',
-                    showCancelButton: true
-                }).then((confirmed) => {
-                    if (confirmed) {
-                        document.getElementById('deleteCourseForm').dispatchEvent(new Event('submit'));
-                    }
-                });
+                document.getElementById('assignedEnrollmentCount').textContent = enrolledCount;
+                warningEl.style.display = 'block';
+                swal({ icon: 'warning', title: 'Warning!', text: `This course has Nu.{enrolledCount} enrollment(s). Deleting it will remove all associated enrollments.`, confirmButtonText: 'Yes, delete anyway', cancelButtonText: 'Cancel', showCancelButton: true })
+                .then((confirmed) => { if (confirmed) document.getElementById('deleteCourseForm').dispatchEvent(new Event('submit')); });
             } else {
-                warningElement.style.display = 'none';
+                warningEl.style.display = 'none';
                 document.getElementById('deleteCourseForm').dispatchEvent(new Event('submit'));
             }
         });
     });
     
-    // Close Delete Modal Functions
-    function closeDeleteCourseModal() {
-        document.getElementById('deleteCourseModal').classList.add('hidden');
+    function closeDeleteCourseModal() { 
+        document.getElementById('deleteCourseModal').classList.add('hidden'); 
     }
     
-    // Close modals when clicking outside
-    document.getElementById('deleteCourseModal')?.addEventListener('click', function(e) {
-        if (e.target === this) {
-            closeDeleteCourseModal();
-        }
+    document.getElementById('deleteCourseModal')?.addEventListener('click', function(e) { 
+        if (e.target === this) closeDeleteCourseModal(); 
     });
-    
-    // Handle delete form submission
+
     document.addEventListener('DOMContentLoaded', function() {
         const deleteForm = document.getElementById('deleteCourseForm');
         if (deleteForm) {
             deleteForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 const formData = new FormData(this);
-                const actionUrl = this.action;
-                const courseName = document.getElementById('deleteCourseName').textContent;
-                
-                fetch(actionUrl, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest'
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        showSuccessAlert(data.message);
-                        closeDeleteCourseModal();
-                    } else {
-                        showErrorAlert(data.message);
-                        closeDeleteCourseModal();
-                    }
-                })
-                .catch(error => {
-                    showErrorAlert('An error occurred. Please try again.');
+                fetch(this.action, { method: 'POST', body: formData, headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+                .then(r => r.json()).then(data => {
+                    data.success ? showSuccessAlert(data.message) : showErrorAlert(data.message);
                     closeDeleteCourseModal();
-                });
+                }).catch(() => { showErrorAlert('Error'); closeDeleteCourseModal(); });
             });
         }
         
-        // Intercept form submission for the generic modal
         const genericForm = document.getElementById('genericForm');
         if (genericForm) {
             genericForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                const formData = new FormData(this);
-                const actionUrl = this.action;
-                submitCourseForm(formData, actionUrl);
-                closeFormModal();
+                submitCourseForm(new FormData(this), this.action);
+                if (typeof window.closeFormModal === 'function') {
+                    window.closeFormModal();
+                }
             });
         }
     });
 </script>
+
+<style>
+    #addCourseBtn { cursor: pointer; }
+    #addCourseBtn:hover { animation: pulse 1.5s infinite; }
+    @keyframes pulse {
+        0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
+        70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+        100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+    }
+    .table-row-transition { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .action-btn { position: relative; overflow: hidden; cursor: pointer; }
+    .action-btn::before {
+        content: ''; position: absolute; top: 50%; left: 50%;
+        width: 0; height: 0; border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%); transition: width 0.6s, height 0.6s;
+    }
+    .action-btn:hover::before { width: 100px; height: 100px; }
+</style>
 {% endblock content %}
