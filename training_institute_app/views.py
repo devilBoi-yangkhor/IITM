@@ -587,9 +587,11 @@ def course_management(request):
         course_id = request.POST.get('course_id')
         course_name = request.POST.get('course_name')
         description = request.POST.get('description')
-        credits = request.POST.get('credits')
-        duration_weeks = request.POST.get('duration_weeks')
-        course_fee = request.POST.get('course_fee')
+        credits = request.POST.get('credits', 3)
+        duration_weeks = request.POST.get('duration_weeks', 12)
+        schedule_type = request.POST.get('schedule_type', 'Flexible')
+        batch_size = request.POST.get('batch_size', '15-20')
+        course_fee = request.POST.get('course_fee', 0)
         max_students = request.POST.get('max_students', 30)
         start_date = request.POST.get('start_date')
         end_date = request.POST.get('end_date')
@@ -597,23 +599,76 @@ def course_management(request):
         department_id = request.POST.get('department_id')
         instructor_id = request.POST.get('instructor_id')
         
+        # New fields from the form
+        certification_provided = request.POST.get('certification_provided', 'false') == 'true'
+        certification_name = request.POST.get('certification_name', '')
+        enrollment_open = request.POST.get('enrollment_open', 'false') == 'true'
+        enrollment_deadline = request.POST.get('enrollment_deadline')
+        program_badge = request.POST.get('program_badge', '')
+        program_badge_icon = request.POST.get('program_badge_icon', 'fas fa-laptop-code')
+        hero_title = request.POST.get('hero_title', '')
+        hero_subtitle = request.POST.get('hero_subtitle', '')
+        
+        # Parse JSON data for repeatable sections
+        what_you_will_master = []
+        who_should_attend = []
+        program_structure = []
+        
+        try:
+            if request.POST.get('what_you_will_master'):
+                what_you_will_master = json.loads(request.POST.get('what_you_will_master'))
+        except json.JSONDecodeError:
+            what_you_will_master = []
+        
+        try:
+            if request.POST.get('who_should_attend'):
+                who_should_attend = json.loads(request.POST.get('who_should_attend'))
+        except json.JSONDecodeError:
+            who_should_attend = []
+        
+        try:
+            if request.POST.get('program_structure'):
+                program_structure = json.loads(request.POST.get('program_structure'))
+        except json.JSONDecodeError:
+            program_structure = []
+        
         if course_id and course_id != '':  # Edit existing course
             try:
                 course = Course.objects.get(id=course_id)
                 
-                # Update course (course_code is auto-generated, not editable)
+                # Update basic fields
                 course.course_name = course_name
                 course.description = description
                 course.credits = credits
                 course.duration_weeks = duration_weeks
+                course.schedule_type = schedule_type
+                course.batch_size = batch_size
                 course.course_fee = course_fee
                 course.max_students = max_students
                 
-                # Handle optional fields
+                # Update new fields
+                course.certification_provided = certification_provided
+                course.certification_name = certification_name
+                course.enrollment_open = enrollment_open
+                course.program_badge = program_badge
+                course.program_badge_icon = program_badge_icon
+                course.hero_title = hero_title
+                course.hero_subtitle = hero_subtitle
+                
+                # Update repeatable sections
+                course.what_you_will_master = what_you_will_master
+                course.who_should_attend = who_should_attend
+                course.program_structure = program_structure
+                
+                # Handle dates
                 if start_date:
                     course.start_date = start_date
                 if end_date:
                     course.end_date = end_date
+                if enrollment_deadline:
+                    course.enrollment_deadline = enrollment_deadline
+                
+                # Handle foreign keys
                 if category_id:
                     course.category_id = category_id
                 if department_id:
@@ -628,47 +683,81 @@ def course_management(request):
                 else:
                     messages.success(request, f'Course "{course_name}" updated successfully!')
                     return redirect('course_management')
+                    
             except Course.DoesNotExist:
                 if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                     return JsonResponse({'success': False, 'message': 'Course not found!'})
                 else:
                     messages.error(request, 'Course not found!')
                     return redirect('course_management')
+                    
         else:  # Add new course
-            # Create new course (course_code auto-generated)
-            course = Course(
-                course_name=course_name,
-                description=description,
-                credits=credits,
-                duration_weeks=duration_weeks,
-                course_fee=course_fee,
-                max_students=max_students,
-            )
-            
-            # Handle optional fields
-            if start_date:
-                course.start_date = start_date
-            if end_date:
-                course.end_date = end_date
-            if category_id:
-                course.category_id = category_id
-            if department_id:
-                course.department_id = department_id
-            if instructor_id:
-                course.instructor_id = instructor_id
+            try:
+                # Create new course
+                course = Course(
+                    course_name=course_name,
+                    description=description,
+                    credits=credits,
+                    duration_weeks=duration_weeks,
+                    schedule_type=schedule_type,
+                    batch_size=batch_size,
+                    course_fee=course_fee,
+                    max_students=max_students,
+                    certification_provided=certification_provided,
+                    certification_name=certification_name,
+                    enrollment_open=enrollment_open,
+                    program_badge=program_badge,
+                    program_badge_icon=program_badge_icon,
+                    hero_title=hero_title,
+                    hero_subtitle=hero_subtitle,
+                    what_you_will_master=what_you_will_master,
+                    who_should_attend=who_should_attend,
+                    program_structure=program_structure,
+                )
                 
-            course.save()
-            
-            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-                return JsonResponse({'success': True, 'message': f'Course "{course_name}" created successfully! Course Code: {course.get_short_uuid()}'})
-            else:
-                messages.success(request, f'Course "{course_name}" created successfully!')
-                return redirect('course_management')
+                # Handle dates
+                if start_date:
+                    course.start_date = start_date
+                if end_date:
+                    course.end_date = end_date
+                if enrollment_deadline:
+                    course.enrollment_deadline = enrollment_deadline
+                
+                # Handle foreign keys
+                if category_id:
+                    course.category_id = category_id
+                if department_id:
+                    course.department_id = department_id
+                if instructor_id:
+                    course.instructor_id = instructor_id
+                    
+                course.save()
+                
+                if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                    return JsonResponse({'success': True, 'message': f'Course "{course_name}" created successfully! Course Code: {course.get_short_uuid()}'})
+                else:
+                    messages.success(request, f'Course "{course_name}" created successfully!')
+                    return redirect('course_management')
+                    
+            except Exception as e:
+                if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                    return JsonResponse({'success': False, 'message': f'Error creating course: {str(e)}'})
+                else:
+                    messages.error(request, f'Error creating course: {str(e)}')
+                    return redirect('course_management')
     
-    # GET request - show all courses
+    # GET request - show all courses with related data
     courses = Course.objects.all().select_related('category', 'department', 'instructor').order_by('-created_at')
+    
+    # Pass additional data for dropdowns
+    categories = CourseCategory.objects.all()
+    departments = Department.objects.all()
+    instructors = Instructor.objects.all()
     
     context = {
         'courses': courses,
+        'categories': categories,
+        'departments': departments,
+        'instructors': instructors,
     }
     return render(request, 'training_institute_app/dashboard/courses/course-management.html', context)

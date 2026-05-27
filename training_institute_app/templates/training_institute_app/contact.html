@@ -9,7 +9,7 @@
 
 <main class="main">
 
-  <!-- Contact Hero Section -->
+  <!-- Contact Hero Section - Bright Theme -->
   <section class="contact-hero" id="contactHero">
     <div class="hero-grid"></div>
     <div class="contact-hero-badge">
@@ -26,7 +26,7 @@
 
   <div class="silk-divider reveal"></div>
 
-  <!-- Contact Info Cards -->
+  <!-- Contact Info Cards - Bright Theme -->
   <section class="contact-info section">
     <div class="contact-info-grid">
       <div class="info-card reveal">
@@ -60,7 +60,7 @@
 
   <div class="silk-divider reveal"></div>
 
-  <!-- Contact Form & Map Section -->
+  <!-- Contact Form & Map Section - Bright Theme -->
   <section class="contact-form-section section">
     <div class="section-center">
       <div class="section-tag"><i class="fa-regular fa-message"></i> SEND US A MESSAGE</div>
@@ -141,7 +141,7 @@
 </main>
 
 <style>
-/* Contact Hero */
+/* Contact Hero - Bright Theme */
 .contact-hero {
   min-height: 70vh;
   display: flex;
@@ -159,21 +159,31 @@
   gap: 10px;
   padding: 10px 24px;
   border-radius: 100px;
-  background: rgba(22, 26, 32, 0.6);
-  border: 1px solid rgba(156, 163, 175, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(102, 126, 234, 0.2);
   backdrop-filter: blur(20px);
   margin-bottom: 32px;
   opacity: 0;
   transform: translateY(16px);
   animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.hero-badge-dot {
+  width: 8px;
+  height: 8px;
+  background: #667eea;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+  box-shadow: 0 0 10px #667eea;
 }
 
 .contact-hero-badge span {
   font-size: 10px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #9CA3AF;
+  color: #667eea;
 }
 
 .contact-hero-badge span i {
@@ -182,10 +192,13 @@
 
 .contact-title {
   font-size: clamp(2rem, 6vw, 4rem);
-  font-weight: 300;
-  letter-spacing: -0.04em;
+  font-weight: 800;
+  letter-spacing: -0.03em;
   line-height: 1.2;
-  color: #E5E7EB;
+  background: linear-gradient(135deg, #1a1a2e, #2d3561);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   opacity: 0;
   transform: translateY(24px);
   animation: fadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
@@ -194,16 +207,16 @@
 
 .contact-sub {
   font-size: clamp(0.9rem, 1.2vw, 1.1rem);
-  font-weight: 300;
+  font-weight: 500;
   line-height: 1.7;
-  color: #9CA3AF;
+  color: #4a5568;
   max-width: 600px;
   opacity: 0;
   transform: translateY(16px);
   animation: fadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
 }
 
-/* Contact Info Cards */
+/* Contact Info Cards - Bright Theme */
 .contact-info-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -212,46 +225,53 @@
 }
 
 .info-card {
-  background: rgba(22, 26, 32, 0.4);
-  border: 1px solid rgba(156, 163, 175, 0.08);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(102, 126, 234, 0.15);
   border-radius: 28px;
   padding: 32px 24px;
   text-align: center;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .info-card:hover {
   transform: translateY(-8px);
-  border-color: rgba(176, 184, 196, 0.2);
-  background: rgba(22, 26, 32, 0.6);
+  border-color: #667eea;
+  background: white;
+  box-shadow: 0 15px 35px rgba(102, 126, 234, 0.15);
 }
 
 .info-icon {
   font-size: 48px;
   margin-bottom: 20px;
-  color: #B0B8C4;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .info-card h3 {
   font-size: 1.2rem;
-  font-weight: 600;
-  color: #E5E7EB;
+  font-weight: 700;
+  color: #1a1a2e;
   margin-bottom: 16px;
 }
 
 .info-card p {
   font-size: 0.9rem;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.6;
-  color: #9CA3AF;
+  color: #4a5568;
   margin-bottom: 8px;
 }
 
 .info-detail {
   font-size: 0.75rem !important;
+  font-weight: 500 !important;
   margin-top: 12px;
   padding-top: 8px;
-  border-top: 1px solid rgba(156, 163, 175, 0.1);
+  border-top: 1px solid rgba(102, 126, 234, 0.15);
+  color: #667eea !important;
 }
 
 .info-detail i {
@@ -266,12 +286,13 @@
   margin-top: 48px;
 }
 
-/* Contact Form Styles */
+/* Contact Form Styles - Bright Theme */
 .contact-form-container {
-  background: rgba(22, 26, 32, 0.3);
-  border: 1px solid rgba(156, 163, 175, 0.08);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(102, 126, 234, 0.15);
   border-radius: 28px;
   padding: 40px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .form-row {
@@ -292,14 +313,15 @@
 .form-group label {
   display: block;
   font-size: 0.8rem;
-  font-weight: 500;
-  color: #B0B8C4;
+  font-weight: 700;
+  color: #4a5568;
   margin-bottom: 8px;
 }
 
 .form-group label i {
   margin-right: 6px;
   font-size: 12px;
+  color: #667eea;
 }
 
 .form-group input,
@@ -307,31 +329,36 @@
 .form-group textarea {
   width: 100%;
   padding: 12px 16px;
-  background: rgba(15, 18, 22, 0.6);
-  border: 1px solid rgba(156, 163, 175, 0.15);
+  background: white;
+  border: 1px solid rgba(102, 126, 234, 0.2);
   border-radius: 12px;
-  color: #E5E7EB;
+  color: #1a1a2e;
   font-size: 0.9rem;
   transition: all 0.3s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #adb5bd;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #B0B8C4;
-  background: rgba(15, 18, 22, 0.8);
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
 .submit-btn {
   width: 100%;
   padding: 14px 28px;
-  background: linear-gradient(135deg, #3B82F6, #06B6D4);
+  background: linear-gradient(135deg, #667eea, #764ba2);
   border: none;
   border-radius: 12px;
   color: white;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
@@ -342,18 +369,19 @@
 
 .submit-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
 }
 
-/* Map Container */
+/* Map Container - Bright Theme */
 .map-container {
   position: relative;
   border-radius: 28px;
   overflow: hidden;
-  background: rgba(22, 26, 32, 0.3);
-  border: 1px solid rgba(156, 163, 175, 0.08);
+  background: white;
+  border: 1px solid rgba(102, 126, 234, 0.15);
   height: 100%;
   min-height: 500px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .map-wrapper {
@@ -363,7 +391,7 @@
 }
 
 .map-wrapper iframe {
-  filter: grayscale(0.3) invert(0.1);
+  filter: grayscale(0.1);
 }
 
 .map-overlay-info {
@@ -375,19 +403,20 @@
 }
 
 .map-info-card {
-  background: rgba(22, 26, 32, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(156, 163, 175, 0.15);
+  border: 1px solid rgba(102, 126, 234, 0.2);
   border-radius: 16px;
   padding: 12px 20px;
   display: inline-flex;
   align-items: center;
   gap: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .map-info-card i {
   font-size: 20px;
-  color: #3B82F6;
+  color: #667eea;
 }
 
 .map-info-card div {
@@ -396,13 +425,81 @@
 }
 
 .map-info-card strong {
-  color: #E5E7EB;
+  color: #1a1a2e;
   font-size: 0.85rem;
+  font-weight: 700;
 }
 
 .map-info-card span {
-  color: #9CA3AF;
+  color: #4a5568;
   font-size: 0.7rem;
+}
+
+/* Section elements - Bright Theme */
+.section-tag {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #667eea;
+  opacity: 0.8;
+  margin-bottom: 20px;
+}
+
+.section-tag i {
+  margin-right: 8px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+  color: #1a1a2e;
+  margin-bottom: 10px;
+}
+
+.section-title strong {
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-body {
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.8;
+  color: #4a5568;
+  max-width: 540px;
+}
+
+.silk-divider {
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #667eea, #764ba2, transparent);
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.3);
+  }
 }
 
 /* Responsive */
@@ -444,19 +541,11 @@
     padding: 100px 0 60px;
   }
 }
-
-/* Animations */
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 </style>
 
 <script>
 $(document).ready(function() {
-  // Form submission with SweetAlert
+  // Form submission with SweetAlert - Bright Theme
   $('#contactForm').on('submit', function(e) {
     e.preventDefault();
     
@@ -464,9 +553,9 @@ $(document).ready(function() {
       title: 'Message Sent!',
       text: 'Thank you for reaching out. We\'ll get back to you within 24 hours.',
       icon: 'success',
-      background: '#1a1e24',
-      color: '#E5E7EB',
-      confirmButtonColor: '#3B82F6',
+      background: 'white',
+      color: '#1a1a2e',
+      confirmButtonColor: '#667eea',
       confirmButtonText: 'Great!'
     });
     

@@ -3,3 +3,4 @@ db.sqlite3
 debug.log
 *.pyc
 __pycache__/
+debug.log

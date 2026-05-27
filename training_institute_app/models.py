@@ -155,7 +155,6 @@ class Course(models.Model):
     description = models.TextField()
     
     # Course Details
-    credits = models.IntegerField(default=3)
     duration_weeks = models.IntegerField(default=12)
     schedule_type = models.CharField(max_length=50, default='Flexible', help_text="e.g., Flexible, Evening, Weekend")
     batch_size = models.CharField(max_length=50, default='15-20', help_text="e.g., 15-20, 25-30")
@@ -203,7 +202,9 @@ class Course(models.Model):
     # Hero Section
     hero_title = models.CharField(max_length=200, blank=True)
     hero_subtitle = models.CharField(max_length=500, blank=True)
-    
+    what_you_will_master = models.JSONField(default=list, blank=True)
+    who_should_attend = models.JSONField(default=list, blank=True)
+    program_structure = models.JSONField(default=list, blank=True)
     # Metadata
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
