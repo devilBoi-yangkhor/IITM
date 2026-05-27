@@ -13158,3 +13158,4 @@ INFO 2026-05-27 10:16:49,069 log 17828 15728 "GET /static/js/basestyles.js HTTP/
 INFO 2026-05-27 10:16:49,074 log 17828 15728 "GET /static/images/image5.png HTTP/1.1" 304 0
 INFO 2026-05-27 10:16:51,572 log 17828 21988 "GET /static/js/basestyles.js HTTP/1.1" 304 0
 INFO 2026-05-27 10:34:10,625 autoreload 17828 9444 D:\Web Applications\training_institute\training_institute\settings.py changed, reloading.
+INFO 2026-05-27 10:34:12,636 autoreload 18564 23344 Watching for file changes with StatReloader
