@@ -13149,3 +13149,12 @@ INFO 2026-05-26 17:07:02,853 autoreload 25300 10984 Watching for file changes wi
 INFO 2026-05-26 17:07:30,661 log 25300 12940 "GET /course-management/ HTTP/1.1" 200 152887
 WARNING 2026-05-26 17:07:30,694 log 25300 12940 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
 INFO 2026-05-27 09:58:17,836 autoreload 17828 9444 Watching for file changes with StatReloader
+INFO 2026-05-27 10:16:48,824 log 17828 15728 "GET / HTTP/1.1" 200 47015
+INFO 2026-05-27 10:16:48,874 log 17828 15728 "GET /static/css/basestyles.css HTTP/1.1" 304 0
+INFO 2026-05-27 10:16:48,877 log 17828 15728 "GET /static/css/courses_details.css HTTP/1.1" 304 0
+INFO 2026-05-27 10:16:48,880 log 17828 15728 "GET /static/images/logo.png HTTP/1.1" 304 0
+INFO 2026-05-27 10:16:49,048 log 17828 15728 "GET /static/images/image2.png HTTP/1.1" 304 0
+INFO 2026-05-27 10:16:49,069 log 17828 15728 "GET /static/js/basestyles.js HTTP/1.1" 304 0
+INFO 2026-05-27 10:16:49,074 log 17828 15728 "GET /static/images/image5.png HTTP/1.1" 304 0
+INFO 2026-05-27 10:16:51,572 log 17828 21988 "GET /static/js/basestyles.js HTTP/1.1" 304 0
+INFO 2026-05-27 10:34:10,625 autoreload 17828 9444 D:\Web Applications\training_institute\training_institute\settings.py changed, reloading.
