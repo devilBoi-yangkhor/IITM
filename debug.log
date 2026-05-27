@@ -13146,3 +13146,6 @@ INFO 2026-05-26 17:06:59,330 autoreload 29364 13016 D:\Web Applications\training
 INFO 2026-05-26 17:07:00,381 autoreload 11964 26936 Watching for file changes with StatReloader
 INFO 2026-05-26 17:07:01,770 autoreload 11964 26936 D:\Web Applications\training_institute\training_institute_app\models.py changed, reloading.
 INFO 2026-05-26 17:07:02,853 autoreload 25300 10984 Watching for file changes with StatReloader
+INFO 2026-05-26 17:07:30,661 log 25300 12940 "GET /course-management/ HTTP/1.1" 200 152887
+WARNING 2026-05-26 17:07:30,694 log 25300 12940 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-27 09:58:17,836 autoreload 17828 9444 Watching for file changes with StatReloader
