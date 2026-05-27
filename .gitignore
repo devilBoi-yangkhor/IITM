@@ -4,3 +4,5 @@ debug.log
 *.pyc
 __pycache__/
 debug.log
+gunicorn.log
+staticfiles/
