@@ -14,13 +14,63 @@ def home(request):
     return render(request, 'training_institute_app/home.html')
 
 def about(request):
-    return render(request, 'training_institute_app/about.html')
+    # Get the active about page content
+    about_page = AboutPage.objects.filter(is_active=True).first()
+    
+    context = {
+        'about_page': about_page,
+    }
+    return render(request, 'training_institute_app/about.html', context)
 
 def courses(request):
-    return render(request, 'training_institute_app/courses.html')
-
-def courses_details(request):
+    # Fetch all active courses with related data
+    courses = Course.objects.filter(is_active=True).select_related('category', 'department', 'instructor').order_by('-created_at')
+    
+    # Categorize courses by type for filtering
+    for course in courses:
+        # Determine category based on course category name or program_badge
+        category_name = course.category.name.lower() if course.category else ''
+        program_badge = course.program_badge.lower() if course.program_badge else ''
+        
+        if 'cyber' in category_name or 'security' in category_name or 'cyber' in program_badge:
+            course.filter_category = 'cyber'
+        elif 'ai' in category_name or 'artificial' in category_name or 'copilot' in program_badge:
+            course.filter_category = 'ai'
+        elif 'leadership' in category_name or 'professional' in category_name:
+            course.filter_category = 'leadership'
+        elif 'corporate' in category_name or 'government' in category_name:
+            course.filter_category = 'corporate'
+        else:
+            course.filter_category = 'ict'  # Default to ICT & Development
+    
     context = {
+        'courses': courses,
+    }
+    return render(request, 'training_institute_app/courses.html', context)
+
+def courses_details(request, course_id):
+    try:
+        # Fetch the specific course by ID
+        course = Course.objects.get(id=course_id, is_active=True)
+    except Course.DoesNotExist:
+        # If course not found, redirect to courses page with error message
+        messages.error(request, 'Course not found!')
+        return redirect('courses')
+    
+    # Get related instructor data
+    instructor = course.instructor if course.instructor else None
+    
+    # Parse JSON fields if they exist
+    what_you_will_master = course.what_you_will_master if course.what_you_will_master else []
+    who_should_attend = course.who_should_attend if course.who_should_attend else []
+    program_structure = course.program_structure if course.program_structure else []
+    
+    context = {
+        'course': course,
+        'instructor': instructor,
+        'what_you_will_master': what_you_will_master,
+        'who_should_attend': who_should_attend,
+        'program_structure': program_structure,
         'user': request.user,
     }
     return render(request, 'training_institute_app/courses/courses_details.html', context)
@@ -584,7 +634,7 @@ def course_management(request):
                     return redirect('course_management')
         
         # Handle Add/Edit
-        course_id = request.POST.get('course_id')
+        course_id = request.POST.get('item_id') or request.POST.get('course_id')
         course_name = request.POST.get('course_name')
         description = request.POST.get('description')
         credits = request.POST.get('credits', 3)
@@ -608,29 +658,81 @@ def course_management(request):
         program_badge_icon = request.POST.get('program_badge_icon', 'fas fa-laptop-code')
         hero_title = request.POST.get('hero_title', '')
         hero_subtitle = request.POST.get('hero_subtitle', '')
+        emi_available = request.POST.get('emi_available', 'false') == 'true'
+        scholarship_available = request.POST.get('scholarship_available', 'false') == 'true'
         
-        # Parse JSON data for repeatable sections
+        # Parse repeatable section data from the form array structure
+        import re
+        
+        # Parse what_you_will_master
         what_you_will_master = []
+        what_you_will_master_data = {}
+        for key, value in request.POST.items():
+            if key.startswith('what_you_will_master['):
+                match = re.match(r'what_you_will_master\[(\d+)\]\[(\w+)\]', key)
+                if match:
+                    idx = int(match.group(1))
+                    field = match.group(2)
+                    if idx not in what_you_will_master_data:
+                        what_you_will_master_data[idx] = {}
+                    if field == 'title':
+                        what_you_will_master_data[idx]['title'] = value
+                    elif field == 'description':
+                        # Parse the JSON string for description
+                        try:
+                            what_you_will_master_data[idx]['description'] = json.loads(value) if value else []
+                        except:
+                            what_you_will_master_data[idx]['description'] = []
+        
+        what_you_will_master = [what_you_will_master_data[i] for i in sorted(what_you_will_master_data.keys())]
+        
+        # Parse who_should_attend
         who_should_attend = []
+        who_should_attend_data = {}
+        for key, value in request.POST.items():
+            if key.startswith('who_should_attend['):
+                match = re.match(r'who_should_attend\[(\d+)\]\[(\w+)\]', key)
+                if match:
+                    idx = int(match.group(1))
+                    field = match.group(2)
+                    if idx not in who_should_attend_data:
+                        who_should_attend_data[idx] = {}
+                    if field == 'title':
+                        who_should_attend_data[idx]['title'] = value
+                    elif field == 'description':
+                        try:
+                            who_should_attend_data[idx]['description'] = json.loads(value) if value else []
+                        except:
+                            who_should_attend_data[idx]['description'] = []
+        
+        who_should_attend = [who_should_attend_data[i] for i in sorted(who_should_attend_data.keys())]
+        
+        # Parse program_structure
         program_structure = []
+        program_structure_data = {}
+        for key, value in request.POST.items():
+            if key.startswith('program_structure['):
+                match = re.match(r'program_structure\[(\d+)\]\[(\w+)\]', key)
+                if match:
+                    idx = int(match.group(1))
+                    field = match.group(2)
+                    if idx not in program_structure_data:
+                        program_structure_data[idx] = {}
+                    if field == 'title':
+                        program_structure_data[idx]['title'] = value
+                    elif field == 'description':
+                        try:
+                            program_structure_data[idx]['description'] = json.loads(value) if value else []
+                        except:
+                            program_structure_data[idx]['description'] = []
         
-        try:
-            if request.POST.get('what_you_will_master'):
-                what_you_will_master = json.loads(request.POST.get('what_you_will_master'))
-        except json.JSONDecodeError:
-            what_you_will_master = []
+        program_structure = [program_structure_data[i] for i in sorted(program_structure_data.keys())]
         
-        try:
-            if request.POST.get('who_should_attend'):
-                who_should_attend = json.loads(request.POST.get('who_should_attend'))
-        except json.JSONDecodeError:
-            who_should_attend = []
-        
-        try:
-            if request.POST.get('program_structure'):
-                program_structure = json.loads(request.POST.get('program_structure'))
-        except json.JSONDecodeError:
-            program_structure = []
+        # Debug logging
+        print(f"Course Name: {course_name}")
+        print(f"What You Will Master: {what_you_will_master}")
+        print(f"Who Should Attend: {who_should_attend}")
+        print(f"Program Structure: {program_structure}")
         
         if course_id and course_id != '':  # Edit existing course
             try:
@@ -645,6 +747,8 @@ def course_management(request):
                 course.batch_size = batch_size
                 course.course_fee = course_fee
                 course.max_students = max_students
+                course.emi_available = emi_available
+                course.scholarship_available = scholarship_available
                 
                 # Update new fields
                 course.certification_provided = certification_provided
@@ -690,6 +794,13 @@ def course_management(request):
                 else:
                     messages.error(request, 'Course not found!')
                     return redirect('course_management')
+            except Exception as e:
+                print(f"Error updating course: {str(e)}")
+                if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                    return JsonResponse({'success': False, 'message': f'Error updating course: {str(e)}'})
+                else:
+                    messages.error(request, f'Error updating course: {str(e)}')
+                    return redirect('course_management')
                     
         else:  # Add new course
             try:
@@ -697,7 +808,6 @@ def course_management(request):
                 course = Course(
                     course_name=course_name,
                     description=description,
-                    credits=credits,
                     duration_weeks=duration_weeks,
                     schedule_type=schedule_type,
                     batch_size=batch_size,
@@ -713,6 +823,8 @@ def course_management(request):
                     what_you_will_master=what_you_will_master,
                     who_should_attend=who_should_attend,
                     program_structure=program_structure,
+                    emi_available=emi_available,
+                    scholarship_available=scholarship_available,
                 )
                 
                 # Handle dates
@@ -740,6 +852,7 @@ def course_management(request):
                     return redirect('course_management')
                     
             except Exception as e:
+                print(f"Error creating course: {str(e)}")
                 if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                     return JsonResponse({'success': False, 'message': f'Error creating course: {str(e)}'})
                 else:
@@ -748,6 +861,30 @@ def course_management(request):
     
     # GET request - show all courses with related data
     courses = Course.objects.all().select_related('category', 'department', 'instructor').order_by('-created_at')
+    
+    # Process each course to properly encode JSON data for the edit form
+    for course in courses:
+        # Convert JSON data to properly escaped JSON strings for data attributes
+        # This ensures the frontend can parse them correctly
+        if course.what_you_will_master:
+            # Use json.dumps to create a proper JSON string, then escape for HTML attribute
+            what_you_will_master_json = json.dumps(course.what_you_will_master, ensure_ascii=False)
+            # Escape quotes for HTML data attribute
+            course.what_you_will_master_json = what_you_will_master_json.replace('"', '&quot;')
+        else:
+            course.what_you_will_master_json = '[]'
+        
+        if course.who_should_attend:
+            who_should_attend_json = json.dumps(course.who_should_attend, ensure_ascii=False)
+            course.who_should_attend_json = who_should_attend_json.replace('"', '&quot;')
+        else:
+            course.who_should_attend_json = '[]'
+        
+        if course.program_structure:
+            program_structure_json = json.dumps(course.program_structure, ensure_ascii=False)
+            course.program_structure_json = program_structure_json.replace('"', '&quot;')
+        else:
+            course.program_structure_json = '[]'
     
     # Pass additional data for dropdowns
     categories = CourseCategory.objects.all()
@@ -761,3 +898,169 @@ def course_management(request):
         'instructors': instructors,
     }
     return render(request, 'training_institute_app/dashboard/courses/course-management.html', context)
+
+import json
+
+def about_page_management(request):
+    # Get the active about page content (there should only be one)
+    about_page = AboutPage.objects.filter(is_active=True).first()
+    
+    # If no about page exists, create a default one
+    if not about_page:
+        about_page = AboutPage.objects.create(
+            hero_title_line1="Shaping Future",
+            hero_title_line2="IT Professionals",
+            hero_subtitle="Join the Institute of Information Technology & Management and transform your career with industry-leading programs.",
+            hero_badge_text="25+ Years of Excellence",
+            hero_badge_icon="fa-solid fa-award",
+            mission_vision_items=[
+                {"title": "Our Mission", "description": "To provide quality education...", "icon": "fa-solid fa-bullseye"},
+                {"title": "Our Vision", "description": "To be a global leader...", "icon": "fa-solid fa-eye"}
+            ],
+            timeline_items=[
+                {"year": "2026", "title": "Institute Founded", "description": "Started with a vision...", "icon": "fa-solid fa-seedling"}
+            ],
+            team_members=[
+                {"name": "Dr. John Doe", "position": "Director", "bio": "20+ years experience...", "image": "/static/images/team/john.jpg", "icon": "fa-solid fa-user-tie"}
+            ],
+            statistics=[
+                {"value": "5000+", "label": "Students Trained", "icon": "fa-solid fa-graduation-cap"},
+                {"value": "100+", "label": "Expert Faculty", "icon": "fa-solid fa-chalkboard-user"}
+            ],
+            why_us_features=[
+                {"title": "Industry Experts", "description": "Learn from professionals", "icon": "fa-solid fa-user-tie"}
+            ],
+            timeline_section_tag="Our Journey",
+            timeline_section_title="A Legacy of Excellence",
+            timeline_section_subtitle="25+ years of shaping IT professionals",
+            leadership_section_tag="Leadership",
+            leadership_section_title="Meet Our Leadership Team",
+            leadership_section_subtitle="Dedicated to your success",
+            why_us_section_tag="Why Choose Us",
+            why_us_section_title="What Makes Us Different",
+            why_us_section_subtitle="Setting the standard for IT education"
+        )
+    
+    # Convert JSON fields to proper JSON strings for JavaScript
+    # This ensures the data is properly formatted for the frontend
+    if about_page:
+        # Mission & Vision Items
+        if about_page.mission_vision_items:
+            about_page.mission_vision_items_json = json.dumps(about_page.mission_vision_items)
+        else:
+            about_page.mission_vision_items_json = '[]'
+        
+        # Timeline Items
+        if about_page.timeline_items:
+            about_page.timeline_items_json = json.dumps(about_page.timeline_items)
+        else:
+            about_page.timeline_items_json = '[]'
+        
+        # Team Members
+        if about_page.team_members:
+            about_page.team_members_json = json.dumps(about_page.team_members)
+        else:
+            about_page.team_members_json = '[]'
+        
+        # Statistics
+        if about_page.statistics:
+            about_page.statistics_json = json.dumps(about_page.statistics)
+        else:
+            about_page.statistics_json = '[]'
+        
+        # Why Choose Us Features
+        if about_page.why_us_features:
+            about_page.why_us_features_json = json.dumps(about_page.why_us_features)
+        else:
+            about_page.why_us_features_json = '[]'
+    
+    context = {
+        'about_page': about_page,
+    }
+    return render(request, 'training_institute_app/dashboard/pages/about_management.html', context)
+@csrf_exempt
+def update_about_section(request):
+    if request.method == 'POST':
+        try:
+            about_id = request.POST.get('item_id')
+            section = request.POST.get('section', 'full')
+            
+            about_page = AboutPage.objects.get(id=about_id)
+            
+            # Update fields based on section
+            if section == 'hero':
+                about_page.hero_title_line1 = request.POST.get('hero_title_line1', about_page.hero_title_line1)
+                about_page.hero_title_line2 = request.POST.get('hero_title_line2', about_page.hero_title_line2)
+                about_page.hero_subtitle = request.POST.get('hero_subtitle', about_page.hero_subtitle)
+                about_page.hero_badge_text = request.POST.get('hero_badge_text', about_page.hero_badge_text)
+                about_page.hero_badge_icon = request.POST.get('hero_badge_icon', about_page.hero_badge_icon)
+                
+            elif section == 'mission_vision':
+                about_page.show_mission_vision = request.POST.get('show_mission_vision') == 'true'
+                if request.POST.get('mission_vision_items'):
+                    about_page.mission_vision_items = json.loads(request.POST.get('mission_vision_items'))
+                    
+            elif section == 'timeline':
+                about_page.show_timeline = request.POST.get('show_timeline') == 'true'
+                about_page.timeline_section_tag = request.POST.get('timeline_section_tag', about_page.timeline_section_tag)
+                about_page.timeline_section_title = request.POST.get('timeline_section_title', about_page.timeline_section_title)
+                about_page.timeline_section_subtitle = request.POST.get('timeline_section_subtitle', about_page.timeline_section_subtitle)
+                if request.POST.get('timeline_items'):
+                    about_page.timeline_items = json.loads(request.POST.get('timeline_items'))
+                    
+            elif section == 'leadership':
+                about_page.show_leadership = request.POST.get('show_leadership') == 'true'
+                about_page.leadership_section_tag = request.POST.get('leadership_section_tag', about_page.leadership_section_tag)
+                about_page.leadership_section_title = request.POST.get('leadership_section_title', about_page.leadership_section_title)
+                about_page.leadership_section_subtitle = request.POST.get('leadership_section_subtitle', about_page.leadership_section_subtitle)
+                if request.POST.get('team_members'):
+                    about_page.team_members = json.loads(request.POST.get('team_members'))
+                    
+            elif section == 'statistics':
+                about_page.show_stats = request.POST.get('show_stats') == 'true'
+                if request.POST.get('statistics'):
+                    about_page.statistics = json.loads(request.POST.get('statistics'))
+                    
+            elif section == 'why_us':
+                about_page.show_why_us = request.POST.get('show_why_us') == 'true'
+                about_page.why_us_section_tag = request.POST.get('why_us_section_tag', about_page.why_us_section_tag)
+                about_page.why_us_section_title = request.POST.get('why_us_section_title', about_page.why_us_section_title)
+                about_page.why_us_section_subtitle = request.POST.get('why_us_section_subtitle', about_page.why_us_section_subtitle)
+                if request.POST.get('why_us_features'):
+                    about_page.why_us_features = json.loads(request.POST.get('why_us_features'))
+                    
+            else:  # full update
+                # Hero section
+                about_page.hero_title_line1 = request.POST.get('hero_title_line1', about_page.hero_title_line1)
+                about_page.hero_title_line2 = request.POST.get('hero_title_line2', about_page.hero_title_line2)
+                about_page.hero_subtitle = request.POST.get('hero_subtitle', about_page.hero_subtitle)
+                about_page.hero_badge_text = request.POST.get('hero_badge_text', about_page.hero_badge_text)
+                about_page.hero_badge_icon = request.POST.get('hero_badge_icon', about_page.hero_badge_icon)
+                
+                # Timeline section headers
+                about_page.timeline_section_tag = request.POST.get('timeline_section_tag', about_page.timeline_section_tag)
+                about_page.timeline_section_title = request.POST.get('timeline_section_title', about_page.timeline_section_title)
+                about_page.leadership_section_tag = request.POST.get('leadership_section_tag', about_page.leadership_section_tag)
+                about_page.leadership_section_title = request.POST.get('leadership_section_title', about_page.leadership_section_title)
+                about_page.why_us_section_tag = request.POST.get('why_us_section_tag', about_page.why_us_section_tag)
+                about_page.why_us_section_title = request.POST.get('why_us_section_title', about_page.why_us_section_title)
+                
+                # Visibility toggles
+                about_page.show_mission_vision = request.POST.get('show_mission_vision') == 'true'
+                about_page.show_timeline = request.POST.get('show_timeline') == 'true'
+                about_page.show_leadership = request.POST.get('show_leadership') == 'true'
+                about_page.show_stats = request.POST.get('show_stats') == 'true'
+                about_page.show_why_us = request.POST.get('show_why_us') == 'true'
+            
+            about_page.save()
+            
+            return JsonResponse({'success': True, 'message': 'About page updated successfully!'})
+            
+        except AboutPage.DoesNotExist:
+            return JsonResponse({'success': False, 'message': 'About page not found!'})
+        except json.JSONDecodeError as e:
+            return JsonResponse({'success': False, 'message': f'Invalid JSON format: {str(e)}'})
+        except Exception as e:
+            return JsonResponse({'success': False, 'message': f'Error: {str(e)}'})
+    
+    return JsonResponse({'success': False, 'message': 'Invalid request method'})

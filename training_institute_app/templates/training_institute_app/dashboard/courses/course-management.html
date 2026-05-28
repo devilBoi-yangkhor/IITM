@@ -157,13 +157,13 @@
                                         data-program-badge-icon="{{ course.program_badge_icon }}"
                                         data-hero-title="{{ course.hero_title|escapejs }}"
                                         data-hero-subtitle="{{ course.hero_subtitle|escapejs }}"
-                                        data-what-you-will-master="{{ course.what_you_will_master|default:'[]'|escapejs }}"
-                                        data-who-should-attend="{{ course.who_should_attend|default:'[]'|escapejs }}"
-                                        data-program-structure="{{ course.program_structure|default:'[]'|escapejs }}"
+                                        data-what-you-will-master="{{ course.what_you_will_master_json|safe }}"
+                                        data-who-should-attend="{{ course.who_should_attend_json|safe }}"
+                                        data-program-structure="{{ course.program_structure_json|safe }}"
                                         class="action-btn edit-btn p-1.5 rounded-lg text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300 transition-all duration-300 hover:scale-110 hover:shadow-md" 
                                         title="Edit Course">
-                                    <iconify-icon icon="solar:pen-2-linear" class="text-lg"></iconify-icon>
-                                </button>
+                                        <iconify-icon icon="solar:pen-2-linear" class="text-lg"></iconify-icon>
+                                    </button>
                                     <button data-course-id="{{ course.id }}"
                                             data-course-name="{{ course.course_name|escapejs }}"
                                             data-enrolled-count="{{ course.current_enrolled }}"
@@ -251,8 +251,19 @@
         swal({ icon: 'warning', title: 'Warning!', text: message, confirmButtonText: 'Yes, proceed', cancelButtonText: 'Cancel', showCancelButton: true })
         .then((confirmed) => { if (confirmed && onConfirm) onConfirm(); });
     }
+    
     function submitCourseForm(formData, actionUrl) {
-        fetch(actionUrl, { method: 'POST', body: formData, headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+        // Log all form data for debugging
+        console.log('Submitting form data:');
+        for (let pair of formData.entries()) {
+            console.log(pair[0] + ': ' + pair[1]);
+        }
+        
+        fetch(actionUrl, { 
+            method: 'POST', 
+            body: formData, 
+            headers: { 'X-Requested-With': 'XMLHttpRequest' } 
+        })
         .then(response => response.json())
         .then(data => { 
             if (data.success) {
@@ -261,10 +272,13 @@
                 showErrorAlert(data.message);
             }
         })
-        .catch(error => { showErrorAlert('An error occurred. Please try again.'); });
+        .catch(error => { 
+            console.error('Fetch error:', error);
+            showErrorAlert('An error occurred. Please try again.'); 
+        });
     }
 
-    // Add Course button handler - updated with 3 repeatable sections
+    // Add Course button handler
     document.getElementById('addCourseBtn')?.addEventListener('click', function() {
         if (typeof window.openFormModal !== 'function') {
             console.error('openFormModal not found! Make sure formModel.html is loaded correctly.');
@@ -286,34 +300,39 @@
                     { name: 'batch_size', label: 'Batch Size', type: 'text', required: true, placeholder: 'e.g., 15-20' }
                 ]},
                 { fields: [
-                    { name: 'max_students', label: 'Max Students', type: 'number', required: true, placeholder: 'e.g., 30' },
-                    { name: 'course_fee', label: 'Course Fee (Nu.)', type: 'number', required: true, placeholder: 'e.g., 25000' }
+                    { name: 'duration_weeks', label: 'Duration (weeks)', type: 'number', required: true, placeholder: 'e.g., 12' },
+                    { name: 'max_students', label: 'Max Students', type: 'number', required: true, placeholder: 'e.g., 30' }
+                ]},
+                { fields: [
+                    { name: 'course_fee', label: 'Course Fee (Nu.)', type: 'number', required: true, placeholder: 'e.g., 25000' },
+                    { name: 'credits', label: 'Credits', type: 'number', required: false, placeholder: 'e.g., 3' }
                 ]},
                 { fields: [
                     { name: 'start_date', label: 'Start Date', type: 'date', required: true },
                     { name: 'end_date', label: 'End Date', type: 'date', required: true }
                 ]},
                 { fields: [
-                    { name: 'certification_provided', label: 'Certification Provided', type: 'yesno', required: false },
-                    { name: 'certification_name', label: 'Certification Name', type: 'text', required: false, placeholder: 'e.g., Industry Certification' }
+                    { name: 'certification_provided', label: 'Certification Provided', type: 'yesno', required: false, value: 'true' },
+                    { name: 'certification_name', label: 'Certification Name', type: 'text', required: false, placeholder: 'e.g., Industry Certification', value: 'Industry Certification' }
                 ]},
                 { fields: [
-                    { name: 'enrollment_open', label: 'Enrollment Open', type: 'yesno', required: false },
+                    { name: 'enrollment_open', label: 'Enrollment Open', type: 'yesno', required: false, value: 'true' },
                     { name: 'enrollment_deadline', label: 'Enrollment Deadline', type: 'date', required: false }
                 ]},
                 { fields: [
-                    { name: 'program_badge', label: 'Program Badge', type: 'text', required: false, placeholder: 'e.g., ICT & SOFTWARE DEVELOPMENT' },
-                    { name: 'program_badge_icon', label: 'Badge Icon', type: 'iconpicker', required: false }
+                    { name: 'emi_available', label: 'EMI Available', type: 'yesno', required: false, value: 'true' },
+                    { name: 'scholarship_available', label: 'Scholarship Available', type: 'yesno', required: false, value: 'true' }
                 ]},
-                // ============ SECTION 1: What Will You Master? ============
+                { fields: [
+                    { name: 'program_badge', label: 'Program Badge', type: 'text', required: false, placeholder: 'e.g., ICT & SOFTWARE DEVELOPMENT', value: 'ICT & SOFTWARE DEVELOPMENT' },
+                    { name: 'program_badge_icon', label: 'Badge Icon', type: 'iconpicker', required: false, value: 'fas fa-laptop-code' }
+                ]},
                 { fields: [
                     { name: 'what_you_will_master', label: 'What Will You Master?', type: 'repeatable', required: false, value: [] }
                 ]},
-                // ============ SECTION 2: Who Should Attend? ============
                 { fields: [
                     { name: 'who_should_attend', label: 'Who Should Attend?', type: 'repeatable', required: false, value: [] }
                 ]},
-                // ============ SECTION 3: Program Structure ============
                 { fields: [
                     { name: 'program_structure', label: 'Program Structure', type: 'repeatable', required: false, value: [] }
                 ]},
@@ -325,7 +344,7 @@
         });
     });
 
-    // Edit Course handler - updated with 3 repeatable sections
+    // SINGLE Edit Course handler - with proper JSON parsing
     document.querySelectorAll('.edit-btn').forEach(function(button) {
         button.addEventListener('click', function() {
             if (typeof window.openFormModal !== 'function') {
@@ -333,34 +352,30 @@
                 return;
             }
             
-            // Parse existing data for all three sections
-            let whatYouWillMaster = [];
-            let whoShouldAttend = [];
-            let programStructure = [];
-            
-            if (this.dataset.whatYouWillMaster && this.dataset.whatYouWillMaster !== '[]') {
+            // Helper function to safely parse JSON data
+            function safeJSONParse(str, defaultValue = []) {
+                if (!str || str === '[]' || str === 'null' || str === 'undefined') {
+                    return defaultValue;
+                }
                 try {
-                    whatYouWillMaster = JSON.parse(this.dataset.whatYouWillMaster.replace(/&quot;/g, '"'));
+                    // First decode &quot; to "
+                    let decoded = str.replace(/&quot;/g, '"');
+                    const parsed = JSON.parse(decoded);
+                    return parsed || defaultValue;
                 } catch(e) {
-                    console.error('Failed to parse what_you_will_master data:', e);
+                    console.error('Failed to parse JSON:', str, e);
+                    return defaultValue;
                 }
             }
             
-            if (this.dataset.whoShouldAttend && this.dataset.whoShouldAttend !== '[]') {
-                try {
-                    whoShouldAttend = JSON.parse(this.dataset.whoShouldAttend.replace(/&quot;/g, '"'));
-                } catch(e) {
-                    console.error('Failed to parse who_should_attend data:', e);
-                }
-            }
+            // Parse existing data for all three sections using the pre-encoded JSON
+            let whatYouWillMaster = safeJSONParse(this.dataset.whatYouWillMaster);
+            let whoShouldAttend = safeJSONParse(this.dataset.whoShouldAttend);
+            let programStructure = safeJSONParse(this.dataset.programStructure);
             
-            if (this.dataset.programStructure && this.dataset.programStructure !== '[]') {
-                try {
-                    programStructure = JSON.parse(this.dataset.programStructure.replace(/&quot;/g, '"'));
-                } catch(e) {
-                    console.error('Failed to parse program_structure data:', e);
-                }
-            }
+            console.log('Parsed whatYouWillMaster:', whatYouWillMaster);
+            console.log('Parsed whoShouldAttend:', whoShouldAttend);
+            console.log('Parsed programStructure:', programStructure);
             
             window.openFormModal({
                 title: 'Edit Course',
@@ -395,89 +410,21 @@
                         { name: 'enrollment_deadline', label: 'Enrollment Deadline', type: 'date', required: false, value: this.dataset.enrollmentDeadline }
                     ]},
                     { fields: [
+                        { name: 'emi_available', label: 'EMI Available', type: 'yesno', required: false, value: this.dataset.emiAvailable },
+                        { name: 'scholarship_available', label: 'Scholarship Available', type: 'yesno', required: false, value: this.dataset.scholarshipAvailable }
+                    ]},
+                    { fields: [
                         { name: 'program_badge', label: 'Program Badge', type: 'text', required: false, value: this.dataset.programBadge },
                         { name: 'program_badge_icon', label: 'Badge Icon', type: 'iconpicker', required: false, value: this.dataset.programBadgeIcon }
                     ]},
-                    // ============ SECTION 1: What Will You Master? ============
                     { fields: [
                         { name: 'what_you_will_master', label: 'What Will You Master?', type: 'repeatable', required: false, value: whatYouWillMaster }
                     ]},
-                    // ============ SECTION 2: Who Should Attend? ============
                     { fields: [
                         { name: 'who_should_attend', label: 'Who Should Attend?', type: 'repeatable', required: false, value: whoShouldAttend }
                     ]},
-                    // ============ SECTION 3: Program Structure ============
                     { fields: [
                         { name: 'program_structure', label: 'Program Structure', type: 'repeatable', required: false, value: programStructure }
-                    ]},
-                    { fields: [
-                        { name: 'hero_title', label: 'Hero Title', type: 'text', required: false, value: this.dataset.heroTitle },
-                        { name: 'hero_subtitle', label: 'Hero Subtitle', type: 'text', required: false, value: this.dataset.heroSubtitle }
-                    ]}
-                ]
-            });
-        });
-    });
-
-    // Edit Course handler - single version with repeatable field support
-    document.querySelectorAll('.edit-btn').forEach(function(button) {
-        button.addEventListener('click', function() {
-            if (typeof window.openFormModal !== 'function') {
-                console.error('openFormModal not found! Make sure formModel.html is loaded correctly.');
-                return;
-            }
-            
-            // Parse existing what_you_will_master data if it exists
-            let whatYouWillMaster = [];
-            if (this.dataset.whatYouWillMaster && this.dataset.whatYouWillMaster !== '[]') {
-                try {
-                    whatYouWillMaster = JSON.parse(this.dataset.whatYouWillMaster.replace(/&quot;/g, '"'));
-                    console.log('Parsed whatYouWillMaster:', whatYouWillMaster);
-                } catch(e) {
-                    console.error('Failed to parse what_you_will_master data:', e);
-                    whatYouWillMaster = [];
-                }
-            }
-            
-            window.openFormModal({
-                title: 'Edit Course',
-                mode: 'edit',
-                actionUrl: "{% url 'course_management' %}",
-                itemId: this.dataset.courseId,
-                rows: [
-                    { fields: [{ name: 'course_name', label: 'Course Name', type: 'text', required: true, value: this.dataset.courseName }] },
-                    { fields: [{ name: 'description', label: 'Description', type: 'textarea', required: true, value: this.dataset.description }] },
-                    { fields: [{ name: 'duration_weeks', label: 'Duration (weeks)', type: 'number', required: true, value: this.dataset.duration }] },
-                    { fields: [
-                        { name: 'schedule_type', label: 'Schedule Type', type: 'select', required: true, options: [
-                            { value: 'Flexible', label: 'Flexible' }, { value: 'Evening', label: 'Evening' },
-                            { value: 'Weekend', label: 'Weekend' }, { value: 'Full-time', label: 'Full-time' }
-                        ], value: this.dataset.scheduleType || 'Flexible' },
-                        { name: 'batch_size', label: 'Batch Size', type: 'text', required: true, value: this.dataset.batchSize }
-                    ]},
-                    { fields: [
-                        { name: 'max_students', label: 'Max Students', type: 'number', required: true, value: this.dataset.maxStudents },
-                        { name: 'course_fee', label: 'Course Fee (Nu.)', type: 'number', required: true, value: this.dataset.fee }
-                    ]},
-                    { fields: [
-                        { name: 'start_date', label: 'Start Date', type: 'date', required: true, value: this.dataset.startDate },
-                        { name: 'end_date', label: 'End Date', type: 'date', required: true, value: this.dataset.endDate }
-                    ]},
-                    { fields: [
-                        { name: 'certification_provided', label: 'Certification Provided', type: 'yesno', required: false, value: this.dataset.certificationProvided },
-                        { name: 'certification_name', label: 'Certification Name', type: 'text', required: false, value: this.dataset.certificationName }
-                    ]},
-                    { fields: [
-                        { name: 'enrollment_open', label: 'Enrollment Open', type: 'yesno', required: false, value: this.dataset.enrollmentOpen },
-                        { name: 'enrollment_deadline', label: 'Enrollment Deadline', type: 'date', required: false, value: this.dataset.enrollmentDeadline }
-                    ]},
-                    { fields: [
-                        { name: 'program_badge', label: 'Program Badge', type: 'text', required: false, value: this.dataset.programBadge },
-                        { name: 'program_badge_icon', label: 'Badge Icon', type: 'iconpicker', required: false, value: this.dataset.programBadgeIcon }
-                    ]},
-                    // What will you master? section with existing data
-                    { fields: [
-                        { name: 'what_you_will_master', label: 'What Will You Master?', type: 'repeatable', required: false, value: whatYouWillMaster }
                     ]},
                     { fields: [
                         { name: 'hero_title', label: 'Hero Title', type: 'text', required: false, value: this.dataset.heroTitle },
@@ -498,7 +445,7 @@
             if (enrolledCount > 0) {
                 document.getElementById('assignedEnrollmentCount').textContent = enrolledCount;
                 warningEl.style.display = 'block';
-                swal({ icon: 'warning', title: 'Warning!', text: `This course has Nu.{enrolledCount} enrollment(s). Deleting it will remove all associated enrollments.`, confirmButtonText: 'Yes, delete anyway', cancelButtonText: 'Cancel', showCancelButton: true })
+                swal({ icon: 'warning', title: 'Warning!', text: `This course has ${enrolledCount} enrollment(s). Deleting it will remove all associated enrollments.`, confirmButtonText: 'Yes, delete anyway', cancelButtonText: 'Cancel', showCancelButton: true })
                 .then((confirmed) => { if (confirmed) document.getElementById('deleteCourseForm').dispatchEvent(new Event('submit')); });
             } else {
                 warningEl.style.display = 'none';
@@ -533,7 +480,9 @@
         if (genericForm) {
             genericForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                submitCourseForm(new FormData(this), this.action);
+                const formData = new FormData(this);
+                console.log('Submitting generic form...');
+                submitCourseForm(formData, this.action);
                 if (typeof window.closeFormModal === 'function') {
                     window.closeFormModal();
                 }
@@ -541,23 +490,4 @@
         }
     });
 </script>
-
-<style>
-    #addCourseBtn { cursor: pointer; }
-    #addCourseBtn:hover { animation: pulse 1.5s infinite; }
-    @keyframes pulse {
-        0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
-        70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
-        100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
-    }
-    .table-row-transition { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-    .action-btn { position: relative; overflow: hidden; cursor: pointer; }
-    .action-btn::before {
-        content: ''; position: absolute; top: 50%; left: 50%;
-        width: 0; height: 0; border-radius: 50%;
-        background: rgba(255, 255, 255, 0.3);
-        transform: translate(-50%, -50%); transition: width 0.6s, height 0.6s;
-    }
-    .action-btn:hover::before { width: 100px; height: 100px; }
-</style>
 {% endblock content %}

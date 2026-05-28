@@ -1,62 +1,75 @@
 {% extends 'training_institute_app/base.html' %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/courses_details.css' %}">
+{% endblock %}
+
 {% block content %}
 {% include 'training_institute_app/components/nav.html' %}
 {% include 'training_institute_app/components/mobile_menu.html' %}
 {% include 'training_institute_app/components/side_panels.html' %}
 
-<link rel="stylesheet" href="{% static 'training_institute_app/css/courses_details.css' %}">
-
 <main class="main">
-    <!-- Hero Section - Bright Theme -->
+    <!-- Hero Section - Dynamic -->
     <section class="hero" id="courseHero">
         <div class="hero-grid"></div>
         <div class="hero-badge">
             <span class="hero-badge-dot"></span>
-            <span>ICT & SOFTWARE DEVELOPMENT</span>
+            <span><i class="{{ course.program_badge_icon|default:'fa-solid fa-laptop-code' }}"></i> {{ course.program_badge|default:"COURSE"|upper }}</span>
         </div>
         <h1>
-            ICT & Software<br>
-            <em>Development Training</em>
+            {{ course.hero_title|default:course.course_name|truncatechars:50 }}<br>
+            <em>{{ course.hero_subtitle|default:"Professional Training Program" }}</em>
         </h1>
         <div class="hero-sub">
-            Building the Next Generation of Digital Professionals
+            {{ course.description|truncatechars:150 }}
         </div>
         <div class="hero-ctas">
-            <button class="btn-primary enroll-btn-hero"><i class="fa-solid fa-graduation-cap"></i> Enroll Now</button>
+            <button class="btn-primary enroll-btn-hero" data-course-id="{{ course.id }}" data-course-name="{{ course.course_name|escapejs }}" data-course-fee="{{ course.course_fee }}"><i class="fa-solid fa-graduation-cap"></i> Enroll Now - Nu. {{ course.course_fee }}</button>
             <a href="#curriculum" class="btn-secondary"><i class="fa-regular fa-file-lines"></i> View Curriculum</a>
         </div>
         <div class="hero-metrics">
-            <div class="metric"><div class="metric-value">12<span>Weeks</span></div><div class="metric-label">Duration</div></div>
-            <div class="metric"><div class="metric-value">Flexible</div><div class="metric-label">Schedule</div></div>
-            <div class="metric"><div class="metric-value">Industry</div><div class="metric-label">Certification</div></div>
-            <div class="metric"><div class="metric-value">15-20</div><div class="metric-label">Per Batch</div></div>
+            <div class="metric"><div class="metric-value">{{ course.duration_weeks }}<span>Weeks</span></div><div class="metric-label">Duration</div></div>
+            <div class="metric"><div class="metric-value">{{ course.schedule_type }}</div><div class="metric-label">Schedule</div></div>
+            <div class="metric"><div class="metric-value">{% if course.certification_provided %}Industry{% else %}Completion{% endif %}</div><div class="metric-label">Certification</div></div>
+            <div class="metric"><div class="metric-value">{{ course.batch_size }}</div><div class="metric-label">Per Batch</div></div>
         </div>
         <div class="course-rating-summary">
-            <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-alt"></i></div>
-            <span class="rating-value">4.8</span>
-            <span class="rating-count">(156 reviews)</span>
+            <div class="stars">
+                {% with rating=course.rating|default:4.8|stringformat:"s" %}
+                    {% for i in "12345"|make_list %}
+                        {% if forloop.counter <= course.rating|default:4.8|add:0 %}
+                            <i class="fa-solid fa-star"></i>
+                        {% elif forloop.counter <= course.rating|default:4.8|add:0.5 %}
+                            <i class="fa-solid fa-star-half-alt"></i>
+                        {% else %}
+                            <i class="fa-regular fa-star"></i>
+                        {% endif %}
+                    {% endfor %}
+                {% endwith %}
+            </div>
+            <span class="rating-value">{{ course.rating|default:"4.8" }}</span>
+            <span class="rating-count">({{ course.total_reviews|default:"156" }} reviews)</span>
         </div>
     </section>
 
     <div class="silk-divider reveal"></div>
 
-    <!-- Description Section - Bright Theme -->
+    <!-- Description Section - Dynamic -->
     <section class="section reveal">
         <div class="section-center">
             <div class="section-tag"><i class="fa-regular fa-building"></i> ABOUT THE PROGRAM</div>
-            <h2 class="section-title">Building the Next Generation of <strong>Digital Professionals</strong></h2>
+            <h2 class="section-title">{{ course.hero_title|default:course.course_name }} <strong>Training Program</strong></h2>
             <div class="section-body">
-                IITM offers comprehensive ICT training programs designed to develop in-demand technical skills for students, professionals, and organizations.
-                Our programs emphasize practical development, real-world applications, and industry readiness.
+                {{ course.description }}
             </div>
         </div>
     </section>
 
     <div class="silk-divider reveal"></div>
 
-    <!-- Core Training Areas - Bright Theme -->
+    <!-- Core Training Areas / What You'll Master - Dynamic from what_you_will_master -->
     <section class="section reveal">
         <div class="section-center">
             <div class="section-tag"><i class="fa-regular fa-compass"></i> CORE TRAINING AREAS</div>
@@ -65,48 +78,48 @@
         </div>
 
         <div class="training-areas-grid">
-            <div class="area-card">
-                <div class="area-icon"><i class="fa-solid fa-laptop-code"></i></div>
-                <h3>Software & Application Development</h3>
-                <ul>
-                    <li><i class="fa-regular fa-circle-check"></i> Web Development (Frontend & Backend)</li>
-                    <li><i class="fa-regular fa-circle-check"></i> Full-Stack Development</li>
-                    <li><i class="fa-regular fa-circle-check"></i> Database Design & Management</li>
-                </ul>
-            </div>
-
-            <div class="area-card">
-                <div class="area-icon"><i class="fa-solid fa-mobile-alt"></i></div>
-                <h3>Mobile & Modern Development</h3>
-                <ul>
-                    <li><i class="fa-regular fa-circle-check"></i> Android & iOS Development</li>
-                    <li><i class="fa-regular fa-circle-check"></i> Cross-platform Applications</li>
-                </ul>
-            </div>
-
-            <div class="area-card">
-                <div class="area-icon"><i class="fa-solid fa-cloud"></i></div>
-                <h3>Systems & Integration</h3>
-                <ul>
-                    <li><i class="fa-regular fa-circle-check"></i> API Development & Integration</li>
-                    <li><i class="fa-regular fa-circle-check"></i> Cloud-Based Applications</li>
-                </ul>
-            </div>
-
-            <div class="area-card">
-                <div class="area-icon"><i class="fa-solid fa-shield-haltered"></i></div>
-                <h3>Secure Development</h3>
-                <ul>
-                    <li><i class="fa-regular fa-circle-check"></i> Secure Coding Practices</li>
-                    <li><i class="fa-regular fa-circle-check"></i> Application Security Testing</li>
-                </ul>
-            </div>
+            {% if what_you_will_master %}
+                {% for area in what_you_will_master %}
+                <div class="area-card">
+                    <div class="area-icon"><i class="{{ area.icon|default:'fa-solid fa-laptop-code' }}"></i></div>
+                    <h3>{{ area.title }}</h3>
+                    <ul>
+                        {% if area.description %}
+                            {% for item in area.description %}
+                            <li><i class="fa-regular fa-circle-check"></i> {{ item }}</li>
+                            {% endfor %}
+                        {% else %}
+                            <li><i class="fa-regular fa-circle-check"></i> No items listed</li>
+                        {% endif %}
+                    </ul>
+                </div>
+                {% endfor %}
+            {% else %}
+                <!-- Fallback if no what_you_will_master data -->
+                <div class="area-card">
+                    <div class="area-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                    <h3>Software & Application Development</h3>
+                    <ul>
+                        <li><i class="fa-regular fa-circle-check"></i> Web Development (Frontend & Backend)</li>
+                        <li><i class="fa-regular fa-circle-check"></i> Full-Stack Development</li>
+                        <li><i class="fa-regular fa-circle-check"></i> Database Design & Management</li>
+                    </ul>
+                </div>
+                <div class="area-card">
+                    <div class="area-icon"><i class="fa-solid fa-mobile-alt"></i></div>
+                    <h3>Mobile & Modern Development</h3>
+                    <ul>
+                        <li><i class="fa-regular fa-circle-check"></i> Android & iOS Development</li>
+                        <li><i class="fa-regular fa-circle-check"></i> Cross-platform Applications</li>
+                    </ul>
+                </div>
+            {% endif %}
         </div>
     </section>
 
     <div class="silk-divider reveal"></div>
 
-    <!-- Who Should Attend - Bright Theme -->
+    <!-- Who Should Attend - Dynamic from who_should_attend -->
     <section class="section reveal">
         <div class="section-center">
             <div class="section-tag"><i class="fa-regular fa-user"></i> TARGET AUDIENCE</div>
@@ -114,16 +127,22 @@
         </div>
 
         <div class="audience-grid">
-            <div class="audience-card"><i class="fa-solid fa-graduation-cap"></i><span>IT graduates and students</span></div>
-            <div class="audience-card"><i class="fa-solid fa-code"></i><span>Software developers</span></div>
-            <div class="audience-card"><i class="fa-solid fa-microchip"></i><span>System engineers</span></div>
-            <div class="audience-card"><i class="fa-solid fa-building"></i><span>Organizations building digital solutions</span></div>
+            {% if who_should_attend %}
+                {% for audience in who_should_attend %}
+                <div class="audience-card"><i class="{{ audience.icon|default:'fa-solid fa-users' }}"></i><span>{{ audience.title }}</span></div>
+                {% endfor %}
+            {% else %}
+                <div class="audience-card"><i class="fa-solid fa-graduation-cap"></i><span>IT graduates and students</span></div>
+                <div class="audience-card"><i class="fa-solid fa-code"></i><span>Software developers</span></div>
+                <div class="audience-card"><i class="fa-solid fa-microchip"></i><span>System engineers</span></div>
+                <div class="audience-card"><i class="fa-solid fa-building"></i><span>Organizations building digital solutions</span></div>
+            {% endif %}
         </div>
     </section>
 
     <div class="silk-divider reveal"></div>
 
-    <!-- Curriculum Preview - Bright Theme -->
+    <!-- Curriculum Preview / Program Structure - Dynamic from program_structure -->
     <section class="section reveal" id="curriculum">
         <div class="section-center">
             <div class="section-tag"><i class="fa-regular fa-folder-open"></i> CURRICULUM</div>
@@ -131,48 +150,66 @@
         </div>
 
         <div class="curriculum-preview">
-            <div class="curriculum-column">
-                <h4><i class="fa-brands fa-html5"></i> Frontend Development</h4>
-                <ul>
-                    <li>HTML5/CSS3 (Flexbox, Grid, Animations)</li>
-                    <li>JavaScript/ES6+ (Modern JS, Async/Await)</li>
-                    <li>React.js (Hooks, State Management, Routing)</li>
-                    <li>Responsive & Mobile-First Design</li>
-                </ul>
-            </div>
-            <div class="curriculum-column">
-                <h4><i class="fa-solid fa-server"></i> Backend Development</h4>
-                <ul>
-                    <li>Python & Django Framework</li>
-                    <li>RESTful API Development</li>
-                    <li>Database Design (PostgreSQL, MongoDB)</li>
-                    <li>Authentication & Authorization</li>
-                </ul>
-            </div>
-            <div class="curriculum-column">
-                <h4><i class="fa-solid fa-mobile"></i> Mobile & Cloud</h4>
-                <ul>
-                    <li>React Native (iOS & Android)</li>
-                    <li>Cloud Deployment (AWS, Vercel, Heroku)</li>
-                    <li>Docker Containerization</li>
-                    <li>CI/CD Pipelines</li>
-                </ul>
-            </div>
-            <div class="curriculum-column">
-                <h4><i class="fa-solid fa-shield"></i> Security & Best Practices</h4>
-                <ul>
-                    <li>Secure Coding Practices</li>
-                    <li>OWASP Top 10</li>
-                    <li>Application Security Testing</li>
-                    <li>Code Reviews & Version Control (Git/GitHub)</li>
-                </ul>
-            </div>
+            {% if program_structure %}
+                {% for module in program_structure %}
+                <div class="curriculum-column">
+                    <h4><i class="{{ module.icon|default:'fa-solid fa-folder' }}"></i> {{ module.title }}</h4>
+                    <ul>
+                        {% if module.description %}
+                            {% for item in module.description %}
+                            <li>{{ item }}</li>
+                            {% endfor %}
+                        {% else %}
+                            <li>No topics listed</li>
+                        {% endif %}
+                    </ul>
+                </div>
+                {% endfor %}
+            {% else %}
+                <!-- Fallback curriculum data -->
+                <div class="curriculum-column">
+                    <h4><i class="fa-brands fa-html5"></i> Frontend Development</h4>
+                    <ul>
+                        <li>HTML5/CSS3 (Flexbox, Grid, Animations)</li>
+                        <li>JavaScript/ES6+ (Modern JS, Async/Await)</li>
+                        <li>React.js (Hooks, State Management, Routing)</li>
+                        <li>Responsive & Mobile-First Design</li>
+                    </ul>
+                </div>
+                <div class="curriculum-column">
+                    <h4><i class="fa-solid fa-server"></i> Backend Development</h4>
+                    <ul>
+                        <li>Python & Django Framework</li>
+                        <li>RESTful API Development</li>
+                        <li>Database Design (PostgreSQL, MongoDB)</li>
+                        <li>Authentication & Authorization</li>
+                    </ul>
+                </div>
+                <div class="curriculum-column">
+                    <h4><i class="fa-solid fa-mobile"></i> Mobile & Cloud</h4>
+                    <ul>
+                        <li>React Native (iOS & Android)</li>
+                        <li>Cloud Deployment (AWS, Vercel, Heroku)</li>
+                        <li>Docker Containerization</li>
+                        <li>CI/CD Pipelines</li>
+                    </ul>
+                </div>
+                <div class="curriculum-column">
+                    <h4><i class="fa-solid fa-shield"></i> Security & Best Practices</h4>
+                    <ul>
+                        <li>Secure Coding Practices</li>
+                        <li>OWASP Top 10</li>
+                        <li>Application Security Testing</li>
+                        <li>Code Reviews & Version Control (Git/GitHub)</li>
+                    </ul>
+                </div>
+            {% endif %}
         </div>
     </section>
 
     <div class="silk-divider reveal"></div>
 
-    <!-- Instructor Section - Bright Theme -->
+    <!-- Instructor Section - Dynamic from course.instructor -->
     <section class="section reveal">
         <div class="section-center">
             <div class="section-tag"><i class="fa-solid fa-chalkboard-user"></i> LEAD INSTRUCTOR</div>
@@ -182,62 +219,137 @@
         <div class="instructor-professional">
             <div class="instructor-header">
                 <div class="instructor-avatar-large">
-                    <i class="fa-solid fa-user-graduate"></i>
+                    <i class="{{ instructor.avatar_icon|default:'fa-solid fa-user-graduate' }}"></i>
                 </div>
                 <div class="instructor-title-section">
-                    <h3>Pema Dorji</h3>
-                    <div class="instructor-role">Senior Software Architect & Lead Trainer</div>
+                    <h3>{{ instructor.name|default:"Jigmi Choeling" }}</h3>
+                    <div class="instructor-role">{{ instructor.role|default:"Senior IT Tech Lead" }}</div>
                 </div>
             </div>
             
             <div class="instructor-bio">
-                <p>10+ years of experience in full-stack development and cloud architecture. Previously worked with leading tech companies and has trained over 1,000+ students across Bhutan. Specializes in turning beginners into industry-ready professionals.</p>
+                <p>{{ instructor.bio|default:"Industry expert with extensive experience in software development and training. Passionate about turning beginners into industry-ready professionals." }}</p>
             </div>
             
             <div class="instructor-stats-professional">
                 <div class="stat-item">
                     <i class="fa-solid fa-chalkboard-user"></i>
                     <div class="stat-info">
-                        <span class="stat-number">1,200+</span>
+                        <span class="stat-number">{{ instructor.students_trained|default:"1,000+" }}</span>
                         <span class="stat-label">Students Trained</span>
                     </div>
                 </div>
                 <div class="stat-item">
                     <i class="fa-solid fa-star"></i>
                     <div class="stat-info">
-                        <span class="stat-number">4.9</span>
+                        <span class="stat-number">{{ instructor.instructor_rating|default:"4.9" }}</span>
                         <span class="stat-label">Instructor Rating</span>
                     </div>
                 </div>
                 <div class="stat-item">
                     <i class="fa-solid fa-globe"></i>
                     <div class="stat-info">
-                        <span class="stat-number">8+</span>
+                        <span class="stat-number">{{ instructor.experience_years|default:"8+" }}</span>
                         <span class="stat-label">Years Experience</span>
                     </div>
                 </div>
             </div>
+            {% if instructor.linkedin_url %}
+            <div class="instructor-social">
+                <a href="{{ instructor.linkedin_url }}" target="_blank" class="instructor-linkedin"><i class="fa-brands fa-linkedin"></i> Connect on LinkedIn</a>
+            </div>
+            {% endif %}
         </div>
     </section>
 
     <div class="silk-divider reveal"></div>
 
-    <!-- Call to Action - Bright Theme -->
+    <!-- Call to Action - Dynamic -->
     <section class="enroll-cta reveal" id="enroll">
         <div class="enroll-content">
-            <h3>Start your journey in digital development.</h3>
-            <p><i class="fa-regular fa-envelope"></i> Enroll in an ICT training program today!</p>
+            <h3>Start your journey in {{ course.course_name|truncatechars:50 }}.</h3>
+            <p><i class="fa-regular fa-envelope"></i> Enroll in this training program today!</p>
             <div class="enroll-buttons">
-                <button class="btn-primary enroll-btn-cta"><i class="fa-solid fa-graduation-cap"></i> Enroll Now - Nu. 25,000</button>
-                <a href="#" class="btn-secondary"><i class="fa-regular fa-message"></i> Request a Callback</a>
+                <button class="btn-primary enroll-btn-cta" data-course-id="{{ course.id }}" data-course-name="{{ course.course_name|escapejs }}" data-course-fee="{{ course.course_fee }}"><i class="fa-solid fa-graduation-cap"></i> Enroll Now - Nu. {{ course.course_fee }}</button>
+                <a href="/contact/" class="btn-secondary"><i class="fa-regular fa-message"></i> Request a Callback</a>
             </div>
-            <p class="small-note"><i class="fa-regular fa-credit-card"></i> EMI options available. Scholarships for deserving candidates.</p>
+            <p class="small-note"><i class="fa-regular fa-credit-card"></i> {% if course.emi_available %}EMI options available. {% endif %}{% if course.scholarship_available %}Scholarships for deserving candidates.{% endif %}</p>
         </div>
     </section>
 
     {% include 'training_institute_app/components/footer_cta.html' %}
 </main>
 
-<script src="{% static 'js/course_details.js' %}"></script>
+<script>
+// Simple enrollment without authentication checks
+document.addEventListener('DOMContentLoaded', function() {
+    var enrollBtns = document.querySelectorAll('.enroll-btn-hero, .enroll-btn-cta');
+    var csrfToken = '{{ csrf_token }}';
+    
+    enrollBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var courseId = this.getAttribute('data-course-id');
+            var courseName = this.getAttribute('data-course-name');
+            var courseFee = this.getAttribute('data-course-fee');
+            
+            Swal.fire({
+                title: 'Confirm Enrollment',
+                html: 'Are you sure you want to enroll in <strong>' + courseName + '</strong>?<br>Course Fee: <strong>Nu. ' + courseFee + '</strong>',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#667eea',
+                cancelButtonColor: '#ef4444',
+                confirmButtonText: 'Yes, Enroll Me!',
+                cancelButtonText: 'Cancel'
+            }).then(function(result) {
+                if (result.isConfirmed) {
+                    // Send enrollment request
+                    fetch('/enroll-course/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': csrfToken
+                        },
+                        body: JSON.stringify({
+                            course_id: courseId,
+                            course_name: courseName
+                        })
+                    })
+                    .then(function(response) {
+                        return response.json();
+                    })
+                    .then(function(data) {
+                        if (data.success) {
+                            Swal.fire({
+                                title: 'Enrollment Successful!',
+                                text: data.message,
+                                icon: 'success',
+                                confirmButtonColor: '#667eea'
+                            }).then(function() {
+                                window.location.reload();
+                            });
+                        } else {
+                            Swal.fire({
+                                title: 'Enrollment Failed',
+                                text: data.message,
+                                icon: 'error',
+                                confirmButtonColor: '#667eea'
+                            });
+                        }
+                    })
+                    .catch(function(error) {
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'Something went wrong. Please try again later.',
+                            icon: 'error',
+                            confirmButtonColor: '#667eea'
+                        });
+                    });
+                }
+            });
+        });
+    });
+});
+</script>
 
 {% endblock %}

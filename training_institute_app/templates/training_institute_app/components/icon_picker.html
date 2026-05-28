@@ -1,0 +1,242 @@
+{% load static %}
+<!-- Icon Picker Component - Reusable for all forms -->
+<script>
+// ============ FONT AWESOME ICON LIST ============
+const fontAwesomeIcons = [
+    // Solid Icons - Popular ones
+    { class: "fa-solid fa-award", name: "award" },
+    { class: "fa-solid fa-bullseye", name: "bullseye" },
+    { class: "fa-solid fa-eye", name: "eye" },
+    { class: "fa-solid fa-gem", name: "gem" },
+    { class: "fa-solid fa-seedling", name: "seedling" },
+    { class: "fa-solid fa-chart-line", name: "chart-line" },
+    { class: "fa-solid fa-handshake", name: "handshake" },
+    { class: "fa-solid fa-trophy", name: "trophy" },
+    { class: "fa-solid fa-chalkboard-user", name: "chalkboard-user" },
+    { class: "fa-solid fa-laptop-code", name: "laptop-code" },
+    { class: "fa-solid fa-microchip", name: "microchip" },
+    { class: "fa-solid fa-book-open", name: "book-open" },
+    { class: "fa-solid fa-person-chalkboard", name: "person-chalkboard" },
+    { class: "fa-solid fa-briefcase", name: "briefcase" },
+    { class: "fa-solid fa-globe", name: "globe" },
+    { class: "fa-solid fa-graduation-cap", name: "graduation-cap" },
+    { class: "fa-solid fa-users", name: "users" },
+    { class: "fa-solid fa-calendar", name: "calendar" },
+    { class: "fa-solid fa-clock", name: "clock" },
+    { class: "fa-solid fa-heart", name: "heart" },
+    { class: "fa-solid fa-star", name: "star" },
+    { class: "fa-solid fa-check-circle", name: "check-circle" },
+    { class: "fa-solid fa-info-circle", name: "info-circle" },
+    { class: "fa-solid fa-question-circle", name: "question-circle" },
+    { class: "fa-solid fa-exclamation-circle", name: "exclamation-circle" },
+    { class: "fa-solid fa-crown", name: "crown" },
+    { class: "fa-solid fa-medal", name: "medal" },
+    { class: "fa-solid fa-certificate", name: "certificate" },
+    { class: "fa-solid fa-rocket", name: "rocket" },
+    { class: "fa-solid fa-lightbulb", name: "lightbulb" },
+    { class: "fa-solid fa-brain", name: "brain" },
+    { class: "fa-solid fa-code", name: "code" },
+    { class: "fa-solid fa-database", name: "database" },
+    { class: "fa-solid fa-cloud", name: "cloud" },
+    { class: "fa-solid fa-shield", name: "shield" },
+    { class: "fa-solid fa-lock", name: "lock" },
+    { class: "fa-solid fa-key", name: "key" },
+    { class: "fa-solid fa-envelope", name: "envelope" },
+    { class: "fa-solid fa-phone", name: "phone" },
+    { class: "fa-solid fa-location-dot", name: "location-dot" },
+    { class: "fa-solid fa-building", name: "building" },
+    { class: "fa-solid fa-school", name: "school" },
+    { class: "fa-solid fa-university", name: "university" },
+    { class: "fa-solid fa-chart-simple", name: "chart-simple" },
+    { class: "fa-solid fa-chart-pie", name: "chart-pie" },
+    { class: "fa-solid fa-chart-bar", name: "chart-bar" },
+    { class: "fa-solid fa-chart-gantt", name: "chart-gantt" },
+    { class: "fa-solid fa-timeline", name: "timeline" },
+    { class: "fa-solid fa-list-check", name: "list-check" },
+    { class: "fa-solid fa-user-graduate", name: "user-graduate" },
+    { class: "fa-solid fa-user-tie", name: "user-tie" },
+    { class: "fa-solid fa-users-viewfinder", name: "users-viewfinder" },
+    { class: "fa-solid fa-arrow-trend-up", name: "arrow-trend-up" },
+    { class: "fa-solid fa-arrow-trend-down", name: "arrow-trend-down" },
+    { class: "fa-solid fa-circle-check", name: "circle-check" },
+    { class: "fa-solid fa-circle-info", name: "circle-info" },
+    { class: "fa-solid fa-circle-question", name: "circle-question" },
+    { class: "fa-solid fa-circle-exclamation", name: "circle-exclamation" },
+    { class: "fa-solid fa-thumbs-up", name: "thumbs-up" },
+    { class: "fa-solid fa-thumbs-down", name: "thumbs-down" },
+    { class: "fa-solid fa-magnifying-glass", name: "magnifying-glass" },
+    { class: "fa-solid fa-bell", name: "bell" },
+    { class: "fa-solid fa-gear", name: "gear" },
+    { class: "fa-solid fa-pen", name: "pen" },
+    { class: "fa-solid fa-trash", name: "trash" },
+    { class: "fa-solid fa-folder", name: "folder" },
+    { class: "fa-solid fa-file", name: "file" },
+    { class: "fa-solid fa-download", name: "download" },
+    { class: "fa-solid fa-upload", name: "upload" },
+    { class: "fa-solid fa-link", name: "link" },
+    { class: "fa-solid fa-camera", name: "camera" },
+    { class: "fa-solid fa-video", name: "video" },
+    { class: "fa-solid fa-music", name: "music" },
+    
+    // Regular Icons
+    { class: "fa-regular fa-heart", name: "heart-regular" },
+    { class: "fa-regular fa-star", name: "star-regular" },
+    { class: "fa-regular fa-clock", name: "clock-regular" },
+    { class: "fa-regular fa-calendar", name: "calendar-regular" },
+    { class: "fa-regular fa-circle-check", name: "circle-check-regular" },
+    { class: "fa-regular fa-circle-question", name: "circle-question-regular" },
+    { class: "fa-regular fa-eye", name: "eye-regular" },
+    { class: "fa-regular fa-gem", name: "gem-regular" },
+    { class: "fa-regular fa-building", name: "building-regular" },
+    { class: "fa-regular fa-envelope", name: "envelope-regular" },
+    { class: "fa-regular fa-comments", name: "comments-regular" },
+    { class: "fa-regular fa-bell", name: "bell-regular" },
+    { class: "fa-regular fa-bookmark", name: "bookmark-regular" },
+    { class: "fa-regular fa-flag", name: "flag-regular" },
+    { class: "fa-regular fa-folder", name: "folder-regular" },
+    { class: "fa-regular fa-folder-open", name: "folder-open-regular" },
+    { class: "fa-regular fa-file", name: "file-regular" },
+    { class: "fa-regular fa-file-lines", name: "file-lines-regular" },
+    { class: "fa-regular fa-clipboard", name: "clipboard-regular" },
+    { class: "fa-regular fa-smile", name: "smile-regular" },
+    { class: "fa-regular fa-frown", name: "frown-regular" },
+    { class: "fa-regular fa-meh", name: "meh-regular" },
+    
+    // Brand Icons
+    { class: "fa-brands fa-facebook", name: "facebook" },
+    { class: "fa-brands fa-twitter", name: "twitter" },
+    { class: "fa-brands fa-instagram", name: "instagram" },
+    { class: "fa-brands fa-linkedin", name: "linkedin" },
+    { class: "fa-brands fa-youtube", name: "youtube" },
+    { class: "fa-brands fa-github", name: "github" },
+    { class: "fa-brands fa-python", name: "python" },
+    { class: "fa-brands fa-java", name: "java" },
+    { class: "fa-brands fa-js", name: "javascript" },
+    { class: "fa-brands fa-react", name: "react" },
+    { class: "fa-brands fa-node", name: "node" },
+    { class: "fa-brands fa-aws", name: "aws" },
+    { class: "fa-brands fa-google", name: "google" },
+    { class: "fa-brands fa-microsoft", name: "microsoft" },
+    { class: "fa-brands fa-apple", name: "apple" },
+    { class: "fa-brands fa-android", name: "android" },
+    { class: "fa-brands fa-windows", name: "windows" },
+    { class: "fa-brands fa-linux", name: "linux" },
+    { class: "fa-brands fa-docker", name: "docker" },
+    { class: "fa-brands fa-kubernetes", name: "kubernetes" },
+    { class: "fa-brands fa-whatsapp", name: "whatsapp" },
+    { class: "fa-brands fa-telegram", name: "telegram" },
+    { class: "fa-brands fa-discord", name: "discord" },
+    { class: "fa-brands fa-slack", name: "slack" },
+    { class: "fa-brands fa-figma", name: "figma" }
+];
+
+// Icon Picker Generator Function
+function generateIconPickerHTML(field) {
+    const containerId = `icon-picker-${field.name.replace(/[\[\]]/g, '-')}-${Date.now()}`;
+    const currentValue = field.value || 'fa-solid fa-star';
+    
+    let iconsHtml = '';
+    fontAwesomeIcons.forEach(icon => {
+        const isSelected = icon.class === currentValue;
+        iconsHtml += `
+            <div class="icon-option ${isSelected ? 'selected' : ''}" data-icon-class="${icon.class}">
+                <i class="${icon.class} icon-option-icon"></i>
+                <span class="icon-option-name">${icon.name}</span>
+            </div>
+        `;
+    });
+    
+    return `
+        <div class="icon-picker-container" id="${containerId}" data-field-name="${field.name}">
+            <div class="icon-preview" id="${containerId}-preview">
+                <i class="${currentValue} icon-preview-icon"></i>
+                <span class="icon-preview-text">${currentValue}</span>
+                <i class="fas fa-chevron-down" style="margin-left: auto; font-size: 12px; color: #94a3b8;"></i>
+            </div>
+            <div class="icon-dropdown" id="${containerId}-dropdown">
+                <div class="icon-search">
+                    <input type="text" placeholder="🔍 Search icons..." id="${containerId}-search" autocomplete="off">
+                </div>
+                <div class="icon-list" id="${containerId}-list">
+                    ${iconsHtml}
+                </div>
+            </div>
+            <input type="hidden" name="${field.name}" id="${field.name}" value="${currentValue}">
+        </div>
+    `;
+}
+
+function initIconPickers() {
+    document.querySelectorAll('.icon-picker-container').forEach(container => {
+        if (container.hasAttribute('data-initialized')) return;
+        container.setAttribute('data-initialized', 'true');
+        
+        const preview = container.querySelector('.icon-preview');
+        const dropdown = container.querySelector('.icon-dropdown');
+        const hiddenInput = container.querySelector('input[type="hidden"]');
+        const searchInput = container.querySelector('.icon-search input');
+        const iconList = container.querySelector('.icon-list');
+        
+        // Toggle dropdown
+        preview.addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.querySelectorAll('.icon-dropdown.show').forEach(d => {
+                if (d !== dropdown) d.classList.remove('show');
+            });
+            dropdown.classList.toggle('show');
+        });
+        
+        // Search functionality
+        if (searchInput) {
+            searchInput.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                const allOptions = iconList.querySelectorAll('.icon-option');
+                
+                allOptions.forEach(option => {
+                    const iconName = option.querySelector('.icon-option-name')?.textContent.toLowerCase() || '';
+                    const iconClass = option.dataset.iconClass?.toLowerCase() || '';
+                    
+                    if (iconName.includes(searchTerm) || iconClass.includes(searchTerm)) {
+                        option.style.display = 'flex';
+                    } else {
+                        option.style.display = 'none';
+                    }
+                });
+            });
+        }
+        
+        // Select icon
+        iconList.querySelectorAll('.icon-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const iconClass = this.dataset.iconClass;
+                if (iconClass) {
+                    const previewIcon = preview.querySelector('.icon-preview-icon');
+                    if (previewIcon) previewIcon.className = `${iconClass} icon-preview-icon`;
+                    
+                    const previewText = preview.querySelector('.icon-preview-text');
+                    if (previewText) previewText.textContent = iconClass;
+                    
+                    if (hiddenInput) hiddenInput.value = iconClass;
+                    
+                    iconList.querySelectorAll('.icon-option').forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                    dropdown.classList.remove('show');
+                    
+                    const changeEvent = new Event('change', { bubbles: true });
+                    hiddenInput.dispatchEvent(changeEvent);
+                }
+            });
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!container.contains(e.target)) dropdown.classList.remove('show');
+        });
+    });
+}
+
+// Make functions available globally
+window.fontAwesomeIcons = fontAwesomeIcons;
+window.generateIconPickerHTML = generateIconPickerHTML;
+window.initIconPickers = initIconPickers;
+</script>

@@ -1,8 +1,11 @@
 {% extends 'training_institute_app/base.html' %}
 {% load static %}
 
-{% block content %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/courses.css' %}">
+{% endblock %}
 
+{% block content %}
 {% include 'training_institute_app/components/nav.html' %}
 {% include 'training_institute_app/components/mobile_menu.html' %}
 {% include 'training_institute_app/components/side_panels.html' %}
@@ -36,145 +39,60 @@
     <button class="category-btn" data-category="corporate"><i class="fa-solid fa-building"></i> Corporate Training</button>
   </div>
 
-  <!-- Courses Grid - Bright Theme -->
+  <!-- Courses Grid - Dynamic from Database -->
   <div class="courses-grid" id="coursesGrid">
     
-    <!-- 1. ICT & Software Development -->
-    <div class="course-card reveal" data-category="ict">
-      <div class="course-badge"><i class="fa-solid fa-laptop-code"></i> ICT</div>
-      <div class="course-icon"><i class="fa-solid fa-display"></i></div>
-      <h3 class="course-title">Information & Communication Technology</h3>
-      <p class="course-desc">Comprehensive ICT training developing in-demand technical skills for the digital economy.</p>
-      <div class="course-topics">
-        <span><i class="fa-brands fa-html5"></i> Web Development</span>
-        <span><i class="fa-solid fa-mobile-screen"></i> Mobile Apps</span>
-        <span><i class="fa-solid fa-cloud"></i> Cloud Computing</span>
-        <span><i class="fa-solid fa-plug"></i> API Integration</span>
-        <span><i class="fa-solid fa-gear"></i> Software Engineering</span>
+    {% for course in courses %}
+    <!-- Dynamic Course Card -->
+    <div class="course-card reveal {% if forloop.counter|divisibleby:2 %}reveal-d2{% elif forloop.counter|divisibleby:3 %}reveal-d3{% endif %}" data-category="{{ course.filter_category }}">
+      <div class="course-badge">
+        <i class="{{ course.program_badge_icon|default:'fa-solid fa-laptop-code' }}"></i> 
+        {{ course.program_badge|default:"COURSE"|upper }}
       </div>
-      <a href="/courses/details/" class="course-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
-
-    <!-- 2. Cybersecurity & Digital Defense -->
-    <div class="course-card reveal reveal-d2" data-category="cyber">
-      <div class="course-badge"><i class="fa-solid fa-user-secret"></i> CYBERSECURITY</div>
-      <div class="course-icon"><i class="fa-solid fa-shield"></i></div>
-      <h3 class="course-title">Cybersecurity & Digital Defense</h3>
-      <p class="course-desc">Build resilient systems and secure critical infrastructure with hands-on security training.</p>
-      <div class="course-topics">
-        <span><i class="fa-solid fa-network-wired"></i> Network Security</span>
-        <span><i class="fa-solid fa-user-secret"></i> Ethical Hacking</span>
-        <span><i class="fa-solid fa-bolt"></i> Incident Response</span>
-        <span><i class="fa-solid fa-cloud"></i> Cloud Security</span>
-        <span><i class="fa-solid fa-chart-line"></i> Risk Management</span>
+      <div class="course-icon">
+        <i class="{{ course.program_badge_icon|default:'fa-solid fa-laptop-code' }}"></i>
       </div>
-      <a href="#" class="course-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
-
-    <!-- 3. Microsoft 365 Copilot -->
-    <div class="course-card reveal reveal-d3" data-category="ai">
-      <div class="course-badge"><i class="fa-solid fa-magic"></i> AI & PRODUCTIVITY</div>
-      <div class="course-icon"><i class="fa fa-bolt"></i></div>
-      <h3 class="course-title">Microsoft 365 Copilot</h3>
-      <p class="course-desc">AI-powered assistant within Teams, Outlook, Word, Excel — transform leadership productivity.</p>
+      <h3 class="course-title">{{ course.course_name }}</h3>
+      <p class="course-desc">{{ course.description|truncatechars:120 }}</p>
+      
+      <!-- Dynamic Topics from what_you_will_master -->
       <div class="course-topics">
-        <span><i class="fa-regular fa-keyboard"></i> Prompt Engineering</span>
-        <span><i class="fa-solid fa-robot"></i> Workflow Automation</span>
-        <span><i class="fa-solid fa-chart-simple"></i> AI Leadership</span>
-        <span><i class="fa-solid fa-chart-pie"></i> Data Insights</span>
+        {% if course.what_you_will_master %}
+          {% for topic in course.what_you_will_master|slice:":5" %}
+            <span><i class="fa-solid fa-check-circle"></i> {{ topic.title|truncatechars:30 }}</span>
+          {% endfor %}
+        {% else %}
+          <span><i class="fa-solid fa-clock"></i> {{ course.duration_weeks }} weeks</span>
+          <span><i class="fa-solid fa-calendar"></i> {{ course.schedule_type }}</span>
+          {% if course.certification_provided %}
+            <span><i class="fa-solid fa-certificate"></i> Certification</span>
+          {% endif %}
+        {% endif %}
       </div>
-      <a href="#" class="course-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
-
-    <!-- 4. AI & Digital Productivity -->
-    <div class="course-card reveal" data-category="ai">
-      <div class="course-badge"><i class="fa-solid fa-sitemap"></i> AI</div>
-      <div class="course-icon"><i class="fa-solid fa-microchip"></i></div>
-      <h3 class="course-title">AI & Digital Productivity</h3>
-      <p class="course-desc">Leverage AI to automate workflows, generate insights, and accelerate decision-making.</p>
-      <div class="course-topics">
-        <span><i class="fa-regular fa-lightbulb"></i> AI Fundamentals</span>
-        <span><i class="fa-solid fa-chart-line"></i> Business Automation</span>
-        <span><i class="fa-regular fa-file-lines"></i> Smart Reporting</span>
-        <span><i class="fa-solid fa-scale-balanced"></i> Responsible AI</span>
+      
+      <!-- Course Meta Info -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-top: 10px; border-top: 1px solid rgba(102, 126, 234, 0.1);">
+        <span style="font-size: 11px; color: #667eea; font-weight: 600;">
+          <i class="fa-regular fa-clock"></i> {{ course.duration_weeks }} weeks
+        </span>
+        <span style="font-size: 11px; color: #667eea; font-weight: 600;">
+          <i class="fa-regular fa-calendar"></i> {{ course.schedule_type }}
+        </span>
+        <span style="font-size: 11px; color: #764ba2; font-weight: 700;">
+          Nu.{{ course.course_fee }}
+        </span>
       </div>
-      <a href="#" class="course-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+      
+      <a href="{% url 'courses_details' course.id %}" class="course-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
     </div>
-
-    <!-- 5. Corporate & Government Training -->
-    <div class="course-card reveal reveal-d2" data-category="corporate">
-      <div class="course-badge"><i class="fa-solid fa-building"></i> CORPORATE</div>
-      <div class="course-icon"><i class="fa-solid fa-building-columns"></i></div>
-      <h3 class="course-title">Corporate & Government Training</h3>
-      <p class="course-desc">Customized programs aligned with organizational goals and national priorities.</p>
-      <div class="course-topics">
-        <span><i class="fa-solid fa-magnifying-glass-chart"></i> Skill Gap Analysis</span>
-        <span><i class="fa-solid fa-pen-ruler"></i> Custom Curriculum</span>
-        <span><i class="fa-solid fa-computer"></i> Onsite/Online</span>
-        <span><i class="fa-solid fa-chart-simple"></i> Impact Measurement</span>
-      </div>
-      <a href="#" class="course-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+    {% empty %}
+    <!-- No Courses Found -->
+    <div class="course-card" style="grid-column: 1/-1; text-align: center;">
+      <div class="course-icon"><i class="fa-solid fa-book-open"></i></div>
+      <h3 class="course-title">No Courses Available</h3>
+      <p class="course-desc">New courses are being added soon. Please check back later!</p>
     </div>
-
-    <!-- 6. Leadership & Professional Development -->
-    <div class="course-card reveal reveal-d3" data-category="leadership">
-      <div class="course-badge"><i class="fa-solid fa-users-line"></i> LEADERSHIP</div>
-      <div class="course-icon"><i class="fa-solid fa-user-tie"></i></div>
-      <h3 class="course-title">Leadership & Professional Development</h3>
-      <p class="course-desc">Build strong leaders, effective communicators, and adaptable professionals.</p>
-      <div class="course-topics">
-        <span><i class="fa-solid fa-chess-queen"></i> Strategic Leadership</span>
-        <span><i class="fa-regular fa-heart"></i> Emotional Intelligence</span>
-        <span><i class="fa-solid fa-people-group"></i> Team Management</span>
-        <span><i class="fa-regular fa-message"></i> Communication</span>
-      </div>
-      <a href="#" class="course-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
-
-    <!-- 7. Penetration Testing & Ethical Hacking -->
-    <div class="course-card reveal" data-category="cyber">
-      <div class="course-badge"><i class="fa-solid fa-bug"></i> OFFENSIVE SECURITY</div>
-      <div class="course-icon"><i class="fa-solid fa-user-secret"></i></div>
-      <h3 class="course-title">Penetration Testing & Ethical Hacking</h3>
-      <p class="course-desc">Master offensive security techniques to identify and fix vulnerabilities.</p>
-      <div class="course-topics">
-        <span><i class="fa-solid fa-globe"></i> Web App Testing</span>
-        <span><i class="fa-solid fa-plug"></i> API Security</span>
-        <span><i class="fa-solid fa-cloud"></i> Cloud Pen Testing</span>
-        <span><i class="fa-solid fa-flag"></i> Red Teaming</span>
-      </div>
-      <a href="#" class="course-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
-
-    <!-- 8. Full-Stack Development -->
-    <div class="course-card reveal reveal-d2" data-category="ict">
-      <div class="course-badge"><i class="fa-solid fa-layer-group"></i> DEVELOPMENT</div>
-      <div class="course-icon"><i class="fa-solid fa-code-branch"></i></div>
-      <h3 class="course-title">Full-Stack Development</h3>
-      <p class="course-desc">Build complete web applications from frontend to backend with modern frameworks.</p>
-      <div class="course-topics">
-        <span><i class="fa-brands fa-react"></i> React/Node.js</span>
-        <span><i class="fa-solid fa-database"></i> Database Design</span>
-        <span><i class="fa-solid fa-plug"></i> REST APIs</span>
-        <span><i class="fa-solid fa-cloud-arrow-up"></i> Cloud Deployment</span>
-      </div>
-      <a href="#" class="course-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
-
-    <!-- 9. Security Operations (SOC) -->
-    <div class="course-card reveal reveal-d3" data-category="cyber">
-      <div class="course-badge"><i class="fa-solid fa-chart-line"></i> DEFENSIVE SECURITY</div>
-      <div class="course-icon"><i class="fa-solid fa-tower-broadcast"></i></div>
-      <h3 class="course-title">Security Operations (SOC)</h3>
-      <p class="course-desc">Build and run a Security Operations Center with real-time monitoring.</p>
-      <div class="course-topics">
-        <span><i class="fa-solid fa-eye"></i> Threat Monitoring</span>
-        <span><i class="fa-solid fa-bolt"></i> Incident Handling</span>
-        <span><i class="fa-solid fa-chart-line"></i> SIEM Tools</span>
-        <span><i class="fa-solid fa-magnifying-glass"></i> Threat Hunting</span>
-      </div>
-      <a href="#" class="course-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
+    {% endfor %}
 
   </div>
 
@@ -218,479 +136,6 @@
 
 </main>
 
-<style>
-/* Courses Page Specific Styles - BRIGHT THEME */
-
-/* Courses Hero */
-.courses-hero {
-  min-height: 60vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 140px 0 80px;
-  position: relative;
-}
-
-.courses-hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 24px;
-  border-radius: 100px;
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(102, 126, 234, 0.2);
-  backdrop-filter: blur(20px);
-  margin-bottom: 32px;
-  opacity: 0;
-  transform: translateY(16px);
-  animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-.hero-badge-dot {
-  width: 8px;
-  height: 8px;
-  background: #667eea;
-  border-radius: 50%;
-  animation: pulse 2s ease-in-out infinite;
-  box-shadow: 0 0 10px #667eea;
-}
-
-.courses-hero-badge span {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #667eea;
-}
-
-.courses-hero-badge span i {
-  margin-right: 8px;
-}
-
-.courses-title {
-  font-size: clamp(2rem, 6vw, 4rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-  background: linear-gradient(135deg, #1a1a2e, #2d3561);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  opacity: 0;
-  transform: translateY(24px);
-  animation: fadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
-  margin-bottom: 24px;
-}
-
-.courses-accent {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.courses-sub {
-  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
-  font-weight: 500;
-  line-height: 1.7;
-  color: #4a5568;
-  max-width: 600px;
-  opacity: 0;
-  transform: translateY(16px);
-  animation: fadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
-}
-
-/* Category Navigation - Bright Theme */
-.category-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  margin: 40px 0 48px;
-}
-
-.category-btn {
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(102, 126, 234, 0.2);
-  border-radius: 100px;
-  padding: 10px 24px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  color: #4a5568;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.category-btn i {
-  margin-right: 8px;
-  font-size: 12px;
-  color: #667eea;
-}
-
-.category-btn:hover {
-  border-color: #667eea;
-  color: #667eea;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
-}
-
-.category-btn.active {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  border-color: transparent;
-  color: white;
-}
-
-.category-btn.active i {
-  color: white;
-}
-
-/* Courses Grid - Bright Theme */
-.courses-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  padding: 20px 0 40px;
-}
-
-.course-card {
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(102, 126, 234, 0.15);
-  border-radius: 28px;
-  padding: 32px;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-}
-
-.course-card:hover {
-  transform: translateY(-8px);
-  border-color: #667eea;
-  background: white;
-  box-shadow: 0 15px 35px rgba(102, 126, 234, 0.15);
-}
-
-.course-badge {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  padding: 6px 12px;
-  background: linear-gradient(135deg, #667eea15, #764ba215);
-  border: 1px solid rgba(102, 126, 234, 0.2);
-  border-radius: 100px;
-  color: #667eea;
-}
-
-.course-badge i {
-  margin-right: 6px;
-  font-size: 9px;
-}
-
-.course-icon {
-  font-size: 48px;
-  margin-bottom: 20px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.course-title {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #1a1a2e;
-  margin-bottom: 12px;
-  line-height: 1.3;
-}
-
-.course-desc {
-  font-size: 0.85rem;
-  font-weight: 400;
-  line-height: 1.6;
-  color: #4a5568;
-  margin-bottom: 20px;
-}
-
-.course-topics {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 24px;
-}
-
-.course-topics span {
-  font-size: 10px;
-  font-weight: 500;
-  padding: 5px 12px;
-  background: rgba(102, 126, 234, 0.08);
-  border-radius: 100px;
-  color: #4a5568;
-  letter-spacing: 0.02em;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.course-topics span i {
-  font-size: 10px;
-  color: #667eea;
-}
-
-.course-link {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #667eea;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.course-link:hover {
-  color: #764ba2;
-}
-
-.course-link i {
-  transition: transform 0.3s ease;
-}
-
-.course-link:hover i {
-  transform: translateX(4px);
-}
-
-/* Clients Grid - Bright Theme */
-.clients-section {
-  padding: 60px 0 40px;
-}
-
-.clients-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  margin-top: 48px;
-}
-
-.client-item {
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(102, 126, 234, 0.15);
-  border-radius: 16px;
-  padding: 20px;
-  text-align: center;
-  font-size: 13px;
-  font-weight: 600;
-  color: #4a5568;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.client-item i {
-  font-size: 16px;
-  color: #667eea;
-}
-
-.client-item:hover {
-  border-color: #667eea;
-  color: #667eea;
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
-}
-
-.client-item:hover i {
-  color: #764ba2;
-}
-
-/* Partners Section - Bright Theme */
-.partners-section {
-  padding: 40px 0;
-}
-
-.partners-grid {
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  flex-wrap: wrap;
-  margin-top: 48px;
-}
-
-.partner-card {
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(102, 126, 234, 0.2);
-  border-radius: 20px;
-  padding: 24px 40px;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  color: #1a1a2e;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.partner-card i {
-  font-size: 18px;
-  color: #667eea;
-}
-
-.partner-card:hover {
-  transform: translateY(-4px);
-  border-color: #667eea;
-  background: white;
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
-  color: #667eea;
-}
-
-/* Section elements - matching other pages */
-.section-tag {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: #667eea;
-  opacity: 0.8;
-  margin-bottom: 20px;
-}
-
-.section-tag i {
-  margin-right: 8px;
-}
-
-.section-title {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 300;
-  letter-spacing: -0.04em;
-  line-height: 1.15;
-  color: #1a1a2e;
-  margin-bottom: 10px;
-}
-
-.section-title strong {
-  font-weight: 800;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.section-body {
-  font-size: 0.95rem;
-  font-weight: 400;
-  line-height: 1.8;
-  color: #4a5568;
-  max-width: 540px;
-}
-
-.silk-divider {
-  width: 100px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #667eea, #764ba2, transparent);
-  margin: 0 auto;
-  border-radius: 2px;
-}
-
-/* Animations */
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.5;
-    transform: scale(1.3);
-  }
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-  .courses-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-  }
-  
-  .clients-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .courses-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .category-nav {
-    gap: 8px;
-  }
-  
-  .category-btn {
-    padding: 8px 16px;
-    font-size: 10px;
-  }
-  
-  .category-btn i {
-    margin-right: 4px;
-  }
-  
-  .clients-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .partners-grid {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .partner-card {
-    width: 100%;
-    text-align: center;
-    padding: 16px 24px;
-    justify-content: center;
-  }
-  
-  .courses-hero {
-    padding: 100px 0 60px;
-  }
-  
-  .course-card {
-    padding: 28px;
-  }
-}
-
-@media (max-width: 480px) {
-  .category-nav {
-    margin: 20px 0 32px;
-  }
-  
-  .client-item {
-    font-size: 12px;
-    padding: 14px;
-  }
-}
-</style>
-
 <script>
 // Category filtering for courses
 $(document).ready(function() {
@@ -718,6 +163,26 @@ $(document).ready(function() {
       });
     }
   });
+  
+  // Scroll reveal animation
+  function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+      rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85 &&
+      rect.bottom >= 0
+    );
+  }
+  
+  function handleScrollReveal() {
+    $('.reveal').each(function() {
+      if (isElementInViewport(this) && !$(this).hasClass('active')) {
+        $(this).addClass('active');
+      }
+    });
+  }
+  
+  $(window).on('scroll', handleScrollReveal);
+  handleScrollReveal(); // Initial check
 });
 </script>
 

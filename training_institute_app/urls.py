@@ -9,7 +9,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
     path('courses/', views.courses, name='courses'),
-    path('courses/details/', views.courses_details, name='courses_details'),
+    path('courses/details/<int:course_id>/', views.courses_details, name='courses_details'),
     path('contact/', views.contact, name='contact'),
     path('login/', views.login_view, name='login'),
     path('signin/', views.signin, name='signin'),
@@ -30,4 +30,9 @@ urlpatterns = [
     path('role-management/', views.role_management, name='role_management'),
     path('role-management/delete/', views.delete_role, name='delete_role'),
     path('course-management/', views.course_management, name='course_management'),
+    
+    #Page Management URLs
+    path('about-page-management/', views.about_page_management, name='about_page_management'),
+    path('update-about-section/', views.update_about_section, name='update_about_section'),
+
 ]

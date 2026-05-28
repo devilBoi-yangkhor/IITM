@@ -47,6 +47,65 @@ class Department(models.Model):
     def __str__(self):
         return self.name
 
+class AboutPage(models.Model):
+    """Single model for all about page content"""
+    
+    # Hero Section
+    hero_title_line1 = models.CharField(max_length=200)
+    hero_title_line2 = models.CharField(max_length=200)
+    hero_subtitle = models.TextField()
+    hero_badge_text = models.CharField(max_length=50)
+    hero_badge_icon = models.CharField(max_length=50)
+    
+    # Mission, Vision & Values (JSON)
+    mission_vision_items = models.JSONField()
+    
+    # Timeline Events (JSON)
+    timeline_items = models.JSONField()
+    
+    # Team Members (JSON)
+    team_members = models.JSONField()
+    
+    # Statistics (JSON)
+    statistics = models.JSONField()
+    
+    # Why Choose Us Features (JSON)
+    why_us_features = models.JSONField()
+    
+    # Section visibility toggles
+    show_mission_vision = models.BooleanField(default=True)
+    show_timeline = models.BooleanField(default=True)
+    show_leadership = models.BooleanField(default=True)
+    show_stats = models.BooleanField(default=True)
+    show_why_us = models.BooleanField(default=True)
+    
+    # Section headers
+    timeline_section_tag = models.CharField(max_length=50)
+    timeline_section_title = models.CharField(max_length=200)
+    timeline_section_subtitle = models.TextField()
+    
+    leadership_section_tag = models.CharField(max_length=50)
+    leadership_section_title = models.CharField(max_length=200)
+    leadership_section_subtitle = models.TextField()
+    
+    why_us_section_tag = models.CharField(max_length=50)
+    why_us_section_title = models.CharField(max_length=200)
+    why_us_section_subtitle = models.TextField()
+    
+    # Active status
+    is_active = models.BooleanField(default=True)
+    
+    # Timestamps
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        verbose_name = "About Page"
+        verbose_name_plural = "About Page"
+    
+    def __str__(self):
+        return "About Page Content"
+        
 
 class CourseCategory(models.Model):
     name = models.CharField(max_length=100, unique=True)

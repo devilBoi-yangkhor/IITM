@@ -13159,3 +13159,1177 @@ INFO 2026-05-27 10:16:49,074 log 17828 15728 "GET /static/images/image5.png HTTP
 INFO 2026-05-27 10:16:51,572 log 17828 21988 "GET /static/js/basestyles.js HTTP/1.1" 304 0
 INFO 2026-05-27 10:34:10,625 autoreload 17828 9444 D:\Web Applications\training_institute\training_institute\settings.py changed, reloading.
 INFO 2026-05-27 10:34:12,636 autoreload 18564 23344 Watching for file changes with StatReloader
+INFO 2026-05-27 10:38:36,107 autoreload 18312 2924 Watching for file changes with StatReloader
+INFO 2026-05-27 10:38:38,802 log 18312 26664 "GET / HTTP/1.1" 200 47015
+INFO 2026-05-27 10:38:38,962 log 18312 22700 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-27 10:38:38,964 log 18312 26664 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+INFO 2026-05-27 10:38:38,975 log 18312 22700 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 10:38:38,978 log 18312 26664 "GET /static/images/image.jpeg HTTP/1.1" 200 259498
+INFO 2026-05-27 10:38:39,039 log 18312 26664 "GET /static/images/image1.jpeg HTTP/1.1" 200 316563
+INFO 2026-05-27 10:38:39,054 log 18312 22700 "GET /static/images/image2.png HTTP/1.1" 200 2296546
+INFO 2026-05-27 10:38:39,060 log 18312 22700 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-27 10:38:39,066 log 18312 26664 "GET /static/images/image4.png HTTP/1.1" 200 849487
+INFO 2026-05-27 10:38:39,195 log 18312 26664 "GET /static/images/image5.png HTTP/1.1" 200 2139533
+INFO 2026-05-27 10:38:39,587 log 18312 26664 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-27 10:38:39,671 log 18312 26664 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984
+INFO 2026-05-27 10:38:42,382 log 18312 22700 "GET /about/ HTTP/1.1" 200 40186
+INFO 2026-05-27 10:54:59,549 log 18312 2044 "GET /login/ HTTP/1.1" 200 44162
+INFO 2026-05-27 10:54:59,781 log 18312 2044 "GET /static/css/login.css HTTP/1.1" 304 0
+INFO 2026-05-27 10:55:02,849 log 18312 2044 "GET /accounts/google/login/?process=login HTTP/1.1" 302 0
+INFO 2026-05-27 10:55:04,279 log 18312 2044 "GET /accounts/google/login/callback/?state=V8DcSdsgfmtr8pCD&iss=https%3A%2F%2Faccounts.google.com&code=4%2F0AeoWuM83hjVisdwEgQmtF2djdpllh89If54JC_SMn1uLdJ_mI9LtjVlqeeZ-2hkZiHuiBw&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=none HTTP/1.1" 302 0
+INFO 2026-05-27 10:55:04,372 log 18312 2044 "GET /dashboard/ HTTP/1.1" 200 41034
+INFO 2026-05-27 10:55:04,453 log 18312 2044 "GET /static/js/dashboards/dashboard.js HTTP/1.1" 200 5546
+INFO 2026-05-27 10:59:22,388 autoreload 18312 2924 D:\Web Applications\training_institute\training_institute\settings.py changed, reloading.
+INFO 2026-05-27 10:59:23,336 autoreload 15796 8756 Watching for file changes with StatReloader
+INFO 2026-05-27 10:59:27,751 autoreload 15796 8756 D:\Web Applications\training_institute\training_institute\settings.py changed, reloading.
+INFO 2026-05-27 10:59:28,661 autoreload 24556 13356 Watching for file changes with StatReloader
+INFO 2026-05-27 12:50:18,397 log 24556 1432 "GET / HTTP/1.1" 200 47031
+INFO 2026-05-27 12:50:18,684 log 24556 1432 "GET /static/images/image.jpeg HTTP/1.1" 200 259498
+INFO 2026-05-27 12:50:18,698 log 24556 1432 "GET /static/images/image1.jpeg HTTP/1.1" 200 316563
+INFO 2026-05-27 12:50:18,733 log 24556 1432 "GET /static/images/image2.png HTTP/1.1" 200 2296546
+INFO 2026-05-27 12:50:18,745 log 24556 1432 "GET /static/images/image4.png HTTP/1.1" 200 849487
+INFO 2026-05-27 12:50:18,777 log 24556 1432 "GET /static/images/image5.png HTTP/1.1" 200 2139533
+INFO 2026-05-27 13:11:05,322 log 24556 21896 "GET /course-management/ HTTP/1.1" 200 153718
+WARNING 2026-05-27 13:11:05,538 log 24556 21896 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-27 13:11:28,991 log 24556 7668 "GET /course-management/ HTTP/1.1" 200 140660
+INFO 2026-05-27 13:11:29,062 log 24556 25460 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-27 13:11:29,064 log 24556 7668 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-27 13:11:29,078 log 24556 7668 "GET /static/images/profile/profile.jpg HTTP/1.1" 200 30954
+INFO 2026-05-27 13:11:29,079 log 24556 25460 "GET /static/images/logo.png HTTP/1.1" 200 67393
+WARNING 2026-05-27 13:11:29,085 log 24556 7668 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-27 13:11:29,149 log 24556 25460 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-27 13:11:29,167 log 24556 25460 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-27 13:11:29,195 log 24556 25460 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-27 13:11:29,213 log 24556 25460 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-27 13:11:29,279 log 24556 25460 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-27 13:11:29,367 log 24556 25460 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-27 13:11:29,525 log 24556 25460 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+INFO 2026-05-27 13:11:34,709 log 24556 25460 "GET /course-management/ HTTP/1.1" 200 152887
+INFO 2026-05-27 13:11:34,755 log 24556 25940 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-27 13:11:34,757 log 24556 15756 "GET /static/images/profile/profile.jpg HTTP/1.1" 200 30954
+INFO 2026-05-27 13:11:34,758 log 24556 25460 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-27 13:11:34,759 log 24556 4008 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 13:11:34,794 log 24556 25156 "GET /static/js/theme.js HTTP/1.1" 200 432
+WARNING 2026-05-27 13:11:34,795 log 24556 4008 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-27 13:11:34,796 log 24556 25940 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-27 13:11:34,795 log 24556 15756 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-27 13:11:34,797 log 24556 2784 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-27 13:11:34,799 log 24556 25460 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-27 13:11:34,807 log 24556 25460 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-27 13:11:35,047 log 24556 25460 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+INFO 2026-05-27 13:11:40,470 log 24556 25460 "POST /course-management/ HTTP/1.1" 200 108
+INFO 2026-05-27 14:16:23,168 log 24556 20028 "GET / HTTP/1.1" 200 47031
+INFO 2026-05-27 14:16:23,210 log 24556 20028 "GET /static/css/basestyles.css HTTP/1.1" 304 0
+INFO 2026-05-27 14:16:23,214 log 24556 23896 "GET /static/css/courses_details.css HTTP/1.1" 304 0
+INFO 2026-05-27 14:16:27,094 log 24556 23896 "GET /dashboard/ HTTP/1.1" 200 41034
+INFO 2026-05-27 14:16:27,215 log 24556 23896 "GET /static/js/dashboards/dashboard.js HTTP/1.1" 200 5546
+INFO 2026-05-27 14:18:18,473 log 24556 23896 "GET /course-management/ HTTP/1.1" 200 154479
+WARNING 2026-05-27 14:18:18,503 log 24556 23896 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-27 14:22:38,527 log 24556 19960 "GET /logout/ HTTP/1.1" 302 0
+INFO 2026-05-27 14:22:38,547 log 24556 19960 "GET / HTTP/1.1" 200 47015
+INFO 2026-05-27 14:22:41,904 log 24556 19960 "GET /login/ HTTP/1.1" 200 44162
+INFO 2026-05-27 14:22:41,959 log 24556 19960 "GET /static/css/login.css HTTP/1.1" 304 0
+INFO 2026-05-27 14:23:04,958 log 24556 19960 "POST /signup/ HTTP/1.1" 200 116
+INFO 2026-05-27 14:23:06,257 log 24556 19960 "GET /login/ HTTP/1.1" 200 44162
+INFO 2026-05-27 14:23:14,257 log 24556 19960 "POST /signin/ HTTP/1.1" 200 81
+INFO 2026-05-27 14:23:15,349 log 24556 19960 "GET /dashboard/ HTTP/1.1" 200 41013
+INFO 2026-05-27 14:24:33,447 log 24556 19960 "GET /user-management/ HTTP/1.1" 200 144391
+WARNING 2026-05-27 14:24:33,476 log 24556 19960 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-27 14:24:36,876 log 24556 4732 "GET /course-management/ HTTP/1.1" 200 154479
+WARNING 2026-05-27 14:24:36,911 log 24556 4732 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-27 14:27:43,289 log 24556 18440 "GET /course-management/ HTTP/1.1" 200 149941
+INFO 2026-05-27 14:27:43,325 log 24556 18440 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-27 14:27:43,329 log 24556 26404 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-27 14:27:43,346 log 24556 18440 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 14:27:43,348 log 24556 26404 "GET /static/images/profile/profile.jpg HTTP/1.1" 200 30954
+WARNING 2026-05-27 14:27:43,494 log 24556 26404 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-27 14:27:43,519 log 24556 6596 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-27 14:27:43,549 log 24556 6596 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-27 14:27:43,555 log 24556 18440 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-27 14:27:43,578 log 24556 6596 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-27 14:27:43,636 log 24556 18440 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-27 14:27:43,667 log 24556 6596 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-27 14:27:43,776 log 24556 6596 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+INFO 2026-05-27 14:28:11,889 autoreload 24556 13356 D:\Web Applications\training_institute\training_institute_app\views.py changed, reloading.
+INFO 2026-05-27 14:28:13,861 autoreload 10404 10348 Watching for file changes with StatReloader
+INFO 2026-05-27 14:28:23,606 autoreload 10404 10348 D:\Web Applications\training_institute\training_institute\settings.py changed, reloading.
+INFO 2026-05-27 14:28:24,742 autoreload 15748 23120 Watching for file changes with StatReloader
+INFO 2026-05-27 14:28:52,226 autoreload 15748 23120 D:\Web Applications\training_institute\training_institute\settings.py changed, reloading.
+INFO 2026-05-27 14:28:53,104 autoreload 27376 1752 Watching for file changes with StatReloader
+INFO 2026-05-27 14:28:57,613 autoreload 27376 1752 D:\Web Applications\training_institute\training_institute\settings.py changed, reloading.
+INFO 2026-05-27 14:28:58,464 autoreload 11816 17128 Watching for file changes with StatReloader
+INFO 2026-05-27 14:29:34,493 autoreload 9720 17884 Watching for file changes with StatReloader
+INFO 2026-05-27 14:29:48,179 log 9720 26420 "GET / HTTP/1.1" 200 47015
+INFO 2026-05-27 14:29:50,580 log 9720 26420 "GET /course-management/ HTTP/1.1" 302 0
+INFO 2026-05-27 14:29:50,588 log 9720 26420 "GET /login/?next=/course-management/ HTTP/1.1" 200 44162
+INFO 2026-05-27 14:29:57,964 log 9720 26420 "POST /signin/ HTTP/1.1" 200 82
+INFO 2026-05-27 14:29:59,397 log 9720 26420 "GET /dashboard/ HTTP/1.1" 200 41017
+INFO 2026-05-27 14:30:01,784 log 9720 26420 "GET /user-management/ HTTP/1.1" 200 137007
+WARNING 2026-05-27 14:30:01,821 log 9720 26420 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-27 14:30:03,075 log 9720 4312 "GET /role-management/ HTTP/1.1" 200 130375
+WARNING 2026-05-27 14:30:03,109 log 9720 4312 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-27 14:30:25,315 log 9720 7052 "POST /role-management/ HTTP/1.1" 200 68
+INFO 2026-05-27 14:30:26,374 log 9720 7052 "GET /role-management/ HTTP/1.1" 200 132252
+WARNING 2026-05-27 14:30:26,424 log 9720 7052 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-27 14:30:47,616 log 9720 3532 "GET /course-management/ HTTP/1.1" 200 141283
+WARNING 2026-05-27 14:30:47,655 log 9720 3532 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-27 14:30:50,171 basehttp 9720 24008 - Broken pipe from ('127.0.0.1', 63771)
+INFO 2026-05-27 14:30:50,401 log 9720 1304 "GET /courses/ HTTP/1.1" 200 43055
+INFO 2026-05-27 14:30:55,307 log 9720 1304 "GET /courses/details/ HTTP/1.1" 200 32867
+WARNING 2026-05-27 14:30:55,335 log 9720 1304 "GET /static/training_institute_app/css/courses_details.css HTTP/1.1" 404 2065
+INFO 2026-05-27 14:30:55,586 log 9720 19512 "GET /static/js/course_details.js HTTP/1.1" 304 0
+INFO 2026-05-27 14:30:57,237 log 9720 29552 "GET /static/js/course_details.js HTTP/1.1" 304 0
+INFO 2026-05-27 14:34:26,723 log 9720 19512 "POST /course-management/ HTTP/1.1" 200 108
+INFO 2026-05-27 14:34:46,816 autoreload 9720 17884 D:\Web Applications\training_institute\training_institute_app\views.py changed, reloading.
+INFO 2026-05-27 14:34:48,033 autoreload 14072 15440 Watching for file changes with StatReloader
+INFO 2026-05-27 14:34:55,192 log 14072 12884 "GET /courses/details/ HTTP/1.1" 200 32867
+WARNING 2026-05-27 14:34:55,239 log 14072 12884 "GET /static/training_institute_app/css/courses_details.css HTTP/1.1" 404 2065
+INFO 2026-05-27 14:36:44,888 log 14072 28520 "POST /course-management/ HTTP/1.1" 200 122
+INFO 2026-05-27 14:36:48,614 log 14072 28520 "GET /course-management/ HTTP/1.1" 200 150642
+WARNING 2026-05-27 14:36:48,664 log 14072 28520 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-27 14:51:43,909 log 14072 4372 "GET /courses/details/ HTTP/1.1" 200 32867
+INFO 2026-05-27 14:51:44,063 log 14072 19240 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-27 14:51:44,064 log 14072 4372 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+INFO 2026-05-27 14:51:44,065 log 14072 29560 "GET /static/images/logo.png HTTP/1.1" 200 67393
+WARNING 2026-05-27 14:51:44,096 log 14072 29560 "GET /static/training_institute_app/css/courses_details.css HTTP/1.1" 404 2065
+INFO 2026-05-27 14:51:44,168 log 14072 19240 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-27 14:51:44,170 log 14072 4372 "GET /static/js/course_details.js HTTP/1.1" 200 5473
+INFO 2026-05-27 14:51:44,749 log 14072 4372 "GET /course-management/ HTTP/1.1" 200 141850
+INFO 2026-05-27 14:51:44,840 log 14072 18404 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 14:51:44,841 log 14072 4372 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-27 14:51:44,849 log 14072 19240 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-27 14:51:44,850 log 14072 18404 "GET /static/images/profile/profile.jpg HTTP/1.1" 200 30954
+WARNING 2026-05-27 14:51:45,012 log 14072 18404 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-27 14:51:45,012 log 14072 4372 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-27 14:51:45,054 log 14072 4372 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-27 14:51:45,059 log 14072 4372 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-27 14:51:45,090 log 14072 19240 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-27 14:51:45,121 log 14072 19240 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-27 14:51:45,146 log 14072 17128 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984
+INFO 2026-05-27 14:51:45,147 log 14072 4372 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-27 14:51:45,218 log 14072 19240 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-27 14:51:45,309 log 14072 19240 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+INFO 2026-05-27 14:52:13,740 log 14072 19240 "GET /course-management/ HTTP/1.1" 200 156720
+INFO 2026-05-27 14:52:13,778 log 14072 4372 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-27 14:52:13,779 log 14072 13048 "GET /static/images/profile/profile.jpg HTTP/1.1" 200 30954
+INFO 2026-05-27 14:52:13,780 log 14072 19240 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-27 14:52:13,781 log 14072 19488 "GET /static/images/logo.png HTTP/1.1" 200 67393
+WARNING 2026-05-27 14:52:13,810 log 14072 19240 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-27 14:52:13,811 log 14072 13048 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-27 14:52:13,811 log 14072 20836 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-27 14:52:13,812 log 14072 4372 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-27 14:52:13,813 log 14072 19488 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-27 14:52:13,815 log 14072 13048 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-27 14:52:13,819 log 14072 4372 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-27 14:52:14,119 log 14072 4372 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+INFO 2026-05-27 14:55:16,900 log 14072 4372 "GET /courses/details/ HTTP/1.1" 200 32867
+INFO 2026-05-27 14:55:16,950 log 14072 13048 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-27 14:55:16,954 log 14072 4372 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+WARNING 2026-05-27 14:55:16,955 log 14072 20836 "GET /static/training_institute_app/css/courses_details.css HTTP/1.1" 404 2065
+INFO 2026-05-27 14:55:16,956 log 14072 19488 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 14:55:17,130 log 14072 4372 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-27 14:55:17,131 log 14072 19488 "GET /static/js/course_details.js HTTP/1.1" 200 5473
+INFO 2026-05-27 14:55:17,682 log 14072 19488 "GET /course-management/ HTTP/1.1" 200 156720
+INFO 2026-05-27 14:55:17,746 log 14072 4372 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-27 14:55:17,747 log 14072 13048 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 14:55:17,747 log 14072 19488 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-27 14:55:17,748 log 14072 4372 "GET /static/images/profile/profile.jpg HTTP/1.1" 200 30954
+INFO 2026-05-27 14:55:17,768 log 14072 4372 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-27 14:55:17,791 log 14072 4372 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+WARNING 2026-05-27 14:55:17,803 log 14072 13048 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984
+INFO 2026-05-27 14:55:17,806 log 14072 19488 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-27 14:55:17,823 log 14072 19488 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-27 14:55:17,826 log 14072 19488 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-27 14:55:17,835 log 14072 19488 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-27 14:55:17,848 log 14072 19488 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-27 14:55:17,899 log 14072 19488 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-27 14:55:18,085 log 14072 19488 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+INFO 2026-05-27 14:59:43,804 autoreload 14072 15440 D:\Web Applications\training_institute\training_institute_app\views.py changed, reloading.
+INFO 2026-05-27 14:59:45,568 autoreload 1612 12884 Watching for file changes with StatReloader
+INFO 2026-05-27 15:00:28,660 log 1612 17600 "GET /course-management/ HTTP/1.1" 200 155356
+INFO 2026-05-27 15:00:28,794 log 1612 3728 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-27 15:00:28,795 log 1612 17600 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-27 15:00:28,797 log 1612 3728 "GET /static/images/profile/profile.jpg HTTP/1.1" 200 30954
+INFO 2026-05-27 15:00:28,806 log 1612 2776 "GET /static/images/logo.png HTTP/1.1" 200 67393
+WARNING 2026-05-27 15:00:28,911 log 1612 2776 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-27 15:00:28,912 log 1612 17600 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-27 15:00:28,914 log 1612 3728 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-27 15:00:28,920 log 1612 3728 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-27 15:00:28,921 log 1612 17600 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-27 15:00:28,924 log 1612 17600 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-27 15:00:28,927 log 1612 3728 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-27 15:00:29,176 log 1612 3728 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+INFO 2026-05-27 15:04:02,777 log 1612 3728 "GET /course-management/ HTTP/1.1" 200 35057
+WARNING 2026-05-27 15:04:02,807 log 1612 3728 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+WARNING 2026-05-27 15:04:03,157 log 1612 17600 Not Found: /favicon.ico
+WARNING 2026-05-27 15:04:03,157 log 1612 17600 "GET /favicon.ico HTTP/1.1" 404 7523
+INFO 2026-05-27 15:04:05,605 log 1612 17600 "GET /course-management/ HTTP/1.1" 200 35057
+WARNING 2026-05-27 15:04:05,655 log 1612 17600 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+WARNING 2026-05-27 15:04:05,914 log 1612 4912 Not Found: /favicon.ico
+WARNING 2026-05-27 15:04:05,915 log 1612 4912 "GET /favicon.ico HTTP/1.1" 404 7523
+INFO 2026-05-27 15:04:39,612 log 1612 4912 "GET /course-management/ HTTP/1.1" 200 119344
+INFO 2026-05-27 15:04:39,640 log 1612 4912 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-27 15:04:39,643 log 1612 4912 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-27 15:04:39,646 log 1612 4912 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 15:04:39,650 log 1612 4912 "GET /static/images/profile/profile.jpg HTTP/1.1" 200 30954
+WARNING 2026-05-27 15:04:39,673 log 1612 4912 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-27 15:04:39,902 log 1612 6196 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-27 15:04:39,906 log 1612 6196 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-27 15:04:39,910 log 1612 6196 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-27 15:04:39,916 log 1612 6196 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-27 15:04:39,933 log 1612 6196 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-27 15:04:39,947 log 1612 6196 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-27 15:04:40,009 log 1612 6196 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+INFO 2026-05-27 15:04:54,008 log 1612 6196 "GET /role-management/ HTTP/1.1" 200 102318
+WARNING 2026-05-27 15:04:54,054 log 1612 6196 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-27 15:05:02,447 log 1612 17892 "POST /role-management/ HTTP/1.1" 200 67
+INFO 2026-05-27 15:05:03,764 log 1612 17892 "GET /role-management/ HTTP/1.1" 200 104892
+WARNING 2026-05-27 15:05:03,805 log 1612 17892 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-27 15:05:05,700 log 1612 29660 "GET /user-management/ HTTP/1.1" 200 107073
+WARNING 2026-05-27 15:05:05,744 log 1612 29660 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-27 15:05:07,602 log 1612 28208 "GET /course-management/ HTTP/1.1" 200 119344
+WARNING 2026-05-27 15:05:07,642 log 1612 28208 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-27 15:21:19,602 autoreload 1612 12884 D:\Web Applications\training_institute\training_institute_app\views.py changed, reloading.
+INFO 2026-05-27 15:21:20,603 autoreload 12844 22436 Watching for file changes with StatReloader
+INFO 2026-05-27 15:21:31,331 log 12844 22024 "GET /courses/ HTTP/1.1" 200 37325
+INFO 2026-05-27 15:22:45,543 log 12844 22024 "GET /courses/ HTTP/1.1" 200 28285
+INFO 2026-05-27 15:22:45,617 log 12844 22024 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+INFO 2026-05-27 15:22:45,622 log 12844 22024 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-27 15:22:45,624 log 12844 22024 "GET /static/images/logo.png HTTP/1.1" 200 67393
+WARNING 2026-05-27 15:22:45,633 log 12844 22024 "GET /static/training_institute_app/css/courses.css HTTP/1.1" 404 2041
+INFO 2026-05-27 15:22:45,825 log 12844 3700 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-27 15:22:46,201 log 12844 3700 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-27 15:22:46,218 log 12844 3700 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984
+INFO 2026-05-27 15:23:56,851 log 12844 26792 "GET /courses/ HTTP/1.1" 200 28285
+INFO 2026-05-27 15:23:56,900 log 12844 27732 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-27 15:23:56,902 log 12844 26792 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+WARNING 2026-05-27 15:23:56,907 log 12844 27732 "GET /static/training_institute_app/css/courses.css HTTP/1.1" 404 2041
+INFO 2026-05-27 15:23:56,909 log 12844 26792 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 15:23:56,915 log 12844 26792 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-27 15:23:57,400 log 12844 26792 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-27 15:23:57,412 log 12844 26792 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984
+INFO 2026-05-27 15:25:28,274 log 12844 22068 "GET /courses/ HTTP/1.1" 200 28320
+INFO 2026-05-27 15:25:28,316 log 12844 14436 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-27 15:25:28,316 log 12844 22068 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+WARNING 2026-05-27 15:25:28,323 log 12844 14436 "GET /static/training_institute_app/css/courses.css HTTP/1.1" 404 2041
+INFO 2026-05-27 15:25:28,324 log 12844 22068 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 15:25:28,327 log 12844 22068 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-27 15:25:28,819 log 12844 22068 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-27 15:25:28,832 log 12844 22068 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984
+INFO 2026-05-27 15:26:14,269 log 12844 18064 "GET /courses/ HTTP/1.1" 200 28288
+WARNING 2026-05-27 15:26:14,303 log 12844 27036 "GET /static/training_institute_app/css/courses.css HTTP/1.1" 404 2041
+INFO 2026-05-27 15:26:14,305 log 12844 23872 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-27 15:26:14,306 log 12844 18064 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+INFO 2026-05-27 15:26:14,309 log 12844 23872 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 15:26:14,312 log 12844 18064 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-27 15:26:14,792 log 12844 18064 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-27 15:26:14,801 log 12844 18064 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984
+INFO 2026-05-27 15:26:31,186 log 12844 23872 "GET /courses/ HTTP/1.1" 200 28265
+WARNING 2026-05-27 15:26:31,233 log 12844 9768 "GET /static/css/courses.css HTTP/1.1" 404 1972
+INFO 2026-05-27 15:26:31,233 log 12844 22120 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-27 15:26:31,234 log 12844 23872 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+INFO 2026-05-27 15:26:31,237 log 12844 23872 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-27 15:26:31,238 log 12844 22120 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 15:26:31,612 log 12844 22120 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-27 15:26:31,626 log 12844 22120 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984
+INFO 2026-05-27 15:26:38,065 log 12844 23872 "GET /courses/ HTTP/1.1" 200 28265
+WARNING 2026-05-27 15:26:38,116 log 12844 12032 "GET /static/css/courses.css HTTP/1.1" 404 1972
+INFO 2026-05-27 15:26:38,117 log 12844 10268 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-27 15:26:38,118 log 12844 23872 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+INFO 2026-05-27 15:26:38,122 log 12844 23872 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-27 15:26:38,122 log 12844 10268 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 15:26:38,575 log 12844 23872 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-27 15:26:38,586 log 12844 23872 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984
+WARNING 2026-05-27 15:26:42,933 log 12844 10268 "GET /static/css/courses.css HTTP/1.1" 404 1972
+WARNING 2026-05-27 15:26:42,998 log 12844 23088 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-05-27 15:26:42,999 log 12844 23088 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7634
+INFO 2026-05-27 15:26:53,498 log 12844 23088 "GET /courses/ HTTP/1.1" 200 28288
+WARNING 2026-05-27 15:26:53,559 log 12844 23088 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-05-27 15:26:53,560 log 12844 23088 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7634
+INFO 2026-05-27 15:26:53,560 log 12844 21664 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+WARNING 2026-05-27 15:26:53,566 log 12844 21664 "GET /static/training_institute_app/css/courses.css HTTP/1.1" 404 2041
+INFO 2026-05-27 15:26:53,566 log 12844 23088 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-27 15:26:53,568 log 12844 23088 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 15:26:53,570 log 12844 23088 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-27 15:26:54,238 log 12844 23088 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-27 15:26:54,255 log 12844 23088 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984
+INFO 2026-05-27 15:28:28,636 log 12844 8796 "GET /courses/ HTTP/1.1" 200 28288
+INFO 2026-05-27 15:28:28,697 log 12844 19620 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-27 15:28:28,698 log 12844 8796 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+WARNING 2026-05-27 15:28:28,703 log 12844 19620 "GET /static/training_institute_app/css/courses.css HTTP/1.1" 404 2041
+INFO 2026-05-27 15:28:28,704 log 12844 8796 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 15:28:28,707 log 12844 8796 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+WARNING 2026-05-27 15:28:28,712 log 12844 8796 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-05-27 15:28:28,713 log 12844 8796 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7634
+INFO 2026-05-27 15:28:29,142 log 12844 8796 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-27 15:28:29,152 log 12844 8796 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984
+INFO 2026-05-27 15:29:20,829 log 12844 28032 "GET /courses/ HTTP/1.1" 200 28365
+WARNING 2026-05-27 15:29:20,884 log 12844 28032 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-05-27 15:29:20,885 log 12844 28032 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7634
+WARNING 2026-05-27 15:29:20,896 log 12844 21644 "GET /static/css/course.css HTTP/1.1" 404 1969
+INFO 2026-05-27 15:29:20,896 log 12844 19220 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-27 15:29:20,897 log 12844 10884 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+INFO 2026-05-27 15:29:20,899 log 12844 28032 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 15:29:20,900 log 12844 10884 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-27 15:29:21,443 log 12844 10884 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-27 15:29:21,463 log 12844 10884 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984
+INFO 2026-05-27 15:29:49,718 log 12844 28032 "GET /courses/ HTTP/1.1" 200 28298
+WARNING 2026-05-27 15:29:49,769 log 12844 28032 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-05-27 15:29:49,772 log 12844 28032 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7634
+INFO 2026-05-27 15:29:49,774 log 12844 2312 "GET /static/css/courses.css HTTP/1.1" 200 9592
+INFO 2026-05-27 15:29:49,774 log 12844 1220 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-27 15:29:49,774 log 12844 19220 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+INFO 2026-05-27 15:29:49,776 log 12844 28032 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 15:29:49,776 log 12844 2312 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-27 15:29:50,192 log 12844 2312 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-27 15:29:50,202 log 12844 2312 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984
+INFO 2026-05-27 15:31:38,676 log 12844 28032 "GET /courses/ HTTP/1.1" 200 28176
+INFO 2026-05-27 15:31:38,714 log 12844 28032 "GET /static/css/courses.css HTTP/1.1" 304 0
+INFO 2026-05-27 15:31:46,679 log 12844 28032 "GET /courses/ HTTP/1.1" 200 28298
+INFO 2026-05-27 15:32:01,406 log 12844 28032 "GET /courses/ HTTP/1.1" 200 28298
+INFO 2026-05-27 15:32:01,448 log 12844 1220 "GET /static/css/courses.css HTTP/1.1" 200 9588
+INFO 2026-05-27 15:32:01,448 log 12844 19220 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-27 15:32:01,448 log 12844 28032 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+INFO 2026-05-27 15:32:01,451 log 12844 28032 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-27 15:32:01,452 log 12844 1220 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 15:32:01,950 log 12844 1220 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-27 15:32:01,969 log 12844 1220 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984
+INFO 2026-05-27 15:32:11,564 log 12844 28032 "GET /courses/ HTTP/1.1" 200 28298
+INFO 2026-05-27 15:32:11,603 log 12844 19220 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-27 15:32:11,604 log 12844 28032 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+INFO 2026-05-27 15:32:11,604 log 12844 5872 "GET /static/css/courses.css HTTP/1.1" 200 9594
+INFO 2026-05-27 15:32:11,605 log 12844 4808 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 15:32:11,607 log 12844 5872 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-27 15:32:11,968 log 12844 5872 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-27 15:32:11,981 log 12844 5872 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984
+INFO 2026-05-27 15:32:40,589 log 12844 4808 "GET /courses/ HTTP/1.1" 200 28298
+INFO 2026-05-27 15:32:40,633 log 12844 28032 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-27 15:32:40,633 log 12844 19220 "GET /static/css/courses.css HTTP/1.1" 200 9609
+INFO 2026-05-27 15:32:40,633 log 12844 4808 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+INFO 2026-05-27 15:32:40,634 log 12844 17172 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 15:32:40,637 log 12844 28032 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-27 15:32:41,064 log 12844 28032 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-27 15:32:41,091 log 12844 28032 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984
+INFO 2026-05-27 15:33:33,726 log 12844 17172 "GET /courses/ HTTP/1.1" 200 28298
+INFO 2026-05-27 15:33:33,770 log 12844 4808 "GET /static/css/courses.css HTTP/1.1" 200 9592
+INFO 2026-05-27 15:33:33,771 log 12844 17172 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+INFO 2026-05-27 15:33:33,772 log 12844 19220 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-27 15:33:33,774 log 12844 29560 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 15:33:33,774 log 12844 4808 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-27 15:33:34,246 log 12844 4808 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-27 15:33:34,268 log 12844 4808 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984
+INFO 2026-05-27 15:36:17,419 log 12844 29560 "GET /courses/ HTTP/1.1" 200 28298
+INFO 2026-05-27 15:36:17,457 log 12844 19220 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-27 15:36:17,457 log 12844 17172 "GET /static/css/courses.css HTTP/1.1" 200 9684
+INFO 2026-05-27 15:36:17,459 log 12844 29560 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+INFO 2026-05-27 15:36:17,463 log 12844 17172 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-27 15:36:17,464 log 12844 19220 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 15:36:17,942 log 12844 19220 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-27 15:36:17,953 log 12844 19220 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984
+INFO 2026-05-27 15:36:27,082 log 12844 17172 "GET /courses/ HTTP/1.1" 200 28298
+INFO 2026-05-27 15:36:27,122 log 12844 29560 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-27 15:36:27,122 log 12844 11188 "GET /static/css/courses.css HTTP/1.1" 200 9684
+INFO 2026-05-27 15:36:27,123 log 12844 17172 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+INFO 2026-05-27 15:36:27,123 log 12844 14316 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 15:36:27,125 log 12844 29560 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-27 15:36:27,466 log 12844 29560 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-27 15:36:27,476 log 12844 29560 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984
+INFO 2026-05-27 15:36:36,468 log 12844 14316 "GET /courses/ HTTP/1.1" 200 28298
+INFO 2026-05-27 15:36:36,515 log 12844 17172 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-27 15:36:36,516 log 12844 11188 "GET /static/css/courses.css HTTP/1.1" 200 9684
+INFO 2026-05-27 15:36:36,517 log 12844 14316 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+INFO 2026-05-27 15:36:36,518 log 12844 27372 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 15:36:36,520 log 12844 11188 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-27 15:36:36,886 log 12844 11188 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-27 15:36:36,899 log 12844 11188 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984
+INFO 2026-05-27 15:36:47,906 log 12844 27372 "GET /courses/ HTTP/1.1" 200 28298
+INFO 2026-05-27 15:36:47,944 log 12844 17172 "GET /static/css/courses.css HTTP/1.1" 200 9684
+INFO 2026-05-27 15:36:47,945 log 12844 14316 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-27 15:36:47,946 log 12844 27372 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+INFO 2026-05-27 15:36:47,946 log 12844 17172 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-27 15:36:47,947 log 12844 22212 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 15:36:48,279 log 12844 17172 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-27 15:36:48,291 log 12844 17172 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984
+INFO 2026-05-27 15:37:30,672 log 12844 22212 "GET /courses/ HTTP/1.1" 200 28258
+INFO 2026-05-27 15:37:30,738 log 12844 14316 "GET /static/css/courses.css HTTP/1.1" 200 9614
+INFO 2026-05-27 15:37:30,738 log 12844 22212 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+INFO 2026-05-27 15:37:30,738 log 12844 27372 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-27 15:37:30,740 log 12844 23988 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 15:37:30,743 log 12844 27372 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-27 15:37:31,219 log 12844 27372 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-27 15:37:31,227 log 12844 27372 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984
+INFO 2026-05-27 15:37:56,647 autoreload 12844 22436 D:\Web Applications\training_institute\training_institute_app\urls.py changed, reloading.
+INFO 2026-05-27 15:37:57,591 autoreload 27808 4032 Watching for file changes with StatReloader
+INFO 2026-05-27 15:41:05,312 autoreload 27808 4032 D:\Web Applications\training_institute\training_institute_app\views.py changed, reloading.
+INFO 2026-05-27 15:41:06,270 autoreload 11968 22132 Watching for file changes with StatReloader
+INFO 2026-05-27 15:42:06,278 autoreload 11968 22132 D:\Web Applications\training_institute\training_institute_app\urls.py changed, reloading.
+INFO 2026-05-27 15:42:07,210 autoreload 26700 23236 Watching for file changes with StatReloader
+INFO 2026-05-27 15:51:04,135 log 26700 18444 "GET /courses/details/1/ HTTP/1.1" 200 36464
+INFO 2026-05-27 15:51:04,192 log 26700 18444 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+INFO 2026-05-27 15:51:04,197 log 26700 9916 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-27 15:51:04,198 log 26700 18444 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 15:51:04,202 log 26700 9916 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-27 15:57:43,351 log 26700 12592 "GET /courses/details/1/ HTTP/1.1" 200 35673
+INFO 2026-05-27 15:57:43,386 log 26700 23948 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-27 15:57:43,388 log 26700 12592 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+INFO 2026-05-27 15:57:43,392 log 26700 12592 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-27 15:57:43,393 log 26700 23948 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 15:57:43,940 log 26700 23948 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-27 15:57:43,956 log 26700 23948 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984
+INFO 2026-05-27 15:58:17,005 log 26700 12592 "GET /courses/details/1/ HTTP/1.1" 200 35672
+INFO 2026-05-27 15:58:17,056 log 26700 5268 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-27 15:58:17,056 log 26700 12592 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+INFO 2026-05-27 15:58:17,057 log 26700 21832 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 15:58:17,059 log 26700 12592 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-27 15:58:17,570 log 26700 12592 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-27 15:58:17,582 log 26700 12592 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984
+INFO 2026-05-27 15:58:32,946 log 26700 5268 "GET /courses/details/1/ HTTP/1.1" 200 35667
+INFO 2026-05-27 15:58:32,989 log 26700 5268 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+INFO 2026-05-27 15:58:32,989 log 26700 21832 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-27 15:58:32,992 log 26700 12468 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 15:58:32,993 log 26700 5268 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-27 15:58:33,355 log 26700 5268 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-27 15:58:33,366 log 26700 5268 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984
+INFO 2026-05-27 15:58:41,077 log 26700 12468 "GET /about/ HTTP/1.1" 200 40237
+INFO 2026-05-27 16:09:37,459 autoreload 26700 23236 D:\Web Applications\training_institute\training_institute_app\models.py changed, reloading.
+INFO 2026-05-27 16:09:38,456 autoreload 4916 12992 Watching for file changes with StatReloader
+INFO 2026-05-27 16:11:06,580 autoreload 4916 12992 D:\Web Applications\training_institute\training_institute_app\models.py changed, reloading.
+INFO 2026-05-27 16:11:07,617 autoreload 19288 20172 Watching for file changes with StatReloader
+INFO 2026-05-27 16:20:14,129 autoreload 19288 20172 D:\Web Applications\training_institute\training_institute_app\models.py changed, reloading.
+INFO 2026-05-27 16:20:15,136 autoreload 29060 13988 Watching for file changes with StatReloader
+INFO 2026-05-27 16:41:43,130 autoreload 3600 23760 Watching for file changes with StatReloader
+INFO 2026-05-27 16:42:08,915 log 3600 10884 "GET /course-management/ HTTP/1.1" 200 121110
+INFO 2026-05-27 16:42:09,007 log 3600 10884 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-27 16:42:09,008 log 3600 8268 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-27 16:42:09,010 log 3600 10884 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 16:42:09,012 log 3600 8268 "GET /static/images/profile/profile.jpg HTTP/1.1" 200 30954
+WARNING 2026-05-27 16:42:09,144 log 3600 8268 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-27 16:42:09,144 log 3600 10484 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-27 16:42:09,145 log 3600 10884 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-27 16:42:09,147 log 3600 10884 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-27 16:42:09,148 log 3600 10484 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-27 16:42:09,152 log 3600 10884 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-27 16:42:09,154 log 3600 10484 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-27 16:42:09,368 log 3600 10484 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+INFO 2026-05-27 16:42:26,752 log 3600 1752 "GET /contact HTTP/1.1" 301 0
+INFO 2026-05-27 16:42:26,766 log 3600 1752 "GET /contact/ HTTP/1.1" 200 34912
+INFO 2026-05-27 16:48:54,573 log 3600 4312 "GET /course-management/ HTTP/1.1" 200 121209
+INFO 2026-05-27 16:48:54,620 log 3600 24504 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-27 16:48:54,622 log 3600 4312 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-27 16:48:54,625 log 3600 24504 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-27 16:48:54,625 log 3600 4312 "GET /static/images/profile/profile.jpg HTTP/1.1" 200 30954
+WARNING 2026-05-27 16:48:54,780 log 3600 4312 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-27 16:48:54,781 log 3600 9500 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-27 16:48:54,782 log 3600 24504 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-27 16:48:54,785 log 3600 9500 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-27 16:48:54,786 log 3600 24504 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-27 16:48:54,790 log 3600 9500 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-27 16:48:54,792 log 3600 24504 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-27 16:48:55,056 log 3600 24504 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+INFO 2026-05-28 10:07:48,942 autoreload 13836 9884 Watching for file changes with StatReloader
+INFO 2026-05-28 10:07:53,031 log 13836 20572 "GET / HTTP/1.1" 200 47050
+INFO 2026-05-28 10:07:53,275 log 13836 20572 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+INFO 2026-05-28 10:07:53,328 log 13836 20572 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-28 10:07:53,374 log 13836 20572 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-28 10:07:53,385 log 13836 20572 "GET /static/images/image.jpeg HTTP/1.1" 200 259498
+INFO 2026-05-28 10:07:53,430 log 13836 20572 "GET /static/images/image1.jpeg HTTP/1.1" 200 316563
+INFO 2026-05-28 10:07:53,457 log 13836 20572 "GET /static/images/image2.png HTTP/1.1" 200 2296546
+INFO 2026-05-28 10:07:53,476 log 13836 20572 "GET /static/images/image4.png HTTP/1.1" 200 849487
+INFO 2026-05-28 10:07:53,479 log 13836 20572 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-28 10:07:53,508 log 13836 20572 "GET /static/images/image5.png HTTP/1.1" 200 2139533
+INFO 2026-05-28 10:07:54,969 log 13836 3180 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-28 10:07:59,744 log 13836 20572 "GET /login HTTP/1.1" 301 0
+INFO 2026-05-28 10:07:59,757 log 13836 20572 "GET /login/ HTTP/1.1" 200 44197
+INFO 2026-05-28 10:07:59,817 log 13836 20572 "GET /static/css/login.css HTTP/1.1" 200 10040
+ERROR 2026-05-28 10:08:07,790 log 13836 20572 Internal Server Error: /accounts/google/login/
+Traceback (most recent call last):
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\allauth\socialaccount\providers\oauth2\views.py", line 112, in view
+    return self.dispatch(  # type:ignore[attr-defined]
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        request, *args, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\allauth\socialaccount\providers\base\views.py", line 19, in dispatch
+    provider = self.get_provider()
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\allauth\socialaccount\providers\oauth2\views.py", line 123, in get_provider
+    return self.adapter.get_provider()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\allauth\socialaccount\providers\oauth2\views.py", line 50, in get_provider
+    return get_adapter(self.request).get_provider(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.request, provider=self.provider_id
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\allauth\socialaccount\adapter.py", line 228, in get_provider
+    app = self.get_app(request, provider=provider, client_id=client_id)
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\allauth\socialaccount\adapter.py", line 320, in get_app
+    raise SocialApp.DoesNotExist()
+allauth.socialaccount.models.SocialApp.DoesNotExist
+ERROR 2026-05-28 10:08:07,800 log 13836 20572 "GET /accounts/google/login/?process=login HTTP/1.1" 500 99048
+WARNING 2026-05-28 10:08:08,087 log 13836 20572 Not Found: /favicon.ico
+WARNING 2026-05-28 10:08:08,088 log 13836 20572 "GET /favicon.ico HTTP/1.1" 404 7545
+INFO 2026-05-28 10:08:37,660 log 13836 20572 "GET / HTTP/1.1" 200 47050
+INFO 2026-05-28 10:08:39,017 log 13836 20572 "GET /admin HTTP/1.1" 301 0
+INFO 2026-05-28 10:08:39,038 log 13836 20572 "GET /admin/ HTTP/1.1" 302 0
+INFO 2026-05-28 10:08:39,190 log 13836 20572 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4084
+INFO 2026-05-28 10:08:39,218 log 13836 444 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 3538
+INFO 2026-05-28 10:08:39,218 log 13836 20572 "GET /static/admin/css/base.css HTTP/1.1" 200 23100
+INFO 2026-05-28 10:08:39,233 log 13836 4144 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2026-05-28 10:08:39,444 log 13836 4144 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2026-05-28 10:08:39,445 log 13836 20572 "GET /static/admin/css/login.css HTTP/1.1" 200 951
+INFO 2026-05-28 10:08:39,446 log 13836 444 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16273
+INFO 2026-05-28 10:08:39,473 log 13836 444 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2026-05-28 10:08:40,172 log 13836 3180 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2026-05-28 10:08:45,924 log 13836 444 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2026-05-28 10:08:45,983 log 13836 444 "GET /admin/ HTTP/1.1" 200 16356
+INFO 2026-05-28 10:08:46,014 log 13836 444 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2026-05-28 10:08:46,063 log 13836 444 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 593
+INFO 2026-05-28 10:08:46,063 log 13836 20572 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 978
+INFO 2026-05-28 10:08:51,224 log 13836 444 "GET /admin/socialaccount/socialaccount/ HTTP/1.1" 200 16563
+INFO 2026-05-28 10:08:51,288 log 13836 444 "GET /static/admin/css/changelists.css HTTP/1.1" 200 7498
+INFO 2026-05-28 10:08:51,303 log 13836 13436 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2026-05-28 10:08:51,314 log 13836 3180 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2026-05-28 10:08:51,317 log 13836 20572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:08:51,318 log 13836 18140 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2026-05-28 10:08:51,332 log 13836 444 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2026-05-28 10:08:51,340 log 13836 13436 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2026-05-28 10:08:51,347 log 13836 18140 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2026-05-28 10:08:51,347 log 13836 20572 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2026-05-28 10:08:51,354 log 13836 13436 "GET /static/admin/img/search.svg HTTP/1.1" 200 607
+INFO 2026-05-28 10:08:51,375 log 13836 4144 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2026-05-28 10:08:51,434 log 13836 444 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2026-05-28 10:08:51,447 log 13836 4144 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2026-05-28 10:08:51,502 log 13836 4144 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 593
+INFO 2026-05-28 10:08:51,502 log 13836 444 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 928
+INFO 2026-05-28 10:08:52,368 log 13836 20804 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2026-05-28 10:08:52,372 log 13836 20804 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2026-05-28 10:08:52,375 log 13836 3180 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:08:52,377 log 13836 20804 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2026-05-28 10:08:52,378 log 13836 3180 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2026-05-28 10:08:52,379 log 13836 20804 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2026-05-28 10:08:52,382 log 13836 3180 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2026-05-28 10:08:52,384 log 13836 3180 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2026-05-28 10:08:52,385 log 13836 20804 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2026-05-28 10:08:54,079 log 13836 444 "GET /admin/socialaccount/socialtoken/ HTTP/1.1" 200 17085
+INFO 2026-05-28 10:08:54,116 log 13836 444 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:08:55,469 log 13836 444 "GET /admin/socialaccount/socialapp/ HTTP/1.1" 200 15556
+INFO 2026-05-28 10:08:55,508 log 13836 444 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:08:55,718 log 13836 20804 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:08:55,729 log 13836 3180 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:01,930 log 13836 444 "GET /admin/account/emailaddress/ HTTP/1.1" 200 16934
+INFO 2026-05-28 10:09:01,963 log 13836 444 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:02,784 log 13836 3180 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:03,422 log 13836 444 "GET /admin/auth/group/ HTTP/1.1" 200 15902
+INFO 2026-05-28 10:09:03,454 log 13836 444 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:04,697 log 13836 444 "GET /admin/sites/site/ HTTP/1.1" 200 17566
+INFO 2026-05-28 10:09:04,740 log 13836 444 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:04,791 log 13836 444 "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1761
+INFO 2026-05-28 10:09:04,873 log 13836 3180 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:04,879 log 13836 20804 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:07,101 log 13836 444 "GET /admin/sites/site/1/change/ HTTP/1.1" 200 16910
+INFO 2026-05-28 10:09:07,144 log 13836 4144 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:07,156 log 13836 444 "GET /static/admin/css/forms.css HTTP/1.1" 200 8831
+INFO 2026-05-28 10:09:07,170 log 13836 20572 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2026-05-28 10:09:07,187 log 13836 444 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11811
+INFO 2026-05-28 10:09:07,209 log 13836 20572 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2026-05-28 10:09:08,363 log 13836 3180 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2026-05-28 10:09:08,363 log 13836 8268 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2026-05-28 10:09:08,367 log 13836 20804 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:11,552 log 13836 20572 "GET /admin/socialaccount/socialaccount/ HTTP/1.1" 200 16563
+INFO 2026-05-28 10:09:11,589 log 13836 20572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:12,664 log 13836 20572 "GET /admin/socialaccount/socialtoken/ HTTP/1.1" 200 17085
+INFO 2026-05-28 10:09:12,694 log 13836 20572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:13,372 log 13836 20804 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:13,381 log 13836 8268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:14,022 log 13836 20572 "GET /admin/socialaccount/socialapp/ HTTP/1.1" 200 15556
+INFO 2026-05-28 10:09:14,057 log 13836 20572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:15,405 log 13836 20572 "GET /admin/socialaccount/socialapp/ HTTP/1.1" 200 15556
+INFO 2026-05-28 10:09:15,436 log 13836 20572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:17,653 log 13836 20572 "GET /admin/training_institute_app/contactinquiry/ HTTP/1.1" 200 15582
+INFO 2026-05-28 10:09:17,683 log 13836 20572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:17,953 log 13836 8268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:17,960 log 13836 20804 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:17,969 log 13836 8268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:19,822 log 13836 20572 "GET /admin/training_institute_app/coursecategory/ HTTP/1.1" 200 15582
+INFO 2026-05-28 10:09:19,854 log 13836 20572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:19,865 log 13836 8268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:21,544 log 13836 20572 "GET /admin/training_institute_app/courselecturer/ HTTP/1.1" 200 15582
+INFO 2026-05-28 10:09:21,585 log 13836 20572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:23,481 log 13836 20572 "GET /admin/training_institute_app/course/ HTTP/1.1" 200 16852
+INFO 2026-05-28 10:09:23,521 log 13836 20572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:23,820 log 13836 8268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:23,831 log 13836 20804 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:25,477 log 13836 20572 "GET /admin/training_institute_app/department/ HTTP/1.1" 200 15544
+INFO 2026-05-28 10:09:25,521 log 13836 20572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:27,020 log 13836 20572 "GET /admin/training_institute_app/enrollment/ HTTP/1.1" 200 15544
+INFO 2026-05-28 10:09:27,055 log 13836 20572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:28,361 log 13836 20804 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:28,370 log 13836 8268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:29,793 log 13836 20572 "GET /admin/training_institute_app/role/ HTTP/1.1" 200 17034
+INFO 2026-05-28 10:09:29,825 log 13836 20572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:31,719 log 13836 8268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:32,129 log 13836 20572 "GET /admin/training_institute_app/user/ HTTP/1.1" 200 16760
+INFO 2026-05-28 10:09:32,158 log 13836 20572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:33,910 log 13836 8268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:43,526 log 13836 20572 "GET /admin/account/emailaddress/ HTTP/1.1" 200 16934
+INFO 2026-05-28 10:09:43,560 log 13836 20572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:43,602 log 13836 8268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:45,916 log 13836 20572 "GET /admin/auth/group/ HTTP/1.1" 200 15902
+INFO 2026-05-28 10:09:45,952 log 13836 20572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:47,227 log 13836 20572 "GET /admin/sites/site/ HTTP/1.1" 200 17566
+INFO 2026-05-28 10:09:47,266 log 13836 20572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:47,982 log 13836 8268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:47,991 log 13836 20804 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:49,279 log 13836 20572 "GET /admin/socialaccount/socialaccount/ HTTP/1.1" 200 16563
+INFO 2026-05-28 10:09:49,319 log 13836 20572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:50,922 log 13836 20572 "GET /admin/socialaccount/socialtoken/ HTTP/1.1" 200 17085
+INFO 2026-05-28 10:09:50,961 log 13836 20572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:52,509 log 13836 20804 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:52,518 log 13836 8268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:52,981 log 13836 20572 "GET /admin/socialaccount/socialapp/ HTTP/1.1" 200 15556
+INFO 2026-05-28 10:09:53,007 log 13836 20572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:53,017 log 13836 8268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:54,344 log 13836 20572 "GET /admin/training_institute_app/contactinquiry/ HTTP/1.1" 200 15582
+INFO 2026-05-28 10:09:54,379 log 13836 20572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:55,911 log 13836 20572 "GET /admin/training_institute_app/coursecategory/ HTTP/1.1" 200 15582
+INFO 2026-05-28 10:09:55,947 log 13836 20572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:56,312 log 13836 8268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:56,322 log 13836 20804 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:57,094 log 13836 20572 "GET /admin/training_institute_app/courselecturer/ HTTP/1.1" 200 15582
+INFO 2026-05-28 10:09:57,126 log 13836 20572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:09:58,711 log 13836 20572 "GET /admin/training_institute_app/course/ HTTP/1.1" 200 16852
+INFO 2026-05-28 10:09:58,754 log 13836 20572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:10:00,577 log 13836 20804 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:10:00,585 log 13836 8268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:10:01,121 log 13836 20572 "GET /admin/training_institute_app/department/ HTTP/1.1" 200 15544
+INFO 2026-05-28 10:10:01,151 log 13836 20572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:10:01,161 log 13836 8268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:10:03,302 log 13836 20572 "GET /admin/training_institute_app/user/ HTTP/1.1" 200 16760
+INFO 2026-05-28 10:10:03,339 log 13836 20572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:10:04,709 log 13836 8268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:10:06,336 log 13836 20572 "GET /admin/training_institute_app/user/1/change/ HTTP/1.1" 200 46583
+INFO 2026-05-28 10:10:06,388 log 13836 20572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:10:06,423 log 13836 444 "GET /static/admin/js/calendar.js HTTP/1.1" 200 9159
+INFO 2026-05-28 10:10:06,424 log 13836 4144 "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19698
+INFO 2026-05-28 10:10:06,439 log 13836 444 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 689
+INFO 2026-05-28 10:10:06,499 log 13836 444 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1112
+INFO 2026-05-28 10:10:06,499 log 13836 4144 "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 805
+INFO 2026-05-28 10:10:06,995 log 13836 3180 "GET /static/admin/js/calendar.js HTTP/1.1" 200 9159
+INFO 2026-05-28 10:10:06,996 log 13836 8268 "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19698
+INFO 2026-05-28 10:10:07,001 log 13836 20804 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:21:22,688 log 13836 14376 "GET /admin/socialaccount/socialaccount/ HTTP/1.1" 200 16563
+INFO 2026-05-28 10:21:22,726 log 13836 14376 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:21:23,051 log 13836 14432 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2026-05-28 10:21:24,017 log 13836 14432 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:21:25,937 log 13836 14376 "GET /admin/socialaccount/socialaccount/?_facets=True HTTP/1.1" 200 16670
+INFO 2026-05-28 10:21:25,977 log 13836 14376 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:21:26,046 log 13836 14376 "GET /static/admin/img/icon-hidelink.svg HTTP/1.1" 200 1131
+INFO 2026-05-28 10:21:27,769 log 13836 14432 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:21:28,201 log 13836 14376 "GET /admin/socialaccount/socialtoken/ HTTP/1.1" 200 17085
+INFO 2026-05-28 10:21:28,242 log 13836 14376 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:21:30,056 log 13836 14432 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:21:30,277 log 13836 14376 "GET /admin/socialaccount/socialtoken/?_facets=True HTTP/1.1" 200 17279
+INFO 2026-05-28 10:21:30,317 log 13836 14376 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:21:30,328 log 13836 14432 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:21:31,690 log 13836 14376 "GET /admin/socialaccount/socialapp/ HTTP/1.1" 200 15556
+INFO 2026-05-28 10:21:31,719 log 13836 14376 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:21:31,815 log 13836 14432 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:26:23,563 log 13836 14376 "GET /login/ HTTP/1.1" 302 0
+INFO 2026-05-28 10:26:23,578 log 13836 14376 "GET /dashboard/ HTTP/1.1" 200 42883
+INFO 2026-05-28 10:26:23,618 log 13836 14376 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-28 10:26:23,650 log 13836 14376 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-28 10:26:23,663 log 13836 14376 "GET /static/images/profile/profile.jpg HTTP/1.1" 200 30954
+INFO 2026-05-28 10:26:23,858 log 13836 6316 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-28 10:26:23,858 log 13836 14376 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-28 10:26:23,862 log 13836 14376 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-28 10:26:23,895 log 13836 6316 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-28 10:26:23,900 log 13836 6316 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-28 10:26:23,901 log 13836 6316 "GET /static/js/dashboards/dashboard.js HTTP/1.1" 200 5546
+INFO 2026-05-28 10:26:23,928 log 13836 14376 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-28 10:26:24,652 log 13836 14432 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-28 10:26:24,660 log 13836 14432 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-28 10:26:24,664 log 13836 14432 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-28 10:26:24,669 log 13836 14432 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-28 10:26:24,676 log 13836 14432 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-28 10:26:24,679 log 13836 14432 "GET /static/js/dashboards/dashboard.js HTTP/1.1" 200 5546
+INFO 2026-05-28 10:26:24,683 log 13836 14432 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-28 10:26:25,652 log 13836 14376 "GET / HTTP/1.1" 200 47066
+INFO 2026-05-28 10:26:32,183 log 13836 14376 "GET / HTTP/1.1" 200 47066
+INFO 2026-05-28 10:26:35,586 log 13836 14376 "GET /dashboard/ HTTP/1.1" 200 42883
+INFO 2026-05-28 10:26:37,141 log 13836 14376 "GET /logout/ HTTP/1.1" 302 0
+INFO 2026-05-28 10:26:37,147 log 13836 14376 "GET / HTTP/1.1" 200 47050
+INFO 2026-05-28 10:26:40,743 log 13836 14376 "GET /login/ HTTP/1.1" 200 44197
+ERROR 2026-05-28 10:26:44,062 log 13836 14376 Internal Server Error: /accounts/google/login/
+Traceback (most recent call last):
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\allauth\socialaccount\providers\oauth2\views.py", line 112, in view
+    return self.dispatch(  # type:ignore[attr-defined]
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        request, *args, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\allauth\socialaccount\providers\base\views.py", line 19, in dispatch
+    provider = self.get_provider()
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\allauth\socialaccount\providers\oauth2\views.py", line 123, in get_provider
+    return self.adapter.get_provider()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\allauth\socialaccount\providers\oauth2\views.py", line 50, in get_provider
+    return get_adapter(self.request).get_provider(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.request, provider=self.provider_id
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\allauth\socialaccount\adapter.py", line 228, in get_provider
+    app = self.get_app(request, provider=provider, client_id=client_id)
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\allauth\socialaccount\adapter.py", line 320, in get_app
+    raise SocialApp.DoesNotExist()
+allauth.socialaccount.models.SocialApp.DoesNotExist
+ERROR 2026-05-28 10:26:44,065 log 13836 14376 "GET /accounts/google/login/?process=login HTTP/1.1" 500 99048
+INFO 2026-05-28 10:28:09,092 log 13836 14376 "GET /admin/socialaccount/socialapp/ HTTP/1.1" 302 0
+INFO 2026-05-28 10:28:09,104 log 13836 14376 "GET /admin/login/?next=/admin/socialaccount/socialapp/ HTTP/1.1" 200 4132
+INFO 2026-05-28 10:28:14,863 log 13836 14376 "POST /admin/login/?next=/admin/socialaccount/socialapp/ HTTP/1.1" 302 0
+INFO 2026-05-28 10:28:14,878 log 13836 14376 "GET /admin/socialaccount/socialapp/ HTTP/1.1" 200 15556
+INFO 2026-05-28 10:28:14,914 log 13836 14376 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:28:16,250 log 13836 14432 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:28:16,529 log 13836 14376 "GET /admin/socialaccount/socialtoken/ HTTP/1.1" 200 17085
+INFO 2026-05-28 10:28:16,561 log 13836 14376 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:28:16,574 log 13836 14432 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:28:21,427 log 13836 14376 "GET /admin/socialaccount/socialapp/ HTTP/1.1" 200 15556
+INFO 2026-05-28 10:28:21,461 log 13836 14376 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:28:21,484 log 13836 14432 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:28:40,724 log 13836 14376 "GET /admin/socialaccount/socialapp/ HTTP/1.1" 200 15556
+INFO 2026-05-28 10:28:40,762 log 13836 14376 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:28:40,771 log 13836 14432 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:29:16,031 log 13836 14376 "GET /admin/sites/site/ HTTP/1.1" 200 17566
+INFO 2026-05-28 10:29:16,088 log 13836 14376 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:29:17,143 log 13836 14376 "GET /admin/sites/site/1/change/ HTTP/1.1" 200 16910
+INFO 2026-05-28 10:29:17,174 log 13836 14376 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:29:20,310 log 13836 14376 "GET /admin/sites/site/ HTTP/1.1" 200 17566
+INFO 2026-05-28 10:29:22,740 log 13836 14432 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:29:23,085 log 13836 14376 "GET /admin/auth/group/ HTTP/1.1" 200 15902
+INFO 2026-05-28 10:29:23,134 log 13836 14376 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:29:24,088 log 13836 14432 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:29:24,226 log 13836 14376 "GET /admin/account/emailaddress/ HTTP/1.1" 200 16934
+INFO 2026-05-28 10:29:24,258 log 13836 14432 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:29:24,262 log 13836 14376 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:29:25,861 log 13836 14376 "GET /admin/sites/site/ HTTP/1.1" 200 17566
+INFO 2026-05-28 10:29:25,898 log 13836 14376 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:29:31,445 log 13836 14432 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:29:33,695 log 13836 14376 "GET /admin/sites/site/1/change/ HTTP/1.1" 200 16910
+INFO 2026-05-28 10:29:33,747 log 13836 14376 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:29:33,846 log 13836 14432 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:29:33,853 log 13836 14432 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-05-28 10:29:35,729 log 13836 14376 "GET /admin/sites/site/1/history/ HTTP/1.1" 200 14084
+INFO 2026-05-28 10:33:32,616 autoreload 13836 9884 D:\Web Applications\training_institute\training_institute\settings.py changed, reloading.
+INFO 2026-05-28 10:33:33,629 autoreload 19364 4128 Watching for file changes with StatReloader
+INFO 2026-05-28 10:33:43,240 autoreload 19364 4128 D:\Web Applications\training_institute\training_institute\settings.py changed, reloading.
+INFO 2026-05-28 10:33:44,084 autoreload 3572 14516 Watching for file changes with StatReloader
+INFO 2026-05-28 10:40:16,385 autoreload 3572 14516 D:\Web Applications\training_institute\training_institute\settings.py changed, reloading.
+INFO 2026-05-28 10:40:17,256 autoreload 2892 14536 Watching for file changes with StatReloader
+INFO 2026-05-28 10:40:24,794 autoreload 2892 14536 D:\Web Applications\training_institute\training_institute\settings.py changed, reloading.
+INFO 2026-05-28 10:40:25,668 autoreload 1664 2868 Watching for file changes with StatReloader
+INFO 2026-05-28 10:40:35,241 autoreload 1664 2868 D:\Web Applications\training_institute\training_institute\settings.py changed, reloading.
+INFO 2026-05-28 10:40:36,045 autoreload 18848 3992 Watching for file changes with StatReloader
+INFO 2026-05-28 10:40:47,675 autoreload 18848 3992 D:\Web Applications\training_institute\training_institute\settings.py changed, reloading.
+INFO 2026-05-28 10:40:48,462 autoreload 2016 10368 Watching for file changes with StatReloader
+INFO 2026-05-28 10:41:00,100 autoreload 2016 10368 D:\Web Applications\training_institute\training_institute\settings.py changed, reloading.
+INFO 2026-05-28 10:41:01,029 autoreload 7928 9496 Watching for file changes with StatReloader
+INFO 2026-05-28 10:42:20,321 autoreload 14432 3996 Watching for file changes with StatReloader
+INFO 2026-05-28 10:42:23,185 log 14432 3188 "GET /login/ HTTP/1.1" 302 0
+INFO 2026-05-28 10:42:23,215 log 14432 3188 "GET /dashboard/ HTTP/1.1" 200 42883
+INFO 2026-05-28 10:42:25,355 log 14432 3188 "GET /logout/ HTTP/1.1" 302 0
+INFO 2026-05-28 10:42:25,366 log 14432 3188 "GET / HTTP/1.1" 200 47050
+INFO 2026-05-28 10:42:29,294 log 14432 3188 "GET /login/ HTTP/1.1" 200 44197
+ERROR 2026-05-28 10:42:32,131 log 14432 3188 Internal Server Error: /accounts/google/login/
+Traceback (most recent call last):
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\allauth\socialaccount\providers\oauth2\views.py", line 112, in view
+    return self.dispatch(  # type:ignore[attr-defined]
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        request, *args, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\allauth\socialaccount\providers\base\views.py", line 19, in dispatch
+    provider = self.get_provider()
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\allauth\socialaccount\providers\oauth2\views.py", line 123, in get_provider
+    return self.adapter.get_provider()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\allauth\socialaccount\providers\oauth2\views.py", line 50, in get_provider
+    return get_adapter(self.request).get_provider(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.request, provider=self.provider_id
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\allauth\socialaccount\adapter.py", line 228, in get_provider
+    app = self.get_app(request, provider=provider, client_id=client_id)
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\allauth\socialaccount\adapter.py", line 317, in get_app
+    raise MultipleObjectsReturned
+django.core.exceptions.MultipleObjectsReturned
+ERROR 2026-05-28 10:42:32,137 log 14432 3188 "GET /accounts/google/login/?process=login HTTP/1.1" 500 99907
+INFO 2026-05-28 10:45:07,345 autoreload 18000 20332 Watching for file changes with StatReloader
+INFO 2026-05-28 10:45:14,895 log 18000 21320 "GET /accounts/google/login/?process=login HTTP/1.1" 302 0
+INFO 2026-05-28 10:45:23,605 log 18000 21320 "GET /accounts/google/login/callback/?state=MbfV6NtmkFoGDL6q&iss=https%3A%2F%2Faccounts.google.com&code=4%2F0AeoWuM_VjwJL-q0f-_Wu92zwfRbZdelApEMIyp8w1YbB9JMHlq9hz_M1EHpWXhLaFXlxwQ&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=0&prompt=consent HTTP/1.1" 302 0
+INFO 2026-05-28 10:45:23,628 log 18000 21320 "GET /dashboard/ HTTP/1.1" 200 42837
+INFO 2026-05-28 10:49:40,848 log 18000 21320 "GET /dashboard/ HTTP/1.1" 200 43807
+INFO 2026-05-28 10:49:40,943 log 18000 21320 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-28 10:49:40,944 log 18000 21320 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-28 10:49:40,948 log 18000 21320 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-28 10:49:41,049 log 18000 21320 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-28 10:49:41,053 log 18000 21320 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-28 10:49:41,058 log 18000 21320 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-28 10:49:41,062 log 18000 21320 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-28 10:49:41,065 log 18000 21320 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-28 10:49:41,070 log 18000 21320 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-28 10:49:41,074 log 18000 21320 "GET /static/js/dashboards/dashboard.js HTTP/1.1" 200 5546
+INFO 2026-05-28 10:49:41,340 log 18000 21320 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+INFO 2026-05-28 10:50:27,866 log 18000 21320 "GET /dashboard/ HTTP/1.1" 200 43389
+INFO 2026-05-28 10:50:27,913 log 18000 8588 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-28 10:50:27,915 log 18000 13464 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-28 10:50:27,916 log 18000 21320 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-28 10:50:27,946 log 18000 13464 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-28 10:50:27,946 log 18000 20904 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-28 10:50:27,947 log 18000 8588 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-28 10:50:27,948 log 18000 10464 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-28 10:50:27,949 log 18000 21320 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-28 10:50:27,953 log 18000 10464 "GET /static/js/dashboards/dashboard.js HTTP/1.1" 200 5546
+INFO 2026-05-28 10:50:27,954 log 18000 3356 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-28 10:50:28,273 log 18000 10464 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+INFO 2026-05-28 10:50:41,384 log 18000 10464 "GET /dashboard/ HTTP/1.1" 200 43387
+INFO 2026-05-28 10:50:41,425 log 18000 3356 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-28 10:50:41,425 log 18000 21320 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-28 10:50:41,426 log 18000 10464 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-28 10:50:41,454 log 18000 21320 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-28 10:50:41,455 log 18000 3356 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-28 10:50:41,455 log 18000 20904 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-28 10:50:41,457 log 18000 8588 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-28 10:50:41,457 log 18000 10464 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-28 10:50:41,460 log 18000 20904 "GET /static/js/dashboards/dashboard.js HTTP/1.1" 200 5546
+INFO 2026-05-28 10:50:41,461 log 18000 13464 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-28 10:50:41,671 log 18000 20904 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+INFO 2026-05-28 10:50:46,529 log 18000 20904 "GET /dashboard/ HTTP/1.1" 200 43387
+INFO 2026-05-28 10:50:46,586 log 18000 13464 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-28 10:50:46,587 log 18000 20904 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-28 10:50:46,588 log 18000 10464 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-28 10:50:46,606 log 18000 8588 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-28 10:50:46,607 log 18000 20904 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-28 10:50:46,609 log 18000 3356 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-28 10:50:46,610 log 18000 13464 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-28 10:50:46,612 log 18000 10464 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-28 10:50:46,616 log 18000 20904 "GET /static/js/dashboards/dashboard.js HTTP/1.1" 200 5546
+INFO 2026-05-28 10:50:46,618 log 18000 21320 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-28 10:50:46,829 log 18000 21320 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+INFO 2026-05-28 10:51:17,350 log 18000 21320 "GET /dashboard/ HTTP/1.1" 200 43380
+INFO 2026-05-28 10:51:17,388 log 18000 20904 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-28 10:51:17,389 log 18000 13464 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-28 10:51:17,389 log 18000 21320 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-28 10:51:17,411 log 18000 13464 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-28 10:51:17,411 log 18000 20904 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-28 10:51:17,412 log 18000 21320 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-28 10:51:17,423 log 18000 10464 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-28 10:51:17,424 log 18000 3356 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-28 10:51:17,426 log 18000 21320 "GET /static/js/dashboards/dashboard.js HTTP/1.1" 200 5546
+INFO 2026-05-28 10:51:17,428 log 18000 8588 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-28 10:51:17,872 log 18000 8588 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+INFO 2026-05-28 10:52:25,085 autoreload 18000 20332 D:\Web Applications\training_institute\training_institute_app\views.py changed, reloading.
+INFO 2026-05-28 10:52:26,048 autoreload 15328 21176 Watching for file changes with StatReloader
+INFO 2026-05-28 10:52:34,633 autoreload 15328 21176 D:\Web Applications\training_institute\training_institute_app\views.py changed, reloading.
+INFO 2026-05-28 10:52:35,597 autoreload 3688 436 Watching for file changes with StatReloader
+INFO 2026-05-28 10:52:53,464 autoreload 3688 436 D:\Web Applications\training_institute\training_institute_app\urls.py changed, reloading.
+INFO 2026-05-28 10:52:54,409 autoreload 7976 15796 Watching for file changes with StatReloader
+INFO 2026-05-28 10:53:06,038 autoreload 7976 15796 D:\Web Applications\training_institute\training_institute_app\urls.py changed, reloading.
+INFO 2026-05-28 10:53:06,937 autoreload 14696 5280 Watching for file changes with StatReloader
+INFO 2026-05-28 10:53:22,076 log 14696 3928 "GET /dashboard/ HTTP/1.1" 200 43392
+INFO 2026-05-28 10:53:22,169 log 14696 17892 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-28 10:53:22,170 log 14696 3928 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-28 10:53:22,171 log 14696 17892 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-28 10:53:22,242 log 14696 3928 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-28 10:53:22,243 log 14696 17892 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-28 10:53:22,246 log 14696 3928 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-28 10:53:22,247 log 14696 17892 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-28 10:53:22,250 log 14696 3928 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-28 10:53:22,255 log 14696 3928 "GET /static/js/dashboards/dashboard.js HTTP/1.1" 200 5546
+INFO 2026-05-28 10:53:22,257 log 14696 17892 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-28 10:53:22,450 log 14696 17892 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+ERROR 2026-05-28 10:53:24,353 log 14696 17892 Internal Server Error: /about-page-management/
+Traceback (most recent call last):
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Web Applications\training_institute\training_institute_app\views.py", line 900, in about_page_management
+    return render(request, 'training_institute_app/dashboard/about_management.html', context)
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Web Applications\training_institute\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: training_institute_app/dashboard/about_management.html
+ERROR 2026-05-28 10:53:24,355 log 14696 17892 "GET /about-page-management/ HTTP/1.1" 500 92807
+WARNING 2026-05-28 10:53:24,588 log 14696 17892 Not Found: /favicon.ico
+WARNING 2026-05-28 10:53:24,588 log 14696 17892 "GET /favicon.ico HTTP/1.1" 404 7830
+INFO 2026-05-28 10:53:38,313 autoreload 14696 5280 D:\Web Applications\training_institute\training_institute_app\views.py changed, reloading.
+INFO 2026-05-28 10:53:39,212 autoreload 16064 5480 Watching for file changes with StatReloader
+INFO 2026-05-28 10:53:40,404 log 16064 11404 "GET /about-page-management/ HTTP/1.1" 200 0
+WARNING 2026-05-28 10:53:40,509 log 16064 11404 Not Found: /favicon.ico
+WARNING 2026-05-28 10:53:40,510 log 16064 11404 "GET /favicon.ico HTTP/1.1" 404 7830
+INFO 2026-05-28 10:54:07,448 log 16064 11404 "GET /about-page-management/ HTTP/1.1" 200 112946
+INFO 2026-05-28 10:54:07,562 log 16064 2724 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-28 10:54:07,568 log 16064 20616 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-28 10:54:07,568 log 16064 11404 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-28 10:54:07,569 log 16064 2724 "GET /static/images/profile/profile.jpg HTTP/1.1" 200 30954
+WARNING 2026-05-28 10:54:07,575 log 16064 20616 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-28 10:54:07,577 log 16064 2724 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-28 10:54:07,577 log 16064 11404 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-28 10:54:07,581 log 16064 2724 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-28 10:54:07,582 log 16064 11404 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-28 10:54:07,585 log 16064 2724 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-28 10:54:07,588 log 16064 11404 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-28 10:54:26,894 log 16064 11404 "GET /about-page-management/ HTTP/1.1" 200 102861
+INFO 2026-05-28 10:54:26,926 log 16064 2724 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-28 10:54:26,927 log 16064 5884 "GET /static/images/profile/profile.jpg HTTP/1.1" 200 30954
+INFO 2026-05-28 10:54:26,927 log 16064 7764 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-28 10:54:26,928 log 16064 11404 "GET /static/css/theme.css HTTP/1.1" 200 82072
+WARNING 2026-05-28 10:54:26,945 log 16064 11404 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-28 10:54:26,948 log 16064 5844 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-28 10:54:26,948 log 16064 2724 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-28 10:54:26,949 log 16064 5884 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-28 10:54:26,949 log 16064 15208 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-28 10:54:26,950 log 16064 7764 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-28 10:54:26,960 log 16064 2724 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-28 10:54:27,266 log 16064 2724 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+INFO 2026-05-28 10:54:52,658 log 16064 2724 "GET /about-page-management/ HTTP/1.1" 200 102870
+INFO 2026-05-28 10:54:52,689 log 16064 7764 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-28 10:54:52,689 log 16064 2724 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-28 10:54:52,690 log 16064 15208 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-28 10:54:52,689 log 16064 5844 "GET /static/images/profile/profile.jpg HTTP/1.1" 200 30954
+WARNING 2026-05-28 10:54:52,718 log 16064 2724 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-28 10:54:52,718 log 16064 5844 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-28 10:54:52,719 log 16064 5884 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-28 10:54:52,720 log 16064 7764 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-28 10:54:52,721 log 16064 15208 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-28 10:54:52,722 log 16064 5844 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-28 10:54:52,728 log 16064 5884 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-28 10:54:52,969 log 16064 5884 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+INFO 2026-05-28 10:57:22,726 autoreload 16064 5480 D:\Web Applications\training_institute\training_institute_app\views.py changed, reloading.
+INFO 2026-05-28 10:57:23,725 autoreload 7288 21328 Watching for file changes with StatReloader
+INFO 2026-05-28 11:00:02,975 autoreload 7288 21328 D:\Web Applications\training_institute\training_institute_app\views.py changed, reloading.
+INFO 2026-05-28 11:00:03,901 autoreload 14392 18416 Watching for file changes with StatReloader
+INFO 2026-05-28 11:00:05,225 autoreload 14392 18416 D:\Web Applications\training_institute\training_institute_app\urls.py changed, reloading.
+INFO 2026-05-28 11:00:06,120 autoreload 18476 7272 Watching for file changes with StatReloader
+INFO 2026-05-28 11:00:27,695 log 18476 17680 "GET /about-page-management/ HTTP/1.1" 200 127770
+INFO 2026-05-28 11:00:27,775 log 18476 11512 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-28 11:00:27,779 log 18476 11512 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-28 11:00:27,781 log 18476 17680 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-28 11:00:27,782 log 18476 11512 "GET /static/images/profile/profile.jpg HTTP/1.1" 200 30954
+WARNING 2026-05-28 11:00:27,871 log 18476 11512 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-28 11:00:27,871 log 18476 12048 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-28 11:00:27,872 log 18476 17680 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-28 11:00:27,874 log 18476 12048 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-28 11:00:27,874 log 18476 17680 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-28 11:00:27,879 log 18476 12048 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-28 11:00:27,881 log 18476 17680 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-28 11:00:28,146 log 18476 17680 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+INFO 2026-05-28 11:01:15,771 log 18476 17680 "GET /about-page-management/ HTTP/1.1" 200 125269
+INFO 2026-05-28 11:01:15,807 log 18476 12048 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-28 11:01:15,807 log 18476 2076 "GET /static/images/profile/profile.jpg HTTP/1.1" 200 30954
+INFO 2026-05-28 11:01:15,808 log 18476 7056 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-28 11:01:15,808 log 18476 17680 "GET /static/css/theme.css HTTP/1.1" 200 82072
+WARNING 2026-05-28 11:01:15,852 log 18476 17680 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-28 11:01:15,853 log 18476 12048 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-28 11:01:15,853 log 18476 3360 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-28 11:01:15,854 log 18476 2076 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-28 11:01:15,856 log 18476 18688 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-28 11:01:15,857 log 18476 7056 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-28 11:01:15,881 log 18476 18688 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-28 11:01:16,220 log 18476 18688 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+INFO 2026-05-28 11:16:55,662 log 18476 8532 "GET /about-page-management/ HTTP/1.1" 200 122902
+INFO 2026-05-28 11:16:55,702 log 18476 20868 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-28 11:16:55,703 log 18476 8532 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-28 11:16:55,706 log 18476 8532 "GET /static/images/profile/profile.jpg HTTP/1.1" 200 30954
+INFO 2026-05-28 11:16:55,706 log 18476 20868 "GET /static/images/logo.png HTTP/1.1" 200 67393
+WARNING 2026-05-28 11:16:55,851 log 18476 8532 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-28 11:16:55,852 log 18476 20868 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-28 11:16:55,855 log 18476 20868 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-28 11:16:55,857 log 18476 20868 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-28 11:16:55,860 log 18476 20868 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-28 11:16:55,862 log 18476 20868 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-28 11:16:55,866 log 18476 20868 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-28 11:16:56,052 log 18476 20868 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+INFO 2026-05-28 11:25:26,514 log 18476 18252 "GET / HTTP/1.1" 200 47066
+INFO 2026-05-28 11:25:31,814 log 18476 18252 "GET /about HTTP/1.1" 301 0
+INFO 2026-05-28 11:25:31,851 log 18476 18252 "GET /about/ HTTP/1.1" 200 40237
+INFO 2026-05-28 11:32:28,972 autoreload 18476 7272 D:\Web Applications\training_institute\training_institute_app\views.py changed, reloading.
+INFO 2026-05-28 11:32:30,160 autoreload 920 12208 Watching for file changes with StatReloader
+INFO 2026-05-28 11:32:31,679 log 920 22988 "GET /about/ HTTP/1.1" 200 37098
+INFO 2026-05-28 11:32:31,794 log 920 22988 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+INFO 2026-05-28 11:32:31,795 log 920 22492 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+WARNING 2026-05-28 11:32:31,802 log 920 22492 "GET /static/images/team/john.jpg HTTP/1.1" 404 1987
+INFO 2026-05-28 11:32:31,802 log 920 22988 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-28 11:32:31,889 log 920 22988 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-28 11:32:35,760 log 920 22988 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-28 11:32:35,774 log 920 22988 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984
+INFO 2026-05-28 11:34:16,960 log 920 23504 "GET /about/ HTTP/1.1" 200 40237
+INFO 2026-05-28 11:34:17,013 log 920 23332 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-28 11:34:17,014 log 920 23504 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+INFO 2026-05-28 11:34:17,020 log 920 23504 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-28 11:34:17,022 log 920 23332 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-28 11:34:19,672 log 920 23332 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-28 11:34:19,685 log 920 23332 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984
+INFO 2026-05-28 11:55:36,047 log 920 7712 "GET /about-page-management/ HTTP/1.1" 200 154468
+INFO 2026-05-28 11:55:36,084 log 920 7712 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-28 11:55:36,085 log 920 8920 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-28 11:55:36,087 log 920 7712 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-28 11:55:36,088 log 920 8920 "GET /static/images/profile/profile.jpg HTTP/1.1" 200 30954
+WARNING 2026-05-28 11:55:36,239 log 920 8920 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-28 11:55:36,239 log 920 24444 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-28 11:55:36,241 log 920 7712 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-28 11:55:36,244 log 920 24444 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-28 11:55:36,245 log 920 7712 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-28 11:55:36,251 log 920 24444 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-28 11:55:36,255 log 920 7712 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-28 11:55:36,537 log 920 7712 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+INFO 2026-05-28 12:02:05,763 log 920 22232 "GET /about-page-management/ HTTP/1.1" 200 165265
+INFO 2026-05-28 12:02:05,805 log 920 2848 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-28 12:02:05,805 log 920 22232 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-28 12:02:05,809 log 920 22232 "GET /static/images/profile/profile.jpg HTTP/1.1" 200 30954
+INFO 2026-05-28 12:02:05,810 log 920 2848 "GET /static/images/logo.png HTTP/1.1" 200 67393
+WARNING 2026-05-28 12:02:05,962 log 920 2848 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-28 12:02:05,964 log 920 22232 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-28 12:02:05,966 log 920 22232 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-28 12:02:05,968 log 920 22232 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-28 12:02:05,973 log 920 22232 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-28 12:02:05,976 log 920 23208 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-28 12:02:05,978 log 920 22232 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-28 12:02:06,452 log 920 22232 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+INFO 2026-05-28 12:02:34,139 log 920 22232 "GET /course-management/ HTTP/1.1" 200 121764
+WARNING 2026-05-28 12:02:34,195 log 920 22232 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-28 12:02:51,510 log 920 23208 "GET /about-page-management/ HTTP/1.1" 200 165265
+WARNING 2026-05-28 12:02:51,552 log 920 23208 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-28 12:13:50,741 log 920 21880 "GET /about-page-management/ HTTP/1.1" 200 177563
+INFO 2026-05-28 12:13:50,802 log 920 10852 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-28 12:13:50,804 log 920 21880 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-28 12:13:50,806 log 920 10852 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-28 12:13:50,806 log 920 21880 "GET /static/images/profile/profile.jpg HTTP/1.1" 200 30954
+WARNING 2026-05-28 12:13:50,953 log 920 21880 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-28 12:13:50,954 log 920 23344 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-28 12:13:50,955 log 920 10852 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-28 12:13:50,957 log 920 23344 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-28 12:13:50,957 log 920 10852 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-28 12:13:50,960 log 920 23344 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-28 12:13:50,962 log 920 10852 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-28 12:13:51,375 log 920 10852 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+INFO 2026-05-28 12:33:37,096 log 920 18948 "GET /about-page-management/ HTTP/1.1" 200 177774
+INFO 2026-05-28 12:33:37,166 log 920 9040 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-28 12:33:37,166 log 920 14464 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-28 12:33:37,167 log 920 18948 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-28 12:33:37,174 log 920 9040 "GET /static/images/profile/profile.jpg HTTP/1.1" 200 30954
+WARNING 2026-05-28 12:33:37,325 log 920 9040 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-28 12:33:37,326 log 920 14464 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-28 12:33:37,364 log 920 14464 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-28 12:33:37,382 log 920 18948 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-28 12:33:37,403 log 920 14464 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-28 12:33:37,472 log 920 18948 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-28 12:33:37,509 log 920 14464 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-28 12:33:37,791 log 920 14464 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+INFO 2026-05-28 12:34:51,677 log 920 14464 "POST /update-about-section/ HTTP/1.1" 200 64
+INFO 2026-05-28 12:34:52,685 log 920 14464 "GET /about-page-management/ HTTP/1.1" 200 177783
+WARNING 2026-05-28 12:34:52,722 log 920 14464 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-28 12:47:45,439 log 920 23716 "GET /about-page-management/ HTTP/1.1" 200 200648
+INFO 2026-05-28 12:47:45,483 log 920 20116 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-28 12:47:45,484 log 920 23716 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-28 12:47:45,488 log 920 23716 "GET /static/images/profile/profile.jpg HTTP/1.1" 200 30954
+INFO 2026-05-28 12:47:45,489 log 920 20116 "GET /static/images/logo.png HTTP/1.1" 200 67393
+WARNING 2026-05-28 12:47:45,656 log 920 20116 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-28 12:47:45,657 log 920 23716 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-28 12:47:45,661 log 920 23772 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-28 12:47:45,662 log 920 23716 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-28 12:47:45,665 log 920 23772 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-28 12:47:45,668 log 920 23716 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-28 12:47:45,672 log 920 23772 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-28 12:47:46,145 log 920 23772 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+INFO 2026-05-28 12:50:25,451 log 920 23772 "GET /about-page-management/ HTTP/1.1" 200 200828
+INFO 2026-05-28 12:50:25,512 log 920 23716 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-28 12:50:25,513 log 920 23772 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-28 12:50:25,516 log 920 23772 "GET /static/images/profile/profile.jpg HTTP/1.1" 200 30954
+INFO 2026-05-28 12:50:25,516 log 920 23716 "GET /static/images/logo.png HTTP/1.1" 200 67393
+WARNING 2026-05-28 12:50:25,666 log 920 23716 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-28 12:50:25,666 log 920 23772 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-28 12:50:25,668 log 920 23772 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+INFO 2026-05-28 12:50:25,674 log 920 23772 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-28 12:50:25,680 log 920 23772 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-28 12:50:25,683 log 920 23772 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-28 12:50:25,689 log 920 23772 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-28 12:50:26,167 log 920 23772 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+INFO 2026-05-28 12:56:29,783 log 920 6108 "GET /about-page-management/ HTTP/1.1" 200 192108
+INFO 2026-05-28 12:56:29,855 log 920 23888 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-28 12:56:29,856 log 920 6108 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-28 12:56:29,859 log 920 6108 "GET /static/images/profile/profile.jpg HTTP/1.1" 200 30954
+INFO 2026-05-28 12:56:29,859 log 920 23888 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-28 12:56:30,030 log 920 19620 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+WARNING 2026-05-28 12:56:30,030 log 920 23888 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-28 12:56:30,032 log 920 6108 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-28 12:56:30,037 log 920 6108 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-28 12:56:30,038 log 920 19620 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-28 12:56:30,043 log 920 6108 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-28 12:56:30,056 log 920 19620 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-28 12:56:30,413 log 920 19620 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+INFO 2026-05-28 13:02:31,254 log 920 7960 "GET /about-page-management/ HTTP/1.1" 200 200856
+INFO 2026-05-28 13:02:31,322 log 920 22648 "GET /static/libs/owl.carousel/dist/assets/owl.carousel.min.css HTTP/1.1" 200 3351
+INFO 2026-05-28 13:02:31,323 log 920 7960 "GET /static/css/theme.css HTTP/1.1" 200 82072
+INFO 2026-05-28 13:02:31,325 log 920 22648 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-28 13:02:31,325 log 920 7960 "GET /static/images/profile/profile.jpg HTTP/1.1" 200 30954
+INFO 2026-05-28 13:02:31,496 log 920 1384 "GET /static/js/theme/app.init.js HTTP/1.1" 200 370
+WARNING 2026-05-28 13:02:31,496 log 920 22648 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-28 13:02:31,497 log 920 7960 "GET /static/js/vendor.min.js HTTP/1.1" 200 87444
+INFO 2026-05-28 13:02:31,501 log 920 7960 "GET /static/js/theme.js HTTP/1.1" 200 432
+INFO 2026-05-28 13:02:31,501 log 920 1384 "GET /static/js/theme/app.min.js HTTP/1.1" 200 12818
+INFO 2026-05-28 13:02:31,506 log 920 7960 "GET /static/libs/simplebar/dist/simplebar.min.js HTTP/1.1" 200 27518
+INFO 2026-05-28 13:02:31,508 log 920 1384 "GET /static/libs/preline/dist/preline.js HTTP/1.1" 200 363204
+INFO 2026-05-28 13:02:31,999 log 920 1384 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+INFO 2026-05-28 13:02:41,112 log 920 1384 "GET /about-page-management/ HTTP/1.1" 200 200856
+INFO 2026-05-28 13:02:54,594 log 920 1384 "GET /dashboard/ HTTP/1.1" 200 43392
+INFO 2026-05-28 13:02:54,816 log 920 1384 "GET /static/js/dashboards/dashboard.js HTTP/1.1" 200 5546
+INFO 2026-05-28 13:02:57,915 log 920 1384 "GET / HTTP/1.1" 200 47066
+INFO 2026-05-28 13:02:58,164 log 920 7960 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-28 13:02:58,164 log 920 1384 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+INFO 2026-05-28 13:02:58,218 log 920 7960 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-28 13:02:59,541 log 920 7960 "GET /about-page-management/ HTTP/1.1" 200 200856
+WARNING 2026-05-28 13:02:59,598 log 920 7960 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+INFO 2026-05-28 13:03:16,056 log 920 1384 "GET /about-page-management/ HTTP/1.1" 200 200856
+INFO 2026-05-28 13:03:22,044 log 920 1384 "GET /dashboard/ HTTP/1.1" 200 43392
+INFO 2026-05-28 13:03:24,796 log 920 1384 "GET /about-page-management/ HTTP/1.1" 200 200856
+WARNING 2026-05-28 13:03:24,881 log 920 1384 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+WARNING 2026-05-28 13:03:27,739 log 920 23336 "GET /static/training_institute_app/css/formModel.css HTTP/1.1" 404 2047
+WARNING 2026-05-28 13:03:27,756 log 920 8080 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-05-28 13:03:27,756 log 920 8080 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 8224
+INFO 2026-05-28 13:12:08,117 autoreload 920 12208 D:\Web Applications\training_institute\training_institute_app\views.py changed, reloading.
+INFO 2026-05-28 13:12:10,542 autoreload 21572 18772 Watching for file changes with StatReloader
+INFO 2026-05-28 13:12:11,031 log 21572 7988 "GET / HTTP/1.1" 200 47066
+INFO 2026-05-28 13:12:11,255 log 21572 7988 "GET /static/css/basestyles.css HTTP/1.1" 200 31386
+INFO 2026-05-28 13:12:11,256 log 21572 10368 "GET /static/css/courses_details.css HTTP/1.1" 200 15381
+INFO 2026-05-28 13:12:11,331 log 21572 10368 "GET /static/images/logo.png HTTP/1.1" 200 67393
+INFO 2026-05-28 13:12:11,340 log 21572 7988 "GET /static/images/image.jpeg HTTP/1.1" 200 259498
+INFO 2026-05-28 13:12:11,412 log 21572 7988 "GET /static/images/image1.jpeg HTTP/1.1" 200 316563
+INFO 2026-05-28 13:12:11,438 log 21572 10368 "GET /static/images/image2.png HTTP/1.1" 200 2296546
+INFO 2026-05-28 13:12:11,446 log 21572 7988 "GET /static/images/image4.png HTTP/1.1" 200 849487
+INFO 2026-05-28 13:12:11,453 log 21572 7988 "GET /static/js/basestyles.js HTTP/1.1" 200 6950
+INFO 2026-05-28 13:12:11,477 log 21572 7988 "GET /static/images/image5.png HTTP/1.1" 200 2139533
+INFO 2026-05-28 13:12:11,885 log 21572 7988 "GET /static/images/favicon.png HTTP/1.1" 200 52052
+WARNING 2026-05-28 13:12:11,898 log 21572 7988 "GET /static/images/favicon.jpeg HTTP/1.1" 404 1984

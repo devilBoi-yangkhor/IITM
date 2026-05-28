@@ -123,28 +123,37 @@ WSGI_APPLICATION = 'training_institute.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-#Local Server Database Configuration
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'training_institute_db',
-        'USER': 'training_user',
-        'PASSWORD': 'StrongPassword123!',   # ← Put the password you created
+        'NAME': 'training_institute_database',
+        'USER': 'root',
+        'PASSWORD': 'root',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
             'charset': 'utf8mb4',
+            'use_unicode': True,
         },
     }
 }
+
+#Local Server Database Configuration
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'training_institute_db',
+#         'USER': 'training_user',
+#         'PASSWORD': 'StrongPassword123!',   # ← Put the password you created
+#         'HOST': '127.0.0.1',
+#         'PORT': '3306',
+#         'OPTIONS': {
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+#             'charset': 'utf8mb4',
+#         },
+#     }
+# }
 
 # Alternative: If you want to use SQLite for development and MySQL for production
 # import sys
@@ -321,7 +330,7 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
-SOCIALACCOUNT_ADAPTER = 'training_institute_app.adapters.MySocialAccountAdapter'
+# SOCIALACCOUNT_ADAPTER = 'training_institute_app.adapters.MySocialAccountAdapter'
 SOCIALACCOUNT_LOGIN_ON_GET = True
 
 # Site ID (required for django-allauth)
@@ -341,6 +350,7 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-# Email verification (optional - set to 'none' for now)
-ACCOUNT_EMAIL_VERIFICATION = 'none'
-ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+# Email verification settings
+ACCOUNT_LOGIN_METHODS = {'email'}  # This replaces ACCOUNT_AUTHENTICATION_METHOD
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']  # This replaces ACCOUNT_EMAIL_REQUIRED and ACCOUNT_USERNAME_REQUIRED
+ACCOUNT_EMAIL_VERIFICATION = 'optional'

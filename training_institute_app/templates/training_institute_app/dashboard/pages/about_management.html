@@ -1,0 +1,593 @@
+{% extends 'training_institute_app/dashboard/base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<div class="px-6">
+    <!-- Page Title -->
+    <div class="flex justify-between items-center mb-6">
+        <div>
+            <h1 class="text-2xl font-semibold text-dark dark:text-white">About Us Page Management</h1>
+            <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Manage and customize the About Us page content</p>
+        </div>
+        <button id="editAboutPageBtn" 
+                data-about-id="{{ about_page.id }}"
+                class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white text-sm font-medium rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-xl">
+            <iconify-icon icon="solar:pen-2-linear" class="text-lg mr-2"></iconify-icon>
+            Edit About Page
+        </button>
+    </div>
+
+    <!-- Alert Container -->
+    {% include 'training_institute_app/components/alerts.html' %}
+
+    <!-- About Page Content Table -->
+    <div class="card mb-6">
+        <div class="card-body p-0">
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b border-border dark:border-darkborder bg-gray-100 dark:bg-gray-900">
+                            <th class="text-left py-3 px-4 text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Section</th>
+                            <th class="text-left py-3 px-4 text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Content Preview</th>
+                            <th class="text-center py-3 px-4 text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Hero Section -->
+                        <tr class="border-b border-border dark:border-darkborder hover:bg-gray-100 dark:hover:bg-slate-700">
+                            <td class="py-3 px-4">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shadow-md">
+                                        <iconify-icon icon="solar:screen-linear" class="text-white text-sm"></iconify-icon>
+                                    </div>
+                                    <p class="text-sm font-semibold text-dark dark:text-white">Hero Section</p>
+                                </div>
+                            </td>
+                            <td class="py-3 px-4">
+                                <div class="space-y-1">
+                                    <div class="flex items-center gap-2">
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-700">Title</span>
+                                        <span class="text-sm text-dark dark:text-white">{{ about_page.hero_title_line1 }} {{ about_page.hero_title_line2 }}</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-purple-100 text-purple-700">Badge</span>
+                                        <span class="text-sm text-dark dark:text-white">{{ about_page.hero_badge_text }}</span>
+                                    </div>
+                                    <div class="flex items-start gap-2">
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-700">Subtitle</span>
+                                        <span class="text-sm text-dark dark:text-white">{{ about_page.hero_subtitle|truncatechars:80 }}</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-3 px-4 text-center">
+                                <button data-section="hero" class="edit-section-btn p-1.5 rounded-lg text-blue-600 hover:text-blue-700 transition-all duration-300 hover:scale-110">
+                                    <iconify-icon icon="solar:pen-2-linear" class="text-lg"></iconify-icon>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Mission & Vision -->
+                        <tr class="border-b border-border dark:border-darkborder hover:bg-gray-100 dark:hover:bg-slate-700">
+                            <td class="py-3 px-4">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shadow-md">
+                                        <iconify-icon icon="solar:target-linear" class="text-white text-sm"></iconify-icon>
+                                    </div>
+                                    <p class="text-sm font-semibold text-dark dark:text-white">Mission & Vision</p>
+                                </div>
+                            </td>
+                            <td class="py-3 px-4">
+                                <div class="space-y-2">
+                                    {% if about_page.mission_vision_items %}
+                                        {% for item in about_page.mission_vision_items %}
+                                            <div class="flex items-start gap-2">
+                                                <i class="{{ item.icon|default:'fa-solid fa-bullseye' }} text-purple-500 mt-0.5 text-sm w-4"></i>
+                                                <div class="flex-1">
+                                                    <span class="font-semibold text-dark dark:text-white">{{ item.title }}:</span>
+                                                    <span class="text-sm text-gray-600 dark:text-gray-300">{{ item.description|truncatechars:60 }}</span>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                        <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                                            <i class="fas fa-list mr-1"></i> Total: {{ about_page.mission_vision_items|length }} item(s)
+                                        </div>
+                                    {% else %}
+                                        <p class="text-gray-500 dark:text-gray-400 italic">No mission & vision data available</p>
+                                    {% endif %}
+                                </div>
+                            </td>
+                            <td class="py-3 px-4 text-center">
+                                <button data-section="mission_vision" class="edit-section-btn p-1.5 rounded-lg text-blue-600 hover:text-blue-700 transition-all duration-300 hover:scale-110">
+                                    <iconify-icon icon="solar:pen-2-linear" class="text-lg"></iconify-icon>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Timeline -->
+                        <tr class="border-b border-border dark:border-darkborder hover:bg-gray-100 dark:hover:bg-slate-700">
+                            <td class="py-3 px-4">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center shadow-md">
+                                        <iconify-icon icon="solar:calendar-linear" class="text-white text-sm"></iconify-icon>
+                                    </div>
+                                    <p class="text-sm font-semibold text-dark dark:text-white">Timeline</p>
+                                </div>
+                            </td>
+                            <td class="py-3 px-4">
+                                <div class="space-y-1">
+                                    <div class="flex items-center gap-2">
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-orange-100 text-orange-700">Tag</span>
+                                        <span class="text-sm text-dark dark:text-white">{{ about_page.timeline_section_tag|default:"Not set" }}</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-700">Title</span>
+                                        <span class="text-sm text-dark dark:text-white">{{ about_page.timeline_section_title|truncatechars:50|default:"Not set" }}</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 mt-2">
+                                        <i class="fas fa-history text-orange-500 text-sm"></i>
+                                        <span class="text-sm text-dark dark:text-white font-medium">{{ about_page.timeline_items|length }} Timeline Event(s)</span>
+                                    </div>
+                                    {% if about_page.timeline_items %}
+                                        <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                                            {% for item in about_page.timeline_items|slice:":2" %}
+                                                <div class="ml-4">• {{ item.year|default:"N/A" }}: {{ item.title|truncatechars:40 }}</div>
+                                            {% endfor %}
+                                            {% if about_page.timeline_items|length > 2 %}
+                                                <div class="ml-4 text-gray-400">+{{ about_page.timeline_items|length|add:"-2" }} more...</div>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </td>
+                            <td class="py-3 px-4 text-center">
+                                <button data-section="timeline" class="edit-section-btn p-1.5 rounded-lg text-blue-600 hover:text-blue-700 transition-all duration-300 hover:scale-110">
+                                    <iconify-icon icon="solar:pen-2-linear" class="text-lg"></iconify-icon>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Leadership Team -->
+                        <tr class="border-b border-border dark:border-darkborder hover:bg-gray-100 dark:hover:bg-slate-700">
+                            <td class="py-3 px-4">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-green-500 to-teal-500 flex items-center justify-center shadow-md">
+                                        <iconify-icon icon="solar:users-group-rounded-linear" class="text-white text-sm"></iconify-icon>
+                                    </div>
+                                    <p class="text-sm font-semibold text-dark dark:text-white">Leadership Team</p>
+                                </div>
+                            </td>
+                            <td class="py-3 px-4">
+                                <div class="space-y-1">
+                                    <div class="flex items-center gap-2">
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-700">Tag</span>
+                                        <span class="text-sm text-dark dark:text-white">{{ about_page.leadership_section_tag|default:"Not set" }}</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-teal-100 text-teal-700">Title</span>
+                                        <span class="text-sm text-dark dark:text-white">{{ about_page.leadership_section_title|truncatechars:50|default:"Not set" }}</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 mt-2">
+                                        <i class="fas fa-user-tie text-green-500 text-sm"></i>
+                                        <span class="text-sm text-dark dark:text-white font-medium">{{ about_page.team_members|length }} Team Member(s)</span>
+                                    </div>
+                                    {% if about_page.team_members %}
+                                        <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                                            {% for member in about_page.team_members|slice:":2" %}
+                                                <div class="ml-4">• {{ member.name|default:"N/A" }} - {{ member.position|default:"Staff" }}</div>
+                                            {% endfor %}
+                                            {% if about_page.team_members|length > 2 %}
+                                                <div class="ml-4 text-gray-400">+{{ about_page.team_members|length|add:"-2" }} more...</div>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </td>
+                            <td class="py-3 px-4 text-center">
+                                <button data-section="leadership" class="edit-section-btn p-1.5 rounded-lg text-blue-600 hover:text-blue-700 transition-all duration-300 hover:scale-110">
+                                    <iconify-icon icon="solar:pen-2-linear" class="text-lg"></iconify-icon>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Statistics -->
+                        <tr class="border-b border-border dark:border-darkborder hover:bg-gray-100 dark:hover:bg-slate-700">
+                            <td class="py-3 px-4">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-yellow-500 to-amber-500 flex items-center justify-center shadow-md">
+                                        <iconify-icon icon="solar:chart-2-linear" class="text-white text-sm"></iconify-icon>
+                                    </div>
+                                    <p class="text-sm font-semibold text-dark dark:text-white">Statistics</p>
+                                </div>
+                            </td>
+                            <td class="py-3 px-4">
+                                <div class="space-y-2">
+                                    {% if about_page.statistics %}
+                                        <div class="grid grid-cols-2 gap-2">
+                                            {% for stat in about_page.statistics|slice:":4" %}
+                                                <div class="flex items-center gap-2">
+                                                    <i class="{{ stat.icon|default:'fa-solid fa-chart-simple' }} text-yellow-500 text-sm w-4"></i>
+                                                    <div>
+                                                        <span class="font-bold text-dark dark:text-white">{{ stat.value }}</span>
+                                                        <span class="text-xs text-gray-500 dark:text-gray-400 block">{{ stat.label|truncatechars:20 }}</span>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                        {% if about_page.statistics|length > 4 %}
+                                            <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                                                +{{ about_page.statistics|length|add:"-4" }} more statistics
+                                            </div>
+                                        {% endif %}
+                                    {% else %}
+                                        <p class="text-gray-500 dark:text-gray-400 italic">No statistics available</p>
+                                    {% endif %}
+                                </div>
+                            </td>
+                            <td class="py-3 px-4 text-center">
+                                <button data-section="statistics" class="edit-section-btn p-1.5 rounded-lg text-blue-600 hover:text-blue-700 transition-all duration-300 hover:scale-110">
+                                    <iconify-icon icon="solar:pen-2-linear" class="text-lg"></iconify-icon>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Why Choose Us -->
+                        <tr class="border-b border-border dark:border-darkborder hover:bg-gray-100 dark:hover:bg-slate-700">
+                            <td class="py-3 px-4">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-blue-500 flex items-center justify-center shadow-md">
+                                        <iconify-icon icon="solar:question-circle-linear" class="text-white text-sm"></iconify-icon>
+                                    </div>
+                                    <p class="text-sm font-semibold text-dark dark:text-white">Why Choose Us</p>
+                                </div>
+                            </td>
+                            <td class="py-3 px-4">
+                                <div class="space-y-1">
+                                    <div class="flex items-center gap-2">
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-indigo-100 text-indigo-700">Tag</span>
+                                        <span class="text-sm text-dark dark:text-white">{{ about_page.why_us_section_tag|default:"Not set" }}</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-700">Title</span>
+                                        <span class="text-sm text-dark dark:text-white">{{ about_page.why_us_section_title|truncatechars:50|default:"Not set" }}</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 mt-2">
+                                        <i class="fas fa-star text-indigo-500 text-sm"></i>
+                                        <span class="text-sm text-dark dark:text-white font-medium">{{ about_page.why_us_features|length }} Feature(s)</span>
+                                    </div>
+                                    {% if about_page.why_us_features %}
+                                        <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                                            {% for feature in about_page.why_us_features|slice:":2" %}
+                                                <div class="ml-4">• {{ feature.title|default:"Feature" }}</div>
+                                            {% endfor %}
+                                            {% if about_page.why_us_features|length > 2 %}
+                                                <div class="ml-4 text-gray-400">+{{ about_page.why_us_features|length|add:"-2" }} more...</div>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </td>
+                            <td class="py-3 px-4 text-center">
+                                <button data-section="why_us" class="edit-section-btn p-1.5 rounded-lg text-blue-600 hover:text-blue-700 transition-all duration-300 hover:scale-110">
+                                    <iconify-icon icon="solar:pen-2-linear" class="text-lg"></iconify-icon>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Last Updated Info -->
+    <div class="text-center text-xs text-gray-500 dark:text-gray-400">
+        Last updated: {{ about_page.updated_at|date:"F j, Y, g:i a" }}
+    </div>
+</div>
+
+<!-- Include the generic form modal component -->
+{% include 'training_institute_app/components/formModel.html' %}
+
+<style>
+    #editAboutPageBtn, .edit-section-btn {
+        cursor: pointer;
+    }
+    
+    #editAboutPageBtn:hover {
+        animation: pulse 1.5s infinite;
+    }
+    
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+            box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+        }
+        70% {
+            transform: scale(1.05);
+            box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+        }
+        100% {
+            transform: scale(1);
+            box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+        }
+    }
+    
+    .edit-section-btn {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .edit-section-btn::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(59, 130, 246, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+    
+    .edit-section-btn:hover::before {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .bg-gray-50 {
+        transition: all 0.3s ease;
+    }
+    
+    .bg-gray-50:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<script>
+    function showSuccessAlert(message, callback) {
+        Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: message,
+            confirmButtonText: 'OK',
+            showCancelButton: false,
+            background: getComputedStyle(document.documentElement).getPropertyValue('--swal-bg') || '#ffffff',
+            color: getComputedStyle(document.documentElement).getPropertyValue('--swal-color') || '#1e293b'
+        }).then((result) => {
+            if (result.isConfirmed && callback) callback();
+            else if (result.isConfirmed) window.location.reload();
+        });
+    }
+
+    function showErrorAlert(message) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            text: message,
+            confirmButtonText: 'OK',
+            showCancelButton: false
+        });
+    }
+    
+    function showLoadingAlert(title, message) {
+        Swal.fire({
+            title: title || 'Processing...',
+            text: message || 'Please wait',
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+    }
+    
+    function closeLoadingAlert() {
+        Swal.close();
+    }
+
+    // Store Django variables
+    const aboutPageId = '{{ about_page.id|safe }}';
+    const heroTitleLine1 = '{{ about_page.hero_title_line1|escapejs }}';
+    const heroTitleLine2 = '{{ about_page.hero_title_line2|escapejs }}';
+    const heroBadgeText = '{{ about_page.hero_badge_text|escapejs }}';
+    const heroBadgeIcon = '{{ about_page.hero_badge_icon|escapejs }}';
+    const heroSubtitle = '{{ about_page.hero_subtitle|escapejs }}';
+    const showMissionVision = '{{ about_page.show_mission_vision|yesno:"true,false" }}';
+    const showTimeline = '{{ about_page.show_timeline|yesno:"true,false" }}';
+    const timelineSectionTag = '{{ about_page.timeline_section_tag|escapejs }}';
+    const timelineSectionTitle = '{{ about_page.timeline_section_title|escapejs }}';
+    const timelineSectionSubtitle = '{{ about_page.timeline_section_subtitle|escapejs }}';
+    const showLeadership = '{{ about_page.show_leadership|yesno:"true,false" }}';
+    const leadershipSectionTag = '{{ about_page.leadership_section_tag|escapejs }}';
+    const leadershipSectionTitle = '{{ about_page.leadership_section_title|escapejs }}';
+    const leadershipSectionSubtitle = '{{ about_page.leadership_section_subtitle|escapejs }}';
+    const showStats = '{{ about_page.show_stats|yesno:"true,false" }}';
+    const showWhyUs = '{{ about_page.show_why_us|yesno:"true,false" }}';
+    const whyUsSectionTag = '{{ about_page.why_us_section_tag|escapejs }}';
+    const whyUsSectionTitle = '{{ about_page.why_us_section_title|escapejs }}';
+    const whyUsSectionSubtitle = '{{ about_page.why_us_section_subtitle|escapejs }}';
+
+    function safeJSONParse(str, defaultValue = []) {
+        if (!str || str === '[]' || str === 'null' || str === 'undefined') return defaultValue;
+        try {
+            let decoded = str.replace(/&quot;/g, '"');
+            const parsed = JSON.parse(decoded);
+            return parsed || defaultValue;
+        } catch(e) {
+            console.error('Failed to parse JSON:', str, e);
+            return defaultValue;
+        }
+    }
+
+    let missionVisionItems = safeJSONParse('{{ about_page.mission_vision_items|escapejs|safe }}');
+    let timelineItems = safeJSONParse('{{ about_page.timeline_items|escapejs|safe }}');
+    let teamMembers = safeJSONParse('{{ about_page.team_members|escapejs|safe }}');
+    let statistics = safeJSONParse('{{ about_page.statistics|escapejs|safe }}');
+    let whyUsFeatures = safeJSONParse('{{ about_page.why_us_features|escapejs|safe }}');
+
+    // Handle edit button clicks
+    document.querySelectorAll('.edit-section-btn').forEach(function(button) {
+        button.addEventListener('click', function() {
+            const section = this.dataset.section;
+            let modalConfig = {};
+            
+            switch(section) {
+                case 'hero':
+                    modalConfig = {
+                        title: 'Edit Hero Section',
+                        mode: 'edit',
+                        actionUrl: "{% url 'update_about_section' %}",
+                        itemId: aboutPageId,
+                        rows: [
+                            { fields: [{ name: 'hero_title_line1', label: 'Hero Title Line 1', type: 'text', required: true, value: heroTitleLine1 }, { name: 'hero_title_line2', label: 'Hero Title Line 2', type: 'text', required: true, value: heroTitleLine2 }] },
+                            { fields: [{ name: 'hero_badge_text', label: 'Hero Badge Text', type: 'text', required: true, value: heroBadgeText }, { name: 'hero_badge_icon', label: 'Hero Badge Icon', type: 'iconpicker', required: true, value: heroBadgeIcon }] },
+                            { fields: [{ name: 'hero_subtitle', label: 'Hero Subtitle', type: 'textarea', required: true, value: heroSubtitle }] }
+                        ]
+                    };
+                    break;
+                case 'mission_vision':
+                    modalConfig = {
+                        title: 'Edit Mission & Vision',
+                        mode: 'edit',
+                        actionUrl: "{% url 'update_about_section' %}",
+                        itemId: aboutPageId,
+                        rows: [
+                            { fields: [{ name: 'show_mission_vision', label: 'Show Section', type: 'yesno', required: false, value: showMissionVision }] },
+                            { fields: [{ name: 'mission_vision_items', label: 'Mission & Vision Items', type: 'repeatable-mv', required: false, value: missionVisionItems }] }
+                        ]
+                    };
+                    break;
+                case 'timeline':
+                    modalConfig = {
+                        title: 'Edit Timeline Section',
+                        mode: 'edit',
+                        actionUrl: "{% url 'update_about_section' %}",
+                        itemId: aboutPageId,
+                        rows: [
+                            { fields: [{ name: 'show_timeline', label: 'Show Section', type: 'yesno', required: false, value: showTimeline }] },
+                            { fields: [{ name: 'timeline_section_tag', label: 'Section Tag', type: 'text', required: true, value: timelineSectionTag }, { name: 'timeline_section_title', label: 'Section Title', type: 'text', required: true, value: timelineSectionTitle }] },
+                            { fields: [{ name: 'timeline_section_subtitle', label: 'Section Subtitle', type: 'textarea', required: true, value: timelineSectionSubtitle }] },
+                            { fields: [{ name: 'timeline_items', label: 'Timeline Events', type: 'repeatable-timeline', required: false, value: timelineItems }] }
+                        ]
+                    };
+                    break;
+                case 'leadership':
+                    modalConfig = {
+                        title: 'Edit Leadership Team',
+                        mode: 'edit',
+                        actionUrl: "{% url 'update_about_section' %}",
+                        itemId: aboutPageId,
+                        rows: [
+                            { fields: [{ name: 'show_leadership', label: 'Show Section', type: 'yesno', required: false, value: showLeadership }] },
+                            { fields: [{ name: 'leadership_section_tag', label: 'Section Tag', type: 'text', required: true, value: leadershipSectionTag }, { name: 'leadership_section_title', label: 'Section Title', type: 'text', required: true, value: leadershipSectionTitle }] },
+                            { fields: [{ name: 'leadership_section_subtitle', label: 'Section Subtitle', type: 'textarea', required: true, value: leadershipSectionSubtitle }] },
+                            { fields: [{ name: 'team_members', label: 'Team Members', type: 'repeatable-team', required: false, value: teamMembers }] }
+                        ]
+                    };
+                    break;
+                case 'statistics':
+                    modalConfig = {
+                        title: 'Edit Statistics',
+                        mode: 'edit',
+                        actionUrl: "{% url 'update_about_section' %}",
+                        itemId: aboutPageId,
+                        rows: [
+                            { fields: [{ name: 'show_stats', label: 'Show Section', type: 'yesno', required: false, value: showStats }] },
+                            { fields: [{ name: 'statistics', label: 'Statistics', type: 'repeatable-stats', required: false, value: statistics }] }
+                        ]
+                    };
+                    break;
+                case 'why_us':
+                    modalConfig = {
+                        title: 'Edit Why Choose Us',
+                        mode: 'edit',
+                        actionUrl: "{% url 'update_about_section' %}",
+                        itemId: aboutPageId,
+                        rows: [
+                            { fields: [{ name: 'show_why_us', label: 'Show Section', type: 'yesno', required: false, value: showWhyUs }] },
+                            { fields: [{ name: 'why_us_section_tag', label: 'Section Tag', type: 'text', required: true, value: whyUsSectionTag }, { name: 'why_us_section_title', label: 'Section Title', type: 'text', required: true, value: whyUsSectionTitle }] },
+                            { fields: [{ name: 'why_us_section_subtitle', label: 'Section Subtitle', type: 'textarea', required: true, value: whyUsSectionSubtitle }] },
+                            { fields: [{ name: 'why_us_features', label: 'Features', type: 'repeatable-whyus', required: false, value: whyUsFeatures }] }
+                        ]
+                    };
+                    break;
+            }
+            
+            if (typeof window.openFormModal === 'function') window.openFormModal(modalConfig);
+        });
+    });
+    
+    // Handle main Edit About Page button
+    document.getElementById('editAboutPageBtn')?.addEventListener('click', function() {
+        window.openFormModal({
+            title: 'Edit About Page - Complete',
+            mode: 'edit',
+            actionUrl: "{% url 'update_about_section' %}",
+            itemId: aboutPageId,
+            rows: [
+                { fields: [{ name: 'hero_title_line1', label: 'Hero Title Line 1', type: 'text', required: true, value: heroTitleLine1 }, { name: 'hero_title_line2', label: 'Hero Title Line 2', type: 'text', required: true, value: heroTitleLine2 }] },
+                { fields: [{ name: 'hero_badge_text', label: 'Hero Badge Text', type: 'text', required: true, value: heroBadgeText }, { name: 'hero_badge_icon', label: 'Hero Badge Icon', type: 'iconpicker', required: true, value: heroBadgeIcon }] },
+                { fields: [{ name: 'hero_subtitle', label: 'Hero Subtitle', type: 'textarea', required: true, value: heroSubtitle }] },
+                { fields: [{ name: 'timeline_section_tag', label: 'Timeline Tag', type: 'text', required: true, value: timelineSectionTag }, { name: 'timeline_section_title', label: 'Timeline Title', type: 'text', required: true, value: timelineSectionTitle }] },
+                { fields: [{ name: 'leadership_section_tag', label: 'Leadership Tag', type: 'text', required: true, value: leadershipSectionTag }, { name: 'leadership_section_title', label: 'Leadership Title', type: 'text', required: true, value: leadershipSectionTitle }] },
+                { fields: [{ name: 'why_us_section_tag', label: 'Why Us Tag', type: 'text', required: true, value: whyUsSectionTag }, { name: 'why_us_section_title', label: 'Why Us Title', type: 'text', required: true, value: whyUsSectionTitle }] },
+                { fields: [{ name: 'show_mission_vision', label: 'Show Mission & Vision', type: 'yesno', required: false, value: showMissionVision }, { name: 'show_timeline', label: 'Show Timeline', type: 'yesno', required: false, value: showTimeline }] },
+                { fields: [{ name: 'show_leadership', label: 'Show Leadership', type: 'yesno', required: false, value: showLeadership }, { name: 'show_stats', label: 'Show Statistics', type: 'yesno', required: false, value: showStats }] },
+                { fields: [{ name: 'show_why_us', label: 'Show Why Us', type: 'yesno', required: false, value: showWhyUs }] },
+                { fields: [{ name: 'mission_vision_items', label: 'Mission & Vision Items', type: 'repeatable-mv', required: false, value: missionVisionItems }] },
+                { fields: [{ name: 'timeline_items', label: 'Timeline Events', type: 'repeatable-timeline', required: false, value: timelineItems }] },
+                { fields: [{ name: 'team_members', label: 'Team Members', type: 'repeatable-team', required: false, value: teamMembers }] },
+                { fields: [{ name: 'statistics', label: 'Statistics', type: 'repeatable-stats', required: false, value: statistics }] },
+                { fields: [{ name: 'why_us_features', label: 'Features', type: 'repeatable-whyus', required: false, value: whyUsFeatures }] }
+            ]
+        });
+    });
+
+    // Form submission handler
+    document.addEventListener('DOMContentLoaded', function() {
+        const genericForm = document.getElementById('genericForm');
+        if (genericForm) {
+            genericForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+                const actionUrl = this.action;
+                
+                const activeModal = document.querySelector('.modal-overlay[style*="display: flex"]');
+                if (activeModal) {
+                    const modalTitle = activeModal.querySelector('.modal-title')?.innerText || '';
+                    if (modalTitle.includes('Hero')) formData.append('section', 'hero');
+                    else if (modalTitle.includes('Mission')) formData.append('section', 'mission_vision');
+                    else if (modalTitle.includes('Timeline')) formData.append('section', 'timeline');
+                    else if (modalTitle.includes('Leadership')) formData.append('section', 'leadership');
+                    else if (modalTitle.includes('Statistics')) formData.append('section', 'statistics');
+                    else if (modalTitle.includes('Why Choose')) formData.append('section', 'why_us');
+                    else formData.append('section', 'full');
+                }
+                
+                showLoadingAlert('Saving...', 'Please wait while we update the about page');
+                
+                fetch(actionUrl, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    closeLoadingAlert();
+                    if (data.success) showSuccessAlert(data.message);
+                    else showErrorAlert(data.message);
+                })
+                .catch(error => {
+                    closeLoadingAlert();
+                    console.error('Error:', error);
+                    showErrorAlert('An error occurred. Please try again.');
+                });
+                
+                if (typeof window.closeFormModal === 'function') window.closeFormModal();
+            });
+        }
+    });
+</script>
+{% endblock content %}
