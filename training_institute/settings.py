@@ -111,21 +111,6 @@ WSGI_APPLICATION = 'training_institute.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 # MySQL Database Configuration
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('DB_NAME', 'training_institute_database'),
-        'USER': os.environ.get('DB_USER', 'root'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', 'root'),
-        'HOST': os.environ.get('DB_HOST', '127.0.0.1'),
-        'PORT': os.environ.get('DB_PORT', '3306'),
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-            'charset': 'utf8mb4',
-            'use_unicode': True,
-        },
-    }
-}
 
 # DATABASES = {
 #     'default': {
@@ -144,20 +129,20 @@ DATABASES = {
 # }
 
 #Local Server Database Configuration
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'training_institute_db',
-#         'USER': 'training_user',
-#         'PASSWORD': 'StrongPassword123!',   # ← Put the password you created
-#         'HOST': '127.0.0.1',
-#         'PORT': '3306',
-#         'OPTIONS': {
-#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-#             'charset': 'utf8mb4',
-#         },
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('DB_NAME', 'training_institute_database'),
+        'USER': os.environ.get('DB_USER', 'training_user'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'StrongPassword123'),
+        'HOST': os.environ.get('DB_HOST', '127.0.0.1'),
+        'PORT': os.environ.get('DB_PORT', '3306'),
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            'charset': 'utf8mb4',
+        },
+    }
+}
 
 # Alternative: If you want to use SQLite for development and MySQL for production
 # import sys

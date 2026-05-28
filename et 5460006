@@ -1,0 +1,17 @@
+[33m71fb225[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m remove .env from tracking
+[33m7d3456e[m changes with .env
+[33m294ec6a[m 28/05/2026
+[33m5460006[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m 27/05/2026
+[33meb13cc5[m 27/05/2026
+[33mff89013[m Add gunicorn.log and staticfiles to gitignore
+[33m06e0b7e[m Merge remote changes: keep debug.log deleted
+[33m6682a7a[m Remove debug.log from tracking
+[33m3a8cb0e[m 27/06/2026
+[33m49f6b12[m 26/05/2026
+[33m07a25e6[m Add .gitignore
+[33m664780b[m 22/05/2026
+[33m4139234[m 22/05/2026
+[33m79c149a[m 19.05.2026
+[33mf248e71[m 19/05/2026
+[33ma0c170b[m 19/05/2026
+[33m29569d4[m Initial commit - Django training institute project
