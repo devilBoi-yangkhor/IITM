@@ -1,7 +1,13 @@
 # fix_google_auth.py
 import os
 import django
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
+
+GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID")
+GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET")
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'training_institute.settings')
 django.setup()
 
@@ -28,8 +34,8 @@ def fix_google_auth():
         provider='google',
         name='Google',
         defaults={
-            'client_id': '909353294442-4c0b16iscf8q66i7fb49vtf4ing6jhnl.apps.googleusercontent.com',
-            'secret': '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',
+            'client_id': GOOGLE_CLIENT_ID,
+            'secret': GOOGLE_CLIENT_SECRET,
         }
     )
     
